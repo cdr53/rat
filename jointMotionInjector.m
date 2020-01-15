@@ -37,20 +37,7 @@ function [obj] = jointMotionInjector(jointAngles,to_plot)
     dt = time_extractor(file_contents{contains(file_contents,'<PhysicsTimeStep>')});
     time = (99*dt:dt:simTime-10*dt)';
     
-    % Interpolate the undersampled input to match the required time vector
-    m = length(time);
-    n = length(jointAngles);
-    if m ~= n
-        jointAnglesBig = interp1(1:n,jointAngles,linspace(1,n,m));
-    end
-    
-    avgblocks = floor(.01*length(jointAnglesBig));
-    coeffblocks = ones(1,avgblocks)/avgblocks;
-    for j=1:3
-        for i=1:2
-            jointAnglesBig(:,j) = filtfilt(coeffblocks,1,jointAnglesBig(:,j));
-        end
-    end
+    jointAnglesBig = interpolate_for_time(time,jointAngles);
     
     coeffs = cell(24,2);
     
@@ -87,6 +74,23 @@ function [obj] = jointMotionInjector(jointAngles,to_plot)
         geq = find(old_line=='>');
         leq = find(old_line=='<');
         maxTime = str2double(old_line(geq(1)+1:leq(2)-1));
+    end
+    
+    function waveformsBig = interpolate_for_time(time,waveforms)
+        % Interpolate the undersampled input to match the required time vector
+        m = length(time);
+        n = length(waveforms);
+        if m ~= n
+            waveformsBig = interp1(1:n,waveforms,linspace(1,n,m));
+        end
+
+        avgblocks = floor(.01*length(waveformsBig));
+        coeffblocks = ones(1,avgblocks)/avgblocks;
+        for jj=1:3
+            for i=1:2
+                waveformsBig(:,jj) = filtfilt(coeffblocks,1,waveformsBig(:,jj));
+            end
+        end
     end
 end
 

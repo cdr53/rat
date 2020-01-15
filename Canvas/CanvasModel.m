@@ -476,30 +476,18 @@ classdef CanvasModel < handle
             for j=1:size(props,1)
                 synaptic_properties = props(j,:);
                 synNum = numSynapseTypes+j;
-                obj.synapse_types(synNum).ID = [lower(synaptic_properties{1,1}),'-ID'];
-                if contains(lower(synaptic_properties{1,1}),modnames)
-                    obj.synapse_types(synNum).arrow_dest_style = 'Circle';
-                elseif contains(lower(synaptic_properties{1,1}),transnames)
-                    obj.synapse_types(synNum).arrow_dest_style = 'Fork';
-                else
-                    obj.synapse_types(synNum).arrow_dest_style = 'None';
+                obj.synapse_types(synNum,1).ID = [lower(synaptic_properties{1,1}),'-ID'];
+                for k = 2:2:size(props,2)
+                    obj.synapse_types(synNum,1).name = props{j,1};
+                    property_string = props{j,k};
+                    property_value = props{j,k+1};
+                    obj.synapse_types(synNum,1).(property_string) = property_value;
                 end
-                    obj.synapse_types(synNum).arrow_dest_size = 'Large';
-                    obj.synapse_types(synNum).arrow_dest_angle = 'deg30';
-                    obj.synapse_types(synNum).arrow_dest_filled = 'False';
-                    obj.synapse_types(synNum).arrow_mid_style = 'None';
-                    obj.synapse_types(synNum).arrow_mid_size = 'Small';
-                    obj.synapse_types(synNum).arrow_mid_angle = 'deg30';
-                    obj.synapse_types(synNum).arrow_mid_filled = 'False';
-                    obj.synapse_types(synNum).arrow_origin_style = 'None';
-                    obj.synapse_types(synNum).arrow_origin_size = 'Small';
-                    obj.synapse_types(synNum).arrow_origin_angle = 'deg30';
-                    obj.synapse_types(synNum).arrow_origin_filled = 'False';
-                    obj.synapse_types(synNum).presyn_thresh = -60;
-                    obj.synapse_types(synNum).presyn_sat = -40;
+                    obj.synapse_types(synNum,1).presyn_thresh = -60;
+                    obj.synapse_types(synNum,1).presyn_sat = -40;
                     param_ind = logical([0,strcmp(synaptic_properties(1:end-1),'delE')]);
                     delE = synaptic_properties{param_ind};
-                    obj.synapse_types(synNum).equil_pot = delE-60;
+                    obj.synapse_types(synNum,1).equil_pot = delE-60;
                 if ~any(strcmp(synaptic_properties,'max_syn_cond'))
                     if any(strcmp(synaptic_properties,'delE'))
                         if any(strcmp(synaptic_properties,'k'))
@@ -513,14 +501,26 @@ classdef CanvasModel < handle
                         delE = input('No delE was provided. Please enter a delE value in mV:\n');
                     end
                     
-                    obj.synapse_types(synNum).max_syn_cond = (mod_param*20)/(delE-mod_param*20);
+                    obj.synapse_types(synNum,1).max_syn_cond = (mod_param*20)/(delE-mod_param*20);
                 end
-                for k = 2:2:size(props,2)
-                    obj.synapse_types(synNum).name = props{j,1};
-                    property_string = props{j,k};
-                    property_value = props{j,k+1};
-                    obj.synapse_types(synNum).(property_string) = property_value;
+                if contains(lower(synaptic_properties{1,1}),modnames)
+                    obj.synapse_types(synNum,1).arrow_dest_style = 'Circle';
+                elseif contains(lower(synaptic_properties{1,1}),transnames)
+                    obj.synapse_types(synNum,1).arrow_dest_style = 'Fork';
+                else
+                    obj.synapse_types(synNum,1).arrow_dest_style = 'Fork';
                 end
+                    obj.synapse_types(synNum,1).arrow_dest_size = 'Small';
+                    obj.synapse_types(synNum,1).arrow_dest_angle = 'deg30';
+                    obj.synapse_types(synNum,1).arrow_dest_filled = 'False';
+                    obj.synapse_types(synNum,1).arrow_mid_style = 'None';
+                    obj.synapse_types(synNum,1).arrow_mid_size = 'Small';
+                    obj.synapse_types(synNum,1).arrow_mid_angle = 'deg30';
+                    obj.synapse_types(synNum,1).arrow_mid_filled = 'False';
+                    obj.synapse_types(synNum,1).arrow_origin_style = 'None';
+                    obj.synapse_types(synNum,1).arrow_origin_size = 'Small';
+                    obj.synapse_types(synNum,1).arrow_origin_angle = 'deg30';
+                    obj.synapse_types(synNum,1).arrow_origin_filled = 'False';
             end
         end
         %% create_neuron
@@ -644,6 +644,7 @@ classdef CanvasModel < handle
                 stimulus.starttime = 2;
                 stimulus.endtime = 5;
                 stimulus.magnitude = 10;
+                stimulus.eq = [];
             else
                 disp('Stims only for neurons. Please select a neuron.')
             end
@@ -657,7 +658,7 @@ classdef CanvasModel < handle
 % %                 CanvasConstants.DATA_RELATIVE_PATH,...
 % %                 'animatlab_files\EmptySystem\EmptySystem.aproj');
              proj_file = [fileparts(fileparts(mfilename('fullpath'))),'\Animatlab\SynergyWalking\SynergyWalking20200109.aproj'];
-             revised_file = strcat(proj_file(1:end-6),'_fake.aproj');
+             revised_file = strcat(proj_file(1:end-6),'_fake_postadd.aproj');
             
     % For custom Animatlab file save location (to be included when done with testing)
 %             proj_file = fullfile(file_dir,...

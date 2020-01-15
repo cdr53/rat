@@ -528,7 +528,7 @@
 <Simulation>0</Simulation>
 </Transparencies>
 <IsVisible>True</IsVisible>
-<Enabled>False</Enabled>
+<Enabled>True</Enabled>
 <Ambient Red="0.0980392" Green="0.0980392" Blue="0.0980392" Alpha="1"/>
 <Diffuse Red="0" Green="0.752941" Blue="0" Alpha="1"/>
 <Attachments>
@@ -595,7 +595,7 @@
 <Simulation>0</Simulation>
 </Transparencies>
 <IsVisible>True</IsVisible>
-<Enabled>False</Enabled>
+<Enabled>True</Enabled>
 <Ambient Red="0.0980392" Green="0.0980392" Blue="0.0980392" Alpha="1"/>
 <Diffuse Red="1" Green="0" Blue="0" Alpha="1"/>
 <Attachments>
@@ -663,7 +663,7 @@
 <Simulation>0</Simulation>
 </Transparencies>
 <IsVisible>True</IsVisible>
-<Enabled>False</Enabled>
+<Enabled>True</Enabled>
 <Ambient Red="0.0980392" Green="0.0980392" Blue="0.0980392" Alpha="1"/>
 <Diffuse Red="1" Green="0" Blue="0" Alpha="1"/>
 <Attachments>
@@ -730,7 +730,7 @@
 <Simulation>0</Simulation>
 </Transparencies>
 <IsVisible>True</IsVisible>
-<Enabled>False</Enabled>
+<Enabled>True</Enabled>
 <Ambient Red="0.0980392" Green="0.0980392" Blue="0.0980392" Alpha="1"/>
 <Diffuse Red="0" Green="0" Blue="1" Alpha="1"/>
 <Attachments>
@@ -1004,7 +1004,7 @@
 <Simulation>0</Simulation>
 </Transparencies>
 <IsVisible>True</IsVisible>
-<Enabled>False</Enabled>
+<Enabled>True</Enabled>
 <Ambient Red="0.0980392" Green="0.0980392" Blue="0.0980392" Alpha="1"/>
 <Diffuse Red="0" Green="1" Blue="0" Alpha="1"/>
 <Attachments>
@@ -1209,7 +1209,7 @@
 <Simulation>0</Simulation>
 </Transparencies>
 <IsVisible>True</IsVisible>
-<Enabled>False</Enabled>
+<Enabled>True</Enabled>
 <Ambient Red="0.0980392" Green="0.0980392" Blue="0.0980392" Alpha="1"/>
 <Diffuse Red="1" Green="0" Blue="0" Alpha="1"/>
 <Attachments>
@@ -1483,7 +1483,7 @@
 <Simulation>0</Simulation>
 </Transparencies>
 <IsVisible>True</IsVisible>
-<Enabled>False</Enabled>
+<Enabled>True</Enabled>
 <Ambient Red="0.0980392" Green="0.0980392" Blue="0.0980392" Alpha="1"/>
 <Diffuse Red="0" Green="0" Blue="1" Alpha="1"/>
 <Attachments>
@@ -1550,7 +1550,7 @@
 <Simulation>0</Simulation>
 </Transparencies>
 <IsVisible>True</IsVisible>
-<Enabled>False</Enabled>
+<Enabled>True</Enabled>
 <Ambient Red="0.0980392" Green="0.0980392" Blue="0.0980392" Alpha="1"/>
 <Diffuse Red="1" Green="0" Blue="0" Alpha="1"/>
 <Attachments>
@@ -1617,7 +1617,7 @@
 <Simulation>0</Simulation>
 </Transparencies>
 <IsVisible>True</IsVisible>
-<Enabled>False</Enabled>
+<Enabled>True</Enabled>
 <Ambient Red="0.0980392" Green="0.0980392" Blue="0.0980392" Alpha="1"/>
 <Diffuse Red="0" Green="1" Blue="0" Alpha="1"/>
 <Attachments>
@@ -1684,7 +1684,7 @@
 <Simulation>0</Simulation>
 </Transparencies>
 <IsVisible>True</IsVisible>
-<Enabled>False</Enabled>
+<Enabled>True</Enabled>
 <Ambient Red="0.0980392" Green="0.0980392" Blue="0.0980392" Alpha="1"/>
 <Diffuse Red="1" Green="0" Blue="0" Alpha="1"/>
 <Attachments>
@@ -2164,7 +2164,7 @@
 <Simulation>0</Simulation>
 </Transparencies>
 <IsVisible>True</IsVisible>
-<Enabled>False</Enabled>
+<Enabled>True</Enabled>
 <Ambient Red="0.0980392" Green="0.0980392" Blue="0.0980392" Alpha="1"/>
 <Diffuse Red="1" Green="0" Blue="0" Alpha="1"/>
 <Attachments>
@@ -2371,7 +2371,7 @@
 <Simulation>0</Simulation>
 </Transparencies>
 <IsVisible>True</IsVisible>
-<Enabled>False</Enabled>
+<Enabled>True</Enabled>
 <Ambient Red="0.0980392" Green="0.0980392" Blue="0.0980392" Alpha="1"/>
 <Diffuse Red="0" Green="1" Blue="0" Alpha="1"/>
 <Attachments>
@@ -2646,7 +2646,7 @@
 <Simulation>0</Simulation>
 </Transparencies>
 <IsVisible>True</IsVisible>
-<Enabled>False</Enabled>
+<Enabled>True</Enabled>
 <Ambient Red="0.0980392" Green="0.0980392" Blue="0.0980392" Alpha="1"/>
 <Diffuse Red="0" Green="0" Blue="1" Alpha="1"/>
 <Attachments>
@@ -2853,7 +2853,7 @@
 <Simulation>0</Simulation>
 </Transparencies>
 <IsVisible>True</IsVisible>
-<Enabled>False</Enabled>
+<Enabled>True</Enabled>
 <Ambient Red="0.0980392" Green="0.0980392" Blue="0.0980392" Alpha="1"/>
 <Diffuse Red="0" Green="1" Blue="0" Alpha="1"/>
 <Attachments>
@@ -3117,7 +3117,7 @@
 <Simulation>0</Simulation>
 </Transparencies>
 <IsVisible>True</IsVisible>
-<Enabled>False</Enabled>
+<Enabled>True</Enabled>
 <Ambient Red="0.0980392" Green="0.0980392" Blue="0.0980392" Alpha="1"/>
 <Diffuse Red="1" Green="0.270588" Blue="0" Alpha="1"/>
 <Attachments>
@@ -3531,7 +3531,7 @@
 <Simulation>0</Simulation>
 </Transparencies>
 <IsVisible>True</IsVisible>
-<Enabled>False</Enabled>
+<Enabled>True</Enabled>
 <Ambient Red="0.0980392" Green="0.0980392" Blue="0.0980392" Alpha="1"/>
 <Diffuse Red="1" Green="0" Blue="1" Alpha="1"/>
 <Attachments>
@@ -3945,7 +3945,7 @@
 <Simulation>0</Simulation>
 </Transparencies>
 <IsVisible>True</IsVisible>
-<Enabled>False</Enabled>
+<Enabled>True</Enabled>
 <Ambient Red="0.0980392" Green="0.0980392" Blue="0.0980392" Alpha="1"/>
 <Diffuse Red="1" Green="0.270588" Blue="0" Alpha="1"/>
 <Attachments>
@@ -4830,7 +4830,7 @@
 <Simulation>0</Simulation>
 </Transparencies>
 <IsVisible>True</IsVisible>
-<Enabled>False</Enabled>
+<Enabled>True</Enabled>
 <Ambient Red="0.0980392" Green="0.0980392" Blue="0.0980392" Alpha="1"/>
 <Diffuse Red="1" Green="0" Blue="1" Alpha="1"/>
 <Attachments>
@@ -5318,7 +5318,7 @@
 <Simulation>0</Simulation>
 </Transparencies>
 <IsVisible>True</IsVisible>
-<Enabled>False</Enabled>
+<Enabled>True</Enabled>
 <Ambient Red="0.0980392" Green="0.0980392" Blue="0.0980392" Alpha="1"/>
 <Diffuse Red="0" Green="1" Blue="1" Alpha="1"/>
 <Attachments>
@@ -5457,7 +5457,7 @@
 <Simulation>0</Simulation>
 </Transparencies>
 <IsVisible>True</IsVisible>
-<Enabled>False</Enabled>
+<Enabled>True</Enabled>
 <Ambient Red="0.0980392" Green="0.0980392" Blue="0.0980392" Alpha="1"/>
 <Diffuse Red="1" Green="0" Blue="1" Alpha="1"/>
 <Attachments>
@@ -5803,7 +5803,7 @@
 <Simulation>0</Simulation>
 </Transparencies>
 <IsVisible>True</IsVisible>
-<Enabled>False</Enabled>
+<Enabled>True</Enabled>
 <Ambient Red="0.0980392" Green="0.0980392" Blue="0.0980392" Alpha="1"/>
 <Diffuse Red="0" Green="1" Blue="1" Alpha="1"/>
 <Attachments>
@@ -7807,7 +7807,7 @@
 <Simulation>0</Simulation>
 </Transparencies>
 <IsVisible>True</IsVisible>
-<Enabled>False</Enabled>
+<Enabled>True</Enabled>
 <Ambient Red="0.0980392" Green="0.0980392" Blue="0.0980392" Alpha="1"/>
 <Diffuse Red="1" Green="0" Blue="1" Alpha="1"/>
 <Attachments>
@@ -7944,7 +7944,7 @@
 <Simulation>0</Simulation>
 </Transparencies>
 <IsVisible>True</IsVisible>
-<Enabled>False</Enabled>
+<Enabled>True</Enabled>
 <Ambient Red="0.0980392" Green="0.0980392" Blue="0.0980392" Alpha="1"/>
 <Diffuse Red="1" Green="0" Blue="1" Alpha="1"/>
 <Attachments>
@@ -8704,7 +8704,7 @@
 <Simulation>0</Simulation>
 </Transparencies>
 <IsVisible>True</IsVisible>
-<Enabled>False</Enabled>
+<Enabled>True</Enabled>
 <Ambient Red="0.0980392" Green="0.0980392" Blue="0.0980392" Alpha="1"/>
 <Diffuse Red="1" Green="0" Blue="1" Alpha="1"/>
 <Attachments>
@@ -8784,7 +8784,7 @@
 <Simulation>0</Simulation>
 </Transparencies>
 <IsVisible>True</IsVisible>
-<Enabled>False</Enabled>
+<Enabled>True</Enabled>
 <Ambient Red="0.0980392" Green="0.0980392" Blue="0.0980392" Alpha="1"/>
 <Diffuse Red="1" Green="0" Blue="1" Alpha="1"/>
 <Attachments>
@@ -8853,7 +8853,7 @@
 <Simulation>0</Simulation>
 </Transparencies>
 <IsVisible>True</IsVisible>
-<Enabled>False</Enabled>
+<Enabled>True</Enabled>
 <Ambient Red="0.0980392" Green="0.0980392" Blue="0.0980392" Alpha="1"/>
 <Diffuse Red="1" Green="0" Blue="1" Alpha="1"/>
 <Attachments>
@@ -8992,7 +8992,7 @@
 <Simulation>0</Simulation>
 </Transparencies>
 <IsVisible>True</IsVisible>
-<Enabled>False</Enabled>
+<Enabled>True</Enabled>
 <Ambient Red="0.0980392" Green="0.0980392" Blue="0.0980392" Alpha="1"/>
 <Diffuse Red="1" Green="0.270588" Blue="0" Alpha="1"/>
 <Attachments>
@@ -9272,7 +9272,7 @@
 <Simulation>0</Simulation>
 </Transparencies>
 <IsVisible>True</IsVisible>
-<Enabled>False</Enabled>
+<Enabled>True</Enabled>
 <Ambient Red="0.0980392" Green="0.0980392" Blue="0.0980392" Alpha="1"/>
 <Diffuse Red="1" Green="0" Blue="1" Alpha="1"/>
 <Attachments>
@@ -10594,7 +10594,7 @@
 <Simulation>0</Simulation>
 </Transparencies>
 <IsVisible>True</IsVisible>
-<Enabled>False</Enabled>
+<Enabled>True</Enabled>
 <Ambient Red="0.0980392" Green="0.0980392" Blue="0.0980392" Alpha="1"/>
 <Diffuse Red="0" Green="0" Blue="1" Alpha="1"/>
 <Attachments>
@@ -10661,7 +10661,7 @@
 <Simulation>0</Simulation>
 </Transparencies>
 <IsVisible>True</IsVisible>
-<Enabled>False</Enabled>
+<Enabled>True</Enabled>
 <Ambient Red="0.0980392" Green="0.0980392" Blue="0.0980392" Alpha="1"/>
 <Diffuse Red="0" Green="0" Blue="1" Alpha="1"/>
 <Attachments>
@@ -10797,7 +10797,7 @@
 <Simulation>0</Simulation>
 </Transparencies>
 <IsVisible>True</IsVisible>
-<Enabled>False</Enabled>
+<Enabled>True</Enabled>
 <Ambient Red="0.0980392" Green="0.0980392" Blue="0.0980392" Alpha="1"/>
 <Diffuse Red="0" Green="0.752941" Blue="0" Alpha="1"/>
 <Attachments>
@@ -11209,7 +11209,7 @@
 <Simulation>0</Simulation>
 </Transparencies>
 <IsVisible>True</IsVisible>
-<Enabled>False</Enabled>
+<Enabled>True</Enabled>
 <Ambient Red="0.0980392" Green="0.0980392" Blue="0.0980392" Alpha="1"/>
 <Diffuse Red="0" Green="1" Blue="0" Alpha="1"/>
 <Attachments>
@@ -11279,7 +11279,7 @@
 <Simulation>0</Simulation>
 </Transparencies>
 <IsVisible>True</IsVisible>
-<Enabled>False</Enabled>
+<Enabled>True</Enabled>
 <Ambient Red="0.0980392" Green="0.0980392" Blue="0.0980392" Alpha="1"/>
 <Diffuse Red="0" Green="1" Blue="0" Alpha="1"/>
 <Attachments>
@@ -11484,7 +11484,7 @@
 <Simulation>0</Simulation>
 </Transparencies>
 <IsVisible>True</IsVisible>
-<Enabled>False</Enabled>
+<Enabled>True</Enabled>
 <Ambient Red="0.0980392" Green="0.0980392" Blue="0.0980392" Alpha="1"/>
 <Diffuse Red="0" Green="0" Blue="1" Alpha="1"/>
 <Attachments>
@@ -11620,7 +11620,7 @@
 <Simulation>0</Simulation>
 </Transparencies>
 <IsVisible>True</IsVisible>
-<Enabled>False</Enabled>
+<Enabled>True</Enabled>
 <Ambient Red="0.0980392" Green="0.0980392" Blue="0.0980392" Alpha="1"/>
 <Diffuse Red="0" Green="1" Blue="0" Alpha="1"/>
 <Attachments>
@@ -11687,7 +11687,7 @@
 <Simulation>0</Simulation>
 </Transparencies>
 <IsVisible>True</IsVisible>
-<Enabled>False</Enabled>
+<Enabled>True</Enabled>
 <Ambient Red="0.0980392" Green="0.0980392" Blue="0.0980392" Alpha="1"/>
 <Diffuse Red="1" Green="0" Blue="0" Alpha="1"/>
 <Attachments>
@@ -11754,7 +11754,7 @@
 <Simulation>0</Simulation>
 </Transparencies>
 <IsVisible>True</IsVisible>
-<Enabled>False</Enabled>
+<Enabled>True</Enabled>
 <Ambient Red="0.0980392" Green="0.0980392" Blue="0.0980392" Alpha="1"/>
 <Diffuse Red="0" Green="1" Blue="0" Alpha="1"/>
 <Attachments>
@@ -12304,8 +12304,8 @@
 </Stimuli>
 <HudItems>
 <HudItem>
-<Name>c08f4cb2-9681-41e9-88a2-b338b40cc8a0</Name>
-<ID>c08f4cb2-9681-41e9-88a2-b338b40cc8a0</ID>
+<Name>bbab3255-e81d-47c4-bc28-9fba04a0120b</Name>
+<ID>bbab3255-e81d-47c4-bc28-9fba04a0120b</ID>
 <Type>HudText</Type>
 <CharSize>30</CharSize>
 <Text>Time: %3.3f</Text>
@@ -12418,7 +12418,7 @@
 <DockingConfig>&lt;?xml version="1.0" encoding="us-ascii"?&gt;
 &lt;!-- DotNetMagic, The User Interface library for .NET (www.crownwood.net) --&gt;
 &lt;!-- Modifying this generated file will probably render it invalid --&gt;
-&lt;DockingConfig FormatVersion="10" InsideFill="False" InnerMinimum="20, 20" SavedAt="01/14/2020 15:36:47"&gt;
+&lt;DockingConfig FormatVersion="10" InsideFill="False" InnerMinimum="20, 20" SavedAt="01/15/2020 15:59:39"&gt;
   &lt;Content Name="Playback Control" Visible="False" Docked="True" AutoHidden="False" CaptionBar="True" CloseButton="False" DisplaySize="150, 150" DisplayLocation="150, 150" AutoHideSize="150, 150" FloatingSize="150, 150" FullTitle="Playback Control" Office2003BackColor="Base" UniqueName="" Office2007BackColor="Base" MediaPlayerBackColor="Base"&gt;
     &lt;DefaultRestore Type="Crownwood.DotNetMagic.Docking.RestoreContentState"&gt;
       &lt;Content Name="Playback Control" UniqueName="" /&gt;
