@@ -1,4 +1,5 @@
 % Run abnormalGaitProcessing first
+abnormalGaitProcessing
 
 dataContent = table2array(tbl(1:end,3:end));
 startInd = find(sum(dataContent,2),1,'first');

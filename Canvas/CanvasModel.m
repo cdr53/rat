@@ -20,6 +20,9 @@ classdef CanvasModel < handle
         num_stims = 0
         stimulus_objects = struct()
         
+        num_datatools = 0;
+        datatool_objects = struct()
+        
         synapse_types = struct()
         
         obstacles_positions = zeros(0,2)
@@ -139,7 +142,7 @@ classdef CanvasModel < handle
             if numStims == 0
                 obj.stimulus_objects = obj.create_stimulus(target);
             else
-                obj.stimulus_objects(obj.num_stims+1,1) = obj.create_stimulus(target);
+                obj.stimulus_objects(numStims+1,1) = obj.create_stimulus(target);
             end
             index = numStims;
             
@@ -245,6 +248,45 @@ classdef CanvasModel < handle
 %             end
 
             obj.notify('linkAdded', CanvasModelEventData(linktype,[index numLinks],[node1.location node2.location]));
+        end
+        %% addDatatool
+        function addDatatool(obj,name)
+            try obj.datatool_objects(1).name;            
+                numDatatools = size(obj.datatool_objects,1);
+            catch
+                numDatatools = 0;
+            end 
+            
+            obj.num_datatools = numDatatools;
+            
+            if numDatatools == 0
+                obj.datatool_objects = obj.create_datatool(name);
+            else
+                obj.datatool_objects(numDatatools+1,1) = obj.create_datatool(name);
+            end
+            
+            obj.notify('itemAdded', CanvasModelEventData('datatool', numDatatools));
+            obj.notify('modelChanged');
+        end
+        %% addDTaxes
+        function addDTaxes(obj,datatool,target)
+            try datatool.axes_objects(1).name;            
+                numDTaxes = size(datatool.axes_objects,1);
+            catch
+                numDTaxes = 0;
+            end
+            
+            if numDTaxes == 0
+                datatool.axes_objects = obj.create_dtaxes(target);
+            else
+                datatool.axes_objects(numDTaxes+1,1) = obj.create_dtaxes(target);
+            end
+            
+            dtInd = find(ismember({obj.datatool_objects.name},datatool.name));
+            obj.datatool_objects(dtInd,1) = datatool;
+            
+            obj.notify('itemAdded', CanvasModelEventData('dtaxes', numDTaxes));
+            obj.notify('modelChanged');
         end
         %% moveItem
         function moveItem(obj, type_char, index, pos, bounds)
@@ -649,6 +691,26 @@ classdef CanvasModel < handle
                 disp('Stims only for neurons. Please select a neuron.')
             end
         end
+        %% create_datatool
+        function datatool = create_datatool(~,name)
+           if ~ischar(name)
+               name = char(str);
+           end
+           datatool = struct;
+           datatool.name = name;
+           datatool.ID = ['dt-',name,'-ID'];
+           datatool.tfID = ['dt-',name,'-tfID'];
+           datatool.axes_objects = struct();
+        end
+        %% create_dtaxes
+        function dtaxes = create_dtaxes(~,target)
+            dtaxes = struct;
+            dtaxes.name = ['dtax-',target.name];
+            dtaxes.tdata_ID = [target.name,'-tdata-ID'];
+            dtaxes.target_name = target.name;
+            dtaxes.target_ID = target.ID;
+            dtaxes.linecolor = target.color;
+        end
         %% create_animatlab project
         function create_animatlab_project(obj,proj_file)
 %             file_dir = fileparts(mfilename('fullpath'));
@@ -658,7 +720,7 @@ classdef CanvasModel < handle
 % %                 CanvasConstants.DATA_RELATIVE_PATH,...
 % %                 'animatlab_files\EmptySystem\EmptySystem.aproj');
              proj_file = [fileparts(fileparts(mfilename('fullpath'))),'\Animatlab\SynergyWalking\SynergyWalking20200109.aproj'];
-             revised_file = strcat(proj_file(1:end-6),'_fake_postadd.aproj');
+             revised_file = strcat(proj_file(1:end-6),'_fake.aproj');
             
     % For custom Animatlab file save location (to be included when done with testing)
 %             proj_file = fullfile(file_dir,...
@@ -695,6 +757,36 @@ classdef CanvasModel < handle
                 ns_nervoussystem_text;...
                 modified_text(nervoussystem_inject_end:end,1)];
             
+            %%%Inject Datatool Code
+            try obj.datatool_objects(1).name;
+                numDatatools = size(obj.datatool_objects,1);
+            catch
+                numDatatools = 0;
+            end
+            
+            if numDatatools > 0 
+                datatool_inject = find(contains(modified_text,'<ToolViewers/>'));
+                datatool_text = {'<ToolViewers>'};
+                for i = 1:numDatatools
+                    datatool = obj.datatool_objects(i);
+                    datatool_holder = CanvasText(obj).build_datatool(datatool);
+                    datatool_text = [datatool_text;datatool_holder];
+                    aform_path = [fileparts(proj_file),'\',datatool.name,'.aform'];
+                    aform_text = CanvasText(obj).build_aform_text(datatool);
+                        fileID = fopen(aform_path,'w');
+                        formatSpec = '%s\n';
+                        nrows1 = size(aform_text,1);
+                        for row1 = 1:nrows1
+                            fprintf(fileID,formatSpec,aform_text{row1,:});
+                        end
+                        fclose(fileID);
+                end
+                datatool_text{end+1,1} = '</ToolViewers>';
+                modified_text = [modified_text(1:datatool_inject-1);...
+                                datatool_text;...
+                                modified_text(datatool_inject+1:end)];
+            end
+            
             %%%Inject Stimulus Code
             try obj.stimulus_objects(1).name;            
                 numStims = size(obj.stimulus_objects,1);
@@ -721,10 +813,13 @@ classdef CanvasModel < handle
             modified_text = [modified_text(1:tab_inject_start-1,1);...
                             ns_tab_text;...
                             modified_text(tab_inject_end+1:end,1)];
-                        
+            leaf_num = size(find(contains(modified_text,'&lt;Page Title="')),1);
+            leafInd = find(contains(modified_text,'&lt;Leaf Count'));
+            modified_text{leafInd} = ['&lt;Leaf Count="',num2str(leaf_num),'" Unique="7" Space="100"&gt;'];
+            
             fileID = fopen(revised_file,'w');
             formatSpec = '%s\n';
-            nrows = size(modified_text);
+            nrows = size(modified_text,1);
             for row = 1:nrows
                 fprintf(fileID,formatSpec,modified_text{row,:});
             end

@@ -81,3 +81,7 @@
     plot(recompiled)
     xlabel('Forces Recompiled from Synergies')
     ylabel('Forces(N)')
+    
+    close all
+    
+    plotWH(current2inject',W,H,0)

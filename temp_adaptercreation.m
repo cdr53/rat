@@ -19,5 +19,12 @@ nsys = CanvasModel();
 % nsys.create_animatlab_project;
 
 nsys = CanvasModel();
-nsys.addItem()
+nsys.addDatatool('dtname')
+% nsys.addDatatool('dtname2')
+% nsys.addDatatool('dtname3')
+nsys.addItem('n',[50 50],[1000 1000])
 nsys.addStimulus(nsys.neuron_objects(1))
+% nsys.addItem('n',[50 50],[1000 1000])
+nsys.addDTaxes(nsys.datatool_objects(1),nsys.neuron_objects(1))
+% nsys.addDTaxes(nsys.datatool_objects(1),nsys.neuron_objects(2))
+nsys.create_animatlab_project
