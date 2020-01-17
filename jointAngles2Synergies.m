@@ -1,6 +1,7 @@
     close all
 
-    load([fileparts(mfilename('fullpath')),'\Data\processedHindlimbAngles.mat'],'BackMean','BackRaw','completeWaves')
+    file_dir = fileparts(mfilename('fullpath'));
+    load([file_dir,'\Data\processedHindlimbAngles.mat'],'BackMean','BackRaw','completeWaves')
 
     trial = 4;
 %     waveform = [BackRaw(:,trial,1)-98,BackRaw(:,trial,2)-90,BackRaw(:,trial,3)-116];
@@ -12,7 +13,7 @@
     disp(['Waveforms Injected and Simulated.',' (',num2str(telapsed),'s)'])
     
     % Optimize forces to meet torque demands
-    results_cell = pedotti_optimization(obj);
+    results_cell = obj.pedotti_optimization;
     oforces = results_cell{2,2}';
     if size(oforces,2) ~= 38
         oforces = oforces';
@@ -59,6 +60,10 @@
             current2inject = 1000.*(V_musc+.06);
             [r2scores,recompiled,W,H] = NMFdecomposition(5,current2inject,0);
             bb = current2inject';
+    end
+    
+    if isfile([file_dir,'\Data\h_equations.mat'])
+        delete([file_dir,'\Data\h_equations.mat'])
     end
     
     figure('name','InjectedWaveforms')

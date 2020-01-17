@@ -1,23 +1,27 @@
 file_dir = fileparts(mfilename('fullpath'));
 proj_file = [fileparts(fileparts(mfilename('fullpath'))),'\SynergyControl\Animatlab\SynergyWalking\SynergyWalking20200109.aproj'];
-revised_file = strcat(proj_file(1:end-6),'_fake_postmuscle.aproj');
+revised_file = strcat(proj_file(1:end-6),'_fake.aproj');
 
 fid = fopen(proj_file);
 original_text = textscan(fid,'%s','delimiter','\n');
 fclose(fid);
 original_text = [original_text{:}];
 muscleIDs = find(contains(original_text,'<PartType>AnimatGUI.DataObjects.Physical.Bodies.LinearHillMuscle</PartType>'))-2;
+muscle_out = scrape_project_for_musc_info(original_text);
+numMuscles = length(muscleIDs);
 
 nsys = CanvasModel;
 neurpos = [];
-%Build motor neurons first
-for ii = 1:length(W)
+
+%Build a line of motor neurons and muscles first
+for ii = 1:numMuscles
     neurpos = [(ii)*25.90 250];
     nsys.addItem('n', neurpos, [1000 1000])
-    nsys.addMuscle([lower(original_text{muscleIDs(ii)-1}(7:end-7)),'-neural'],original_text{muscleIDs(ii)}(5:end-5),neurpos+[-25.9 150])
-    create_adapter_link(nsys,ii,ii,ii,neurpos+[-25.9 50])
+    nsys.addMuscle([muscle_out{ii,2},'-neural'],muscle_out{ii,3},neurpos+[-25.9 150])
+    nsys.addLink(nsys.neuron_objects(ii),nsys.muscle_objects(ii),'adapter')
 end
 
+% Generate color palette for synergy nodes
 cm = jet(3*size(W,2));
 cm = round(cm(3:3:end,:)*255);
 
@@ -34,28 +38,30 @@ for ii = 1:size(W,2)
     synpos = [(ii-1)*25+(ii)*syngap 122.25];
     nsys.addItem('n', synpos, [1000 1000]);
     colordec = rgb2anim(cm(ii,:));
-    nsys.neuron_objects(38+ii).color = colordec;
+    nsys.neuron_objects(numMuscles+ii).color = colordec;
     for jj = 1:length(W)
         if W(jj,ii) ~= 0 
             nsys.addLink(nsys.neuron_objects(ii+length(W)),nsys.neuron_objects(jj),'SignalTransmission1')
-            nsys.createSynapseType({['Syn-',num2str(ii+38),'-',num2str(jj)],'delE',194,'k',relW(jj,ii)})
+            nsys.createSynapseType({['Syn-',num2str(ii+numMuscles),'-',num2str(jj)],'delE',194,'k',relW(jj,ii)})
             numLinks = size(nsys.link_objects,1);
             numSyns = size(nsys.synapse_types,1);
             nsys.link_objects(numLinks).synaptictype = nsys.synapse_types(numSyns).name;
         end
     end
-    nsys.addStimulus(nsys.neuron_objects(38+ii))
+    nsys.addStimulus(nsys.neuron_objects(numMuscles+ii))
     nsys.stimulus_objects(ii).starttime = 0;
     nsys.stimulus_objects(ii).endtime = 10;
-    if isfile("G:\My Drive\Rat\SynergyControl\Data\h_equations.mat")
-        load("G:\My Drive\Rat\SynergyControl\Data\h_equations.mat")
+    if isfile([file_dir,'\Data\h_equations.mat'])
+        load([file_dir,'\Data\h_equations.mat'])
         nsys.stimulus_objects(ii).eq = equations{ii};
     else
         nsys.stimulus_objects(ii).eq = generate_synergy_eq(bigH(ii,:));
         equations{ii} = nsys.stimulus_objects(ii).eq;
-        save("G:\My Drive\Rat\SynergyControl\Data\h_equations.mat",'equations')
+        if  ii == size(W,2)
+            save([file_dir,'\Data\h_equations.mat'],'equations')
+        end
     end
-    nsys.addDTaxes(nsys.datatool_objects(1),nsys.neuron_objects(38+ii))
+    nsys.addDTaxes(nsys.datatool_objects(1),nsys.neuron_objects(numMuscles+ii),'MembraneVoltage')
 end
 
 nsys.create_animatlab_project(proj_file);
@@ -97,4 +103,17 @@ function waveformsBig = interpolate_for_time(time,waveforms)
         waveformsBig = filtfilt(coeffblocks,1,waveformsBig);
     end
     waveformsBig = waveformsBig';
+end
+
+function muscle_out = scrape_project_for_musc_info(input_text)
+    muscleInds = find(contains(input_text,'<PartType>AnimatGUI.DataObjects.Physical.Bodies.LinearHillMuscle</PartType>'))-2;
+    if isempty(muscleInds)
+        error('No muscles in input text')
+    end
+    muscle_out = cell(length(muscleInds),3);
+    for ii = 1:length(muscleInds)
+        muscle_out{ii,1} = muscleInds(ii);
+        muscle_out{ii,2} = lower(input_text{muscleInds(ii)-1}(7:end-7));
+        muscle_out{ii,3} = input_text{muscleInds(ii)}(5:end-5);
+    end
 end

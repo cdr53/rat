@@ -16,14 +16,14 @@
 <Axis>
 <AssemblyFile>LicensedAnimatGUI.dll</AssemblyFile>
 <ClassName>LicensedAnimatGUI.DataObjects.Charting.Pro2DAxis</ClassName>
-<Name>dtax-neur39</Name>
+<Name>neur39 MembraneVoltage</Name>
 <WorkingAxis>0</WorkingAxis>
 <DataColumns>
 <DataColumn>
 <AssemblyFile>LicensedAnimatGUI.dll</AssemblyFile>
 <ClassName>LicensedAnimatGUI.DataObjects.Charting.Pro2DColumn</ClassName>
 <Name>neur39</Name>
-<ID>neur39-tdata-ID</ID>
+<ID>neur39-tdata-ID1</ID>
 <DataItemAssemblyFile>IntegrateFireGUI.dll</DataItemAssemblyFile>
 <DataItemClassName>IntegrateFireGUI.DataObjects.Behavior.Neurons.NonSpiking</DataItemClassName>
 <StructureID>e40d2c4f-9c31-49f8-8a5c-5688fb768225</StructureID>
@@ -42,14 +42,14 @@
 <Axis>
 <AssemblyFile>LicensedAnimatGUI.dll</AssemblyFile>
 <ClassName>LicensedAnimatGUI.DataObjects.Charting.Pro2DAxis</ClassName>
-<Name>dtax-neur40</Name>
+<Name>neur40 MembraneVoltage</Name>
 <WorkingAxis>1</WorkingAxis>
 <DataColumns>
 <DataColumn>
 <AssemblyFile>LicensedAnimatGUI.dll</AssemblyFile>
 <ClassName>LicensedAnimatGUI.DataObjects.Charting.Pro2DColumn</ClassName>
 <Name>neur40</Name>
-<ID>neur40-tdata-ID</ID>
+<ID>neur40-tdata-ID2</ID>
 <DataItemAssemblyFile>IntegrateFireGUI.dll</DataItemAssemblyFile>
 <DataItemClassName>IntegrateFireGUI.DataObjects.Behavior.Neurons.NonSpiking</DataItemClassName>
 <StructureID>e40d2c4f-9c31-49f8-8a5c-5688fb768225</StructureID>
@@ -68,14 +68,14 @@
 <Axis>
 <AssemblyFile>LicensedAnimatGUI.dll</AssemblyFile>
 <ClassName>LicensedAnimatGUI.DataObjects.Charting.Pro2DAxis</ClassName>
-<Name>dtax-neur41</Name>
+<Name>neur41 MembraneVoltage</Name>
 <WorkingAxis>2</WorkingAxis>
 <DataColumns>
 <DataColumn>
 <AssemblyFile>LicensedAnimatGUI.dll</AssemblyFile>
 <ClassName>LicensedAnimatGUI.DataObjects.Charting.Pro2DColumn</ClassName>
 <Name>neur41</Name>
-<ID>neur41-tdata-ID</ID>
+<ID>neur41-tdata-ID3</ID>
 <DataItemAssemblyFile>IntegrateFireGUI.dll</DataItemAssemblyFile>
 <DataItemClassName>IntegrateFireGUI.DataObjects.Behavior.Neurons.NonSpiking</DataItemClassName>
 <StructureID>e40d2c4f-9c31-49f8-8a5c-5688fb768225</StructureID>
@@ -94,14 +94,14 @@
 <Axis>
 <AssemblyFile>LicensedAnimatGUI.dll</AssemblyFile>
 <ClassName>LicensedAnimatGUI.DataObjects.Charting.Pro2DAxis</ClassName>
-<Name>dtax-neur42</Name>
+<Name>neur42 MembraneVoltage</Name>
 <WorkingAxis>3</WorkingAxis>
 <DataColumns>
 <DataColumn>
 <AssemblyFile>LicensedAnimatGUI.dll</AssemblyFile>
 <ClassName>LicensedAnimatGUI.DataObjects.Charting.Pro2DColumn</ClassName>
 <Name>neur42</Name>
-<ID>neur42-tdata-ID</ID>
+<ID>neur42-tdata-ID4</ID>
 <DataItemAssemblyFile>IntegrateFireGUI.dll</DataItemAssemblyFile>
 <DataItemClassName>IntegrateFireGUI.DataObjects.Behavior.Neurons.NonSpiking</DataItemClassName>
 <StructureID>e40d2c4f-9c31-49f8-8a5c-5688fb768225</StructureID>
@@ -120,14 +120,14 @@
 <Axis>
 <AssemblyFile>LicensedAnimatGUI.dll</AssemblyFile>
 <ClassName>LicensedAnimatGUI.DataObjects.Charting.Pro2DAxis</ClassName>
-<Name>dtax-neur43</Name>
+<Name>neur43 MembraneVoltage</Name>
 <WorkingAxis>4</WorkingAxis>
 <DataColumns>
 <DataColumn>
 <AssemblyFile>LicensedAnimatGUI.dll</AssemblyFile>
 <ClassName>LicensedAnimatGUI.DataObjects.Charting.Pro2DColumn</ClassName>
 <Name>neur43</Name>
-<ID>neur43-tdata-ID</ID>
+<ID>neur43-tdata-ID5</ID>
 <DataItemAssemblyFile>IntegrateFireGUI.dll</DataItemAssemblyFile>
 <DataItemClassName>IntegrateFireGUI.DataObjects.Behavior.Neurons.NonSpiking</DataItemClassName>
 <StructureID>e40d2c4f-9c31-49f8-8a5c-5688fb768225</StructureID>

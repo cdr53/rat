@@ -55,16 +55,13 @@ function plotWH(forces,W,H,saver)
     subplot(3,1,1)
         plot(linspace(0,100,size(forces,2)),forces')
         title('Original Signal')
-        ylabel('Force (N)','FontSize',12)
     subplot(3,1,2)
         plot(linspace(0,100,size(forces,2)),recompiled)
         title('Recompiled Signal from NNMF Components')
-        ylabel('Force (N)','FontSize',12)
     subplot(3,1,3)
         differ = abs((forces'-recompiled));
         plot(linspace(0,100,size(forces,2)),differ)
         title('Difference Between Signals')
-        ylabel('Delta Force (N)','FontSize',12)
     
     if saver
         saveas(cfig,['G:\My Drive\Rat\SynergyControl\OutputFigures\Images\',datestr(datetime('now'),'yyyymmdd'),'_','actfig.png']);

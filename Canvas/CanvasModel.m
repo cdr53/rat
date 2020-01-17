@@ -191,26 +191,6 @@ classdef CanvasModel < handle
         end
         %% addLink
         function addLink(obj,node1,node2,linktype)
-            obj.link_ends(end+1,:) = [node1.location node2.location];
-            obj.num_links = size(obj.link_ends, 1);
-            index = obj.num_links;
-            
-            if obj.num_links == 1
-                obj.link_objects = obj.create_link([node1.location node2.location]);
-            else
-                obj.link_objects(obj.num_links,1) = obj.create_link([node1.location node2.location]);
-            end
-            
-            numLinks = obj.num_links;
-            
-            try obj.link_objects(1).ID;           
-                while sum(strcmp({obj.link_objects.ID}, ['link',num2str(numLinks),'-ID']))
-                                numLinks = numLinks + 1;
-                end
-            catch
-                numLinks = obj.num_links;
-            end
-            
             nodes = {node1, node2};
             for jj = 1:2
                 node = nodes{jj};
@@ -224,6 +204,35 @@ classdef CanvasModel < handle
                 end
                    link_inds(jj) = find(contains({obj.(obj_holder).name},node.name),1,'first');
                    link_obj_holders{jj} = obj_holder;
+            end
+            
+            if any(ismember(link_obj_holders,'neuron_objects')) && any(ismember(link_obj_holders,'muscle_objects'))
+                neuron = nodes{ismember(link_obj_holders,'neuron_objects')};
+                muscle = nodes{ismember(link_obj_holders,'muscle_objects')};
+                adLoc = round((neuron.location+muscle.location)/2);
+                obj.addAdapter(neuron,muscle,adLoc)
+                adInd = size(obj.adapter_objects,1);
+                obj.addLink(neuron,obj.adapter_objects(adInd),'adapter')
+                obj.addLink(obj.adapter_objects(adInd),muscle,'adapter')
+                return
+            end
+            
+            obj.link_ends(end+1,:) = [node1.location node2.location];
+            obj.num_links = size(obj.link_ends, 1);
+            numLinks = obj.num_links;
+            
+            if numLinks == 1
+                obj.link_objects = obj.create_link([node1.location node2.location]);
+            else
+                obj.link_objects(numLinks,1) = obj.create_link([node1.location node2.location]);
+            end
+            
+            try obj.link_objects(1).ID;           
+                while sum(strcmp({obj.link_objects.ID}, ['link',num2str(numLinks),'-ID']))
+                                numLinks = numLinks + 1;
+                end
+            catch
+                numLinks = obj.num_links;
             end
             
             obj.link_objects(numLinks,1).ID = ['link',num2str(numLinks),'-ID'];
@@ -247,7 +256,7 @@ classdef CanvasModel < handle
 %                 obj.updateStimModel(end_ind);
 %             end
 
-            obj.notify('linkAdded', CanvasModelEventData(linktype,[index numLinks],[node1.location node2.location]));
+            obj.notify('linkAdded', CanvasModelEventData(linktype,[numLinks numLinks],[node1.location node2.location]));
         end
         %% addDatatool
         function addDatatool(obj,name)
@@ -269,7 +278,7 @@ classdef CanvasModel < handle
             obj.notify('modelChanged');
         end
         %% addDTaxes
-        function addDTaxes(obj,datatool,target)
+        function addDTaxes(obj,datatool,target,datatype)
             try datatool.axes_objects(1).name;            
                 numDTaxes = size(datatool.axes_objects,1);
             catch
@@ -277,9 +286,9 @@ classdef CanvasModel < handle
             end
             
             if numDTaxes == 0
-                datatool.axes_objects = obj.create_dtaxes(target);
+                datatool.axes_objects = obj.create_dtaxes(target,datatype);
             else
-                datatool.axes_objects(numDTaxes+1,1) = obj.create_dtaxes(target);
+                datatool.axes_objects(numDTaxes+1,1) = obj.create_dtaxes(target,datatype);
             end
             
             dtInd = find(ismember({obj.datatool_objects.name},datatool.name));
@@ -703,13 +712,31 @@ classdef CanvasModel < handle
            datatool.axes_objects = struct();
         end
         %% create_dtaxes
-        function dtaxes = create_dtaxes(~,target)
+        function dtaxes = create_dtaxes(~,target,datatype)
             dtaxes = struct;
             dtaxes.name = ['dtax-',target.name];
             dtaxes.tdata_ID = [target.name,'-tdata-ID'];
             dtaxes.target_name = target.name;
-            dtaxes.target_ID = target.ID;
-            dtaxes.linecolor = target.color;
+            if strcmp(target.type,'muscle')
+                % Dark red
+                dtaxes.linecolor = -6139310;
+                dtaxes.target_type = 'muscle';
+                dtaxes.target_ID = target.linkedID;
+                if isempty(datatype) || ~ischar(datatype)
+                    dtaxes.datatype = 'Tension';
+                else
+                    dtaxes.datatype = datatype;
+                end
+            else
+                dtaxes.target_type = 'neuron';
+                dtaxes.linecolor = target.color;
+                dtaxes.target_ID = target.ID;
+                if isempty(datatype) || ~ischar(datatype)
+                    dtaxes.datatype = 'MembraneVoltage';
+                else
+                    dtaxes.datatype = datatype;
+                end
+            end
         end
         %% create_animatlab project
         function create_animatlab_project(obj,proj_file)
