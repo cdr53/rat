@@ -811,7 +811,7 @@ classdef FullLeg < hgsetget
             if ismac
                 load('/Volumes/GoogleDrive/My Drive/Rat/Main Sim and Ani compare files/AllTraining20180824.mat','TorqueAll');
             else
-                load('G:\My Drive\Rat\Main Sim and Ani compare files\AllTraining20180824.mat','TorqueAll');
+                load([pwd,'\Data\AllTraining20180824.mat'],'TorqueAll');
             end
             torque = TorqueAll;
             obj.dt_motion = dt;
@@ -872,7 +872,7 @@ classdef FullLeg < hgsetget
 
             property_inds = zeros(num_musc*9,3);
 %             load('AnimatlabProperties.mat');
-            load('G:\My Drive\Rat\Optimizer\AnimatlabProperties.mat');
+            load([pwd,'\Data\AnimatlabProperties.mat']);
 
     %             property_names = repmat(Properties{4,1}(:,1),num_musc,1);
             property_names = Properties{4,1}(:,1);
@@ -953,7 +953,7 @@ classdef FullLeg < hgsetget
         function store_johnson_params(obj)
             params = [];
             num_musc = length(obj.musc_inds);
-            load('Johnson2011MuscleParameters.mat','params');
+            load([pwd,'\Data\Johnson2011MuscleParameters.mat'],'params');
             %We don't want to waste time going through the entire list if we've already found the muscle we're looking for.
             %Make a list of the muscle and switch off the ones we've already found
             muscle_list = ones(num_musc,1);
@@ -2259,7 +2259,7 @@ classdef FullLeg < hgsetget
                 [beg,ennd,~] = find_step_indices(obj);
 
                 %Midstance, ToeOff, MidSwing, ToeContact
-                load('MuirGRFData.mat')
+                load([pwd,'\Data\MuirGRFData.mat'])
                 m = size(obj.theta_motion(beg:ennd,:),1);
                 n = length(VerticalNoSwing);
                 animalmass = .30112;
@@ -2383,7 +2383,7 @@ classdef FullLeg < hgsetget
                                 set(ax(i).Title,'FontSize',16)
                             end
                          
-                        saveas(gcf,['G:\My Drive\Rat\Optimizer\OutputFigures\compute_total_joint_torque\','total_load_torque_',datestr(datetime('now'),'yyyymmdd'),'.png'])
+                        saveas(gcf,[pwd,'\OutputFigures\Images\compute_total_joint_torque\','total_load_torque_',datestr(datetime('now'),'yyyymmdd'),'.png'])
                 end
         end
         %% Function: Compute Total Joint Torque (Passive)
@@ -2447,7 +2447,7 @@ classdef FullLeg < hgsetget
                     legend([a b c],{'Hip','Knee','Ankle'},'Location','eastoutside');
 %                 set(gcf,'Position',[700 20 800 950])
                 set(gcf,'Position',[392,294,1130,707])
-                saveas(aa,['G:\My Drive\Rat\Optimizer\OutputFigures\compute_total_joint_torque\','total_passive_torque_',datestr(datetime('now'),'yyyymmdd'),'.png'])
+                saveas(aa,[pwd,'\OutputFigures\Images\compute_total_joint_torque\','total_passive_torque_',datestr(datetime('now'),'yyyymmdd'),'.png'])
             end
         end
         %% Function: NEXT ADVENTURE Compute Muscle Force for Motion (outputs Musc_Tension, Musc_Length, Musc_vel, MN_act, etc)
@@ -2735,7 +2735,7 @@ classdef FullLeg < hgsetget
                 set(findall(gca, 'Type', 'Line'),'LineWidth',width);
                 
                 %fname = 'G:\My Drive\Rat\Optimizer\OutputFiguresGroup';
-                fname = 'G:\My Drive\Rat\Optimizer\OutputFiguresGroup';
+                fname = [pwd,'\OutputFigures\Images'];
                 saveas(kk, fullfile(fname,strcat(obj.joint_name,' MN Group Activation')), 'png');
                 saveas(pp, fullfile(fname,strcat(obj.joint_name,' Muscle Group Tension')), 'png');
                 saveas(uu, fullfile(fname,strcat(obj.joint_name,' Generalized MN Activation')), 'png');
@@ -3425,7 +3425,7 @@ classdef FullLeg < hgsetget
             set(axh(1),'Position',ax(1,:))
             set(axh(2),'Position',ax(2,:))
             set(axh(3),'Position',ax(3,:))
-            saveas(gcf,['G:\My Drive\Rat\Optimizer\OutputFigures\muscle_lengths_step\',footer,datestr(datetime('now'),'yyyymmdd'),'.png'])
+            saveas(gcf,[pwd,'\OutputFigures\muscle_lengths_step\',footer,datestr(datetime('now'),'yyyymmdd'),'.png'])
         end
         %% Function: Plot Joint Passive Torque for a Step
         function plot_joint_passive_torque(obj)
@@ -3453,7 +3453,7 @@ classdef FullLeg < hgsetget
             legend(legendvec{:,1},'Location','eastoutside')
             set(gcf,'Position',[200 200 1250 650])
             set(findall(gca, 'Type', 'Line'),'LineWidth',2);
-            saveas(gcf,['G:\My Drive\Rat\Optimizer\OutputFigures\passive_joint_torque\','pjt',datestr(datetime('now'),'yyyymmdd'),'.png'])
+            saveas(gcf,[pwd,'\OutputFigures\Images\passive_joint_torque\','pjt',datestr(datetime('now'),'yyyymmdd'),'.png'])
         end
         %% Function: Optimize Forces for Torque Induction (older but works)
         function [act_wpass,act_nopass,tau2_wpass,tau2_nopass,moment_output,fval_wpass,fval_nopass,Fmt] = compute_forces_for_torque(obj,optset,toplot)
@@ -4055,7 +4055,7 @@ classdef FullLeg < hgsetget
             tempcolor = hot(256);
             mintitles = {'Minimizing the Summed Forces of All Muscles','Minimizing the Summed Work of All Muscles'};
             mintypes = {'minfatigue','minsqforces','minforce','minwork','minforcePCSA','minforcetemporal'};
-            if to_save
+            if 0
                 filecounter = 1;
                 if ismac
                     filename = ['/Volumes/GoogleDrive/My Drive/Rat/ForceMinimizationAnalysis/Videos/',mintypes{minmethnum},'_',datestr(datetime('now'),'yyyymmdd'),'.gif'];

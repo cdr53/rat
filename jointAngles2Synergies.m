@@ -2,6 +2,7 @@
 
     file_dir = fileparts(mfilename('fullpath'));
     load([file_dir,'\Data\processedHindlimbAngles.mat'],'BackMean','BackRaw','completeWaves')
+    addpath(genpath(pwd))
 
     trial = 4;
 %     waveform = [BackRaw(:,trial,1)-98,BackRaw(:,trial,2)-90,BackRaw(:,trial,3)-116];
