@@ -249,7 +249,7 @@
 <MaxFoodQuantity>10000</MaxFoodQuantity>
 <FoodReplenishRate>1</FoodReplenishRate>
 <FoodEnergyContent>1000</FoodEnergyContent>
-<MeshFile>C:\Meshes\Rat2\Body\Pelvis_Graph.stl</MeshFile>
+<MeshFile>G:\My Drive\Rat\SynergyControl\Animatlab\Meshes\Rat\Body\Pelvis_Graph.stl</MeshFile>
 <MeshType>Triangular</MeshType>
 <Scale x="1" y="1" z="1"/>
 </RigidBody>
@@ -3446,7 +3446,7 @@
 <MaxFoodQuantity>10000</MaxFoodQuantity>
 <FoodReplenishRate>1</FoodReplenishRate>
 <FoodEnergyContent>1000</FoodEnergyContent>
-<MeshFile>C:\Meshes\Rat2\LH\LHTibiag.stl</MeshFile>
+<MeshFile>G:\My Drive\Rat\SynergyControl\Animatlab\Meshes\Rat\LH\LHTibiag.stl</MeshFile>
 <MeshType>Triangular</MeshType>
 <Scale x="1" y="1" z="1"/>
 </RigidBody>
@@ -4785,7 +4785,7 @@
 <MaxFoodQuantity>10000</MaxFoodQuantity>
 <FoodReplenishRate>1</FoodReplenishRate>
 <FoodEnergyContent>1000</FoodEnergyContent>
-<MeshFile>C:\Meshes\Rat2\LH\LHFootg.stl</MeshFile>
+<MeshFile>G:\My Drive\Rat\SynergyControl\Animatlab\Meshes\Rat\LH\LHFootg.stl</MeshFile>
 <MeshType>Triangular</MeshType>
 <Scale x="1" y="1" z="1"/>
 </RigidBody>
@@ -4887,9 +4887,9 @@
 <MaxFoodQuantity>10000</MaxFoodQuantity>
 <FoodReplenishRate>1</FoodReplenishRate>
 <FoodEnergyContent>1000</FoodEnergyContent>
-<MeshFile>C:\Meshes\Rat2\LH\LHFoot.stl</MeshFile>
+<MeshFile>G:\My Drive\Rat\SynergyControl\Animatlab\Meshes\Rat\LH\LHFoot.stl</MeshFile>
 <MeshType>Convex</MeshType>
-<ConvexMeshFile>C:\Meshes\Rat2\LH\LHFoot_Convex.osg</ConvexMeshFile>
+<ConvexMeshFile>G:\My Drive\Rat\SynergyControl\Animatlab\Meshes\Rat\LH\LHFoot_Convex.osg</ConvexMeshFile>
 <Scale x="1" y="1" z="1"/>
 </RigidBody>
 <RigidBody>
@@ -5861,9 +5861,9 @@
 <MaxFoodQuantity>10000</MaxFoodQuantity>
 <FoodReplenishRate>1</FoodReplenishRate>
 <FoodEnergyContent>1000</FoodEnergyContent>
-<MeshFile>C:\Meshes\Rat2\LH\LHTibia.stl</MeshFile>
+<MeshFile>G:\My Drive\Rat\SynergyControl\Animatlab\Meshes\Rat\LH\LHTibia.stl</MeshFile>
 <MeshType>Convex</MeshType>
-<ConvexMeshFile>C:\Meshes\Rat2\LH\LHTibia_Convex.osg</ConvexMeshFile>
+<ConvexMeshFile>G:\My Drive\Rat\SynergyControl\Animatlab\Meshes\Rat\LH\LHTibia_Convex.osg</ConvexMeshFile>
 <Scale x="1" y="1" z="1"/>
 </RigidBody>
 <RigidBody>
@@ -6090,7 +6090,7 @@
 <MaxFoodQuantity>10000</MaxFoodQuantity>
 <FoodReplenishRate>1</FoodReplenishRate>
 <FoodEnergyContent>1000</FoodEnergyContent>
-<MeshFile>C:\Meshes\Rat2\LH\LHFemurg.stl</MeshFile>
+<MeshFile>G:\My Drive\Rat\SynergyControl\Animatlab\Meshes\Rat\LH\LHFemurg.stl</MeshFile>
 <MeshType>Triangular</MeshType>
 <Scale x="1" y="1" z="1"/>
 </RigidBody>
@@ -6927,9 +6927,9 @@
 <MaxFoodQuantity>10000</MaxFoodQuantity>
 <FoodReplenishRate>1</FoodReplenishRate>
 <FoodEnergyContent>1000</FoodEnergyContent>
-<MeshFile>C:\Meshes\Rat2\LH\LHFemur.stl</MeshFile>
+<MeshFile>G:\My Drive\Rat\SynergyControl\Animatlab\Meshes\Rat\LH\LHFemur.stl</MeshFile>
 <MeshType>Convex</MeshType>
-<ConvexMeshFile>C:\Meshes\Rat2\LH\LHFemur_Convex.osg</ConvexMeshFile>
+<ConvexMeshFile>G:\My Drive\Rat\SynergyControl\Animatlab\Meshes\Rat\LH\LHFemur_Convex.osg</ConvexMeshFile>
 <Scale x="1" y="1" z="1"/>
 </RigidBody>
 <RigidBody>
@@ -7926,9 +7926,9 @@
 <MaxFoodQuantity>10000</MaxFoodQuantity>
 <FoodReplenishRate>1</FoodReplenishRate>
 <FoodEnergyContent>1000</FoodEnergyContent>
-<MeshFile>C:\Meshes\Rat2\Body\Pelvis.stl</MeshFile>
+<MeshFile>G:\My Drive\Rat\SynergyControl\Animatlab\Meshes\Rat\Body\Pelvis.stl</MeshFile>
 <MeshType>Convex</MeshType>
-<ConvexMeshFile>C:\Meshes\Rat2\Body\Pelvis_Convex.osg</ConvexMeshFile>
+<ConvexMeshFile>G:\My Drive\Rat\SynergyControl\Animatlab\Meshes\Rat\Body\Pelvis_Convex.osg</ConvexMeshFile>
 <Scale x="0.001" y="0.001" z="0.001"/>
 </RigidBody>
 <CollisionExclusionPairs/>

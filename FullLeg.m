@@ -1,4 +1,4 @@
-classdef FullLeg < hgsetget
+classdef FullLeg < matlab.mixin.SetGet
    properties
         proj_file
         original_text
@@ -3224,7 +3224,7 @@ classdef FullLeg < hgsetget
                 transitions = find(diff(dy));
                 switches = size(dd,1);
                 if size(unique(dy),1) > 1 
-                    [c,~]=hist(dy,unique(dy));
+                    [c,~]=histogram(dy,unique(dy));
                 end
                 
                 if subplots == 4

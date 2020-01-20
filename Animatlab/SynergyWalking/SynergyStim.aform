@@ -16,7 +16,7 @@
 <Axis>
 <AssemblyFile>LicensedAnimatGUI.dll</AssemblyFile>
 <ClassName>LicensedAnimatGUI.DataObjects.Charting.Pro2DAxis</ClassName>
-<Name>neur39 MembraneVoltage</Name>
+<Name>neur39</Name>
 <WorkingAxis>0</WorkingAxis>
 <DataColumns>
 <DataColumn>
@@ -42,7 +42,7 @@
 <Axis>
 <AssemblyFile>LicensedAnimatGUI.dll</AssemblyFile>
 <ClassName>LicensedAnimatGUI.DataObjects.Charting.Pro2DAxis</ClassName>
-<Name>neur40 MembraneVoltage</Name>
+<Name>neur40</Name>
 <WorkingAxis>1</WorkingAxis>
 <DataColumns>
 <DataColumn>
@@ -68,7 +68,7 @@
 <Axis>
 <AssemblyFile>LicensedAnimatGUI.dll</AssemblyFile>
 <ClassName>LicensedAnimatGUI.DataObjects.Charting.Pro2DAxis</ClassName>
-<Name>neur41 MembraneVoltage</Name>
+<Name>neur41</Name>
 <WorkingAxis>2</WorkingAxis>
 <DataColumns>
 <DataColumn>
@@ -94,7 +94,7 @@
 <Axis>
 <AssemblyFile>LicensedAnimatGUI.dll</AssemblyFile>
 <ClassName>LicensedAnimatGUI.DataObjects.Charting.Pro2DAxis</ClassName>
-<Name>neur42 MembraneVoltage</Name>
+<Name>neur42</Name>
 <WorkingAxis>3</WorkingAxis>
 <DataColumns>
 <DataColumn>
@@ -120,7 +120,7 @@
 <Axis>
 <AssemblyFile>LicensedAnimatGUI.dll</AssemblyFile>
 <ClassName>LicensedAnimatGUI.DataObjects.Charting.Pro2DAxis</ClassName>
-<Name>neur43 MembraneVoltage</Name>
+<Name>neur43</Name>
 <WorkingAxis>4</WorkingAxis>
 <DataColumns>
 <DataColumn>

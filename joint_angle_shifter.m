@@ -68,7 +68,7 @@ function sim_eqn = joint_angle_shifter(shift)
                 case 2
                     eqn_holder = sim_eqn;
             end
-            ezplot(eqn_holder(j),[0 10])
+            fplot(eqn_holder(j),[0 10])
             hold on
         end
         ylim([-1.2 .3])

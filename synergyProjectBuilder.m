@@ -1,5 +1,6 @@
 file_dir = fileparts(mfilename('fullpath'));
 proj_file = [fileparts(fileparts(mfilename('fullpath'))),'\SynergyControl\Animatlab\SynergyWalking\SynergyWalking20200109.aproj'];
+meshMatch(proj_file)
 revised_file = strcat(proj_file(1:end-6),'_fake.aproj');
 
 fid = fopen(proj_file);
@@ -64,13 +65,19 @@ for ii = 1:size(W,2)
     nsys.addDTaxes(nsys.datatool_objects(1),nsys.neuron_objects(numMuscles+ii),'MembraneVoltage')
 end
 
-nsys.create_animatlab_project(proj_file);
-
-function create_adapter_link(nsys,adInd,neurInd,muscInd,pos)
-    nsys.addAdapter(nsys.neuron_objects(neurInd),nsys.muscle_objects(muscInd),pos)
-    nsys.addLink(nsys.neuron_objects(neurInd),nsys.adapter_objects(adInd),'adapter')
-    nsys.addLink(nsys.adapter_objects(adInd),nsys.muscle_objects(muscInd),'adapter')
+% Build datatool viewers for high action muscles to provide insight into motorneuron and muscle activity
+[muscForces,muscInds] = sortrows(max(forces)',1,'descend');
+muscles2check = muscInds(1:5);
+nsys.addDatatool('KeyMuscles')
+nsys.addDatatool('KeyMNs')
+for ii = 1:length(muscles2check)
+    adInd = find(contains({nsys.adapter_objects(:).destination_node_ID},nsys.muscle_objects(muscles2check(ii)).ID));
+    nInd = find(contains({nsys.neuron_objects(:).ID},nsys.adapter_objects(adInd).origin_node_ID));
+    nsys.addDTaxes(nsys.datatool_objects(2),nsys.muscle_objects(muscles2check(ii)),'Tension')
+    nsys.addDTaxes(nsys.datatool_objects(3),nsys.neuron_objects(nInd),'MembraneVoltage')
 end
+
+nsys.create_animatlab_project(proj_file);
 
 function equation = generate_synergy_eq(bigH)
     dt = .00054;
@@ -106,6 +113,9 @@ function waveformsBig = interpolate_for_time(time,waveforms)
 end
 
 function muscle_out = scrape_project_for_musc_info(input_text)
+    % Scrape text for muscle information
+    % Input: input_text: cell array of text from an Animatlab project
+    % Output: muscle_out: cell array containing muscle indices, muscle names, and muscle ID's
     muscleInds = find(contains(input_text,'<PartType>AnimatGUI.DataObjects.Physical.Bodies.LinearHillMuscle</PartType>'))-2;
     if isempty(muscleInds)
         error('No muscles in input text')

@@ -10,6 +10,7 @@ if nargin < 1
     proj_file = [fileparts(mfilename('fullpath')),'\Animatlab\','IndividualMuscleStim20191114.asim'];
 end
 
+meshMatch(proj_file)
 %proj_file = 'G:\My Drive\Rat\SynergyControl\Animatlab\SynergyWalking\SynergyWalking20200109_Standalone.asim';
 
 if ispc
