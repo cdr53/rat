@@ -1,4 +1,4 @@
-classdef JointSyn < hgsetget
+classdef JointSyn < matlab.mixin.SetGet
     properties
         name
         index

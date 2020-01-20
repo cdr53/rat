@@ -570,7 +570,8 @@ classdef CanvasController < handle
                 end
             end
             
-             neuronlist = {Neuron_Objects(:).name};
+            neuronlist = cell(size(Neuron_Objects),1);
+            neuronlist = {Neuron_Objects(:).name};
 %             neuronlist = {obj.model.neuron_objects(:).name};
             for i = (1+numLinks):(numLinks+numAddLinks)
                 link = Link_Objects(i-numLinks);

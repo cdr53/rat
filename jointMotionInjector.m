@@ -29,6 +29,7 @@ function [obj] = jointMotionInjector(jointAngles,to_plot)
     
     % Which .asim file to modify?
     simfilepath = [fileparts(mfilename('fullpath')),'\Animatlab\IndividualMuscleStim20191114.asim'];
+    meshMatch(simfilepath)
     file_contents = importdata(simfilepath);
     
     % From the .asim file, extract time data so that we can match the input joint waveforms to the right time vector

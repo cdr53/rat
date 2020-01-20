@@ -260,6 +260,11 @@ classdef CanvasModel < handle
         end
         %% addDatatool
         function addDatatool(obj,name)
+            if contains(name,' ')
+                warning('Datatool name contains a space, removing spaces.')
+                name = name(~isspace(name));
+            end
+            
             try obj.datatool_objects(1).name;            
                 numDatatools = size(obj.datatool_objects,1);
             catch

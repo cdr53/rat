@@ -1,4 +1,4 @@
-classdef Muscle < hgsetget
+classdef Muscle < matlab.mixin.SetGet
     properties
       muscle_name
       muscle_index
