@@ -1,5 +1,9 @@
-function parameter_injector(filepath,equations,end_time)
-
+function inject_joint_waveforms(filepath,equations,end_time)
+    % Replaces joint motor stimuli with joint waveform equations
+    % Input: filepath: simulation .asim file path
+    % Input: equations: cell array of sum of sines equations for hip, knee, and ankle
+    % Input: end_time: end time of simulation
+    
     project_file = importdata(filepath);
     hip_ind = find(contains(project_file,'<Name>Hipwalking'))+10;
     knee_ind = find(contains(project_file,'<Name>Kneewalking'))+10;
@@ -9,7 +13,7 @@ function parameter_injector(filepath,equations,end_time)
     plot_ind = find(contains(project_file,'<OutputFilename>JointMotion.txt</OutputFilename>'))+6;
     
     % Optional: disable joint limits
-    limit_enable_ind = find(contains(project_file,'<EnableLimits>True</EnableLimits>'));
+    limit_enable_ind = contains(project_file,'<EnableLimits>True</EnableLimits>');
     project_file(limit_enable_ind) = deal({'<EnableLimits>False</EnableLimits>'});
     
     project_file{simtime_ind} = number_injector(project_file{simtime_ind},num2str(end_time+.01));
@@ -33,7 +37,6 @@ function parameter_injector(filepath,equations,end_time)
     function new_line = number_injector(old_line,new_eq)
         geq = find(old_line=='>');
         leq = find(old_line=='<');
-%         new_eq = char(old_eq);
         new_line = [old_line(1:geq(1)),new_eq,old_line(leq(2):end)];
     end
 end

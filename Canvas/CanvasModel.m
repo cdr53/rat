@@ -284,6 +284,11 @@ classdef CanvasModel < handle
         end
         %% addDTaxes
         function addDTaxes(obj,datatool,target,datatype)
+            if ~any(contains({'MembraneVoltage','Tension'},datatype))
+                warning([target.name,' datatype (',datatype,') incorrect in addDTaxes'])
+                return
+            end
+            
             try datatool.axes_objects(1).name;            
                 numDTaxes = size(datatool.axes_objects,1);
             catch
@@ -797,8 +802,14 @@ classdef CanvasModel < handle
             end
             
             if numDatatools > 0 
-                datatool_inject = find(contains(modified_text,'<ToolViewers/>'));
-                datatool_text = {'<ToolViewers>'};
+                if isempty(find(contains(modified_text,'<ToolViewers/>'),1))
+                    datatool_inject = find(contains(modified_text,'</ToolViewers>'));
+                    datatool_text = {};
+                else
+                    datatool_inject = find(contains(modified_text,'<ToolViewers/>'));
+                    datatool_text = {'<ToolViewers>'};
+                end
+                
                 for i = 1:numDatatools
                     datatool = obj.datatool_objects(i);
                     datatool_holder = CanvasText(obj).build_datatool(datatool);
@@ -825,6 +836,13 @@ classdef CanvasModel < handle
             catch
                 numStims = 0;
             end 
+            
+            % Disable any existing stimuli
+            extStims = find(contains(modified_text,'<Stimulus>'));
+            for ii = 1:length(extStims)
+                enInd = find(contains(modified_text(extStims(ii):end),'<Enabled>'),1,'first')+extStims(ii)-1;
+                modified_text{enInd} = '<Enabled>False</Enabled>';
+            end
             
             if numStims > 0
                 stimuli_inject = find(contains(modified_text,'</Stimuli>'));    

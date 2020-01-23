@@ -1,7 +1,9 @@
 file_dir = fileparts(mfilename('fullpath'));
-proj_file = [fileparts(fileparts(mfilename('fullpath'))),'\SynergyControl\Animatlab\SynergyWalking\SynergyWalking20200109.aproj'];
+proj_file = [pwd,'\Animatlab\SynergyWalking\SynergyWalking20200109.aproj'];
 meshMatch(proj_file)
 revised_file = strcat(proj_file(1:end-6),'_fake.aproj');
+[~,projName,ext] = fileparts(revised_file);
+disp(['Starting to build Animatlab project ',projName,ext])
 
 fid = fopen(proj_file);
 original_text = textscan(fid,'%s','delimiter','\n');
@@ -36,7 +38,7 @@ nsys.addDatatool('SynergyStim');
 
 %Build synergy neurons and connections
 for ii = 1:size(W,2)
-    synpos = [(ii-1)*25+(ii)*syngap 122.25];
+    synpos = [(ii-1)*25+(ii)*syngap 100];
     nsys.addItem('n', synpos, [1000 1000]);
     colordec = rgb2anim(cm(ii,:));
     nsys.neuron_objects(numMuscles+ii).color = colordec;
@@ -68,24 +70,27 @@ end
 % Build datatool viewers for high action muscles to provide insight into motorneuron and muscle activity
 [muscForces,muscInds] = sortrows(max(forces)',1,'descend');
 muscles2check = muscInds(1:5);
+numDTs = size(nsys.datatool_objects,1);
 nsys.addDatatool('KeyMuscles')
 nsys.addDatatool('KeyMNs')
 for ii = 1:length(muscles2check)
     adInd = find(contains({nsys.adapter_objects(:).destination_node_ID},nsys.muscle_objects(muscles2check(ii)).ID));
     nInd = find(contains({nsys.neuron_objects(:).ID},nsys.adapter_objects(adInd).origin_node_ID));
-    nsys.addDTaxes(nsys.datatool_objects(2),nsys.muscle_objects(muscles2check(ii)),'Tension')
-    nsys.addDTaxes(nsys.datatool_objects(3),nsys.neuron_objects(nInd),'MembraneVoltage')
+    nsys.addDTaxes(nsys.datatool_objects(numDTs+1),nsys.muscle_objects(muscles2check(ii)),'Tension')
+    nsys.addDTaxes(nsys.datatool_objects(numDTs+2),nsys.neuron_objects(nInd),'MembraneVoltage')
 end
 
+
+
 nsys.create_animatlab_project(proj_file);
+disp(['Animatlab project file ',projName,ext,' created.'])
 
 function equation = generate_synergy_eq(bigH)
+    tstart = tic;
     dt = .00054;
     time = (99*dt:dt:10.01-10*dt)';
     
     bigH = interpolate_for_time(time,bigH);
-    
-    coeffs = cell(24,2);
     
     % Create a sum of sines equation for the joint angle waveforms
     fitresult = sumsines8Fit(time, bigH,8);
@@ -93,6 +98,7 @@ function equation = generate_synergy_eq(bigH)
     coeffs = [coeffnames(fitresult),num2cell(coeffvalues(fitresult)')];
     % Equations are in the format necessary for integration into Animatlab's .asim filetype
     equation = sum_of_sines_maker(coeffs,1);
+    telapsed = toc(tstart);
 end
 
 function waveformsBig = interpolate_for_time(time,waveforms)

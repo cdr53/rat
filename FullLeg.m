@@ -55,7 +55,7 @@ classdef FullLeg < matlab.mixin.SetGet
         ehi_hip_knee_out;
    end
    methods
-        function obj = FullLeg(proj_file,joints,bodies,joint_limits,joint_profile)
+        function obj = FullLeg(sim_file,joints,bodies,joint_limits,joint_profile)
         %% Process the Simulation File
             obj.joint_types = cell(1,length(joints));
             obj.num_bodies = 0;
@@ -66,48 +66,40 @@ classdef FullLeg < matlab.mixin.SetGet
             end
             obj.theta_range = joint_limits;
             
-            %Read the directory provided by the user.
-            if ismac
-                dir_file_division = max(strfind(proj_file,'/'));
-            else
-                dir_file_division = max(strfind(proj_file,'\'));
-            end
-                proj_folder = proj_file(1:dir_file_division-1);
-                sim_files = dir(proj_folder);
-                obj.proj_file = proj_file;
-            
-            %How many files are in that folder?
-                len = length(sim_files);
-                sim_file_str = [];
-            
-            %Pull out the simulation file
-                for i=1:len
-                    name_str = sim_files(i).name;        
-                    if length(name_str) > 14 && strcmp(name_str(end-14:end),'Standalone.asim')
-                        %We've found the file we need
-                        if ismac
-                            sim_file_str = [proj_folder,'/',name_str];
-                        else
-                            sim_file_str = [proj_folder,'\',name_str];
-                        end
-                        break
-                    end
-                end
+%             %Read the directory provided by the user.
+%             if ismac
+%                 dir_file_division = max(strfind(proj_file,'/'));
+%             else
+%                 dir_file_division = max(strfind(proj_file,'\'));
+%             end
+%                 proj_folder = proj_file(1:dir_file_division-1);
+%                 sim_files = dir(proj_folder);
+%                 obj.proj_file = proj_file;
+%             
+%             %How many files are in that folder?
+%                 len = length(sim_files);
+%                 sim_file_str = [];
+%             
+%             %Pull out the simulation file
+%                 for i=1:len
+%                     name_str = sim_files(i).name;        
+%                     if length(name_str) > 14 && strcmp(name_str(end-14:end),'Standalone.asim')
+%                         %We've found the file we need
+%                         if ismac
+%                             sim_file_str = [proj_folder,'/',name_str];
+%                         else
+%                             sim_file_str = [proj_folder,'\',name_str];
+%                         end
+%                         break
+%                     end
+%                 end
             
             %Load the text of the simulation file
-                try obj.original_text = importdata(sim_file_str);
+                try obj.original_text = importdata(sim_file);
                 catch
                     disp('No simulation file exists. Open AnimatLab and export a standalone simulation.')
                     keyboard
                 end
-            
-            %Find where the list of organisms begins
-                %organisms_found = contains(obj.original_text,'<Organisms>');
-                %organisms_lower_limit = find(organisms_found,1,'first');
-
-                %Find where the organism we want begins
-                %organism_found = contains(obj.original_text(organisms_lower_limit:end),['<Name>',obj.organism_name,'</Name>']);
-                %organism_lower_limit = find(organism_found,1,'first') + organisms_lower_limit - 1;
         %% Initialize Body and Joint Rotations for Inertial and Local Frame
             %Orientation of the joint axis, in the inertial frame
             obj.Cabs_joints = zeros(3,3,obj.num_bodies);
@@ -581,54 +573,6 @@ classdef FullLeg < matlab.mixin.SetGet
             telapsed = toc(tstart);
             disp(['Muscle Properties Stored.',' (',num2str(telapsed),'s)'])
             clear tstart telapsed
-       %% Testbed
-            tstart = tic;
-            testbed(obj);
-            telapsed = toc(tstart);
-            disp(['Testbed Run.',' (',num2str(telapsed),'s)'])
-            clear tstart telapsed
-        end
-        %% Testbed
-        function testbed(obj)
-            return
-            vis_walking(obj)
-            keyboard
-            force23 = forces(23,:);
-            voltage = force_to_voltage(obj,obj.musc_obj{23},forces(23,:));
-            keyboard
-            joint_torques = compute_total_joint_torque(obj);
-            keyboard
-            [passive_joint_torque,passive_joint_motion,passive_muscle_torque] = compute_passive_joint_torque(obj);
-            keyboard
-            %5 = pectineus
-            %33 =BFA
-            %17= medial gast
-            [moment_arm_profile,mom_arm_inst_length] = compute_muscle_moment_arm(obj,obj.musc_obj{11},1,1,0,1);
-            keyboard
-            joint_torques = compute_total_joint_torque(obj);
-            keyboard
-            [Jac,p_foot] = compute_jac(obj,obj.theta_motion(50,:),0)
-            keyboard
-            [T_find,T_out] = compute_muscle_passive_tension(obj,obj.musc_obj{1},0)
-            keyboard
-            [Jac,p_foot] = compute_jac(obj,obj.theta_motion(50,:),0)
-            keyboard
-            [moment_arm_profile,mom_arm_inst_length] = compute_muscle_moment_arm(obj,obj.musc_obj{12},1,1,-45,1);
-            [moment_arm_profile,mom_arm_inst_length] = compute_muscle_moment_arm(obj,obj.musc_obj{12},1,2,-45,1);
-            keyboard
-            foot_force_joint_torques = compute_max_torques_from_data(obj)
-            keyboard
-            [passive_joint_torque,passive_joint_motion] = compute_passive_joint_torque(obj,joint)
-            keyboard
-            return
-            %objective = net_joint_torque(obj,musc_force,muscle,theta_des,torque_load,norm_net_torque);
-            Tension = calc_musc_tension(obj,obj.theta_motion(25,:),-.35);
-            max_torques_during_walking = compute_max_torques_from_data(obj);
-            output = compute_musc_force_for_PS(obj, load, set_musc_properties)
-            muscle_velocity = compute_musc_velocities_for_motion(obj,obj.theta_motion,obj.musc_obj{1});
-            [musc_tension, musc_length, musc_velocity, musc_act, MN_act, musc_tension_passive] = compute_musc_force_for_motion(obj);
-
-            keyboard
         end
         %% Function: Store the joint rotation matrices in the joint objects
         function [joint_profile,jointMotionDot] = store_joint_rotmat_profile(obj,jointMotion)     
@@ -882,7 +826,7 @@ classdef FullLeg < matlab.mixin.SetGet
             for i=1:num_musc
 
                 %Define its line as the "lower limit." All properties will be found
-                %below it.
+                %after it in the file.
                 lower_limit = obj.musc_inds(i);
                 for j=1:length(property_names)
                     if strcmp(property_names{j},'damping')
@@ -934,12 +878,10 @@ classdef FullLeg < matlab.mixin.SetGet
             for i=1:num_musc
                 obj.musc_obj{i,1}.muscle_name = lower(musc_names{i}(7:end-7));
                 obj.musc_obj{i,1}.muscle_index = obj.musc_inds(i);
-            end
-            
-            %Store the muscle properties in individual muscle objects
-            for i=1:num_musc
+                %Store the muscle properties in individual muscle objects
                 obj.musc_obj{i}.x_off = property_values(9*i-8);
                 obj.musc_obj{i}.max_force = property_values(9*i-7);
+                obj.musc_obj{i}.ST_max = 1.2*property_values(9*i-7);
                 obj.musc_obj{i}.steepness = property_values(9*i-6);
                 obj.musc_obj{i}.y_off = property_values(9*i-5);
                 obj.musc_obj{i}.RestingLength = property_values(9*i-4);

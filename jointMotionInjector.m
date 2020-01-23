@@ -1,10 +1,8 @@
 function [obj] = jointMotionInjector(jointAngles,to_plot)
-    %Input: nx3 sagittal-plane joint angle waveforms with columns formatted as hip-knee-ankle
-    %Output: FullLeg object with the associated joint angles
-
-    %Preallocate for speed
-    coeffs = cell(3,1);
-    equations = cell(3,1);
+    % Inject joint angle waveform array and generate a FullLeg object from the simulation results
+    % Input: jointAngles: nx3 sagittal-plane joint angle waveforms with columns formatted as hip-knee-ankle
+    % Input: to_plot: boolean for determining whether to plot results
+    % Output: FullLeg object with the associated joint angles
     
     if nargin == 0
         load([fileparts(mfilename('fullpath')),'\Data\processedHindlimbAngles.mat'],'BackMean','BackRaw','completeWaves')
@@ -19,6 +17,22 @@ function [obj] = jointMotionInjector(jointAngles,to_plot)
                 jointAngles = jointAngles';
             end
         end
+        if nargin == 2 && ~ismember(to_plot,[0 1])
+            warning('to_plot must be 0 or 1, not %.0f. Setting to 0.',to_plot)
+        end
+    end
+    
+    % Which .asim file to modify?
+    %simfilepath = [fileparts(mfilename('fullpath')),'\Animatlab\IndividualMuscleStim20191114.asim'];
+    simfilepath = [pwd,'\Animatlab\SynergyWalking\SynergyWalking20200109_Standalone.asim'];
+    meshMatch(simfilepath)
+    file_contents = importdata(simfilepath);
+    
+    % Before moving forward, check that the simulation file contains the proper MotorPosition stimuli that are necessary to simulate walking
+    file_contents = disableAllStims(file_contents);
+    reqNames = {'<Name>Hipwalking';'<Name>Kneewalking';'<Name>xAnklewalking';'JointMotion.txt'};
+    for ii = 1:length(reqNames)
+        file_contents = checkFor(file_contents,reqNames{ii});
     end
     
     if mean(mean(abs(jointAngles)))>2
@@ -26,11 +40,6 @@ function [obj] = jointMotionInjector(jointAngles,to_plot)
     else
         jointAngles = [jointAngles;jointAngles;jointAngles];
     end
-    
-    % Which .asim file to modify?
-    simfilepath = [fileparts(mfilename('fullpath')),'\Animatlab\IndividualMuscleStim20191114.asim'];
-    meshMatch(simfilepath)
-    file_contents = importdata(simfilepath);
     
     % From the .asim file, extract time data so that we can match the input joint waveforms to the right time vector
     simtime_ind = find(contains(file_contents,'<APIFile/>'))+1;
@@ -40,7 +49,8 @@ function [obj] = jointMotionInjector(jointAngles,to_plot)
     
     jointAnglesBig = interpolate_for_time(time,jointAngles);
     
-    coeffs = cell(24,2);
+    %Preallocate for speed
+    equations = cell(3,1);
     
     parfor j = 1:3
         % Create a sum of sines equation for the joint angle waveforms
@@ -52,7 +62,7 @@ function [obj] = jointMotionInjector(jointAngles,to_plot)
     end
 
     % Injects new joint angles into motor stimuli at each joint
-    parameter_injector(simfilepath,equations,round(simTime));
+    inject_joint_waveforms(simfilepath,equations,round(simTime));
     
     obj = design_synergy(simfilepath);
     
@@ -92,6 +102,27 @@ function [obj] = jointMotionInjector(jointAngles,to_plot)
                 waveformsBig(:,jj) = filtfilt(coeffblocks,1,waveformsBig(:,jj));
             end
         end
+    end
+
+    function fileContents = checkFor(fileContents,reqName)
+        stimSearch = contains(fileContents,reqName);
+        if ~any(stimSearch)
+            error('jointMotionInjector: Input simulation file does not contain an item called %s.',reqName)
+        else
+            enInd = find(stimSearch)+2;
+            if contains(fileContents{enInd},'False') && ~contains(reqName,'.txt')
+                fileContents{enInd} = '<Enabled>True</Enabled>';
+            end
+        end
+    end
+
+    function fileContents = disableAllStims(fileContents)
+       stimInds = find(contains(fileContents,'<Stimulus>'));
+       for tt = 1:length(stimInds)
+            sI = stimInds(tt);
+            stimEn = find(contains(fileContents(sI:end),'<Enabled>'),1,'first')-1;
+            fileContents{sI+stimEn} = '<Enabled>False</Enabled>';
+       end
     end
 end
 

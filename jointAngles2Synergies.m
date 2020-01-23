@@ -7,8 +7,8 @@
     trial = 4;
 %     waveform = [BackRaw(:,trial,1)-98,BackRaw(:,trial,2)-90,BackRaw(:,trial,3)-116];
     waveform = [completeWaves(:,trial,1)-98,completeWaves(:,trial,2)-90,completeWaves(:,trial,3)-116];
-    fprintf('\n')
-        tstart = tic;
+    
+    tstart = tic;
     [obj] = jointMotionInjector(waveform,0);
     telapsed = toc(tstart);
     disp(['Waveforms Injected and Simulated.',' (',num2str(telapsed),'s)'])
@@ -19,7 +19,7 @@
     if size(oforces,2) ~= 38
         oforces = oforces';
     end
-    tstart = tic;  
+    tstart = tic;
     
 %     parfor i = 1:size(oforces,2)
 %         if snr(oforces(:,i)) < -2
@@ -31,7 +31,9 @@
 %         end
 %     end
 
-    forces = lowpass(oforces,0.01,'Steepness',0.85,'StopbandAttenuation',60);
+    % Either smoothing technique works but lowpass distorts the data ends
+    %forces = lowpass(oforces,0.01,'Steepness',0.85,'StopbandAttenuation',60);
+    forces = smoothdata(oforces,'gaussian',20);
     forces(forces<0) = 0;
     telapsed = toc(tstart);
     disp(['Forces Smoothed.',' (',num2str(telapsed),'s)'])
@@ -59,12 +61,12 @@
             % Am signals that will generate the desired forces
             [Am_musc,V_musc] = Am_generator(obj,forces');
             current2inject = 1000.*(V_musc+.06);
-            [r2scores,recompiled,W,H] = NMFdecomposition(5,current2inject,0);
+            [r2scores,recompiled,W,H] = NMFdecomposition(6,current2inject,0);
             bb = current2inject';
     end
     
     if isfile([file_dir,'\Data\h_equations.mat'])
-        delete([file_dir,'\Data\h_equations.mat'])
+        delete([file_dir,'\Data\h_equations.mat']) 
     end
     
     figure('name','InjectedWaveforms')

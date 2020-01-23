@@ -6,6 +6,7 @@ classdef Muscle < matlab.mixin.SetGet
       pos_attachments_w
       x_off %X offset in V (-.04=-40mV)
       max_force % Stimulus-Tension Amplitude in Newtons
+      ST_max %Magnitude of the ST curve, may or not be the same as Fmax
       steepness % Steepness
       y_off % Y offset in Newtons
       RestingLength % Resting length in meters
