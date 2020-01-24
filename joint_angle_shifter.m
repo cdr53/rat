@@ -1,5 +1,5 @@
 function sim_eqn = joint_angle_shifter(shift)
-    % for an input shift, modify pre-existing equations to shift the waveforms in time
+    % For an input shift, modify pre-existing joint angle waveform equations by shifting them in time
     close all
     
     % Equations

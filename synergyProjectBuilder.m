@@ -80,8 +80,6 @@ for ii = 1:length(muscles2check)
     nsys.addDTaxes(nsys.datatool_objects(numDTs+2),nsys.neuron_objects(nInd),'MembraneVoltage')
 end
 
-
-
 nsys.create_animatlab_project(proj_file);
 disp(['Animatlab project file ',projName,ext,' created.'])
 
@@ -93,7 +91,7 @@ function equation = generate_synergy_eq(bigH)
     bigH = interpolate_for_time(time,bigH);
     
     % Create a sum of sines equation for the joint angle waveforms
-    fitresult = sumsines8Fit(time, bigH,8);
+    fitresult = sumsinesFit(time, bigH);
     % Coeffs are the a, b, and c values in the equation a*sin(b*t+c)
     coeffs = [coeffnames(fitresult),num2cell(coeffvalues(fitresult)')];
     % Equations are in the format necessary for integration into Animatlab's .asim filetype

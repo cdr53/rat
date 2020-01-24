@@ -1,4 +1,13 @@
-function [r2scores,recompiled,W,H] = NMFdecomposition(k,forces,to_plot)    
+function [r2scores,recompiled,W,H] = NMFdecomposition(k,forces,to_plot)
+    % Decompose an input array into component W and H arrays.
+    % Input: k: integer, number of synergies to generate
+    % Input: forces: array to decompose, generally forces over time
+    % Input: to_plot: boolean for whether to generate plots with plotWH
+    % Output: r2scores: array of r^2 values comparing the recombined waveforms with the input waveforms
+    % Output: recompiled: array of same dimensions as input forces representing the array that is recombined from synergies
+    % Output: W: spatial array of synergies representing muscle weighting
+    % Output: H: timing array of synergies representing activation over time
+    
     if size(forces,1)>size(forces,2)
         forces = forces';
     end
@@ -20,9 +29,9 @@ function [r2scores,recompiled,W,H] = NMFdecomposition(k,forces,to_plot)
         weightingfig = figure('color','white','Position',[900 500 800 500]);
         recompfig = figure('color','white','Position',[50 50 1000 600]);
         count = 0;
-        act_filename = ['G:\My Drive\Rat\SynergyControl\OutputFigures\Gifs\',datestr(datetime('now'),'yyyymmdd'),'_','cprocess.gif'];
-        wgt_filename = ['G:\My Drive\Rat\SynergyControl\OutputFigures\Gifs\',datestr(datetime('now'),'yyyymmdd'),'_','wgtprocess.gif'];
-        recom_filename = ['G:\My Drive\Rat\SynergyControl\OutputFigures\Gifs\',datestr(datetime('now'),'yyyymmdd'),'_','recprocess.gif'];
+        act_filename = [pwd,'\OutputFigures\Gifs\',datestr(datetime('now'),'yyyymmdd'),'_','cprocess.gif'];
+        wgt_filename = [pwd,'\OutputFigures\Gifs\',datestr(datetime('now'),'yyyymmdd'),'_','wgtprocess.gif'];
+        recom_filename = [pwd,'\OutputFigures\Gifs\',datestr(datetime('now'),'yyyymmdd'),'_','recprocess.gif'];
     end
     %%
     for i = 1:10e2

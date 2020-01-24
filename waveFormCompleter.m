@@ -1,7 +1,7 @@
 function completeWaves = waveFormCompleter(inWaves,linearScale,meanScale)
     % Extrapolate missing joint motion data from existing data, like the data in spreadsheets Alex processed in the ParameterCalculation
         % (KinematicDataProcessing)
-    % Input: inWaves: raw input waveforms, both complete and incomplete
+    % Input: inWaves: (timesteps x trials) raw input waveforms for a single joint, both complete and incomplete [e.g. BackRaw(:,:,1)]
     % Input: linearScale: how adherent the waveform extrapolator is to maintaining the linear projection of the existing data of incomplete waves. In dimensionless 
         %units of "steps" that are contingent on the length of the input data (e.g. 500 for input waveform length of 1000)
     % Input: meanScale: how adherent the waveform is to the mean of existing data. The idea being that extrapolated data will become increasingly similar to

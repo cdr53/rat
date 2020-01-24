@@ -1,4 +1,9 @@
 function [Am_musc,V_musc] = Am_generator(obj,forces)
+    % For input forces, generate Am and Vm values for all muscles
+    % Input: forces: array of muscle forces over time
+    % Output: Am_musc: array of Am values over time
+    % Output: V_musc: array of membrane voltages over time
+
     if size(forces,2)<size(forces,1)
         forces = forces';
     end

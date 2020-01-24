@@ -48,13 +48,14 @@ function [obj] = jointMotionInjector(jointAngles,to_plot)
     time = (99*dt:dt:simTime-10*dt)';
     
     jointAnglesBig = interpolate_for_time(time,jointAngles);
-    
+
     %Preallocate for speed
     equations = cell(3,1);
     
     parfor j = 1:3
         % Create a sum of sines equation for the joint angle waveforms
-        fitresult = sumsines8Fit(time, jointAnglesBig(:,j),8);
+        %fitresult = sumsines8Fit(time, jointAnglesBig(:,j),8);
+        [fitresult] = sumsinesFit(time, jointAnglesBig(:,j));
         % Coeffs are the a, b, and c values in the equation a*sin(b*t+c)
         coeffs = [coeffnames(fitresult),num2cell(coeffvalues(fitresult)')];
         % Equations are in the format necessary for integration into Animatlab's .asim filetype
@@ -63,6 +64,9 @@ function [obj] = jointMotionInjector(jointAngles,to_plot)
 
     % Injects new joint angles into motor stimuli at each joint
     inject_joint_waveforms(simfilepath,equations,round(simTime));
+    
+    % Update the actual simulation file now that edits have been made
+    overwriteSimFile(simfilepath,file_contents);
     
     obj = design_synergy(simfilepath);
     
@@ -124,7 +128,14 @@ function [obj] = jointMotionInjector(jointAngles,to_plot)
             fileContents{sI+stimEn} = '<Enabled>False</Enabled>';
        end
     end
+
+    function overwriteSimFile(fPath,docContents)
+        fileID = fopen(fPath,'w');
+        formatSpec = '%s\n';
+        nrows = size(docContents);
+        for row = 1:nrows
+            fprintf(fileID,formatSpec,docContents{row,:});
+        end
+        fclose(fileID);
+    end
 end
-
-
-

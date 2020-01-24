@@ -1,3 +1,5 @@
+% Create correlation figures and plotWH
+
 %[vafscores,recompiled,W,H,differ] = NMFdecomposition(6,forces,.01,.01,1);
 %[outk,vafscores,recompiled,W,H] = NMFsyncounter(forces);
 
@@ -21,6 +23,7 @@ end
 hMat = corr(H',H');
 wMat = corr(W,W);
 
+%% Create corrFigs
 wFig = createCorrFig(wMat);
 wFig.Children(2).Title.String = 'W Correlation';
 set(wFig,'name','wFig','Position',[-1920,129,944,988])
@@ -28,6 +31,7 @@ hFig = createCorrFig(hMat);
 hFig.Children(2).Title.String = 'H Correlation';
 set(hFig,'name','hFig','Position',[-951,129,944,988])
 
+%% Run plotWH
 plotWH(forces,W,H,0)
 figHandles = get(groot, 'Children');
 set(figHandles(contains({figHandles(:).Name},{'SynFig'})),'Position',[9,9,944,1108])

@@ -9,9 +9,18 @@
     waveform = [completeWaves(:,trial,1)-98,completeWaves(:,trial,2)-90,completeWaves(:,trial,3)-116];
     
     tstart = tic;
+    
     [obj] = jointMotionInjector(waveform,0);
+    
     telapsed = toc(tstart);
-    disp(['Waveforms Injected and Simulated.',' (',num2str(telapsed),'s)'])
+    if telapsed>60
+        min = num2str(floor(telapsed/60));
+        sec = num2str(round(mod(telapsed,60)));
+    else
+        min = num2str(0);
+        sec = num2str(telapsed);
+    end
+    disp(['Waveforms Injected and Simulated.',' (',min,'m ',sec,'s)'])
     
     % Optimize forces to meet torque demands
     results_cell = obj.pedotti_optimization;
@@ -19,24 +28,11 @@
     if size(oforces,2) ~= 38
         oforces = oforces';
     end
-    tstart = tic;
-    
-%     parfor i = 1:size(oforces,2)
-%         if snr(oforces(:,i)) < -2
-%             %For those signals that are extremely noisy, perform aggressive smoothing
-%             forces(:,i) = smooth(smoothdata(oforces(:,i)),.04);
-%         else
-%             % For those with low local noise, just apply a low pass filter
-%             forces(:,i) = lowpass(oforces(:,i),.08);
-%         end
-%     end
 
     % Either smoothing technique works but lowpass distorts the data ends
     %forces = lowpass(oforces,0.01,'Steepness',0.85,'StopbandAttenuation',60);
     forces = smoothdata(oforces,'gaussian',20);
     forces(forces<0) = 0;
-    telapsed = toc(tstart);
-    disp(['Forces Smoothed.',' (',num2str(telapsed),'s)'])
 
     tstart = tic;
     synergysort = 'currents';

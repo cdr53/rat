@@ -3759,7 +3759,8 @@ classdef FullLeg < matlab.mixin.SetGet
             measured_torque(:,1) = measured_torque(:,2);
             measured_torque(:,2) = holder;
             
-            tau2 = measured_torque+passive_torque;
+%             tau2 = measured_torque+passive_torque;
+            tau2 = measured_torque;
             
             mintypes = {'minfatigue','minsqforces','minforce','minwork','minforcePCSA','minforcetemporal'};
             nummuscles = size(obj.musc_obj,1);
@@ -3780,6 +3781,8 @@ classdef FullLeg < matlab.mixin.SetGet
                 else
                     options = optimoptions('fmincon','Display','none');
                 end
+                
+                %% Assemble an array Q, to act as a lower bound that ensures that Am values are possible
                 parfor i=1:nummuscles
                     muscle = obj.musc_obj{i};
                     Lm = muscle.muscle_length_profile(xx);
@@ -3835,11 +3838,22 @@ classdef FullLeg < matlab.mixin.SetGet
                             [force(:,j),fval(j,1),exitflag] = linprog(delLmat(:,j),[],[],Aeq,beq,lb(:,j),ub,[],options);
                         end
                     else
-                        [force(:,j),fval(j,1),exitflag] = fmincon(fun,x0,[],[],Aeq,beq,1.1.*lb(:,j),ub,[],options);
+                        if j>1
+                            x0 = force(:,j-1);
+                        end
+%                         [force(:,j),fval(j,1),exitflag] = fmincon(fun,x0,[],[],Aeq,beq,1.1.*lb(:,j),ub,[],options);
+                          [force(:,j),fval(j,1),exitflag] = fmincon(fun,x0,[],[],Aeq,beq,lb(:,j),ub,[],options);
                     end
                 end
             telapsed = toc(tstart);
-            disp(['Force Optimization Time:',' (',num2str(telapsed),'s)'])
+            if telapsed>60
+                min = num2str(floor(telapsed/60));
+                sec = num2str(round(mod(telapsed,60)));
+            else
+                min = num2str(0);
+                sec = num2str(telapsed);
+            end
+            disp(['Force Optimization Time:',' (',min,'m ',sec,'s)'])
             %clear tstart telapsed
             %%
             if toplot
@@ -3936,10 +3950,10 @@ classdef FullLeg < matlab.mixin.SetGet
 
             results_cell = cell(7,2);
             results_cell(:,1) = {'';
-                                 'Forces w/Passive';
-                                 'Torques w/ Passive';
+                                 'Forces';
+                                 'Torques';
                                  'Moment Arm output';
-                                 'Fval w/ Passive';
+                                 'Fval';
                                  'Fmt Waveform';
                                  'Opt Time'};
             results_cell(1,2) = {' '};

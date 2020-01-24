@@ -28,7 +28,7 @@ if ispc
             return
         end
         % Post-process data
-        data_struct = importdata('Animatlab\JointMotion.txt');
+        data_struct = importdata([fileparts(sim_file),'\JointMotion.txt']);
         col_head_slice = data_struct.colheaders;
         joint_profile = data_struct.data(:,2:5);
             % Determine which columns correspond to which joint. Animatlab doesn't necessarily follow a hip->knee->ankle convention

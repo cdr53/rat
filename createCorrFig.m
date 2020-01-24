@@ -1,5 +1,5 @@
 function [corrFig,cdata1] = createCorrFig(cdata1,sorted)
-    % Creates a correlation figure for visualizing correlation matrices.
+    % Creates a correlation figure for visualizing an input array.
     % Input: cdata1: a square matrix of r^2 values (output of corr(x,y))
     % Input: sorted: determines whether the resulting figure is sorted by row (1), sorted by row and then column (2), or unsorted (0)
     % Output: corrFig: figure handle of resulting figure
@@ -49,6 +49,7 @@ function [corrFig,cdata1] = createCorrFig(cdata1,sorted)
     
     % Create image
     image(cdata1,'Parent',axes1,'CDataMapping','scaled');
+    title('H Correlation','FontSize',15)
 
     % Uncomment the following line to preserve the X-limits of the axes
     % xlim(axes1,[0.5 10.5]);

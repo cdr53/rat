@@ -1,5 +1,5 @@
 function massCheck(docpath)
-    % Fixes all mass and density values of bones in a document.
+    % Sets all mass and density values of bones in a document (.asim or .aproj) to user-defined values.
     % Animatlab will sometimes miscalculates the volume of meshes and that value can't be changed.
     % To make the volume make sense, it automatically sets the scale of the density and mass.
     % Input: docpath: filepath to a Simulation file (.asim) or a Project file (.aproj)

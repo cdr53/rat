@@ -1,5 +1,5 @@
 function meshMatch(docpath)
-    % Updates all mesh file paths for a given document
+    % Updates all mesh file paths for a given document and overwrites it.
     % Input: docpath: filepath to a Simulation file (.asim) or a Project file (.aproj)
     
     if ~isfile(docpath)

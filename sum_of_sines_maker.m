@@ -1,5 +1,5 @@
 function sim_eqn = sum_of_sines_maker(coefficients,project_file)
-    % project_file is a boolean that determines hwether or not the output function is for a sim or project file
+    % project_file is a boolean that determines whether or not the output function is for a sim or project file
     % The equations for these two different file types are quite different
     if project_file
         % This section allows the user to create a sum of sines equation in the format used by the .aproj files from Animatlab

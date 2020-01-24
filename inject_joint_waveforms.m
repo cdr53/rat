@@ -1,5 +1,5 @@
 function inject_joint_waveforms(filepath,equations,end_time)
-    % Replaces joint motor stimuli with joint waveform equations
+    % Injects joint waveform equations into joint motor stimuli and overwrites the file. 
     % Input: filepath: simulation .asim file path
     % Input: equations: cell array of sum of sines equations for hip, knee, and ankle
     % Input: end_time: end time of simulation

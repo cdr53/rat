@@ -1,24 +1,27 @@
 function [outk,r2scores,recompiled,W,H] = NMFsyncounter(forces)
-    %results_cell = results_cell{2,5};
+    % Determine the minimum number of synergies to meet a matching criteria between the recombined and input waveforms.
+    % Input: forces: array of forces over time
+    % Output: outk: integer number of synergies necessary
+    % Output: r2scores: (nx1) array of r^2 values representing similarity of recombined waveforms to input waveforms
+    % Output: recompiled: array of size(forces) representing forces as generated from synergy components
+    % Output: W: spatial array of synergies representing muscle weighting
+    % Output: H: timing array of synergies representing activation over time
     
     if size(forces,1)>size(forces,2)
         forces = forces';
     end
-    r2scores = zeros(38,1);
-    k = 0;
-    vafrec = [];
     
-    while any(r2scores < .5) && k < 25
-        k = k+1;
-        [r2scores,recompiled,W,H] = NMFdecomposition(k,forces,0);
-        vafrec = [vafrec,r2scores];
+    r2scores = zeros(38,1);
+    outk = 0;
+    
+    while any(r2scores < .5) && outk < 25
+        outk = outk+1;
+        [r2scores,recompiled,W,H] = NMFdecomposition(outk,forces,0);
     end
     
-    if k <= 10
+    if outk <= 10
         plotWH(forces,W,H,0);
-        outk = k;
     else
-        fprintf('Over 10 synergies\n')
-        outk = k;
+        disp('Over 10 synergies')
     end
 end

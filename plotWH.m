@@ -1,11 +1,13 @@
-function plotWH(forces,W,H,saver)
+function plotWH(inArray,W,H,saver)
+    % Plot the synergy components W and H
+    
     scrSz = get(groot, 'ScreenSize');
     scW = scrSz(3);
     
-    [r,c] = size(forces);
+    [r,c] = size(inArray);
     
     if r>c
-        forces = forces';
+        inArray = inArray';
     end
     
     relW = W./max(W);
@@ -32,7 +34,7 @@ function plotWH(forces,W,H,saver)
         end
         xlim([0 39])
         ylabel(num2str(i))
-        ylim([0 1.1])
+        ylim([0 1.05])
     end
     
     cfig = figure('color','white','Position',[-(scW-10)/2 130 scW/2 985],'name','CFig');
@@ -53,14 +55,14 @@ function plotWH(forces,W,H,saver)
 
     recombfig = figure('color','white','Position',[50 50 800 700],'name','RecombFig');
     subplot(3,1,1)
-        plot(linspace(0,100,size(forces,2)),forces')
+        plot(linspace(0,100,size(inArray,2)),inArray')
         title('Original Signal')
     subplot(3,1,2)
-        plot(linspace(0,100,size(forces,2)),recompiled)
+        plot(linspace(0,100,size(inArray,2)),recompiled)
         title('Recompiled Signal from NNMF Components')
     subplot(3,1,3)
-        differ = abs((forces'-recompiled));
-        plot(linspace(0,100,size(forces,2)),differ)
+        differ = abs((inArray'-recompiled));
+        plot(linspace(0,100,size(inArray,2)),differ)
         title('Difference Between Signals')
     
     if saver

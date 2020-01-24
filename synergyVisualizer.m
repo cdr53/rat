@@ -1,6 +1,5 @@
 function [colorlog,widthlog] = synergyVisualizer(obj,W,H,to_save)
     % All forces must be positive for this to work. Line widths are based on activation level, can't be negative.\
-    close all
     scrSz = get(groot, 'ScreenSize');
     scW = scrSz(3);
     [beg,ennd,~] = find_step_indices(obj);
@@ -106,7 +105,7 @@ function [colorlog,widthlog] = synergyVisualizer(obj,W,H,to_save)
         hold on
         %% Prepare axes proportions for proper leg dimensions
             limrecorder(timecount,:) = [xlim,ylim,zlim];
-            xlimits = [-40 60];
+            xlimits = [-60 60];
             ylimits = [-80 20];
             zlimits = [0 30];
             xlim(xlimits);
@@ -119,8 +118,8 @@ function [colorlog,widthlog] = synergyVisualizer(obj,W,H,to_save)
             normedaxes = axeslengths/norm(axeslengths);
             pbaspect(normedaxes)
             view([0 90])
-        title('TitleHolder','FontSize',15)
-        cbar = colorbar('Ticks',[0;1],'TickLabels',{'low act','high act'},'FontSize',15);
+        title('Synergy Activation During Walking','FontSize',15)
+        %cbar = colorbar('Ticks',[0;1],'TickLabels',{'low act','high act'},'FontSize',15);
         grid on
         pause(.001)
         if to_save
