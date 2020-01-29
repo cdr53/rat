@@ -10,6 +10,13 @@ function plotWH(inArray,W,H,saver)
         inArray = inArray';
     end
     
+    if iscell(W)
+        Wth = W{2}*ones(c,1);
+        W = W{1};
+    else
+        Wth = 0;
+    end
+    
     relW = W./max(W);
     bigH = (H'.*max(W))';
     recompiled = (W*H)';
@@ -19,22 +26,30 @@ function plotWH(inArray,W,H,saver)
         priorFigures = contains({figHandles(:).Name},{'SynFig','CFig','RecombFig'});
         close(figHandles(priorFigures))
     end
-    axisticker = 1:38;
+    axisticker = 1:c;
     synfig = figure('color','white','Position',[-(scW-10) 130 scW/2 985],'name','SynFig');
     cm = colormap(jet(3*size(W,2)));
     for i = 1:size(W,2)
         holder = relW(:,i);
         subplot(size(relW,2),1,i)
         bar(holder,'FaceColor',cm(i*3,:))
+        if size(Wth,1) ~= 1
+            hold on
+            plot(axisticker,Wth,'r--','LineWidth',1.2)
+        end
         set(gca,'XTick',axisticker,'TickLength',[.003 .003])
         if i == 1
             title('Relative Activation of Individual Muscles','FontSize',16)
+            if size(Wth,1) ~= 1
+                title(['Relative Activation of Individual Muscles. Threshold: ',num2str(round(Wth(1),2))],'FontSize',16)
+            else
+                title('Relative Activation of Individual Muscles','FontSize',16)
+            end
         elseif i == 5
             xlabel('Muscle #','FontSize',14)
         end
         xlim([0 39])
         ylabel(num2str(i))
-        ylim([0 1.05])
     end
     
     cfig = figure('color','white','Position',[-(scW-10)/2 130 scW/2 985],'name','CFig');
@@ -47,6 +62,11 @@ function plotWH(inArray,W,H,saver)
         ylabel(num2str(j))
         if j == 1
             title('Synergy Activation During Stride','FontSize',16)
+            if size(Wth,1) ~= 1
+                title(['Synergy Activation During Stride. Threshold: ',num2str(round(Wth(1),2))],'FontSize',16)
+            else
+                title('Synergy Activation During Stride','FontSize',16)
+            end
         elseif j == 5
             xlabel('% Stride','FontSize',14)
         end
@@ -62,8 +82,13 @@ function plotWH(inArray,W,H,saver)
         title('Recompiled Signal from NNMF Components')
     subplot(3,1,3)
         differ = abs((inArray'-recompiled));
-        plot(linspace(0,100,size(inArray,2)),differ)
-        title('Difference Between Signals')
+        bar(mean(differ))
+        %plot(linspace(0,100,size(inArray,2)),differ)
+        if size(Wth,1) ~= 1
+            title(['Mean Difference Between Signals. Threshold: ',num2str(round(Wth(1),2))])
+        else
+            title('Mean Difference Between Signals')
+        end
     
     if saver
         saveas(cfig,['G:\My Drive\Rat\SynergyControl\OutputFigures\Images\',datestr(datetime('now'),'yyyymmdd'),'_','actfig.png']);

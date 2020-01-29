@@ -544,7 +544,7 @@ classdef FullLeg < matlab.mixin.SetGet
             end
             
             telapsed = toc(tstart);
-            disp(['Attachments Stored.',' (',num2str(telapsed),'s)'])
+            %disp(['Attachments Stored.',' (',num2str(telapsed),'s)'])
 %             for i=1:length(obj.bodies)-1
 %                 %Hinge joint axis in the previous body's frame
 %                 obj.u_joint{i,1} = obj.CR_bodies(:,:,i+1)*obj.three_axis_rotation(obj.euler_angs_joints(:,i+1))*[-1;0;0];
@@ -563,7 +563,7 @@ classdef FullLeg < matlab.mixin.SetGet
             store_torque_and_kinematic_data(obj,jointMotion,jointMotionDot,jointMotion(10,1)-jointMotion(9,1));
             store_jointbodyw_position_profiles(obj,jointMotion);
             telapsed = toc(tstart);
-            disp(['Joint Properties Stored.',' (',num2str(telapsed),'s)'])
+            %disp(['Joint Properties Stored.',' (',num2str(telapsed),'s)'])
             clear tstart telapsed
         %% Store muscle properties  
             tstart = tic;
@@ -571,7 +571,7 @@ classdef FullLeg < matlab.mixin.SetGet
             store_johnson_params(obj);
             store_muscle_profiles(obj);
             telapsed = toc(tstart);
-            disp(['Muscle Properties Stored.',' (',num2str(telapsed),'s)'])
+            %disp(['Muscle Properties Stored.',' (',num2str(telapsed),'s)'])
             clear tstart telapsed
         end
         %% Function: Store the joint rotation matrices in the joint objects
@@ -3759,8 +3759,8 @@ classdef FullLeg < matlab.mixin.SetGet
             measured_torque(:,1) = measured_torque(:,2);
             measured_torque(:,2) = holder;
             
-%             tau2 = measured_torque+passive_torque;
-            tau2 = measured_torque;
+             tau2 = measured_torque+passive_torque;
+            %tau2 = measured_torque;
             
             mintypes = {'minfatigue','minsqforces','minforce','minwork','minforcePCSA','minforcetemporal'};
             nummuscles = size(obj.musc_obj,1);
@@ -3781,6 +3781,8 @@ classdef FullLeg < matlab.mixin.SetGet
                 else
                     options = optimoptions('fmincon','Display','none');
                 end
+                
+                sagvec = -obj.joint_obj{1}.uuw_joint(:,1)';
                 
                 %% Assemble an array Q, to act as a lower bound that ensures that Am values are possible
                 parfor i=1:nummuscles
@@ -3808,10 +3810,19 @@ classdef FullLeg < matlab.mixin.SetGet
                     a = b/(ks*dt);
                     Q(i,1) = (a/(1+a+kp/ks));
                     lengthmat(i,:) = (1/a)*(Q(i,1)*kp*delLmat(i,:)+Q(i,1)*b*Vm');
-                    %lb(i,1) = Fmax(i,1)/(1+exp(s.*(xoff--.06)));
+                    % This optimization is for sagittal plane forces and torques. In order to calculate full muscle forces (including out of plane muscle
+                    % portions, we must "penalize" the sagittal plane upper bound values because they do not represent the true maximum tensions
+                        % Determine which segment to use to determine "out of planeness", for the time being this is just the first free segment
+                    freeseg = find(diff(cell2mat(muscle.pos_attachments(:,3))),1,'first');
+                        % Create an array of muscle vectors pointing along the free muscle segment
+                    mvec = muscle.pos_attachments{freeseg+1,4}(xx,:) - muscle.pos_attachments{freeseg,4}(xx,:);
+                        % Create an array of the saggital plane vector, in this case just the negative hip joint vector
+                    sagvecmat = sagvec.*ones(size(mvec));
+                        % Multiple Fmax by the sine of the angle between the muscle segment and the sagittal vector
+                        % When the muscle is perfectly sagittal, the sine portion will equal 1. When perfectly non-sagittal, it will be 0
+                    ub(i,:) = Fmax(i,1).*sin(atan2d(vecnorm(cross(sagvecmat,mvec,2),2,2),dot(sagvecmat,mvec,2))*(pi/180))'; % "out of plane penalty"
                 end
-                ub = Fmax;
-                x0 = zeros(size(ub));
+                x0 = zeros(size(ub,1),1);
                 moment_output = zeros(nummuscles+2,size(xx,2),3);
                 parfor i=1:3
                     moment_output(:,:,i) = compute_joint_moment_arms(obj,i,1);
@@ -3841,8 +3852,7 @@ classdef FullLeg < matlab.mixin.SetGet
                         if j>1
                             x0 = force(:,j-1);
                         end
-%                         [force(:,j),fval(j,1),exitflag] = fmincon(fun,x0,[],[],Aeq,beq,1.1.*lb(:,j),ub,[],options);
-                          [force(:,j),fval(j,1),exitflag] = fmincon(fun,x0,[],[],Aeq,beq,lb(:,j),ub,[],options);
+                          [force(:,j),fval(j,1),exitflag] = fmincon(fun,x0,[],[],Aeq,beq,lb(:,j),ub(:,j),[],options);
                     end
                 end
             telapsed = toc(tstart);

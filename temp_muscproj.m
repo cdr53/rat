@@ -13,17 +13,19 @@ for ii = 1:38
     seg2use = find(whichsegmentisfree,1,'first'); % This is not a stringent search function <<< edit later
     matt1 = muscle.pos_attachments{seg2use,4};
     matt2 = muscle.pos_attachments{seg2use+1,4};
-    tdeg = zeros(length(matt1),1);
+    %tdeg = zeros(length(matt1),1);
     for jj = 1:length(matt1)
         mvec = matt2(jj,:)-matt1(jj,:);
         theta(jj,1) = atan2d(norm(cross(sagvec,mvec)),dot(sagvec,mvec));
-        tdeg(jj,1) = sin(atan2d(norm(cross(sagvec,mvec)),dot(sagvec,mvec))*(pi/180));
+        tdeg(jj,ii) = sin(atan2d(norm(cross(sagvec,mvec)),dot(sagvec,mvec))*(pi/180));
     end
-    outforces(:,ii) = forcesBig(:,ii)./tdeg;
+    outforces(:,ii) = forcesBig(:,ii)./tdeg(:,ii);
 end
 
 figure
-subplot(2,1,1)
+subplot(3,1,1)
 plot(forces)
-subplot(2,1,2)
+subplot(3,1,2)
 plot(outforces)
+subplot(3,1,3)
+plot(outforces-forcesBig)

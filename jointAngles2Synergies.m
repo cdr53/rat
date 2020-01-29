@@ -14,13 +14,13 @@
     
     telapsed = toc(tstart);
     if telapsed>60
-        min = num2str(floor(telapsed/60));
+        mins = num2str(floor(telapsed/60));
         sec = num2str(round(mod(telapsed,60)));
     else
-        min = num2str(0);
-        sec = num2str(telapsed);
+        mins = num2str(0);
+        sec = num2str(round(telapsed,2));
     end
-    disp(['Waveforms Injected and Simulated.',' (',min,'m ',sec,'s)'])
+    disp(['Waveforms Injected and Simulated.',' (',mins,'m ',sec,'s)'])
     
     % Optimize forces to meet torque demands
     results_cell = obj.pedotti_optimization;
@@ -33,18 +33,20 @@
     %forces = lowpass(oforces,0.01,'Steepness',0.85,'StopbandAttenuation',60);
     forces = smoothdata(oforces,'gaussian',20);
     forces(forces<0) = 0;
-
-    tstart = tic;
-    synergysort = 'currents';
+    
+    synergysort = 'forces';
     switch synergysort
         case 'forces'
-            [outk,r2scores,recompiled,W,H] = NMFsyncounter(forces);
-            telapsed = toc(tstart);
-            if ~isinf(outk)
-                disp(['Synergies counted. k = ',num2str(outk),'. (',num2str(telapsed),'s)'])
-            else
-                disp(['Synergies counted. Over 10 synergies',' (',num2str(telapsed),'s)'])
-            end
+%             tstart = tic;
+%             [outk,r2scores,recompiled,W,H] = NMFsyncounter(forces);
+%             telapsed = toc(tstart);
+%             if ~isinf(outk)
+%                 disp(['Synergies counted. k = ',num2str(outk),'. (',num2str(telapsed),'s)'])
+%             else
+%                 disp(['Synergies counted. Over 10 synergies',' (',num2str(telapsed),'s)'])
+%             end
+
+            [r2scores,recompiled,W,H] = NMFdecomposition(5,forces,0,.04);
 
             % Coefficients of similarity between original forces and recompiled forces from synergies
             coeffMat = pearsonTest(forces,recompiled,0);
@@ -52,13 +54,13 @@
             % Am signals that will generate the desired forces
             [Am_musc,V_musc] = Am_generator(obj,forces');
             current2inject = 1000.*(V_musc+.06);
-            bb = forces;
+            wave2plot = forces;
         case 'currents'
             % Am signals that will generate the desired forces
             [Am_musc,V_musc] = Am_generator(obj,forces');
             current2inject = 1000.*(V_musc+.06);
             [r2scores,recompiled,W,H] = NMFdecomposition(6,current2inject,0);
-            bb = current2inject';
+            wave2plot = current2inject';
     end
     
     if isfile([file_dir,'\Data\h_equations.mat'])
@@ -77,7 +79,7 @@
     
     figure('name','OptimizedVSynergies')
     subplot(2,1,1)
-    plot(bb)
+    plot(wave2plot)
     title('Optimized Necessary Forces v. Forces Recompiled from Synergies')
     xlabel('Optimized Muscle Forces')
     ylabel('Forces(N)')
@@ -88,4 +90,4 @@
     
     close all
     
-    plotWH(current2inject',W,H,0)
+    plotWH(wave2plot,W,H,0)

@@ -1,4 +1,4 @@
-function [r2scores,recompiled,W,H] = NMFdecomposition(k,forces,to_plot)
+function [r2scores,recompiled,W,H] = NMFdecomposition(k,forces,to_plot,Wth)
     % Decompose an input array into component W and H arrays.
     % Input: k: integer, number of synergies to generate
     % Input: forces: array to decompose, generally forces over time
@@ -11,6 +11,10 @@ function [r2scores,recompiled,W,H] = NMFdecomposition(k,forces,to_plot)
     if size(forces,1)>size(forces,2)
         forces = forces';
     end
+    if nargin < 4
+        Wth = 0;
+    end
+    
     forces(forces<0)=0;
     m = size(forces,1);
     n = size(forces,2);
@@ -22,7 +26,7 @@ function [r2scores,recompiled,W,H] = NMFdecomposition(k,forces,to_plot)
     %H = rand(k,n);
     lamH = .01;
     lamW = .01;
-    %% Plotting GIFs
+    %% If conditions for plotting GIFs
     if gif_plot
         close all
         activationfig = figure('color','white','Position',[100 500 700 500]);
@@ -33,7 +37,7 @@ function [r2scores,recompiled,W,H] = NMFdecomposition(k,forces,to_plot)
         wgt_filename = [pwd,'\OutputFigures\Gifs\',datestr(datetime('now'),'yyyymmdd'),'_','wgtprocess.gif'];
         recom_filename = [pwd,'\OutputFigures\Gifs\',datestr(datetime('now'),'yyyymmdd'),'_','recprocess.gif'];
     end
-    %%
+    %% Main loop
     for i = 1:10e2
         % Multiplicative update algorithm for NMF in Berry 2006, "Algorithms and applications..."
 % %         H = H.*(W'*forces)./(W'*W*H+10^-9);
@@ -46,7 +50,7 @@ function [r2scores,recompiled,W,H] = NMFdecomposition(k,forces,to_plot)
             H = linsolve(W'*W+lamH*eye(k),W'*forces);
             H(H<0) = 0;
             W = linsolve(H*H'+lamW*eye(k),H*forces')';
-            W(W<0) = 0;
+            W(W./max(W)<Wth) = 0;
             % Sometimes, the solution to the local minimum equations will result in synergies being unused. To prevent this, we "bump" the offending synergy
             % with a random vector and continue the minimization
             if any(mean(W)==0)
@@ -57,7 +61,7 @@ function [r2scores,recompiled,W,H] = NMFdecomposition(k,forces,to_plot)
                     W(:,zW(jj)) = rand(m,1);
                 end
             end
-        %%
+        %% Gif addition within Loop
         if mod(i,20) == 0 && gif_plot
             count = count + 1;
             relW = W./max(W);
@@ -74,7 +78,7 @@ function [r2scores,recompiled,W,H] = NMFdecomposition(k,forces,to_plot)
             
             clf(weightingfig)
             figure(weightingfig)
-            ha = tight_subplot(5,1,.05,.12,.1);
+            %ha = tight_subplot(5,1,.05,.12,.1);
             for k = 1:size(W,2)
                 axes(ha(k));
                 holder = relW(:,k);
@@ -124,9 +128,8 @@ function [r2scores,recompiled,W,H] = NMFdecomposition(k,forces,to_plot)
               end
             end
         end
-        %%
     end
-    
+    %% Generate r2 scores
     % r^2 value representing Pearson correlation factor
     r2scores = zeros(size(W,1),1);
     % VAF anonymous function as described by Torres-Olviedo 2006, based on uncentered Pearson correlation coefficient
@@ -145,7 +148,7 @@ function [r2scores,recompiled,W,H] = NMFdecomposition(k,forces,to_plot)
         keyboard
     end
     
-     if to_plot
+    if to_plot
         plotWH(forces,W,H,0);
-     end
+    end
 end

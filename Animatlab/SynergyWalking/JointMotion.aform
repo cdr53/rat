@@ -6,8 +6,8 @@
 <AssemblyFile>LicensedAnimatGUI.dll</AssemblyFile>
 <ClassName>LicensedAnimatGUI.Forms.Charts.LineChart</ClassName>
 <AutoCollectInterval>True</AutoCollectInterval>
-<CollectDataInterval Value="0.54" Scale="milli" Actual="0.00054"/>
-<CollectTimeWindow Value="3" Scale="None" Actual="3"/>
+<CollectDataInterval Value="0.6" Scale="milli" Actual="0.0006"/>
+<CollectTimeWindow Value="11" Scale="None" Actual="11"/>
 <UpdateDataInterval Value="200" Scale="milli" Actual="0.2"/>
 <SetStartEndTime>True</SetStartEndTime>
 <CollectStartTime Value="0" Scale="None" Actual="0"/>
@@ -48,7 +48,7 @@
 <DataItemID>c7df3511-7e4c-411e-be1f-1b71ff30c530</DataItemID>
 <SelectedDataType>JointRotation</SelectedDataType>
 <DataSubSet>1</DataSubSet>
-<PrevDataSubset>-1</PrevDataSubset>
+<PrevDataSubset>1</PrevDataSubset>
 <UseIncomingDataType>False</UseIncomingDataType>
 <LineType>MediumSolid</LineType>
 <PointType>Plus</PointType>
@@ -66,7 +66,7 @@
 <DataItemID>b2919ff8-3efa-4549-97b4-a4bc77ad6e0a</DataItemID>
 <SelectedDataType>JointRotation</SelectedDataType>
 <DataSubSet>2</DataSubSet>
-<PrevDataSubset>1</PrevDataSubset>
+<PrevDataSubset>2</PrevDataSubset>
 <UseIncomingDataType>False</UseIncomingDataType>
 <LineType>MediumSolid</LineType>
 <PointType>Plus</PointType>
@@ -78,8 +78,8 @@
 </AxisList>
 <SaveDataWhenClosed>False</SaveDataWhenClosed>
 <UpdateChartAtEnd>True</UpdateChartAtEnd>
-<PointsToKeep>15000</PointsToKeep>
+<PointsToKeep>18334</PointsToKeep>
 <YAxisOffset>0</YAxisOffset>
-<GraphConfig ByteCount="8971"/>
+<GraphConfig ByteCount="8952"/>
 </Form>
 </Form>
