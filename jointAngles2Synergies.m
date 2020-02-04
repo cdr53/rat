@@ -34,18 +34,9 @@
     forces = smoothdata(oforces,'gaussian',20);
     forces(forces<0) = 0;
     
-    synergysort = 'forces';
+    synergysort = 'currents';
     switch synergysort
         case 'forces'
-%             tstart = tic;
-%             [outk,r2scores,recompiled,W,H] = NMFsyncounter(forces);
-%             telapsed = toc(tstart);
-%             if ~isinf(outk)
-%                 disp(['Synergies counted. k = ',num2str(outk),'. (',num2str(telapsed),'s)'])
-%             else
-%                 disp(['Synergies counted. Over 10 synergies',' (',num2str(telapsed),'s)'])
-%             end
-
             [r2scores,recompiled,W,H] = NMFdecomposition(5,forces,0,.04);
 
             % Coefficients of similarity between original forces and recompiled forces from synergies
@@ -59,7 +50,8 @@
             % Am signals that will generate the desired forces
             [Am_musc,V_musc] = Am_generator(obj,forces');
             current2inject = 1000.*(V_musc+.06);
-            [r2scores,recompiled,W,H] = NMFdecomposition(6,current2inject,0);
+%             [r2scores,recompiled,W,H] = NMFdecomposition(5,current2inject',0,.04);
+            [r2scores,recompiled,W,H] = NMFdecomposition(6,current2inject',0,0);
             wave2plot = current2inject';
     end
     

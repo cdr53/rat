@@ -14,21 +14,23 @@ function [Am_musc,V_musc] = Am_generator(obj,forces)
 
     fl = @(Lm,Lr,Lw) 1-(Lm-Lr).^2./Lw^2;
     Am = @(Al,b,ks,T_dot,kp,delL,L_dot,T) (1./Al).*((b./ks).*T_dot-kp.*delL-b.*L_dot+(1+kp./ks).*T);
-    V = @(A1,A2,A3,A) A1-(1./A3).*log((A2-A)./A);
-    st_curve = @(Fmax,steepness,xoff,V) Fmax./(1+exp(steepness*(xoff-V)));
+%     V = @(A1,A2,A3,A) A1-(1./A3).*log((A2-A)./A); %Updated 2/3/2020 with the addition of yoff
+    V = @(A1,A2,A3,A4,A) A1-(1./A3).*log((A2)./(A-A4)-1);
+    st_curve = @(Fmax,steepness,xoff,V,yoff) Fmax./(1+exp(steepness*(xoff-V)))+yoff;
     Am_musc = zeros(size(forces));
     Al_musc_all = Am_musc;
     V_musc = Am_musc;
 
     for ii = 1:38
-       [b,ks,kp,Lw,Lr,xoff,Fmax,steepness,mL,mV,ST_max] = getMuscParams(obj,ii,beg,ennd);
+       [b,ks,kp,Lw,Lr,xoff,Fmax,steepness,mL,mV,ST_max,yoff] = getMuscParams(obj,ii,beg,ennd);
        delL_musc = max(mL-Lr,0);
        Al_musc = fl(mL,Lr,Lw);
        Tdot = forces_dot(ii,:);
        T = forces(ii,:);
        Am_musc(ii,:) = Am(Al_musc',b,ks,Tdot,kp,delL_musc',mV',T);
-       V_musc(ii,:) = real(V(xoff,ST_max,steepness,Am_musc(ii,:)));
-       V_musc(ii,isinf(V_musc(ii,:)))=-.06;
+       Am_musc(ii,Am_musc(ii,:)<yoff) = 0;
+       V_musc(ii,:) = real(V(xoff,ST_max,steepness,yoff,Am_musc(ii,:)));
+       V_musc(ii,V_musc(ii,:)<-.06) = -.06;
        Al_musc_all(ii,:) = 1./Al_musc;
        %% For loop plotter 1: Plot 5 subplot fig of tension equation
        if 0
@@ -103,7 +105,7 @@ function [Am_musc,V_musc] = Am_generator(obj,forces)
         outT = Thold;
     end
     %% getMuscParams
-    function [b,ks,kp,Lw,Lr,xoff,Fmax,steepness,mL,mV,ST_max] = getMuscParams(obj,mnum,beg,ennd)
+    function [b,ks,kp,Lw,Lr,xoff,Fmax,steepness,mL,mV,ST_max,yoff] = getMuscParams(obj,mnum,beg,ennd)
         n = 500;
         m = length(obj.theta_motion(beg:ennd));
        musc = obj.musc_obj{mnum};
@@ -122,6 +124,7 @@ function [Am_musc,V_musc] = Am_generator(obj,forces)
        mL = interp1(1:m,musc.muscle_length_profile(beg:ennd),linspace(1,m,n))';
        mV = interp1(1:m,musc.muscle_velocity_profile(beg:ennd),linspace(1,m,n))';
        ST_max = musc.ST_max;
+       yoff = musc.y_off;
     end
     %% findParamsfromLloyd
     function x = findParamsFromLloyd(Tdot,Al_musc,T,mV,mL,Lr)

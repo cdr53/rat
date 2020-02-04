@@ -813,14 +813,16 @@ classdef FullLeg < matlab.mixin.SetGet
         function store_animatlab_params( obj )
 
             num_musc = length(obj.musc_inds);
-
-            property_inds = zeros(num_musc*9,3);
+            
 %             load('AnimatlabProperties.mat');
             load([pwd,'\Data\AnimatlabProperties.mat']);
+            
 
     %             property_names = repmat(Properties{4,1}(:,1),num_musc,1);
             property_names = Properties{4,1}(:,1);
-            property_values = zeros(num_musc*9,1);
+            numProps = length(property_names);
+            property_values = zeros(num_musc*numProps,1);
+            property_inds = zeros(num_musc*numProps,3);
 
             %for each property
             for i=1:num_musc
@@ -828,7 +830,7 @@ classdef FullLeg < matlab.mixin.SetGet
                 %Define its line as the "lower limit." All properties will be found
                 %after it in the file.
                 lower_limit = obj.musc_inds(i);
-                for j=1:length(property_names)
+                for j=1:numProps
                     if strcmp(property_names{j},'damping')
                         %We should find muscle damping, which is actually called "B,"
                         %just like the muscle activation's curve. Therefore we need to
@@ -853,17 +855,17 @@ classdef FullLeg < matlab.mixin.SetGet
                     %on. -1 makes the indexing work properly.
                     %temp = find(~cellfun(@isempty,prop_found)) + lower_limit - 1;
                     temp = find(prop_found) + lower_limit - 1;
-                    property_inds(9*(i-1)+j,1) = temp(which_to_find);
+                    property_inds(numProps*(i-1)+j,1) = temp(which_to_find);
 
                     %Find the final index of the row to keep before the number begins
                     %Number we're looking for is formatted like
                     %'<A>-0.04<A>'
                     %Index of > before the number we want
-                    property_inds(9*(i-1)+j,2) = length(prop_to_find);
+                    property_inds(numProps*(i-1)+j,2) = length(prop_to_find);
 
                     %Find the first index of the row to keep after the number begins
                     %Index of < after number we want
-                    property_inds(9*(i-1)+j,3) = cell2mat(strfind(obj.original_text(property_inds(9*(i-1)+j,1)),'</'));
+                    property_inds(numProps*(i-1)+j,3) = cell2mat(strfind(obj.original_text(property_inds(numProps*(i-1)+j,1)),'</'));
                 end
             end
 
@@ -879,16 +881,16 @@ classdef FullLeg < matlab.mixin.SetGet
                 obj.musc_obj{i,1}.muscle_name = lower(musc_names{i}(7:end-7));
                 obj.musc_obj{i,1}.muscle_index = obj.musc_inds(i);
                 %Store the muscle properties in individual muscle objects
-                obj.musc_obj{i}.x_off = property_values(9*i-8);
-                obj.musc_obj{i}.max_force = property_values(9*i-7);
-                obj.musc_obj{i}.ST_max = 1.2*property_values(9*i-7);
-                obj.musc_obj{i}.steepness = property_values(9*i-6);
-                obj.musc_obj{i}.y_off = property_values(9*i-5);
-                obj.musc_obj{i}.RestingLength = property_values(9*i-4);
-                obj.musc_obj{i}.l_width = property_values(9*i-3);
-                obj.musc_obj{i}.Kse = property_values(9*i-2);
-                obj.musc_obj{i}.Kpe = property_values(9*i-1);
-                obj.musc_obj{i}.damping = property_values(9*i);
+                obj.musc_obj{i}.x_off = property_values(numProps*i-9);
+                obj.musc_obj{i}.ST_max = property_values(numProps*i-8);
+                obj.musc_obj{i}.steepness = property_values(numProps*i-7);
+                obj.musc_obj{i}.y_off = property_values(numProps*i-6);
+                obj.musc_obj{i}.RestingLength = property_values(numProps*i-5);
+                obj.musc_obj{i}.l_width = property_values(numProps*i-4);
+                obj.musc_obj{i}.Kse = property_values(numProps*i-3);
+                obj.musc_obj{i}.Kpe = property_values(numProps*i-2);
+                obj.musc_obj{i}.damping = property_values(numProps*i-1);
+                obj.musc_obj{i}.max_force = property_values(numProps*i);
             end
         end
         %% Function: Store Muscle Parameters from Johnson 2011 Paper in the Muscle Objects

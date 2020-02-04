@@ -7,7 +7,7 @@ minimum_effort_run = 0;
 isohip_run = 0;
 
 if nargin < 1
-    sim_file = [fileparts(mfilename('fullpath')),'\Animatlab\','IndividualMuscleStim20191114.asim'];
+    sim_file = [fileparts(mfilename('fullpath')),'\Animatlab\SynergyWalking\SynergyWalking20200109_Standalone.asim'];
 end
 
 meshMatch(sim_file)
@@ -30,11 +30,14 @@ if ispc
         % Post-process data
         data_struct = importdata([fileparts(sim_file),'\JointMotion.txt']);
         col_head_slice = data_struct.colheaders;
+            hipInd = find(contains(col_head_slice,'Hip'),1,'first')-1;
+            kneeInd = find(contains(col_head_slice,'Knee'),1,'first')-1;
+            ankleInd = find(contains(col_head_slice,'Ankle'),1,'first')-1;
         joint_profile = data_struct.data(:,2:5);
             % Determine which columns correspond to which joint. Animatlab doesn't necessarily follow a hip->knee->ankle convention
-            knee = joint_profile(:,2);
-            ankle = joint_profile(:,3);
-            hip = joint_profile(:,4);
+            hip = joint_profile(:,hipInd);
+            knee = joint_profile(:,kneeInd);
+            ankle = joint_profile(:,ankleInd);
         joint_profile = [joint_profile(:,1),hip,knee,ankle];
         % Prepare object instantiation variables
         joints = {[],'LH_HipZ','LH_Knee','LH_AnkleZ'};

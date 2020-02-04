@@ -540,19 +540,19 @@
 <Type>StimulusTension</Type>
 <AssemblyFile>AnimatGUI.dll</AssemblyFile>
 <ClassName>AnimatGUI.DataObjects.Gains.MuscleGains.StimulusTension</ClassName>
-<UseLimits>True</UseLimits>
+<UseLimits>False</UseLimits>
 <LimitsReadOnly>False</LimitsReadOnly>
 <LimitOutputsReadOnly>False</LimitOutputsReadOnly>
 <UseParentIncomingDataType>True</UseParentIncomingDataType>
-<LowerLimitScale Value="-60" Scale="milli" Actual="-0.06"/>
-<UpperLimitScale Value="-40" Scale="milli" Actual="-0.04"/>
+<LowerLimitScale Value="-100" Scale="milli" Actual="-0.1"/>
+<UpperLimitScale Value="0" Scale="milli" Actual="0"/>
 <LowerOutputScale Value="0" Scale="None" Actual="0"/>
-<UpperOutputScale Value="1.87" Scale="None" Actual="1.87"/>
+<UpperOutputScale Value="6" Scale="None" Actual="6"/>
 <IndependentUnits>Membrane Voltage (V)</IndependentUnits>
 <DependentUnits>Contractile Tension (N)</DependentUnits>
 <A Value="-50" Scale="milli" Actual="-0.05"/>
-<B Value="1.87" Scale="None" Actual="1.87"/>
-<C Value="921.04" Scale="None" Actual="921.04"/>
+<B Value="2.24" Scale="None" Actual="2.24"/>
+<C Value="661.66" Scale="None" Actual="661.66"/>
 <D Value="0" Scale="milli" Actual="0"/>
 </StimulusTension>
 <LengthTension>
@@ -560,7 +560,7 @@
 <Type>LengthTension</Type>
 <AssemblyFile>AnimatGUI.dll</AssemblyFile>
 <ClassName>AnimatGUI.DataObjects.Gains.MuscleGains.LengthTension</ClassName>
-<UseLimits>True</UseLimits>
+<UseLimits>False</UseLimits>
 <LimitsReadOnly>False</LimitsReadOnly>
 <LimitOutputsReadOnly>False</LimitOutputsReadOnly>
 <UseParentIncomingDataType>True</UseParentIncomingDataType>
@@ -608,19 +608,19 @@
 <Type>StimulusTension</Type>
 <AssemblyFile>AnimatGUI.dll</AssemblyFile>
 <ClassName>AnimatGUI.DataObjects.Gains.MuscleGains.StimulusTension</ClassName>
-<UseLimits>True</UseLimits>
+<UseLimits>False</UseLimits>
 <LimitsReadOnly>False</LimitsReadOnly>
 <LimitOutputsReadOnly>False</LimitOutputsReadOnly>
 <UseParentIncomingDataType>True</UseParentIncomingDataType>
-<LowerLimitScale Value="-60" Scale="milli" Actual="-0.06"/>
-<UpperLimitScale Value="-40" Scale="milli" Actual="-0.04"/>
+<LowerLimitScale Value="-100" Scale="milli" Actual="-0.1"/>
+<UpperLimitScale Value="0" Scale="milli" Actual="0"/>
 <LowerOutputScale Value="0" Scale="None" Actual="0"/>
-<UpperOutputScale Value="20.3" Scale="None" Actual="20.3"/>
+<UpperOutputScale Value="6" Scale="None" Actual="6"/>
 <IndependentUnits>Membrane Voltage (V)</IndependentUnits>
 <DependentUnits>Contractile Tension (N)</DependentUnits>
 <A Value="-50" Scale="milli" Actual="-0.05"/>
-<B Value="20.3" Scale="None" Actual="20.3"/>
-<C Value="921.04" Scale="None" Actual="921.04"/>
+<B Value="24.36" Scale="None" Actual="24.36"/>
+<C Value="661.66" Scale="None" Actual="661.66"/>
 <D Value="0" Scale="milli" Actual="0"/>
 </StimulusTension>
 <LengthTension>
@@ -628,7 +628,7 @@
 <Type>LengthTension</Type>
 <AssemblyFile>AnimatGUI.dll</AssemblyFile>
 <ClassName>AnimatGUI.DataObjects.Gains.MuscleGains.LengthTension</ClassName>
-<UseLimits>True</UseLimits>
+<UseLimits>False</UseLimits>
 <LimitsReadOnly>False</LimitsReadOnly>
 <LimitOutputsReadOnly>False</LimitOutputsReadOnly>
 <UseParentIncomingDataType>True</UseParentIncomingDataType>
@@ -675,19 +675,19 @@
 <Type>StimulusTension</Type>
 <AssemblyFile>AnimatGUI.dll</AssemblyFile>
 <ClassName>AnimatGUI.DataObjects.Gains.MuscleGains.StimulusTension</ClassName>
-<UseLimits>True</UseLimits>
+<UseLimits>False</UseLimits>
 <LimitsReadOnly>False</LimitsReadOnly>
 <LimitOutputsReadOnly>False</LimitOutputsReadOnly>
 <UseParentIncomingDataType>True</UseParentIncomingDataType>
-<LowerLimitScale Value="-60" Scale="milli" Actual="-0.06"/>
-<UpperLimitScale Value="-40" Scale="milli" Actual="-0.04"/>
+<LowerLimitScale Value="-100" Scale="milli" Actual="-0.1"/>
+<UpperLimitScale Value="0" Scale="milli" Actual="0"/>
 <LowerOutputScale Value="0" Scale="None" Actual="0"/>
-<UpperOutputScale Value="16.62" Scale="None" Actual="16.62"/>
+<UpperOutputScale Value="6" Scale="None" Actual="6"/>
 <IndependentUnits>Membrane Voltage (V)</IndependentUnits>
 <DependentUnits>Contractile Tension (N)</DependentUnits>
 <A Value="-50" Scale="milli" Actual="-0.05"/>
-<B Value="16.62" Scale="None" Actual="16.62"/>
-<C Value="921.04" Scale="None" Actual="921.04"/>
+<B Value="19.94" Scale="None" Actual="19.94"/>
+<C Value="661.66" Scale="None" Actual="661.66"/>
 <D Value="0" Scale="milli" Actual="0"/>
 </StimulusTension>
 <LengthTension>
@@ -695,7 +695,7 @@
 <Type>LengthTension</Type>
 <AssemblyFile>AnimatGUI.dll</AssemblyFile>
 <ClassName>AnimatGUI.DataObjects.Gains.MuscleGains.LengthTension</ClassName>
-<UseLimits>True</UseLimits>
+<UseLimits>False</UseLimits>
 <LimitsReadOnly>False</LimitsReadOnly>
 <LimitOutputsReadOnly>False</LimitOutputsReadOnly>
 <UseParentIncomingDataType>True</UseParentIncomingDataType>
@@ -742,19 +742,19 @@
 <Type>StimulusTension</Type>
 <AssemblyFile>AnimatGUI.dll</AssemblyFile>
 <ClassName>AnimatGUI.DataObjects.Gains.MuscleGains.StimulusTension</ClassName>
-<UseLimits>True</UseLimits>
+<UseLimits>False</UseLimits>
 <LimitsReadOnly>False</LimitsReadOnly>
 <LimitOutputsReadOnly>False</LimitOutputsReadOnly>
 <UseParentIncomingDataType>True</UseParentIncomingDataType>
-<LowerLimitScale Value="-60" Scale="milli" Actual="-0.06"/>
-<UpperLimitScale Value="-40" Scale="milli" Actual="-0.04"/>
+<LowerLimitScale Value="-100" Scale="milli" Actual="-0.1"/>
+<UpperLimitScale Value="0" Scale="milli" Actual="0"/>
 <LowerOutputScale Value="0" Scale="None" Actual="0"/>
-<UpperOutputScale Value="2.79" Scale="None" Actual="2.79"/>
+<UpperOutputScale Value="6" Scale="None" Actual="6"/>
 <IndependentUnits>Membrane Voltage (V)</IndependentUnits>
 <DependentUnits>Contractile Tension (N)</DependentUnits>
 <A Value="-50" Scale="milli" Actual="-0.05"/>
-<B Value="2.79" Scale="None" Actual="2.79"/>
-<C Value="921.04" Scale="None" Actual="921.04"/>
+<B Value="3.35" Scale="None" Actual="3.35"/>
+<C Value="661.66" Scale="None" Actual="661.66"/>
 <D Value="0" Scale="milli" Actual="0"/>
 </StimulusTension>
 <LengthTension>
@@ -762,7 +762,7 @@
 <Type>LengthTension</Type>
 <AssemblyFile>AnimatGUI.dll</AssemblyFile>
 <ClassName>AnimatGUI.DataObjects.Gains.MuscleGains.LengthTension</ClassName>
-<UseLimits>True</UseLimits>
+<UseLimits>False</UseLimits>
 <LimitsReadOnly>False</LimitsReadOnly>
 <LimitOutputsReadOnly>False</LimitOutputsReadOnly>
 <UseParentIncomingDataType>True</UseParentIncomingDataType>
@@ -1016,19 +1016,19 @@
 <Type>StimulusTension</Type>
 <AssemblyFile>AnimatGUI.dll</AssemblyFile>
 <ClassName>AnimatGUI.DataObjects.Gains.MuscleGains.StimulusTension</ClassName>
-<UseLimits>True</UseLimits>
+<UseLimits>False</UseLimits>
 <LimitsReadOnly>False</LimitsReadOnly>
 <LimitOutputsReadOnly>False</LimitOutputsReadOnly>
 <UseParentIncomingDataType>True</UseParentIncomingDataType>
-<LowerLimitScale Value="-60" Scale="milli" Actual="-0.06"/>
-<UpperLimitScale Value="-40" Scale="milli" Actual="-0.04"/>
+<LowerLimitScale Value="-100" Scale="milli" Actual="-0.1"/>
+<UpperLimitScale Value="0" Scale="milli" Actual="0"/>
 <LowerOutputScale Value="0" Scale="None" Actual="0"/>
-<UpperOutputScale Value="8.87" Scale="None" Actual="8.87"/>
+<UpperOutputScale Value="6" Scale="None" Actual="6"/>
 <IndependentUnits>Membrane Voltage (V)</IndependentUnits>
 <DependentUnits>Contractile Tension (N)</DependentUnits>
 <A Value="-50" Scale="milli" Actual="-0.05"/>
-<B Value="8.87" Scale="None" Actual="8.87"/>
-<C Value="921.04" Scale="None" Actual="921.04"/>
+<B Value="10.64" Scale="None" Actual="10.64"/>
+<C Value="661.66" Scale="None" Actual="661.66"/>
 <D Value="0" Scale="milli" Actual="0"/>
 </StimulusTension>
 <LengthTension>
@@ -1036,7 +1036,7 @@
 <Type>LengthTension</Type>
 <AssemblyFile>AnimatGUI.dll</AssemblyFile>
 <ClassName>AnimatGUI.DataObjects.Gains.MuscleGains.LengthTension</ClassName>
-<UseLimits>True</UseLimits>
+<UseLimits>False</UseLimits>
 <LimitsReadOnly>False</LimitsReadOnly>
 <LimitOutputsReadOnly>False</LimitOutputsReadOnly>
 <UseParentIncomingDataType>True</UseParentIncomingDataType>
@@ -1221,19 +1221,19 @@
 <Type>StimulusTension</Type>
 <AssemblyFile>AnimatGUI.dll</AssemblyFile>
 <ClassName>AnimatGUI.DataObjects.Gains.MuscleGains.StimulusTension</ClassName>
-<UseLimits>True</UseLimits>
+<UseLimits>False</UseLimits>
 <LimitsReadOnly>False</LimitsReadOnly>
 <LimitOutputsReadOnly>False</LimitOutputsReadOnly>
 <UseParentIncomingDataType>True</UseParentIncomingDataType>
-<LowerLimitScale Value="-60" Scale="milli" Actual="-0.06"/>
-<UpperLimitScale Value="-40" Scale="milli" Actual="-0.04"/>
+<LowerLimitScale Value="-100" Scale="milli" Actual="-0.1"/>
+<UpperLimitScale Value="0" Scale="milli" Actual="0"/>
 <LowerOutputScale Value="0" Scale="None" Actual="0"/>
-<UpperOutputScale Value="13.3" Scale="None" Actual="13.3"/>
+<UpperOutputScale Value="6" Scale="None" Actual="6"/>
 <IndependentUnits>Membrane Voltage (V)</IndependentUnits>
 <DependentUnits>Contractile Tension (N)</DependentUnits>
 <A Value="-50" Scale="milli" Actual="-0.05"/>
-<B Value="13.3" Scale="None" Actual="13.3"/>
-<C Value="921.04" Scale="None" Actual="921.04"/>
+<B Value="15.96" Scale="None" Actual="15.96"/>
+<C Value="661.66" Scale="None" Actual="661.66"/>
 <D Value="0" Scale="milli" Actual="0"/>
 </StimulusTension>
 <LengthTension>
@@ -1241,7 +1241,7 @@
 <Type>LengthTension</Type>
 <AssemblyFile>AnimatGUI.dll</AssemblyFile>
 <ClassName>AnimatGUI.DataObjects.Gains.MuscleGains.LengthTension</ClassName>
-<UseLimits>True</UseLimits>
+<UseLimits>False</UseLimits>
 <LimitsReadOnly>False</LimitsReadOnly>
 <LimitOutputsReadOnly>False</LimitOutputsReadOnly>
 <UseParentIncomingDataType>True</UseParentIncomingDataType>
@@ -1495,19 +1495,19 @@
 <Type>StimulusTension</Type>
 <AssemblyFile>AnimatGUI.dll</AssemblyFile>
 <ClassName>AnimatGUI.DataObjects.Gains.MuscleGains.StimulusTension</ClassName>
-<UseLimits>True</UseLimits>
+<UseLimits>False</UseLimits>
 <LimitsReadOnly>False</LimitsReadOnly>
 <LimitOutputsReadOnly>False</LimitOutputsReadOnly>
 <UseParentIncomingDataType>True</UseParentIncomingDataType>
-<LowerLimitScale Value="-60" Scale="milli" Actual="-0.06"/>
-<UpperLimitScale Value="-40" Scale="milli" Actual="-0.04"/>
+<LowerLimitScale Value="-100" Scale="milli" Actual="-0.1"/>
+<UpperLimitScale Value="0" Scale="milli" Actual="0"/>
 <LowerOutputScale Value="0" Scale="None" Actual="0"/>
-<UpperOutputScale Value="8.17" Scale="None" Actual="8.17"/>
+<UpperOutputScale Value="6" Scale="None" Actual="6"/>
 <IndependentUnits>Membrane Voltage (V)</IndependentUnits>
 <DependentUnits>Contractile Tension (N)</DependentUnits>
 <A Value="-50" Scale="milli" Actual="-0.05"/>
-<B Value="8.17" Scale="None" Actual="8.17"/>
-<C Value="921.04" Scale="None" Actual="921.04"/>
+<B Value="9.8" Scale="None" Actual="9.8"/>
+<C Value="661.66" Scale="None" Actual="661.66"/>
 <D Value="0" Scale="milli" Actual="0"/>
 </StimulusTension>
 <LengthTension>
@@ -1515,7 +1515,7 @@
 <Type>LengthTension</Type>
 <AssemblyFile>AnimatGUI.dll</AssemblyFile>
 <ClassName>AnimatGUI.DataObjects.Gains.MuscleGains.LengthTension</ClassName>
-<UseLimits>True</UseLimits>
+<UseLimits>False</UseLimits>
 <LimitsReadOnly>False</LimitsReadOnly>
 <LimitOutputsReadOnly>False</LimitOutputsReadOnly>
 <UseParentIncomingDataType>True</UseParentIncomingDataType>
@@ -1562,19 +1562,19 @@
 <Type>StimulusTension</Type>
 <AssemblyFile>AnimatGUI.dll</AssemblyFile>
 <ClassName>AnimatGUI.DataObjects.Gains.MuscleGains.StimulusTension</ClassName>
-<UseLimits>True</UseLimits>
+<UseLimits>False</UseLimits>
 <LimitsReadOnly>False</LimitsReadOnly>
 <LimitOutputsReadOnly>False</LimitOutputsReadOnly>
 <UseParentIncomingDataType>True</UseParentIncomingDataType>
-<LowerLimitScale Value="-60" Scale="milli" Actual="-0.06"/>
-<UpperLimitScale Value="-40" Scale="milli" Actual="-0.04"/>
+<LowerLimitScale Value="-100" Scale="milli" Actual="-0.1"/>
+<UpperLimitScale Value="0" Scale="milli" Actual="0"/>
 <LowerOutputScale Value="0" Scale="None" Actual="0"/>
-<UpperOutputScale Value="7" Scale="None" Actual="7"/>
+<UpperOutputScale Value="6" Scale="None" Actual="6"/>
 <IndependentUnits>Membrane Voltage (V)</IndependentUnits>
 <DependentUnits>Contractile Tension (N)</DependentUnits>
 <A Value="-50" Scale="milli" Actual="-0.05"/>
-<B Value="7" Scale="None" Actual="7"/>
-<C Value="921.04" Scale="None" Actual="921.04"/>
+<B Value="8.4" Scale="None" Actual="8.4"/>
+<C Value="661.66" Scale="None" Actual="661.66"/>
 <D Value="0" Scale="milli" Actual="0"/>
 </StimulusTension>
 <LengthTension>
@@ -1582,7 +1582,7 @@
 <Type>LengthTension</Type>
 <AssemblyFile>AnimatGUI.dll</AssemblyFile>
 <ClassName>AnimatGUI.DataObjects.Gains.MuscleGains.LengthTension</ClassName>
-<UseLimits>True</UseLimits>
+<UseLimits>False</UseLimits>
 <LimitsReadOnly>False</LimitsReadOnly>
 <LimitOutputsReadOnly>False</LimitOutputsReadOnly>
 <UseParentIncomingDataType>True</UseParentIncomingDataType>
@@ -1629,19 +1629,19 @@
 <Type>StimulusTension</Type>
 <AssemblyFile>AnimatGUI.dll</AssemblyFile>
 <ClassName>AnimatGUI.DataObjects.Gains.MuscleGains.StimulusTension</ClassName>
-<UseLimits>True</UseLimits>
+<UseLimits>False</UseLimits>
 <LimitsReadOnly>False</LimitsReadOnly>
 <LimitOutputsReadOnly>False</LimitOutputsReadOnly>
 <UseParentIncomingDataType>True</UseParentIncomingDataType>
-<LowerLimitScale Value="-60" Scale="milli" Actual="-0.06"/>
-<UpperLimitScale Value="-40" Scale="milli" Actual="-0.04"/>
+<LowerLimitScale Value="-100" Scale="milli" Actual="-0.1"/>
+<UpperLimitScale Value="0" Scale="milli" Actual="0"/>
 <LowerOutputScale Value="0" Scale="None" Actual="0"/>
-<UpperOutputScale Value="12.91" Scale="None" Actual="12.91"/>
+<UpperOutputScale Value="6" Scale="None" Actual="6"/>
 <IndependentUnits>Membrane Voltage (V)</IndependentUnits>
 <DependentUnits>Contractile Tension (N)</DependentUnits>
 <A Value="-50" Scale="milli" Actual="-0.05"/>
-<B Value="12.91" Scale="None" Actual="12.91"/>
-<C Value="921.04" Scale="None" Actual="921.04"/>
+<B Value="15.49" Scale="None" Actual="15.49"/>
+<C Value="661.66" Scale="None" Actual="661.66"/>
 <D Value="0" Scale="milli" Actual="0"/>
 </StimulusTension>
 <LengthTension>
@@ -1649,7 +1649,7 @@
 <Type>LengthTension</Type>
 <AssemblyFile>AnimatGUI.dll</AssemblyFile>
 <ClassName>AnimatGUI.DataObjects.Gains.MuscleGains.LengthTension</ClassName>
-<UseLimits>True</UseLimits>
+<UseLimits>False</UseLimits>
 <LimitsReadOnly>False</LimitsReadOnly>
 <LimitOutputsReadOnly>False</LimitOutputsReadOnly>
 <UseParentIncomingDataType>True</UseParentIncomingDataType>
@@ -1696,19 +1696,19 @@
 <Type>StimulusTension</Type>
 <AssemblyFile>AnimatGUI.dll</AssemblyFile>
 <ClassName>AnimatGUI.DataObjects.Gains.MuscleGains.StimulusTension</ClassName>
-<UseLimits>True</UseLimits>
+<UseLimits>False</UseLimits>
 <LimitsReadOnly>False</LimitsReadOnly>
 <LimitOutputsReadOnly>False</LimitOutputsReadOnly>
 <UseParentIncomingDataType>True</UseParentIncomingDataType>
-<LowerLimitScale Value="-60" Scale="milli" Actual="-0.06"/>
-<UpperLimitScale Value="-40" Scale="milli" Actual="-0.04"/>
+<LowerLimitScale Value="-100" Scale="milli" Actual="-0.1"/>
+<UpperLimitScale Value="0" Scale="milli" Actual="0"/>
 <LowerOutputScale Value="0" Scale="None" Actual="0"/>
-<UpperOutputScale Value="20.06" Scale="None" Actual="20.06"/>
+<UpperOutputScale Value="6" Scale="None" Actual="6"/>
 <IndependentUnits>Membrane Voltage (V)</IndependentUnits>
 <DependentUnits>Contractile Tension (N)</DependentUnits>
 <A Value="-50" Scale="milli" Actual="-0.05"/>
-<B Value="20.06" Scale="None" Actual="20.06"/>
-<C Value="921.04" Scale="None" Actual="921.04"/>
+<B Value="24.07" Scale="None" Actual="24.07"/>
+<C Value="661.66" Scale="None" Actual="661.66"/>
 <D Value="0" Scale="milli" Actual="0"/>
 </StimulusTension>
 <LengthTension>
@@ -1716,7 +1716,7 @@
 <Type>LengthTension</Type>
 <AssemblyFile>AnimatGUI.dll</AssemblyFile>
 <ClassName>AnimatGUI.DataObjects.Gains.MuscleGains.LengthTension</ClassName>
-<UseLimits>True</UseLimits>
+<UseLimits>False</UseLimits>
 <LimitsReadOnly>False</LimitsReadOnly>
 <LimitOutputsReadOnly>False</LimitOutputsReadOnly>
 <UseParentIncomingDataType>True</UseParentIncomingDataType>
@@ -1971,19 +1971,19 @@
 <Type>StimulusTension</Type>
 <AssemblyFile>AnimatGUI.dll</AssemblyFile>
 <ClassName>AnimatGUI.DataObjects.Gains.MuscleGains.StimulusTension</ClassName>
-<UseLimits>True</UseLimits>
+<UseLimits>False</UseLimits>
 <LimitsReadOnly>False</LimitsReadOnly>
 <LimitOutputsReadOnly>False</LimitOutputsReadOnly>
 <UseParentIncomingDataType>True</UseParentIncomingDataType>
 <LowerLimitScale Value="-60" Scale="milli" Actual="-0.06"/>
 <UpperLimitScale Value="-40" Scale="milli" Actual="-0.04"/>
-<LowerOutputScale Value="0" Scale="None" Actual="0"/>
-<UpperOutputScale Value="22.47" Scale="None" Actual="22.47"/>
+<LowerOutputScale Value="20" Scale="None" Actual="20"/>
+<UpperOutputScale Value="20" Scale="None" Actual="20"/>
 <IndependentUnits>Membrane Voltage (V)</IndependentUnits>
 <DependentUnits>Contractile Tension (N)</DependentUnits>
 <A Value="-50" Scale="milli" Actual="-0.05"/>
-<B Value="22.47" Scale="None" Actual="22.47"/>
-<C Value="921.04" Scale="None" Actual="921.04"/>
+<B Value="26.96" Scale="None" Actual="26.96"/>
+<C Value="661.66" Scale="None" Actual="661.66"/>
 <D Value="0" Scale="milli" Actual="0"/>
 </StimulusTension>
 <LengthTension>
@@ -2178,19 +2178,19 @@
 <Type>StimulusTension</Type>
 <AssemblyFile>AnimatGUI.dll</AssemblyFile>
 <ClassName>AnimatGUI.DataObjects.Gains.MuscleGains.StimulusTension</ClassName>
-<UseLimits>True</UseLimits>
+<UseLimits>False</UseLimits>
 <LimitsReadOnly>False</LimitsReadOnly>
 <LimitOutputsReadOnly>False</LimitOutputsReadOnly>
 <UseParentIncomingDataType>True</UseParentIncomingDataType>
-<LowerLimitScale Value="-60" Scale="milli" Actual="-0.06"/>
-<UpperLimitScale Value="-40" Scale="milli" Actual="-0.04"/>
+<LowerLimitScale Value="-100" Scale="milli" Actual="-0.1"/>
+<UpperLimitScale Value="0" Scale="milli" Actual="0"/>
 <LowerOutputScale Value="0" Scale="None" Actual="0"/>
-<UpperOutputScale Value="29.66" Scale="None" Actual="29.66"/>
+<UpperOutputScale Value="6" Scale="None" Actual="6"/>
 <IndependentUnits>Membrane Voltage (V)</IndependentUnits>
 <DependentUnits>Contractile Tension (N)</DependentUnits>
 <A Value="-50" Scale="milli" Actual="-0.05"/>
-<B Value="29.66" Scale="None" Actual="29.66"/>
-<C Value="921.04" Scale="None" Actual="921.04"/>
+<B Value="35.58" Scale="None" Actual="35.58"/>
+<C Value="661.66" Scale="None" Actual="661.66"/>
 <D Value="0" Scale="milli" Actual="0"/>
 </StimulusTension>
 <LengthTension>
@@ -2198,7 +2198,7 @@
 <Type>LengthTension</Type>
 <AssemblyFile>AnimatGUI.dll</AssemblyFile>
 <ClassName>AnimatGUI.DataObjects.Gains.MuscleGains.LengthTension</ClassName>
-<UseLimits>True</UseLimits>
+<UseLimits>False</UseLimits>
 <LimitsReadOnly>False</LimitsReadOnly>
 <LimitOutputsReadOnly>False</LimitOutputsReadOnly>
 <UseParentIncomingDataType>True</UseParentIncomingDataType>
@@ -2384,19 +2384,19 @@
 <Type>StimulusTension</Type>
 <AssemblyFile>AnimatGUI.dll</AssemblyFile>
 <ClassName>AnimatGUI.DataObjects.Gains.MuscleGains.StimulusTension</ClassName>
-<UseLimits>True</UseLimits>
+<UseLimits>False</UseLimits>
 <LimitsReadOnly>False</LimitsReadOnly>
 <LimitOutputsReadOnly>False</LimitOutputsReadOnly>
 <UseParentIncomingDataType>True</UseParentIncomingDataType>
-<LowerLimitScale Value="-60" Scale="milli" Actual="-0.06"/>
-<UpperLimitScale Value="-40" Scale="milli" Actual="-0.04"/>
+<LowerLimitScale Value="-100" Scale="milli" Actual="-0.1"/>
+<UpperLimitScale Value="0" Scale="milli" Actual="0"/>
 <LowerOutputScale Value="0" Scale="None" Actual="0"/>
-<UpperOutputScale Value="0.67" Scale="None" Actual="0.67"/>
+<UpperOutputScale Value="6" Scale="None" Actual="6"/>
 <IndependentUnits>Membrane Voltage (V)</IndependentUnits>
 <DependentUnits>Contractile Tension (N)</DependentUnits>
 <A Value="-50" Scale="milli" Actual="-0.05"/>
-<B Value="0.67" Scale="None" Actual="0.67"/>
-<C Value="921.04" Scale="None" Actual="921.04"/>
+<B Value="0.8" Scale="None" Actual="0.8"/>
+<C Value="661.66" Scale="None" Actual="661.66"/>
 <D Value="0" Scale="milli" Actual="0"/>
 </StimulusTension>
 <LengthTension>
@@ -2404,7 +2404,7 @@
 <Type>LengthTension</Type>
 <AssemblyFile>AnimatGUI.dll</AssemblyFile>
 <ClassName>AnimatGUI.DataObjects.Gains.MuscleGains.LengthTension</ClassName>
-<UseLimits>True</UseLimits>
+<UseLimits>False</UseLimits>
 <LimitsReadOnly>False</LimitsReadOnly>
 <LimitOutputsReadOnly>False</LimitOutputsReadOnly>
 <UseParentIncomingDataType>True</UseParentIncomingDataType>
@@ -2660,19 +2660,19 @@
 <Type>StimulusTension</Type>
 <AssemblyFile>AnimatGUI.dll</AssemblyFile>
 <ClassName>AnimatGUI.DataObjects.Gains.MuscleGains.StimulusTension</ClassName>
-<UseLimits>True</UseLimits>
+<UseLimits>False</UseLimits>
 <LimitsReadOnly>False</LimitsReadOnly>
 <LimitOutputsReadOnly>False</LimitOutputsReadOnly>
 <UseParentIncomingDataType>True</UseParentIncomingDataType>
-<LowerLimitScale Value="-60" Scale="milli" Actual="-0.06"/>
-<UpperLimitScale Value="-40" Scale="milli" Actual="-0.04"/>
+<LowerLimitScale Value="-100" Scale="milli" Actual="-0.1"/>
+<UpperLimitScale Value="0" Scale="milli" Actual="0"/>
 <LowerOutputScale Value="0" Scale="None" Actual="0"/>
-<UpperOutputScale Value="2.5" Scale="None" Actual="2.5"/>
+<UpperOutputScale Value="6" Scale="None" Actual="6"/>
 <IndependentUnits>Membrane Voltage (V)</IndependentUnits>
 <DependentUnits>Contractile Tension (N)</DependentUnits>
 <A Value="-50" Scale="milli" Actual="-0.05"/>
-<B Value="2.5" Scale="None" Actual="2.5"/>
-<C Value="921.04" Scale="None" Actual="921.04"/>
+<B Value="3" Scale="None" Actual="3"/>
+<C Value="661.66" Scale="None" Actual="661.66"/>
 <D Value="0" Scale="milli" Actual="0"/>
 </StimulusTension>
 <LengthTension>
@@ -2680,7 +2680,7 @@
 <Type>LengthTension</Type>
 <AssemblyFile>AnimatGUI.dll</AssemblyFile>
 <ClassName>AnimatGUI.DataObjects.Gains.MuscleGains.LengthTension</ClassName>
-<UseLimits>True</UseLimits>
+<UseLimits>False</UseLimits>
 <LimitsReadOnly>False</LimitsReadOnly>
 <LimitOutputsReadOnly>False</LimitOutputsReadOnly>
 <UseParentIncomingDataType>True</UseParentIncomingDataType>
@@ -2867,19 +2867,19 @@
 <Type>StimulusTension</Type>
 <AssemblyFile>AnimatGUI.dll</AssemblyFile>
 <ClassName>AnimatGUI.DataObjects.Gains.MuscleGains.StimulusTension</ClassName>
-<UseLimits>True</UseLimits>
+<UseLimits>False</UseLimits>
 <LimitsReadOnly>False</LimitsReadOnly>
 <LimitOutputsReadOnly>False</LimitOutputsReadOnly>
 <UseParentIncomingDataType>True</UseParentIncomingDataType>
-<LowerLimitScale Value="-60" Scale="milli" Actual="-0.06"/>
-<UpperLimitScale Value="-40" Scale="milli" Actual="-0.04"/>
+<LowerLimitScale Value="-100" Scale="milli" Actual="-0.1"/>
+<UpperLimitScale Value="0" Scale="milli" Actual="0"/>
 <LowerOutputScale Value="0" Scale="None" Actual="0"/>
-<UpperOutputScale Value="3.7" Scale="None" Actual="3.7"/>
+<UpperOutputScale Value="6" Scale="None" Actual="6"/>
 <IndependentUnits>Membrane Voltage (V)</IndependentUnits>
 <DependentUnits>Contractile Tension (N)</DependentUnits>
 <A Value="-50" Scale="milli" Actual="-0.05"/>
-<B Value="3.7" Scale="None" Actual="3.7"/>
-<C Value="921.04" Scale="None" Actual="921.04"/>
+<B Value="4.44" Scale="None" Actual="4.44"/>
+<C Value="661.66" Scale="None" Actual="661.66"/>
 <D Value="0" Scale="milli" Actual="0"/>
 </StimulusTension>
 <LengthTension>
@@ -2887,7 +2887,7 @@
 <Type>LengthTension</Type>
 <AssemblyFile>AnimatGUI.dll</AssemblyFile>
 <ClassName>AnimatGUI.DataObjects.Gains.MuscleGains.LengthTension</ClassName>
-<UseLimits>True</UseLimits>
+<UseLimits>False</UseLimits>
 <LimitsReadOnly>False</LimitsReadOnly>
 <LimitOutputsReadOnly>False</LimitOutputsReadOnly>
 <UseParentIncomingDataType>True</UseParentIncomingDataType>
@@ -3131,19 +3131,19 @@
 <Type>StimulusTension</Type>
 <AssemblyFile>AnimatGUI.dll</AssemblyFile>
 <ClassName>AnimatGUI.DataObjects.Gains.MuscleGains.StimulusTension</ClassName>
-<UseLimits>True</UseLimits>
+<UseLimits>False</UseLimits>
 <LimitsReadOnly>False</LimitsReadOnly>
 <LimitOutputsReadOnly>False</LimitOutputsReadOnly>
 <UseParentIncomingDataType>True</UseParentIncomingDataType>
-<LowerLimitScale Value="-60" Scale="milli" Actual="-0.06"/>
-<UpperLimitScale Value="-40" Scale="milli" Actual="-0.04"/>
+<LowerLimitScale Value="-100" Scale="milli" Actual="-0.1"/>
+<UpperLimitScale Value="0" Scale="milli" Actual="0"/>
 <LowerOutputScale Value="0" Scale="None" Actual="0"/>
-<UpperOutputScale Value="26.77" Scale="None" Actual="26.77"/>
+<UpperOutputScale Value="6" Scale="None" Actual="6"/>
 <IndependentUnits>Membrane Voltage (V)</IndependentUnits>
 <DependentUnits>Contractile Tension (N)</DependentUnits>
 <A Value="-50" Scale="milli" Actual="-0.05"/>
-<B Value="26.77" Scale="None" Actual="26.77"/>
-<C Value="921.04" Scale="None" Actual="921.04"/>
+<B Value="32.11" Scale="None" Actual="32.11"/>
+<C Value="661.66" Scale="None" Actual="661.66"/>
 <D Value="0" Scale="milli" Actual="0"/>
 </StimulusTension>
 <LengthTension>
@@ -3151,7 +3151,7 @@
 <Type>LengthTension</Type>
 <AssemblyFile>AnimatGUI.dll</AssemblyFile>
 <ClassName>AnimatGUI.DataObjects.Gains.MuscleGains.LengthTension</ClassName>
-<UseLimits>True</UseLimits>
+<UseLimits>False</UseLimits>
 <LimitsReadOnly>False</LimitsReadOnly>
 <LimitOutputsReadOnly>False</LimitOutputsReadOnly>
 <UseParentIncomingDataType>True</UseParentIncomingDataType>
@@ -3545,19 +3545,19 @@
 <Type>StimulusTension</Type>
 <AssemblyFile>AnimatGUI.dll</AssemblyFile>
 <ClassName>AnimatGUI.DataObjects.Gains.MuscleGains.StimulusTension</ClassName>
-<UseLimits>True</UseLimits>
+<UseLimits>False</UseLimits>
 <LimitsReadOnly>False</LimitsReadOnly>
 <LimitOutputsReadOnly>False</LimitOutputsReadOnly>
 <UseParentIncomingDataType>True</UseParentIncomingDataType>
-<LowerLimitScale Value="-60" Scale="milli" Actual="-0.06"/>
-<UpperLimitScale Value="-40" Scale="milli" Actual="-0.04"/>
+<LowerLimitScale Value="-100" Scale="milli" Actual="-0.1"/>
+<UpperLimitScale Value="0" Scale="milli" Actual="0"/>
 <LowerOutputScale Value="0" Scale="None" Actual="0"/>
-<UpperOutputScale Value="20.96" Scale="None" Actual="20.96"/>
+<UpperOutputScale Value="6" Scale="None" Actual="6"/>
 <IndependentUnits>Membrane Voltage (V)</IndependentUnits>
 <DependentUnits>Contractile Tension (N)</DependentUnits>
 <A Value="-50" Scale="milli" Actual="-0.05"/>
-<B Value="20.96" Scale="None" Actual="20.96"/>
-<C Value="921.04" Scale="None" Actual="921.04"/>
+<B Value="25.15" Scale="None" Actual="25.15"/>
+<C Value="661.66" Scale="None" Actual="661.66"/>
 <D Value="0" Scale="milli" Actual="0"/>
 </StimulusTension>
 <LengthTension>
@@ -3565,7 +3565,7 @@
 <Type>LengthTension</Type>
 <AssemblyFile>AnimatGUI.dll</AssemblyFile>
 <ClassName>AnimatGUI.DataObjects.Gains.MuscleGains.LengthTension</ClassName>
-<UseLimits>True</UseLimits>
+<UseLimits>False</UseLimits>
 <LimitsReadOnly>False</LimitsReadOnly>
 <LimitOutputsReadOnly>False</LimitOutputsReadOnly>
 <UseParentIncomingDataType>True</UseParentIncomingDataType>
@@ -3959,19 +3959,19 @@
 <Type>StimulusTension</Type>
 <AssemblyFile>AnimatGUI.dll</AssemblyFile>
 <ClassName>AnimatGUI.DataObjects.Gains.MuscleGains.StimulusTension</ClassName>
-<UseLimits>True</UseLimits>
+<UseLimits>False</UseLimits>
 <LimitsReadOnly>False</LimitsReadOnly>
 <LimitOutputsReadOnly>False</LimitOutputsReadOnly>
 <UseParentIncomingDataType>True</UseParentIncomingDataType>
-<LowerLimitScale Value="-60" Scale="milli" Actual="-0.06"/>
-<UpperLimitScale Value="-40" Scale="milli" Actual="-0.04"/>
+<LowerLimitScale Value="-100" Scale="milli" Actual="-0.1"/>
+<UpperLimitScale Value="0" Scale="milli" Actual="0"/>
 <LowerOutputScale Value="0" Scale="None" Actual="0"/>
-<UpperOutputScale Value="4.59" Scale="None" Actual="4.59"/>
+<UpperOutputScale Value="6" Scale="None" Actual="6"/>
 <IndependentUnits>Membrane Voltage (V)</IndependentUnits>
 <DependentUnits>Contractile Tension (N)</DependentUnits>
 <A Value="-50" Scale="milli" Actual="-0.05"/>
-<B Value="4.59" Scale="None" Actual="4.59"/>
-<C Value="921.04" Scale="None" Actual="921.04"/>
+<B Value="5.51" Scale="None" Actual="5.51"/>
+<C Value="661.66" Scale="None" Actual="661.66"/>
 <D Value="0" Scale="milli" Actual="0"/>
 </StimulusTension>
 <LengthTension>
@@ -3979,7 +3979,7 @@
 <Type>LengthTension</Type>
 <AssemblyFile>AnimatGUI.dll</AssemblyFile>
 <ClassName>AnimatGUI.DataObjects.Gains.MuscleGains.LengthTension</ClassName>
-<UseLimits>True</UseLimits>
+<UseLimits>False</UseLimits>
 <LimitsReadOnly>False</LimitsReadOnly>
 <LimitOutputsReadOnly>False</LimitOutputsReadOnly>
 <UseParentIncomingDataType>True</UseParentIncomingDataType>
@@ -4845,19 +4845,19 @@
 <Type>StimulusTension</Type>
 <AssemblyFile>AnimatGUI.dll</AssemblyFile>
 <ClassName>AnimatGUI.DataObjects.Gains.MuscleGains.StimulusTension</ClassName>
-<UseLimits>True</UseLimits>
+<UseLimits>False</UseLimits>
 <LimitsReadOnly>False</LimitsReadOnly>
 <LimitOutputsReadOnly>False</LimitOutputsReadOnly>
 <UseParentIncomingDataType>True</UseParentIncomingDataType>
-<LowerLimitScale Value="-60" Scale="milli" Actual="-0.06"/>
-<UpperLimitScale Value="-40" Scale="milli" Actual="-0.04"/>
+<LowerLimitScale Value="-100" Scale="milli" Actual="-0.1"/>
+<UpperLimitScale Value="0" Scale="milli" Actual="0"/>
 <LowerOutputScale Value="0" Scale="None" Actual="0"/>
-<UpperOutputScale Value="0.79" Scale="None" Actual="0.79"/>
+<UpperOutputScale Value="6" Scale="None" Actual="6"/>
 <IndependentUnits>Membrane Voltage (V)</IndependentUnits>
 <DependentUnits>Contractile Tension (N)</DependentUnits>
 <A Value="-50" Scale="milli" Actual="-0.05"/>
-<B Value="0.79" Scale="None" Actual="0.79"/>
-<C Value="921.04" Scale="None" Actual="921.04"/>
+<B Value="0.95" Scale="None" Actual="0.95"/>
+<C Value="661.66" Scale="None" Actual="661.66"/>
 <D Value="0" Scale="milli" Actual="0"/>
 </StimulusTension>
 <LengthTension>
@@ -4865,7 +4865,7 @@
 <Type>LengthTension</Type>
 <AssemblyFile>AnimatGUI.dll</AssemblyFile>
 <ClassName>AnimatGUI.DataObjects.Gains.MuscleGains.LengthTension</ClassName>
-<UseLimits>True</UseLimits>
+<UseLimits>False</UseLimits>
 <LimitsReadOnly>False</LimitsReadOnly>
 <LimitOutputsReadOnly>False</LimitOutputsReadOnly>
 <UseParentIncomingDataType>True</UseParentIncomingDataType>
@@ -5333,19 +5333,19 @@
 <Type>StimulusTension</Type>
 <AssemblyFile>AnimatGUI.dll</AssemblyFile>
 <ClassName>AnimatGUI.DataObjects.Gains.MuscleGains.StimulusTension</ClassName>
-<UseLimits>True</UseLimits>
+<UseLimits>False</UseLimits>
 <LimitsReadOnly>False</LimitsReadOnly>
 <LimitOutputsReadOnly>False</LimitOutputsReadOnly>
 <UseParentIncomingDataType>True</UseParentIncomingDataType>
-<LowerLimitScale Value="-60" Scale="milli" Actual="-0.06"/>
-<UpperLimitScale Value="-40" Scale="milli" Actual="-0.04"/>
+<LowerLimitScale Value="-100" Scale="milli" Actual="-0.1"/>
+<UpperLimitScale Value="0" Scale="milli" Actual="0"/>
 <LowerOutputScale Value="0" Scale="None" Actual="0"/>
-<UpperOutputScale Value="3.98" Scale="None" Actual="3.98"/>
+<UpperOutputScale Value="6" Scale="None" Actual="6"/>
 <IndependentUnits>Membrane Voltage (V)</IndependentUnits>
 <DependentUnits>Contractile Tension (N)</DependentUnits>
 <A Value="-50" Scale="milli" Actual="-0.05"/>
-<B Value="3.98" Scale="None" Actual="3.98"/>
-<C Value="921.04" Scale="None" Actual="921.04"/>
+<B Value="4.78" Scale="None" Actual="4.78"/>
+<C Value="661.66" Scale="None" Actual="661.66"/>
 <D Value="0" Scale="milli" Actual="0"/>
 </StimulusTension>
 <LengthTension>
@@ -5353,7 +5353,7 @@
 <Type>LengthTension</Type>
 <AssemblyFile>AnimatGUI.dll</AssemblyFile>
 <ClassName>AnimatGUI.DataObjects.Gains.MuscleGains.LengthTension</ClassName>
-<UseLimits>True</UseLimits>
+<UseLimits>False</UseLimits>
 <LimitsReadOnly>False</LimitsReadOnly>
 <LimitOutputsReadOnly>False</LimitOutputsReadOnly>
 <UseParentIncomingDataType>True</UseParentIncomingDataType>
@@ -5472,19 +5472,19 @@
 <Type>StimulusTension</Type>
 <AssemblyFile>AnimatGUI.dll</AssemblyFile>
 <ClassName>AnimatGUI.DataObjects.Gains.MuscleGains.StimulusTension</ClassName>
-<UseLimits>True</UseLimits>
+<UseLimits>False</UseLimits>
 <LimitsReadOnly>False</LimitsReadOnly>
 <LimitOutputsReadOnly>False</LimitOutputsReadOnly>
 <UseParentIncomingDataType>True</UseParentIncomingDataType>
-<LowerLimitScale Value="-60" Scale="milli" Actual="-0.06"/>
-<UpperLimitScale Value="-40" Scale="milli" Actual="-0.04"/>
+<LowerLimitScale Value="-100" Scale="milli" Actual="-0.1"/>
+<UpperLimitScale Value="0" Scale="milli" Actual="0"/>
 <LowerOutputScale Value="0" Scale="None" Actual="0"/>
-<UpperOutputScale Value="7.13" Scale="None" Actual="7.13"/>
+<UpperOutputScale Value="6" Scale="None" Actual="6"/>
 <IndependentUnits>Membrane Voltage (V)</IndependentUnits>
 <DependentUnits>Contractile Tension (N)</DependentUnits>
 <A Value="-50" Scale="milli" Actual="-0.05"/>
-<B Value="7.13" Scale="None" Actual="7.13"/>
-<C Value="921.04" Scale="None" Actual="921.04"/>
+<B Value="8.56" Scale="None" Actual="8.56"/>
+<C Value="661.66" Scale="None" Actual="661.66"/>
 <D Value="0" Scale="milli" Actual="0"/>
 </StimulusTension>
 <LengthTension>
@@ -5492,7 +5492,7 @@
 <Type>LengthTension</Type>
 <AssemblyFile>AnimatGUI.dll</AssemblyFile>
 <ClassName>AnimatGUI.DataObjects.Gains.MuscleGains.LengthTension</ClassName>
-<UseLimits>True</UseLimits>
+<UseLimits>False</UseLimits>
 <LimitsReadOnly>False</LimitsReadOnly>
 <LimitOutputsReadOnly>False</LimitOutputsReadOnly>
 <UseParentIncomingDataType>True</UseParentIncomingDataType>
@@ -5817,19 +5817,19 @@
 <Type>StimulusTension</Type>
 <AssemblyFile>AnimatGUI.dll</AssemblyFile>
 <ClassName>AnimatGUI.DataObjects.Gains.MuscleGains.StimulusTension</ClassName>
-<UseLimits>True</UseLimits>
+<UseLimits>False</UseLimits>
 <LimitsReadOnly>False</LimitsReadOnly>
 <LimitOutputsReadOnly>False</LimitOutputsReadOnly>
 <UseParentIncomingDataType>True</UseParentIncomingDataType>
-<LowerLimitScale Value="-60" Scale="milli" Actual="-0.06"/>
-<UpperLimitScale Value="-40" Scale="milli" Actual="-0.04"/>
+<LowerLimitScale Value="-100" Scale="milli" Actual="-0.1"/>
+<UpperLimitScale Value="0" Scale="milli" Actual="0"/>
 <LowerOutputScale Value="0" Scale="None" Actual="0"/>
-<UpperOutputScale Value="15.49" Scale="None" Actual="15.49"/>
+<UpperOutputScale Value="6" Scale="None" Actual="6"/>
 <IndependentUnits>Membrane Voltage (V)</IndependentUnits>
 <DependentUnits>Contractile Tension (N)</DependentUnits>
 <A Value="-50" Scale="milli" Actual="-0.05"/>
-<B Value="15.49" Scale="None" Actual="15.49"/>
-<C Value="921.04" Scale="None" Actual="921.04"/>
+<B Value="18.59" Scale="None" Actual="18.59"/>
+<C Value="661.66" Scale="None" Actual="661.66"/>
 <D Value="0" Scale="milli" Actual="0"/>
 </StimulusTension>
 <LengthTension>
@@ -5837,7 +5837,7 @@
 <Type>LengthTension</Type>
 <AssemblyFile>AnimatGUI.dll</AssemblyFile>
 <ClassName>AnimatGUI.DataObjects.Gains.MuscleGains.LengthTension</ClassName>
-<UseLimits>True</UseLimits>
+<UseLimits>False</UseLimits>
 <LimitsReadOnly>False</LimitsReadOnly>
 <LimitOutputsReadOnly>False</LimitOutputsReadOnly>
 <UseParentIncomingDataType>True</UseParentIncomingDataType>
@@ -7535,7 +7535,7 @@
 <Shininess>64</Shininess>
 <Texture/>
 <LocalPosition>
-<X Value="-0.83" Scale="milli" Actual="-0.00083"/>
+<X Value="1.082" Scale="milli" Actual="0.001082"/>
 <Y Value="-40.429" Scale="milli" Actual="-0.040429"/>
 <Z Value="-9.276" Scale="milli" Actual="-0.009276"/>
 </LocalPosition>
@@ -7544,7 +7544,7 @@
 <Y Value="0" Scale="None" Actual="0"/>
 <Z Value="0" Scale="None" Actual="0"/>
 </Rotation>
-<LocalMatrix>1,1.38778e-017,1.73472e-017,0,-1.32408e-034,1,7.58942e-017,0,-1.04083e-017,-3.29597e-017,1,0,-0.00829937,-0.40429,-0.09276,1</LocalMatrix>
+<LocalMatrix>1,0,0,0,-0,1,0,0,0,-0,1,0,0.01082,-0.40429,-0.09276,1</LocalMatrix>
 <DraggerSize Value="-1" Scale="None" Actual="-1"/>
 <Type>Attachment</Type>
 <PartType>AnimatGUI.DataObjects.Physical.Bodies.Attachment</PartType>
@@ -7820,19 +7820,19 @@
 <Type>StimulusTension</Type>
 <AssemblyFile>AnimatGUI.dll</AssemblyFile>
 <ClassName>AnimatGUI.DataObjects.Gains.MuscleGains.StimulusTension</ClassName>
-<UseLimits>True</UseLimits>
+<UseLimits>False</UseLimits>
 <LimitsReadOnly>False</LimitsReadOnly>
 <LimitOutputsReadOnly>False</LimitOutputsReadOnly>
 <UseParentIncomingDataType>True</UseParentIncomingDataType>
-<LowerLimitScale Value="-60" Scale="milli" Actual="-0.06"/>
-<UpperLimitScale Value="-40" Scale="milli" Actual="-0.04"/>
+<LowerLimitScale Value="-100" Scale="milli" Actual="-0.1"/>
+<UpperLimitScale Value="0" Scale="milli" Actual="0"/>
 <LowerOutputScale Value="0" Scale="None" Actual="0"/>
-<UpperOutputScale Value="2.56" Scale="None" Actual="2.56"/>
+<UpperOutputScale Value="6" Scale="None" Actual="6"/>
 <IndependentUnits>Membrane Voltage (V)</IndependentUnits>
 <DependentUnits>Contractile Tension (N)</DependentUnits>
 <A Value="-50" Scale="milli" Actual="-0.05"/>
-<B Value="2.56" Scale="None" Actual="2.56"/>
-<C Value="921.04" Scale="None" Actual="921.04"/>
+<B Value="3.07" Scale="None" Actual="3.07"/>
+<C Value="661.66" Scale="None" Actual="661.66"/>
 <D Value="0" Scale="milli" Actual="0"/>
 </StimulusTension>
 <LengthTension>
@@ -7840,7 +7840,7 @@
 <Type>LengthTension</Type>
 <AssemblyFile>AnimatGUI.dll</AssemblyFile>
 <ClassName>AnimatGUI.DataObjects.Gains.MuscleGains.LengthTension</ClassName>
-<UseLimits>True</UseLimits>
+<UseLimits>False</UseLimits>
 <LimitsReadOnly>False</LimitsReadOnly>
 <LimitOutputsReadOnly>False</LimitOutputsReadOnly>
 <UseParentIncomingDataType>True</UseParentIncomingDataType>
@@ -7959,19 +7959,19 @@
 <Type>StimulusTension</Type>
 <AssemblyFile>AnimatGUI.dll</AssemblyFile>
 <ClassName>AnimatGUI.DataObjects.Gains.MuscleGains.StimulusTension</ClassName>
-<UseLimits>True</UseLimits>
+<UseLimits>False</UseLimits>
 <LimitsReadOnly>False</LimitsReadOnly>
 <LimitOutputsReadOnly>False</LimitOutputsReadOnly>
 <UseParentIncomingDataType>True</UseParentIncomingDataType>
-<LowerLimitScale Value="-60" Scale="milli" Actual="-0.06"/>
-<UpperLimitScale Value="-40" Scale="milli" Actual="-0.04"/>
+<LowerLimitScale Value="-100" Scale="milli" Actual="-0.1"/>
+<UpperLimitScale Value="0" Scale="milli" Actual="0"/>
 <LowerOutputScale Value="0" Scale="None" Actual="0"/>
-<UpperOutputScale Value="19.83" Scale="None" Actual="19.83"/>
+<UpperOutputScale Value="6" Scale="None" Actual="6"/>
 <IndependentUnits>Membrane Voltage (V)</IndependentUnits>
 <DependentUnits>Contractile Tension (N)</DependentUnits>
 <A Value="-50" Scale="milli" Actual="-0.05"/>
-<B Value="19.83" Scale="None" Actual="19.83"/>
-<C Value="921.04" Scale="None" Actual="921.04"/>
+<B Value="23.8" Scale="None" Actual="23.8"/>
+<C Value="661.66" Scale="None" Actual="661.66"/>
 <D Value="0" Scale="milli" Actual="0"/>
 </StimulusTension>
 <LengthTension>
@@ -7979,7 +7979,7 @@
 <Type>LengthTension</Type>
 <AssemblyFile>AnimatGUI.dll</AssemblyFile>
 <ClassName>AnimatGUI.DataObjects.Gains.MuscleGains.LengthTension</ClassName>
-<UseLimits>True</UseLimits>
+<UseLimits>False</UseLimits>
 <LimitsReadOnly>False</LimitsReadOnly>
 <LimitOutputsReadOnly>False</LimitOutputsReadOnly>
 <UseParentIncomingDataType>True</UseParentIncomingDataType>
@@ -8718,19 +8718,19 @@
 <Type>StimulusTension</Type>
 <AssemblyFile>AnimatGUI.dll</AssemblyFile>
 <ClassName>AnimatGUI.DataObjects.Gains.MuscleGains.StimulusTension</ClassName>
-<UseLimits>True</UseLimits>
+<UseLimits>False</UseLimits>
 <LimitsReadOnly>False</LimitsReadOnly>
 <LimitOutputsReadOnly>False</LimitOutputsReadOnly>
 <UseParentIncomingDataType>True</UseParentIncomingDataType>
-<LowerLimitScale Value="-60" Scale="milli" Actual="-0.06"/>
-<UpperLimitScale Value="-40" Scale="milli" Actual="-0.04"/>
+<LowerLimitScale Value="-100" Scale="milli" Actual="-0.1"/>
+<UpperLimitScale Value="0" Scale="milli" Actual="0"/>
 <LowerOutputScale Value="0" Scale="None" Actual="0"/>
-<UpperOutputScale Value="6.37" Scale="None" Actual="6.37"/>
+<UpperOutputScale Value="6" Scale="None" Actual="6"/>
 <IndependentUnits>Membrane Voltage (V)</IndependentUnits>
 <DependentUnits>Contractile Tension (N)</DependentUnits>
 <A Value="-50" Scale="milli" Actual="-0.05"/>
-<B Value="6.37" Scale="None" Actual="6.37"/>
-<C Value="921.04" Scale="None" Actual="921.04"/>
+<B Value="7.64" Scale="None" Actual="7.64"/>
+<C Value="661.66" Scale="None" Actual="661.66"/>
 <D Value="0" Scale="milli" Actual="0"/>
 </StimulusTension>
 <LengthTension>
@@ -8738,7 +8738,7 @@
 <Type>LengthTension</Type>
 <AssemblyFile>AnimatGUI.dll</AssemblyFile>
 <ClassName>AnimatGUI.DataObjects.Gains.MuscleGains.LengthTension</ClassName>
-<UseLimits>True</UseLimits>
+<UseLimits>False</UseLimits>
 <LimitsReadOnly>False</LimitsReadOnly>
 <LimitOutputsReadOnly>False</LimitOutputsReadOnly>
 <UseParentIncomingDataType>True</UseParentIncomingDataType>
@@ -8798,19 +8798,19 @@
 <Type>StimulusTension</Type>
 <AssemblyFile>AnimatGUI.dll</AssemblyFile>
 <ClassName>AnimatGUI.DataObjects.Gains.MuscleGains.StimulusTension</ClassName>
-<UseLimits>True</UseLimits>
+<UseLimits>False</UseLimits>
 <LimitsReadOnly>False</LimitsReadOnly>
 <LimitOutputsReadOnly>False</LimitOutputsReadOnly>
 <UseParentIncomingDataType>True</UseParentIncomingDataType>
-<LowerLimitScale Value="-60" Scale="milli" Actual="-0.06"/>
-<UpperLimitScale Value="-40" Scale="milli" Actual="-0.04"/>
+<LowerLimitScale Value="-100" Scale="milli" Actual="-0.1"/>
+<UpperLimitScale Value="0" Scale="milli" Actual="0"/>
 <LowerOutputScale Value="0" Scale="None" Actual="0"/>
-<UpperOutputScale Value="5.26" Scale="None" Actual="5.26"/>
+<UpperOutputScale Value="6" Scale="None" Actual="6"/>
 <IndependentUnits>Membrane Voltage (V)</IndependentUnits>
 <DependentUnits>Contractile Tension (N)</DependentUnits>
 <A Value="-50" Scale="milli" Actual="-0.05"/>
-<B Value="5.26" Scale="None" Actual="5.26"/>
-<C Value="921.04" Scale="None" Actual="921.04"/>
+<B Value="6.31" Scale="None" Actual="6.31"/>
+<C Value="661.66" Scale="None" Actual="661.66"/>
 <D Value="0" Scale="milli" Actual="0"/>
 </StimulusTension>
 <LengthTension>
@@ -8818,7 +8818,7 @@
 <Type>LengthTension</Type>
 <AssemblyFile>AnimatGUI.dll</AssemblyFile>
 <ClassName>AnimatGUI.DataObjects.Gains.MuscleGains.LengthTension</ClassName>
-<UseLimits>True</UseLimits>
+<UseLimits>False</UseLimits>
 <LimitsReadOnly>False</LimitsReadOnly>
 <LimitOutputsReadOnly>False</LimitOutputsReadOnly>
 <UseParentIncomingDataType>True</UseParentIncomingDataType>
@@ -8868,19 +8868,19 @@
 <Type>StimulusTension</Type>
 <AssemblyFile>AnimatGUI.dll</AssemblyFile>
 <ClassName>AnimatGUI.DataObjects.Gains.MuscleGains.StimulusTension</ClassName>
-<UseLimits>True</UseLimits>
+<UseLimits>False</UseLimits>
 <LimitsReadOnly>False</LimitsReadOnly>
 <LimitOutputsReadOnly>False</LimitOutputsReadOnly>
 <UseParentIncomingDataType>True</UseParentIncomingDataType>
-<LowerLimitScale Value="-60" Scale="milli" Actual="-0.06"/>
-<UpperLimitScale Value="-40" Scale="milli" Actual="-0.04"/>
+<LowerLimitScale Value="-100" Scale="milli" Actual="-0.1"/>
+<UpperLimitScale Value="0" Scale="milli" Actual="0"/>
 <LowerOutputScale Value="0" Scale="None" Actual="0"/>
-<UpperOutputScale Value="10.09" Scale="None" Actual="10.09"/>
+<UpperOutputScale Value="6" Scale="None" Actual="6"/>
 <IndependentUnits>Membrane Voltage (V)</IndependentUnits>
 <DependentUnits>Contractile Tension (N)</DependentUnits>
 <A Value="-50" Scale="milli" Actual="-0.05"/>
-<B Value="10.09" Scale="None" Actual="10.09"/>
-<C Value="921.04" Scale="None" Actual="921.04"/>
+<B Value="12.11" Scale="None" Actual="12.11"/>
+<C Value="661.66" Scale="None" Actual="661.66"/>
 <D Value="0" Scale="milli" Actual="0"/>
 </StimulusTension>
 <LengthTension>
@@ -8888,7 +8888,7 @@
 <Type>LengthTension</Type>
 <AssemblyFile>AnimatGUI.dll</AssemblyFile>
 <ClassName>AnimatGUI.DataObjects.Gains.MuscleGains.LengthTension</ClassName>
-<UseLimits>True</UseLimits>
+<UseLimits>False</UseLimits>
 <LimitsReadOnly>False</LimitsReadOnly>
 <LimitOutputsReadOnly>False</LimitOutputsReadOnly>
 <UseParentIncomingDataType>True</UseParentIncomingDataType>
@@ -9006,19 +9006,19 @@
 <Type>StimulusTension</Type>
 <AssemblyFile>AnimatGUI.dll</AssemblyFile>
 <ClassName>AnimatGUI.DataObjects.Gains.MuscleGains.StimulusTension</ClassName>
-<UseLimits>True</UseLimits>
+<UseLimits>False</UseLimits>
 <LimitsReadOnly>False</LimitsReadOnly>
 <LimitOutputsReadOnly>False</LimitOutputsReadOnly>
 <UseParentIncomingDataType>True</UseParentIncomingDataType>
-<LowerLimitScale Value="-60" Scale="milli" Actual="-0.06"/>
-<UpperLimitScale Value="-40" Scale="milli" Actual="-0.04"/>
+<LowerLimitScale Value="-100" Scale="milli" Actual="-0.1"/>
+<UpperLimitScale Value="0" Scale="milli" Actual="0"/>
 <LowerOutputScale Value="0" Scale="None" Actual="0"/>
-<UpperOutputScale Value="10.94" Scale="None" Actual="10.94"/>
+<UpperOutputScale Value="6" Scale="None" Actual="6"/>
 <IndependentUnits>Membrane Voltage (V)</IndependentUnits>
 <DependentUnits>Contractile Tension (N)</DependentUnits>
 <A Value="-50" Scale="milli" Actual="-0.05"/>
-<B Value="10.94" Scale="None" Actual="10.94"/>
-<C Value="921.04" Scale="None" Actual="921.04"/>
+<B Value="13.13" Scale="None" Actual="13.13"/>
+<C Value="661.66" Scale="None" Actual="661.66"/>
 <D Value="0" Scale="milli" Actual="0"/>
 </StimulusTension>
 <LengthTension>
@@ -9026,7 +9026,7 @@
 <Type>LengthTension</Type>
 <AssemblyFile>AnimatGUI.dll</AssemblyFile>
 <ClassName>AnimatGUI.DataObjects.Gains.MuscleGains.LengthTension</ClassName>
-<UseLimits>True</UseLimits>
+<UseLimits>False</UseLimits>
 <LimitsReadOnly>False</LimitsReadOnly>
 <LimitOutputsReadOnly>False</LimitOutputsReadOnly>
 <UseParentIncomingDataType>True</UseParentIncomingDataType>
@@ -9286,19 +9286,19 @@
 <Type>StimulusTension</Type>
 <AssemblyFile>AnimatGUI.dll</AssemblyFile>
 <ClassName>AnimatGUI.DataObjects.Gains.MuscleGains.StimulusTension</ClassName>
-<UseLimits>True</UseLimits>
+<UseLimits>False</UseLimits>
 <LimitsReadOnly>False</LimitsReadOnly>
 <LimitOutputsReadOnly>False</LimitOutputsReadOnly>
 <UseParentIncomingDataType>True</UseParentIncomingDataType>
-<LowerLimitScale Value="-60" Scale="milli" Actual="-0.06"/>
-<UpperLimitScale Value="-40" Scale="milli" Actual="-0.04"/>
+<LowerLimitScale Value="-100" Scale="milli" Actual="-0.1"/>
+<UpperLimitScale Value="0" Scale="milli" Actual="0"/>
 <LowerOutputScale Value="0" Scale="None" Actual="0"/>
-<UpperOutputScale Value="32.87" Scale="None" Actual="32.87"/>
+<UpperOutputScale Value="6" Scale="None" Actual="6"/>
 <IndependentUnits>Membrane Voltage (V)</IndependentUnits>
 <DependentUnits>Contractile Tension (N)</DependentUnits>
 <A Value="-50" Scale="milli" Actual="-0.05"/>
-<B Value="32.87" Scale="None" Actual="32.87"/>
-<C Value="921.04" Scale="None" Actual="921.04"/>
+<B Value="39.43" Scale="None" Actual="39.43"/>
+<C Value="661.66" Scale="None" Actual="661.66"/>
 <D Value="0" Scale="milli" Actual="0"/>
 </StimulusTension>
 <LengthTension>
@@ -9306,7 +9306,7 @@
 <Type>LengthTension</Type>
 <AssemblyFile>AnimatGUI.dll</AssemblyFile>
 <ClassName>AnimatGUI.DataObjects.Gains.MuscleGains.LengthTension</ClassName>
-<UseLimits>True</UseLimits>
+<UseLimits>False</UseLimits>
 <LimitsReadOnly>False</LimitsReadOnly>
 <LimitOutputsReadOnly>False</LimitOutputsReadOnly>
 <UseParentIncomingDataType>True</UseParentIncomingDataType>
@@ -10602,23 +10602,23 @@
 <AttachID>69fd2bce-4afd-4e50-b017-6f917c5a9d21</AttachID>
 </Attachments>
 <StimulusTension>
-<ID>917be913-4518-4a9e-bce6-e6ca4013b604</ID>
+<ID>a08f6b76-59f5-46aa-b88e-eb8fa4fe0dd7</ID>
 <Type>StimulusTension</Type>
 <AssemblyFile>AnimatGUI.dll</AssemblyFile>
 <ClassName>AnimatGUI.DataObjects.Gains.MuscleGains.StimulusTension</ClassName>
-<UseLimits>True</UseLimits>
+<UseLimits>False</UseLimits>
 <LimitsReadOnly>False</LimitsReadOnly>
 <LimitOutputsReadOnly>False</LimitOutputsReadOnly>
 <UseParentIncomingDataType>True</UseParentIncomingDataType>
-<LowerLimitScale Value="-60" Scale="milli" Actual="-0.06"/>
-<UpperLimitScale Value="-40" Scale="milli" Actual="-0.04"/>
+<LowerLimitScale Value="-100" Scale="milli" Actual="-0.1"/>
+<UpperLimitScale Value="0" Scale="milli" Actual="0"/>
 <LowerOutputScale Value="0" Scale="None" Actual="0"/>
-<UpperOutputScale Value="5.43" Scale="None" Actual="5.43"/>
+<UpperOutputScale Value="6" Scale="None" Actual="6"/>
 <IndependentUnits>Membrane Voltage (V)</IndependentUnits>
 <DependentUnits>Contractile Tension (N)</DependentUnits>
 <A Value="-50" Scale="milli" Actual="-0.05"/>
-<B Value="5.43" Scale="None" Actual="5.43"/>
-<C Value="921.04" Scale="None" Actual="921.04"/>
+<B Value="6.52" Scale="None" Actual="6.52"/>
+<C Value="661.66" Scale="None" Actual="661.66"/>
 <D Value="0" Scale="milli" Actual="0"/>
 </StimulusTension>
 <LengthTension>
@@ -10626,7 +10626,7 @@
 <Type>LengthTension</Type>
 <AssemblyFile>AnimatGUI.dll</AssemblyFile>
 <ClassName>AnimatGUI.DataObjects.Gains.MuscleGains.LengthTension</ClassName>
-<UseLimits>True</UseLimits>
+<UseLimits>False</UseLimits>
 <LimitsReadOnly>False</LimitsReadOnly>
 <LimitOutputsReadOnly>False</LimitOutputsReadOnly>
 <UseParentIncomingDataType>True</UseParentIncomingDataType>
@@ -10673,19 +10673,19 @@
 <Type>StimulusTension</Type>
 <AssemblyFile>AnimatGUI.dll</AssemblyFile>
 <ClassName>AnimatGUI.DataObjects.Gains.MuscleGains.StimulusTension</ClassName>
-<UseLimits>True</UseLimits>
+<UseLimits>False</UseLimits>
 <LimitsReadOnly>False</LimitsReadOnly>
 <LimitOutputsReadOnly>False</LimitOutputsReadOnly>
 <UseParentIncomingDataType>True</UseParentIncomingDataType>
-<LowerLimitScale Value="-60" Scale="milli" Actual="-0.06"/>
-<UpperLimitScale Value="-40" Scale="milli" Actual="-0.04"/>
+<LowerLimitScale Value="-100" Scale="milli" Actual="-0.1"/>
+<UpperLimitScale Value="0" Scale="milli" Actual="0"/>
 <LowerOutputScale Value="0" Scale="None" Actual="0"/>
-<UpperOutputScale Value="18.4" Scale="None" Actual="18.4"/>
+<UpperOutputScale Value="6" Scale="None" Actual="6"/>
 <IndependentUnits>Membrane Voltage (V)</IndependentUnits>
 <DependentUnits>Contractile Tension (N)</DependentUnits>
 <A Value="-50" Scale="milli" Actual="-0.05"/>
-<B Value="18.4" Scale="None" Actual="18.4"/>
-<C Value="921.04" Scale="None" Actual="921.04"/>
+<B Value="22.08" Scale="None" Actual="22.08"/>
+<C Value="661.66" Scale="None" Actual="661.66"/>
 <D Value="0" Scale="milli" Actual="0"/>
 </StimulusTension>
 <LengthTension>
@@ -10693,7 +10693,7 @@
 <Type>LengthTension</Type>
 <AssemblyFile>AnimatGUI.dll</AssemblyFile>
 <ClassName>AnimatGUI.DataObjects.Gains.MuscleGains.LengthTension</ClassName>
-<UseLimits>True</UseLimits>
+<UseLimits>False</UseLimits>
 <LimitsReadOnly>False</LimitsReadOnly>
 <LimitOutputsReadOnly>False</LimitOutputsReadOnly>
 <UseParentIncomingDataType>True</UseParentIncomingDataType>
@@ -10809,19 +10809,19 @@
 <Type>StimulusTension</Type>
 <AssemblyFile>AnimatGUI.dll</AssemblyFile>
 <ClassName>AnimatGUI.DataObjects.Gains.MuscleGains.StimulusTension</ClassName>
-<UseLimits>True</UseLimits>
+<UseLimits>False</UseLimits>
 <LimitsReadOnly>False</LimitsReadOnly>
 <LimitOutputsReadOnly>False</LimitOutputsReadOnly>
 <UseParentIncomingDataType>True</UseParentIncomingDataType>
-<LowerLimitScale Value="-60" Scale="milli" Actual="-0.06"/>
-<UpperLimitScale Value="-40" Scale="milli" Actual="-0.04"/>
+<LowerLimitScale Value="-100" Scale="milli" Actual="-0.1"/>
+<UpperLimitScale Value="0" Scale="milli" Actual="0"/>
 <LowerOutputScale Value="0" Scale="None" Actual="0"/>
-<UpperOutputScale Value="21.98" Scale="None" Actual="21.98"/>
+<UpperOutputScale Value="6" Scale="None" Actual="6"/>
 <IndependentUnits>Membrane Voltage (V)</IndependentUnits>
 <DependentUnits>Contractile Tension (N)</DependentUnits>
 <A Value="-50" Scale="milli" Actual="-0.05"/>
-<B Value="21.98" Scale="None" Actual="21.98"/>
-<C Value="921.04" Scale="None" Actual="921.04"/>
+<B Value="26.38" Scale="None" Actual="26.38"/>
+<C Value="661.66" Scale="None" Actual="661.66"/>
 <D Value="0" Scale="milli" Actual="0"/>
 </StimulusTension>
 <LengthTension>
@@ -10829,7 +10829,7 @@
 <Type>LengthTension</Type>
 <AssemblyFile>AnimatGUI.dll</AssemblyFile>
 <ClassName>AnimatGUI.DataObjects.Gains.MuscleGains.LengthTension</ClassName>
-<UseLimits>True</UseLimits>
+<UseLimits>False</UseLimits>
 <LimitsReadOnly>False</LimitsReadOnly>
 <LimitOutputsReadOnly>False</LimitOutputsReadOnly>
 <UseParentIncomingDataType>True</UseParentIncomingDataType>
@@ -11224,19 +11224,19 @@
 <Type>StimulusTension</Type>
 <AssemblyFile>AnimatGUI.dll</AssemblyFile>
 <ClassName>AnimatGUI.DataObjects.Gains.MuscleGains.StimulusTension</ClassName>
-<UseLimits>True</UseLimits>
+<UseLimits>False</UseLimits>
 <LimitsReadOnly>False</LimitsReadOnly>
 <LimitOutputsReadOnly>False</LimitOutputsReadOnly>
 <UseParentIncomingDataType>True</UseParentIncomingDataType>
-<LowerLimitScale Value="-60" Scale="milli" Actual="-0.06"/>
-<UpperLimitScale Value="-40" Scale="milli" Actual="-0.04"/>
+<LowerLimitScale Value="-100" Scale="milli" Actual="-0.1"/>
+<UpperLimitScale Value="0" Scale="milli" Actual="0"/>
 <LowerOutputScale Value="0" Scale="None" Actual="0"/>
-<UpperOutputScale Value="6.1" Scale="None" Actual="6.1"/>
+<UpperOutputScale Value="6" Scale="None" Actual="6"/>
 <IndependentUnits>Membrane Voltage (V)</IndependentUnits>
 <DependentUnits>Contractile Tension (N)</DependentUnits>
 <A Value="-50" Scale="milli" Actual="-0.05"/>
-<B Value="6.1" Scale="None" Actual="6.1"/>
-<C Value="921.04" Scale="None" Actual="921.04"/>
+<B Value="7.32" Scale="None" Actual="7.32"/>
+<C Value="661.66" Scale="None" Actual="661.66"/>
 <D Value="0" Scale="milli" Actual="0"/>
 </StimulusTension>
 <LengthTension>
@@ -11244,7 +11244,7 @@
 <Type>LengthTension</Type>
 <AssemblyFile>AnimatGUI.dll</AssemblyFile>
 <ClassName>AnimatGUI.DataObjects.Gains.MuscleGains.LengthTension</ClassName>
-<UseLimits>True</UseLimits>
+<UseLimits>False</UseLimits>
 <LimitsReadOnly>False</LimitsReadOnly>
 <LimitOutputsReadOnly>False</LimitOutputsReadOnly>
 <UseParentIncomingDataType>True</UseParentIncomingDataType>
@@ -11291,19 +11291,19 @@
 <Type>StimulusTension</Type>
 <AssemblyFile>AnimatGUI.dll</AssemblyFile>
 <ClassName>AnimatGUI.DataObjects.Gains.MuscleGains.StimulusTension</ClassName>
-<UseLimits>True</UseLimits>
+<UseLimits>False</UseLimits>
 <LimitsReadOnly>False</LimitsReadOnly>
 <LimitOutputsReadOnly>False</LimitOutputsReadOnly>
 <UseParentIncomingDataType>True</UseParentIncomingDataType>
-<LowerLimitScale Value="-60" Scale="milli" Actual="-0.06"/>
-<UpperLimitScale Value="-40" Scale="milli" Actual="-0.04"/>
+<LowerLimitScale Value="-100" Scale="milli" Actual="-0.1"/>
+<UpperLimitScale Value="0" Scale="milli" Actual="0"/>
 <LowerOutputScale Value="0" Scale="None" Actual="0"/>
-<UpperOutputScale Value="5.13" Scale="None" Actual="5.13"/>
+<UpperOutputScale Value="6" Scale="None" Actual="6"/>
 <IndependentUnits>Membrane Voltage (V)</IndependentUnits>
 <DependentUnits>Contractile Tension (N)</DependentUnits>
 <A Value="-50" Scale="milli" Actual="-0.05"/>
-<B Value="5.13" Scale="None" Actual="5.13"/>
-<C Value="921.04" Scale="None" Actual="921.04"/>
+<B Value="6.16" Scale="None" Actual="6.16"/>
+<C Value="661.66" Scale="None" Actual="661.66"/>
 <D Value="0" Scale="milli" Actual="0"/>
 </StimulusTension>
 <LengthTension>
@@ -11311,7 +11311,7 @@
 <Type>LengthTension</Type>
 <AssemblyFile>AnimatGUI.dll</AssemblyFile>
 <ClassName>AnimatGUI.DataObjects.Gains.MuscleGains.LengthTension</ClassName>
-<UseLimits>True</UseLimits>
+<UseLimits>False</UseLimits>
 <LimitsReadOnly>False</LimitsReadOnly>
 <LimitOutputsReadOnly>False</LimitOutputsReadOnly>
 <UseParentIncomingDataType>True</UseParentIncomingDataType>
@@ -11496,19 +11496,19 @@
 <Type>StimulusTension</Type>
 <AssemblyFile>AnimatGUI.dll</AssemblyFile>
 <ClassName>AnimatGUI.DataObjects.Gains.MuscleGains.StimulusTension</ClassName>
-<UseLimits>True</UseLimits>
+<UseLimits>False</UseLimits>
 <LimitsReadOnly>False</LimitsReadOnly>
 <LimitOutputsReadOnly>False</LimitOutputsReadOnly>
 <UseParentIncomingDataType>True</UseParentIncomingDataType>
-<LowerLimitScale Value="-60" Scale="milli" Actual="-0.06"/>
-<UpperLimitScale Value="-40" Scale="milli" Actual="-0.04"/>
+<LowerLimitScale Value="-100" Scale="milli" Actual="-0.1"/>
+<UpperLimitScale Value="0" Scale="milli" Actual="0"/>
 <LowerOutputScale Value="0" Scale="None" Actual="0"/>
-<UpperOutputScale Value="4.23" Scale="None" Actual="4.23"/>
+<UpperOutputScale Value="6" Scale="None" Actual="6"/>
 <IndependentUnits>Membrane Voltage (V)</IndependentUnits>
 <DependentUnits>Contractile Tension (N)</DependentUnits>
 <A Value="-50" Scale="milli" Actual="-0.05"/>
-<B Value="4.23" Scale="None" Actual="4.23"/>
-<C Value="921.04" Scale="None" Actual="921.04"/>
+<B Value="5.08" Scale="None" Actual="5.08"/>
+<C Value="661.66" Scale="None" Actual="661.66"/>
 <D Value="0" Scale="milli" Actual="0"/>
 </StimulusTension>
 <LengthTension>
@@ -11516,7 +11516,7 @@
 <Type>LengthTension</Type>
 <AssemblyFile>AnimatGUI.dll</AssemblyFile>
 <ClassName>AnimatGUI.DataObjects.Gains.MuscleGains.LengthTension</ClassName>
-<UseLimits>True</UseLimits>
+<UseLimits>False</UseLimits>
 <LimitsReadOnly>False</LimitsReadOnly>
 <LimitOutputsReadOnly>False</LimitOutputsReadOnly>
 <UseParentIncomingDataType>True</UseParentIncomingDataType>
@@ -11632,19 +11632,19 @@
 <Type>StimulusTension</Type>
 <AssemblyFile>AnimatGUI.dll</AssemblyFile>
 <ClassName>AnimatGUI.DataObjects.Gains.MuscleGains.StimulusTension</ClassName>
-<UseLimits>True</UseLimits>
+<UseLimits>False</UseLimits>
 <LimitsReadOnly>False</LimitsReadOnly>
 <LimitOutputsReadOnly>False</LimitOutputsReadOnly>
 <UseParentIncomingDataType>True</UseParentIncomingDataType>
-<LowerLimitScale Value="-60" Scale="milli" Actual="-0.06"/>
-<UpperLimitScale Value="-40" Scale="milli" Actual="-0.04"/>
+<LowerLimitScale Value="-100" Scale="milli" Actual="-0.1"/>
+<UpperLimitScale Value="0" Scale="milli" Actual="0"/>
 <LowerOutputScale Value="0" Scale="None" Actual="0"/>
-<UpperOutputScale Value="5.42" Scale="None" Actual="5.42"/>
+<UpperOutputScale Value="6" Scale="None" Actual="6"/>
 <IndependentUnits>Membrane Voltage (V)</IndependentUnits>
 <DependentUnits>Contractile Tension (N)</DependentUnits>
 <A Value="-50" Scale="milli" Actual="-0.05"/>
-<B Value="5.42" Scale="None" Actual="5.42"/>
-<C Value="921.04" Scale="None" Actual="921.04"/>
+<B Value="6.5" Scale="None" Actual="6.5"/>
+<C Value="661.66" Scale="None" Actual="661.66"/>
 <D Value="0" Scale="milli" Actual="0"/>
 </StimulusTension>
 <LengthTension>
@@ -11652,7 +11652,7 @@
 <Type>LengthTension</Type>
 <AssemblyFile>AnimatGUI.dll</AssemblyFile>
 <ClassName>AnimatGUI.DataObjects.Gains.MuscleGains.LengthTension</ClassName>
-<UseLimits>True</UseLimits>
+<UseLimits>False</UseLimits>
 <LimitsReadOnly>False</LimitsReadOnly>
 <LimitOutputsReadOnly>False</LimitOutputsReadOnly>
 <UseParentIncomingDataType>True</UseParentIncomingDataType>
@@ -11699,19 +11699,19 @@
 <Type>StimulusTension</Type>
 <AssemblyFile>AnimatGUI.dll</AssemblyFile>
 <ClassName>AnimatGUI.DataObjects.Gains.MuscleGains.StimulusTension</ClassName>
-<UseLimits>True</UseLimits>
+<UseLimits>False</UseLimits>
 <LimitsReadOnly>False</LimitsReadOnly>
 <LimitOutputsReadOnly>False</LimitOutputsReadOnly>
 <UseParentIncomingDataType>True</UseParentIncomingDataType>
-<LowerLimitScale Value="-60" Scale="milli" Actual="-0.06"/>
-<UpperLimitScale Value="-40" Scale="milli" Actual="-0.04"/>
+<LowerLimitScale Value="-100" Scale="milli" Actual="-0.1"/>
+<UpperLimitScale Value="0" Scale="milli" Actual="0"/>
 <LowerOutputScale Value="0" Scale="None" Actual="0"/>
-<UpperOutputScale Value="33.74" Scale="None" Actual="33.74"/>
+<UpperOutputScale Value="6" Scale="None" Actual="6"/>
 <IndependentUnits>Membrane Voltage (V)</IndependentUnits>
 <DependentUnits>Contractile Tension (N)</DependentUnits>
 <A Value="-50" Scale="milli" Actual="-0.05"/>
-<B Value="33.74" Scale="None" Actual="33.74"/>
-<C Value="921.04" Scale="None" Actual="921.04"/>
+<B Value="40.48" Scale="None" Actual="40.48"/>
+<C Value="661.66" Scale="None" Actual="661.66"/>
 <D Value="0" Scale="milli" Actual="0"/>
 </StimulusTension>
 <LengthTension>
@@ -11719,7 +11719,7 @@
 <Type>LengthTension</Type>
 <AssemblyFile>AnimatGUI.dll</AssemblyFile>
 <ClassName>AnimatGUI.DataObjects.Gains.MuscleGains.LengthTension</ClassName>
-<UseLimits>True</UseLimits>
+<UseLimits>False</UseLimits>
 <LimitsReadOnly>False</LimitsReadOnly>
 <LimitOutputsReadOnly>False</LimitOutputsReadOnly>
 <UseParentIncomingDataType>True</UseParentIncomingDataType>
@@ -11766,19 +11766,19 @@
 <Type>StimulusTension</Type>
 <AssemblyFile>AnimatGUI.dll</AssemblyFile>
 <ClassName>AnimatGUI.DataObjects.Gains.MuscleGains.StimulusTension</ClassName>
-<UseLimits>True</UseLimits>
+<UseLimits>False</UseLimits>
 <LimitsReadOnly>False</LimitsReadOnly>
 <LimitOutputsReadOnly>False</LimitOutputsReadOnly>
 <UseParentIncomingDataType>True</UseParentIncomingDataType>
-<LowerLimitScale Value="-60" Scale="milli" Actual="-0.06"/>
-<UpperLimitScale Value="-40" Scale="milli" Actual="-0.04"/>
+<LowerLimitScale Value="-100" Scale="milli" Actual="-0.1"/>
+<UpperLimitScale Value="0" Scale="milli" Actual="0"/>
 <LowerOutputScale Value="0" Scale="None" Actual="0"/>
-<UpperOutputScale Value="5.4" Scale="None" Actual="5.4"/>
+<UpperOutputScale Value="6" Scale="None" Actual="6"/>
 <IndependentUnits>Membrane Voltage (V)</IndependentUnits>
 <DependentUnits>Contractile Tension (N)</DependentUnits>
 <A Value="-50" Scale="milli" Actual="-0.05"/>
-<B Value="5.4" Scale="None" Actual="5.4"/>
-<C Value="921.04" Scale="None" Actual="921.04"/>
+<B Value="6.48" Scale="None" Actual="6.48"/>
+<C Value="661.66" Scale="None" Actual="661.66"/>
 <D Value="0" Scale="milli" Actual="0"/>
 </StimulusTension>
 <LengthTension>
@@ -11786,7 +11786,7 @@
 <Type>LengthTension</Type>
 <AssemblyFile>AnimatGUI.dll</AssemblyFile>
 <ClassName>AnimatGUI.DataObjects.Gains.MuscleGains.LengthTension</ClassName>
-<UseLimits>True</UseLimits>
+<UseLimits>False</UseLimits>
 <LimitsReadOnly>False</LimitsReadOnly>
 <LimitOutputsReadOnly>False</LimitOutputsReadOnly>
 <UseParentIncomingDataType>True</UseParentIncomingDataType>
@@ -12312,8 +12312,8 @@
 </Stimuli>
 <HudItems>
 <HudItem>
-<Name>79273ba4-2d7d-4e7e-b0ed-40a63ee61162</Name>
-<ID>79273ba4-2d7d-4e7e-b0ed-40a63ee61162</ID>
+<Name>2ccd2761-8a84-47aa-af4f-5e9679652a8c</Name>
+<ID>2ccd2761-8a84-47aa-af4f-5e9679652a8c</ID>
 <Type>HudText</Type>
 <CharSize>30</CharSize>
 <Text>Time: %3.3f</Text>
@@ -12399,9 +12399,9 @@
 <AutomaticTimeScale>True</AutomaticTimeScale>
 <DivisionMarkFactor>4</DivisionMarkFactor>
 <Divisions>10</Divisions>
-<MajorInterval>500</MajorInterval>
+<MajorInterval>1</MajorInterval>
 <MiddleMarkFactor>3</MiddleMarkFactor>
-<TimeScale>MilliSeconds</TimeScale>
+<TimeScale>Seconds</TimeScale>
 </Form>
 <Form>
 <ID>1b017d76-832a-49f4-b2ac-cbe969fb62f2</ID>
@@ -12426,7 +12426,7 @@
 <DockingConfig>&lt;?xml version="1.0" encoding="us-ascii"?&gt;
 &lt;!-- DotNetMagic, The User Interface library for .NET (www.crownwood.net) --&gt;
 &lt;!-- Modifying this generated file will probably render it invalid --&gt;
-&lt;DockingConfig FormatVersion="10" InsideFill="False" InnerMinimum="20, 20" SavedAt="02/04/2020 17:11:14"&gt;
+&lt;DockingConfig FormatVersion="10" InsideFill="False" InnerMinimum="20, 20" SavedAt="01/30/2020 14:14:13"&gt;
 &lt;Content Name="Playback Control" Visible="False" Docked="True" AutoHidden="False" CaptionBar="True" CloseButton="False" DisplaySize="150, 150" DisplayLocation="150, 150" AutoHideSize="150, 150" FloatingSize="150, 150" FullTitle="Playback Control" Office2003BackColor="Base" UniqueName="" Office2007BackColor="Base" MediaPlayerBackColor="Base"&gt;
 &lt;DefaultRestore Type="Crownwood.DotNetMagic.Docking.RestoreContentState"&gt;
 &lt;Content Name="Playback Control" UniqueName="" /&gt;
@@ -12922,7 +12922,7 @@
 &lt;CustomGlobalData /&gt;
 &lt;Sequence Count="1" Unique="0" Space="100" Direction="Horizontal"&gt;
 &lt;Leaf Count="3" Unique="7" Space="100"&gt;
-&lt;Page Title="Sim Window" ImageList="True" ImageIndex="0" Selected="True" Control="null" UniqueName=""&gt;
+&lt;Page Title="Sim Window" ImageList="True" ImageIndex="0" Selected="False" Control="null" UniqueName=""&gt;
 &lt;CustomPageData&gt;&lt;![CDATA[&lt;TabPage&gt;
 &lt;Form&gt;
 &lt;ID&gt;b1c3eb6f-fc15-4560-8750-275c275ef964&lt;/ID&gt;
@@ -12949,7 +12949,7 @@
 &lt;/TabPage&gt;
 ]]&gt;&lt;/CustomPageData&gt;
 &lt;/Page&gt;
-&lt;Page Title="JointMotion" ImageList="True" ImageIndex="2" Selected="False" Control="null" UniqueName=""&gt;
+&lt;Page Title="JointMotion" ImageList="True" ImageIndex="2" Selected="True" Control="null" UniqueName=""&gt;
 &lt;CustomPageData&gt;&lt;![CDATA[&lt;TabPage&gt;
 &lt;Form&gt;
 &lt;ID&gt;1b1bb75a-f9ae-4839-8124-5172f1dbddcf&lt;/ID&gt;

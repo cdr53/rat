@@ -9,11 +9,26 @@ function parameter_injector(fPath,params)
         error('fPath must point to a project file. The input path does not have an .aproj extension.\n')
     end
     
+    if ~ischar(fPath)
+        fPath = char(fPath);
+    end
+    
     project_file = importdata(fPath);
     muscle_addresses = contains(project_file,'<Type>LinearHillMuscle</Type>');
     muscle_indices = find(muscle_addresses)-2;
     nummusc = length(muscle_indices);
+    
+    %ST curve evaluation
+    r = []; g = [];
+    syms r g
+    etaval = .0001;
+    eqns = [r/(1+exp(.01*g))==etaval,r/(1+exp(-.01*g))==(1+etaval)];
+    S = solve(eqns,[r g]);
+    STfactor = double(vpa(S.r));
+    steepval = double(vpa(S.g));
+    clear r g eqns S
 
+    % If not provided with a param's cell spreadsheet, build one.
     if nargin == 1
         params = cell(nummusc,4);
         for ii = 1:nummusc
@@ -30,9 +45,14 @@ function parameter_injector(fPath,params)
             params{ii,3} = xx(2);
             % An internal debate: is the third column Am vals or the maximum force?
             %params{ii,4} = xx(3);
-            params{ii,4} = 1.2*Fo; %ST_max values, should be slight larger than Fmax to ensure Am values are possible.
-            [params{:,5}] = deal(661.663);
-            [params{:,6}] = deal(0);
+            params{ii,4} = STfactor*Fo; %ST_max values, should be slight larger than Fmax to ensure Am values are possible.
+%             [params{:,5}] = deal(661.663); Updated value based on notes 2/3/2020
+            [params{:,5}] = deal(steepval);
+            [params{:,6}] = deal(round(-etaval*Fo,3));
+            [params{:,7}] = deal(-60);
+            [params{:,8}] = deal(-40);
+            [params{:,9}] = deal(0);
+            params{ii,10} = STfactor*Fo;
         end
     elseif nargin == 0
         error('Please include a path to an Animatlab project.\n')
@@ -41,31 +61,42 @@ function parameter_injector(fPath,params)
     lr = load([pwd,'\Data\neutral_lengths.mat'],'lr');
     params = import_johnson_data(params,lr);
         
-    %These are the parameters represented in the .aproj file. We will iterate through them to udate values. The order of these are important and correspond to
+    %These are the parameters represented in the .aproj file. We will iterate through them to update values. The order of these are important and correspond to
     %the column order in the params variable
     parameter_terms = {'<Kse Value';...
                        '<Kpe Value';...
                        '<B Value';...
                        '<C Value';...
                        '<D Value';...
-                       '<LowerLimitScale';...
+                       'ST<LowerLimit';...
+                       'ST<UpperLimit';...
+                       'ST<LowerOutput';...
+                       'ST<UpperOutput';...
+                       'LT<LowerLimit';...
                        '<RestingLength';...
-                       '<UpperLimitScale';...
+                       'LT<UpperLimit';...
                        '<Lwidth';...
                        '<MaximumTension'};
                     
     for i=1:nummusc
         muscind = muscle_indices(i);
         for j = 1:length(parameter_terms)
-            if strcmp(parameter_terms(j),'<LowerLimitScale') || strcmp(parameter_terms(j),'<UpperLimitScale')
-                partemp = find(contains(project_file(muscind:end),parameter_terms{j}))+muscind-1;
-                par_ind = partemp(2);
+            parterm = parameter_terms{j};
+            if contains(parameter_terms{j},{'ST';'LT'})
+                switch contains(parterm,'LT')
+                    case 1
+                        curvestr = 'LengthTension';
+                    case 0
+                        curvestr = 'StimulusTension';
+                end
+                curvestart = find(contains(project_file(muscind:end),curvestr),1,'first')+muscind-1;
+                par_ind = find(contains(project_file(curvestart:end),parterm(3:end)),1,'first')+curvestart-1;
+                uselimind = find(contains(project_file(curvestart:end),'UseLimits'),1,'first')+curvestart-1;
+                project_file{uselimind} = '<UseLimits>True</UseLimits>';
             else
                 par_ind = find(contains(project_file(muscind:end),parameter_terms{j}),1)+muscind-1;
             end
-%                 initpar = project_file{par_ind};
             project_file{par_ind} = number_injector(project_file{par_ind},round(params{i,j+1},2));
-%                fprintf('From %s to %s\n\n',initpar,project_file{par_ind})
         end
     end
     

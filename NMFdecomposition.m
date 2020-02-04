@@ -11,11 +11,16 @@ function [r2scores,recompiled,W,H] = NMFdecomposition(k,forces,to_plot,Wth)
     if size(forces,1)>size(forces,2)
         forces = forces';
     end
+    
     if nargin < 4
         Wth = 0;
     end
     
-    forces(forces<0)=0;
+    isforce = abs(max(forces,[],'all')) > 1;
+    
+    if isforce
+        forces(forces<0)=0;
+    end
     m = size(forces,1);
     n = size(forces,2);
     %k = 4;
@@ -62,23 +67,26 @@ function [r2scores,recompiled,W,H] = NMFdecomposition(k,forces,to_plot,Wth)
                 end
             end
         %% Gif addition within Loop
-        if mod(i,20) == 0 && gif_plot
+        if mod(i,1) == 0 && gif_plot && i < 10
             count = count + 1;
             relW = W./max(W);
             bigH = H'.*max(W);
+            relW = W;
+            bigH = H';
             figure(activationfig)
 %             plot(linspace(0,100,size(H,2)),H','LineWidth',2)
             plot(linspace(0,100,size(H,2)),bigH,'LineWidth',2)
             if count == 1
-                ymax_act = 1.1*max(max(bigH));
+                %ymax_act = 1.1*max(max(bigH));
+                yLims = [min(bigH,[],'all') max(bigH,[],'all')];
             end
-            ylim([0 ymax_act])
+            ylim(yLims)
             drawnow
             title({'Synergy Activation Level';['NNMF Iteration: ',num2str(i)]},'FontSize',16)
             
             clf(weightingfig)
             figure(weightingfig)
-            %ha = tight_subplot(5,1,.05,.12,.1);
+            ha = tight_subplot(5,1,.05,.12,.1);
             for k = 1:size(W,2)
                 axes(ha(k));
                 holder = relW(:,k);
@@ -149,6 +157,10 @@ function [r2scores,recompiled,W,H] = NMFdecomposition(k,forces,to_plot,Wth)
     end
     
     if to_plot
-        plotWH(forces,W,H,0);
+        if Wth ~= 0
+            plotWH(forces,{W,Wth},H,0);
+        else
+            plotWH(forces,W,H,0);
+        end
     end
 end

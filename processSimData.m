@@ -21,6 +21,9 @@ function sim_datatools = processSimData(sim_path,to_run)
     end
 
     if to_run
+        if isstring(sim_path)
+            sim_path = char(sim_path);
+        end
         sour_folder = 'C:\Program Files (x86)\NeuroRobotic Technologies\AnimatLab\bin';
         executable = ['"',sour_folder,'\AnimatSimulator" "',sim_path,'"'];
         [status, message] = system(executable);

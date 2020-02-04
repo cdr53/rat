@@ -1,6 +1,10 @@
 function sim_eqn = sum_of_sines_maker(coefficients,project_file)
     % project_file is a boolean that determines whether or not the output function is for a sim or project file
     % The equations for these two different file types are quite different
+    
+    %Animatlab doesn't play well with small exponential numbers, this is pre-processing to remove especially small numbers
+    coefficients(log10(cell2mat(coefficients(:,2)))<-4,2)={0};
+    
     if project_file
         % This section allows the user to create a sum of sines equation in the format used by the .aproj files from Animatlab
         % For automated simulations, most injections occur in the .asim file, instead, which uses a different format
