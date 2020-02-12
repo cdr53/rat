@@ -1,6 +1,8 @@
 classdef CanvasModel < handle
     
     properties (SetAccess = public, GetAccess=public)
+        proj_params = struct()
+           
         neurons_positions = zeros(0,2)
         num_neurons = 0
         neuron_objects = struct()
@@ -45,6 +47,7 @@ classdef CanvasModel < handle
         
         function obj  = CanvasModel()
             obj.setupDefaultSynapseTypes();
+            obj.setupProjParams();
         end
         
         function delete(obj)
@@ -61,6 +64,11 @@ classdef CanvasModel < handle
                     {'SignalModulation2','delE',0,'c',0.05,'max_syn_cond',19};...
                     {'SignalModulation3','delE',-1,'c',0,'max_syn_cond',20}];
             obj.createSynapseType(props);
+        end
+        %% setupProjParams
+        function setupProjParams(obj)
+            obj.proj_params.simendtime = 10.01; % times in s
+            obj.proj_params.physicstimestep = 0.54; % dt in ms
         end
         %% addItem
         function addItem(obj, type_char, pos, bounds)
@@ -284,9 +292,8 @@ classdef CanvasModel < handle
         end
         %% addDTaxes
         function addDTaxes(obj,datatool,target,datatype)
-            if ~any(contains({'MembraneVoltage','Tension'},datatype))
+            if ~any(contains({'MembraneVoltage','Tension','Activation'},datatype))
                 warning([target.name,' datatype (',datatype,') incorrect in addDTaxes'])
-                return
             end
             
             try datatool.axes_objects(1).name;            
@@ -719,6 +726,8 @@ classdef CanvasModel < handle
            datatool.name = name;
            datatool.ID = ['dt-',name,'-ID'];
            datatool.tfID = ['dt-',name,'-tfID'];
+           datatool.starttime = 0;
+           datatool.endtime = 10;
            datatool.axes_objects = struct();
         end
         %% create_dtaxes
@@ -758,31 +767,50 @@ classdef CanvasModel < handle
 % %                 'animatlab_files\EmptySystem\EmptySystem.aproj');
              proj_file = [fileparts(fileparts(mfilename('fullpath'))),'\Animatlab\SynergyWalking\SynergyWalking20200109.aproj'];
              revised_file = strcat(proj_file(1:end-6),'_fake.aproj');
-            
-    % For custom Animatlab file save location (to be included when done with testing)
-%             proj_file = fullfile(file_dir,...
-%                 CanvasConstants.DATA_RELATIVE_PATH,...
-%                 'animatlab_files\');
-%             [filename, pathname] = uiputfile(proj_file,'Save Subunit');
-%             revised_file = [pathname,filename(1:end-7),'.aproj'];
 
             if size(revised_file,2) <= 7
                 return
             end
 
-%             load('EmptyProjectText.mat','original_text');
             fid = fopen(proj_file);
             original_text = textscan(fid,'%s','delimiter','\n');
             fclose(fid);
             original_text = [original_text{:}];
             modified_text = original_text;
             
+            %%%Overwrite Project Parameters
+            for ii = 1:size(fields(obj.proj_params),1)
+                pFields = fields(obj.proj_params);
+                pInd = find(contains(lower(original_text),pFields{ii}));
+                quoteLocs = strfind(original_text{pInd},'"');
+                if ~isempty(quoteLocs)
+                    sTemp = original_text{pInd};
+                    qTemp = reshape(quoteLocs,[2 3])';
+                    scaleStr = sTemp(qTemp(2,1)+1:qTemp(2,2)-1);
+                    switch scaleStr
+                        case 'None'
+                            scaler = 1;
+                        case 'milli'
+                            scaler = .001;
+                        case 'nano'
+                            scaler = 1e-9;
+                        case 'micro'
+                            scaler = '1e-6';
+                    end
+                    pVal = obj.proj_params.(pFields{ii});
+                    modified_text{pInd} = [sTemp(1:qTemp(1,1)),num2str(pVal),sTemp(qTemp(1,2):qTemp(2,1)),scaleStr,...
+                                            sTemp(qTemp(2,2):qTemp(3,1)),num2str(scaler*pVal),sTemp(qTemp(3,2):end)];
+                else
+                    sTemp = extractBetween(string(original_text{pInd}),'>','<');
+                    if isnan(str2double(sTemp))
+                        keyboard
+                    else
+                        keyboard
+                    end
+                end
+            end
+            
             %%%Overwrite the <NervousSystem> neural subsystem information
-%             if isempty(find(contains(original_text,'</NeuralModules>'),1))
-%                 nervoussystem_inject_start = find(contains(original_text,'<NeuralModules/>'));
-%             else
-%                 nervoussystem_inject_start = find(contains(original_text,'</NeuralModules>'));
-%             end
             if isempty(find(contains(original_text,'<NeuralModules>'),1))
                 nervoussystem_inject_start = find(contains(original_text,'<NeuralModules/>'))-1;
             else
@@ -817,11 +845,12 @@ classdef CanvasModel < handle
                     aform_path = [fileparts(proj_file),'\',datatool.name,'.aform'];
                     aform_text = CanvasText(obj).build_aform_text(datatool);
                         fileID = fopen(aform_path,'w');
-                        formatSpec = '%s\n';
-                        nrows1 = size(aform_text,1);
-                        for row1 = 1:nrows1
-                            fprintf(fileID,formatSpec,aform_text{row1,:});
-                        end
+                        fprintf(fileID,'%s\n',aform_text{:});
+%                         formatSpec = '%s\n';
+%                         nrows1 = size(aform_text,1);
+%                         for row1 = 1:nrows1
+%                             fprintf(fileID,formatSpec,aform_text{row1,:});
+%                         end
                         fclose(fileID);
                 end
                 datatool_text{end+1,1} = '</ToolViewers>';
@@ -868,11 +897,12 @@ classdef CanvasModel < handle
             modified_text{leafInd} = ['&lt;Leaf Count="',num2str(leaf_num),'" Unique="7" Space="100"&gt;'];
             
             fileID = fopen(revised_file,'w');
-            formatSpec = '%s\n';
-            nrows = size(modified_text,1);
-            for row = 1:nrows
-                fprintf(fileID,formatSpec,modified_text{row,:});
-            end
+%             formatSpec = '%s\n';
+%             nrows = size(modified_text,1);
+%             for row = 1:nrows
+%                 fprintf(fileID,formatSpec,modified_text{row,:});
+%             end
+            fprintf(fileID,'%s\n',modified_text{:});
             fclose(fileID);
         end
         %% update_link_cdata: Update the cdata numbers in the link objects

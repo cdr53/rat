@@ -38,10 +38,11 @@ function meshMatch(docpath)
     
     %% Write updated document text to the original document
     fid = fopen(docpath,'w');
-    formatSpec = '%s\n';
-    nrows = size(doc_text,1);
-    for row = 1:nrows
-        fprintf(fid,formatSpec,doc_text{row,:});
-    end
+    fprintf(fid,'%s\n',doc_text{:});
+%     formatSpec = '%s\n';
+%     nrows = size(doc_text,1);
+%     for row = 1:nrows
+%         fprintf(fid,formatSpec,doc_text{row,:});
+%     end
     fclose(fid);
 end

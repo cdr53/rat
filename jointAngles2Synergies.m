@@ -9,7 +9,7 @@
     waveform = [completeWaves(:,trial,1)-98,completeWaves(:,trial,2)-90,completeWaves(:,trial,3)-116];
     
     tstart = tic;
-    
+    clear obj
     [obj] = jointMotionInjector(waveform,0);
     
     telapsed = toc(tstart);
@@ -57,29 +57,28 @@
     
     if isfile([file_dir,'\Data\h_equations.mat'])
         delete([file_dir,'\Data\h_equations.mat']) 
+        delete([file_dir,'\Data\indiv_equations.mat']) 
     end
     
-    figure('name','InjectedWaveforms')
-    plot(obj.theta_motion)
-    title('Joint Angle Waveforms')
-    legend({obj.joint_obj{1}.name(4:end),obj.joint_obj{2}.name(4:end),obj.joint_obj{3}.name(4:end)},'Interpreter','none')
-    
-    figure('name','Current2Inject')
-    plot(current2inject')
-    title('Inject this current into sim')
-    ylabel('Current (nA)')
-    
-    figure('name','OptimizedVSynergies')
-    subplot(2,1,1)
-    plot(wave2plot)
-    title('Optimized Necessary Forces v. Forces Recompiled from Synergies')
-    xlabel('Optimized Muscle Forces')
-    ylabel('Forces(N)')
-    subplot(2,1,2)
-    plot(recompiled)
-    xlabel('Forces Recompiled from Synergies')
-    ylabel('Forces(N)')
-    
-    close all
+%     figure('name','InjectedWaveforms')
+%     plot(obj.theta_motion)
+%     title('Joint Angle Waveforms')
+%     legend({obj.joint_obj{1}.name(4:end),obj.joint_obj{2}.name(4:end),obj.joint_obj{3}.name(4:end)},'Interpreter','none')
+%     
+%     figure('name','Current2Inject')
+%     plot(current2inject')
+%     title('Inject this current into sim')
+%     ylabel('Current (nA)')
+%     
+%     figure('name','OptimizedVSynergies')
+%     subplot(2,1,1)
+%     plot(wave2plot)
+%     title('Optimized Necessary Forces v. Forces Recompiled from Synergies')
+%     xlabel('Optimized Muscle Forces')
+%     ylabel('Forces(N)')
+%     subplot(2,1,2)
+%     plot(recompiled)
+%     xlabel('Forces Recompiled from Synergies')
+%     ylabel('Forces(N)')
     
     plotWH(wave2plot,W,H,0)

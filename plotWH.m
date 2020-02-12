@@ -54,7 +54,7 @@ function plotWH(inArray,W,H,saver)
             else
                 title('Relative Activation of Individual Muscles','FontSize',16)
             end
-        elseif i == 5
+        elseif i == size(W,2)
             xlabel('Muscle #','FontSize',14)
         end
         xlim([0 39])
@@ -76,7 +76,7 @@ function plotWH(inArray,W,H,saver)
             else
                 title('Synergy Activation During Stride','FontSize',16)
             end
-        elseif j == 5
+        elseif j == size(bigH,1)
             xlabel('% Stride','FontSize',14)
         end
     end
@@ -94,8 +94,8 @@ function plotWH(inArray,W,H,saver)
         ylim([yMin yMax])
         title('Recompiled Signal from NNMF Components')
     subplot(3,1,3)
-        differ = abs((inArray'-recompiled));
-        bar(mean(differ))
+        differ = mean(abs((inArray'-recompiled)));
+        bar(differ)
 %         differ = diag(corr(recompiled,inArray'));
 %         bar(differ)
         %plot(linspace(0,100,size(inArray,2)),differ)

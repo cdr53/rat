@@ -553,7 +553,7 @@
 <A Value="-50" Scale="milli" Actual="-0.05"/>
 <B Value="1.87" Scale="None" Actual="1.87"/>
 <C Value="921.04" Scale="None" Actual="921.04"/>
-<D Value="0" Scale="milli" Actual="0"/>
+<D Value="-0.19" Scale="milli" Actual="-0.00019"/>
 </StimulusTension>
 <LengthTension>
 <ID>6a4e2475-0c0c-46d5-89fb-10ec0db8aa1c</ID>
@@ -621,7 +621,7 @@
 <A Value="-50" Scale="milli" Actual="-0.05"/>
 <B Value="20.3" Scale="None" Actual="20.3"/>
 <C Value="921.04" Scale="None" Actual="921.04"/>
-<D Value="0" Scale="milli" Actual="0"/>
+<D Value="-2.03" Scale="milli" Actual="-0.00203"/>
 </StimulusTension>
 <LengthTension>
 <ID>762bf44d-eaa0-4a2b-9eb7-be5e10ca4541</ID>
@@ -688,7 +688,7 @@
 <A Value="-50" Scale="milli" Actual="-0.05"/>
 <B Value="16.62" Scale="None" Actual="16.62"/>
 <C Value="921.04" Scale="None" Actual="921.04"/>
-<D Value="0" Scale="milli" Actual="0"/>
+<D Value="-1.66" Scale="milli" Actual="-0.00166"/>
 </StimulusTension>
 <LengthTension>
 <ID>ccabb86d-5b52-46e6-9224-cc7538a462a7</ID>
@@ -755,7 +755,7 @@
 <A Value="-50" Scale="milli" Actual="-0.05"/>
 <B Value="2.79" Scale="None" Actual="2.79"/>
 <C Value="921.04" Scale="None" Actual="921.04"/>
-<D Value="0" Scale="milli" Actual="0"/>
+<D Value="-0.28" Scale="milli" Actual="-0.00028"/>
 </StimulusTension>
 <LengthTension>
 <ID>6817febd-8289-4df6-b19c-2bfd0722d0db</ID>
@@ -1029,7 +1029,7 @@
 <A Value="-50" Scale="milli" Actual="-0.05"/>
 <B Value="8.87" Scale="None" Actual="8.87"/>
 <C Value="921.04" Scale="None" Actual="921.04"/>
-<D Value="0" Scale="milli" Actual="0"/>
+<D Value="-0.89" Scale="milli" Actual="-0.00089"/>
 </StimulusTension>
 <LengthTension>
 <ID>e36d0835-71ff-43c9-8072-92597686053f</ID>
@@ -1234,7 +1234,7 @@
 <A Value="-50" Scale="milli" Actual="-0.05"/>
 <B Value="13.3" Scale="None" Actual="13.3"/>
 <C Value="921.04" Scale="None" Actual="921.04"/>
-<D Value="0" Scale="milli" Actual="0"/>
+<D Value="-1.33" Scale="milli" Actual="-0.00133"/>
 </StimulusTension>
 <LengthTension>
 <ID>99e935de-5547-4835-9204-17bc3220c459</ID>
@@ -1508,7 +1508,7 @@
 <A Value="-50" Scale="milli" Actual="-0.05"/>
 <B Value="8.17" Scale="None" Actual="8.17"/>
 <C Value="921.04" Scale="None" Actual="921.04"/>
-<D Value="0" Scale="milli" Actual="0"/>
+<D Value="-0.82" Scale="milli" Actual="-0.00082"/>
 </StimulusTension>
 <LengthTension>
 <ID>7eef83f8-81a1-4dae-ab0b-4ca9e9fdae96</ID>
@@ -1575,7 +1575,7 @@
 <A Value="-50" Scale="milli" Actual="-0.05"/>
 <B Value="7" Scale="None" Actual="7"/>
 <C Value="921.04" Scale="None" Actual="921.04"/>
-<D Value="0" Scale="milli" Actual="0"/>
+<D Value="-0.7" Scale="milli" Actual="-0.0007"/>
 </StimulusTension>
 <LengthTension>
 <ID>c29c3498-5ad1-4346-9927-5f39d80bdbfc</ID>
@@ -1642,7 +1642,7 @@
 <A Value="-50" Scale="milli" Actual="-0.05"/>
 <B Value="12.91" Scale="None" Actual="12.91"/>
 <C Value="921.04" Scale="None" Actual="921.04"/>
-<D Value="0" Scale="milli" Actual="0"/>
+<D Value="-1.29" Scale="milli" Actual="-0.00129"/>
 </StimulusTension>
 <LengthTension>
 <ID>ad3bd308-8401-474e-9863-12a6c94ad529</ID>
@@ -1709,7 +1709,7 @@
 <A Value="-50" Scale="milli" Actual="-0.05"/>
 <B Value="20.06" Scale="None" Actual="20.06"/>
 <C Value="921.04" Scale="None" Actual="921.04"/>
-<D Value="0" Scale="milli" Actual="0"/>
+<D Value="-2.01" Scale="milli" Actual="-0.00201"/>
 </StimulusTension>
 <LengthTension>
 <ID>02732d6b-044c-4113-b387-adde4af97c90</ID>
@@ -1984,7 +1984,7 @@
 <A Value="-50" Scale="milli" Actual="-0.05"/>
 <B Value="22.47" Scale="None" Actual="22.47"/>
 <C Value="921.04" Scale="None" Actual="921.04"/>
-<D Value="0" Scale="milli" Actual="0"/>
+<D Value="-2.25" Scale="milli" Actual="-0.00225"/>
 </StimulusTension>
 <LengthTension>
 <ID>d13d23b7-6963-4ebe-b924-5eba8787310a</ID>
@@ -2191,7 +2191,7 @@
 <A Value="-50" Scale="milli" Actual="-0.05"/>
 <B Value="29.66" Scale="None" Actual="29.66"/>
 <C Value="921.04" Scale="None" Actual="921.04"/>
-<D Value="0" Scale="milli" Actual="0"/>
+<D Value="-2.97" Scale="milli" Actual="-0.00297"/>
 </StimulusTension>
 <LengthTension>
 <ID>8757187c-8706-40fe-be99-2c7ad594baed</ID>
@@ -2397,7 +2397,7 @@
 <A Value="-50" Scale="milli" Actual="-0.05"/>
 <B Value="0.67" Scale="None" Actual="0.67"/>
 <C Value="921.04" Scale="None" Actual="921.04"/>
-<D Value="0" Scale="milli" Actual="0"/>
+<D Value="-0.07" Scale="milli" Actual="-7e-005"/>
 </StimulusTension>
 <LengthTension>
 <ID>eb78826e-7802-4472-bc17-e8b755ae9169</ID>
@@ -2673,7 +2673,7 @@
 <A Value="-50" Scale="milli" Actual="-0.05"/>
 <B Value="2.5" Scale="None" Actual="2.5"/>
 <C Value="921.04" Scale="None" Actual="921.04"/>
-<D Value="0" Scale="milli" Actual="0"/>
+<D Value="-0.25" Scale="milli" Actual="-0.00025"/>
 </StimulusTension>
 <LengthTension>
 <ID>6b5c3b8d-1531-4562-acb1-b2268f1bb2f1</ID>
@@ -2880,7 +2880,7 @@
 <A Value="-50" Scale="milli" Actual="-0.05"/>
 <B Value="3.7" Scale="None" Actual="3.7"/>
 <C Value="921.04" Scale="None" Actual="921.04"/>
-<D Value="0" Scale="milli" Actual="0"/>
+<D Value="-0.37" Scale="milli" Actual="-0.00037"/>
 </StimulusTension>
 <LengthTension>
 <ID>0de9e525-800b-4afd-98b8-353815dd57f8</ID>
@@ -2966,9 +2966,9 @@
 <Density Value="8.26" Scale="None" Actual="8.26"/>
 <Mass Value="14.141" Scale="None" Actual="14.141"/>
 <COM>
-<X Value="0" Scale="None" Actual="0"/>
-<Y Value="0" Scale="None" Actual="0"/>
-<Z Value="0" Scale="None" Actual="0"/>
+<X Value="-8.315" Scale="milli" Actual="-0.008315"/>
+<Y Value="-1.975" Scale="milli" Actual="-0.001975"/>
+<Z Value="15.642" Scale="milli" Actual="0.015642"/>
 </COM>
 <MaterialTypeID>DEFAULTMATERIAL</MaterialTypeID>
 <Freeze>False</Freeze>
@@ -3144,7 +3144,7 @@
 <A Value="-50" Scale="milli" Actual="-0.05"/>
 <B Value="26.77" Scale="None" Actual="26.77"/>
 <C Value="921.04" Scale="None" Actual="921.04"/>
-<D Value="0" Scale="milli" Actual="0"/>
+<D Value="-2.68" Scale="milli" Actual="-0.00268"/>
 </StimulusTension>
 <LengthTension>
 <ID>a296924c-eaf2-4ea7-bfa2-ee52eb27cc97</ID>
@@ -3558,7 +3558,7 @@
 <A Value="-50" Scale="milli" Actual="-0.05"/>
 <B Value="20.96" Scale="None" Actual="20.96"/>
 <C Value="921.04" Scale="None" Actual="921.04"/>
-<D Value="0" Scale="milli" Actual="0"/>
+<D Value="-2.1" Scale="milli" Actual="-0.0021"/>
 </StimulusTension>
 <LengthTension>
 <ID>3d1a42d6-63e4-451e-b92f-07c156410c08</ID>
@@ -3972,7 +3972,7 @@
 <A Value="-50" Scale="milli" Actual="-0.05"/>
 <B Value="4.59" Scale="None" Actual="4.59"/>
 <C Value="921.04" Scale="None" Actual="921.04"/>
-<D Value="0" Scale="milli" Actual="0"/>
+<D Value="-0.46" Scale="milli" Actual="-0.00046"/>
 </StimulusTension>
 <LengthTension>
 <ID>17ab47e5-6f40-4e87-8616-116318f03409</ID>
@@ -4334,9 +4334,9 @@
 <Density Value="2.471" Scale="None" Actual="2.471"/>
 <Mass Value="3.339" Scale="None" Actual="3.339"/>
 <COM>
-<X Value="0" Scale="None" Actual="0"/>
-<Y Value="0" Scale="None" Actual="0"/>
-<Z Value="0" Scale="None" Actual="0"/>
+<X Value="-1.833" Scale="milli" Actual="-0.001833"/>
+<Y Value="-17.219" Scale="milli" Actual="-0.017219"/>
+<Z Value="-5.01" Scale="milli" Actual="-0.00501"/>
 </COM>
 <MaterialTypeID>DEFAULTMATERIAL</MaterialTypeID>
 <Freeze>False</Freeze>
@@ -4858,7 +4858,7 @@
 <A Value="-50" Scale="milli" Actual="-0.05"/>
 <B Value="0.79" Scale="None" Actual="0.79"/>
 <C Value="921.04" Scale="None" Actual="921.04"/>
-<D Value="0" Scale="milli" Actual="0"/>
+<D Value="-0.08" Scale="milli" Actual="-8e-005"/>
 </StimulusTension>
 <LengthTension>
 <ID>0a7ee3d4-dfe7-44bf-99c9-c24473d6dff3</ID>
@@ -5346,7 +5346,7 @@
 <A Value="-50" Scale="milli" Actual="-0.05"/>
 <B Value="3.98" Scale="None" Actual="3.98"/>
 <C Value="921.04" Scale="None" Actual="921.04"/>
-<D Value="0" Scale="milli" Actual="0"/>
+<D Value="-0.4" Scale="milli" Actual="-0.0004"/>
 </StimulusTension>
 <LengthTension>
 <ID>1667f329-623c-439e-b975-4fc2987f3a92</ID>
@@ -5485,7 +5485,7 @@
 <A Value="-50" Scale="milli" Actual="-0.05"/>
 <B Value="7.13" Scale="None" Actual="7.13"/>
 <C Value="921.04" Scale="None" Actual="921.04"/>
-<D Value="0" Scale="milli" Actual="0"/>
+<D Value="-0.71" Scale="milli" Actual="-0.00071"/>
 </StimulusTension>
 <LengthTension>
 <ID>42acbd4d-5302-40a7-8594-8c6e7924c342</ID>
@@ -5830,7 +5830,7 @@
 <A Value="-50" Scale="milli" Actual="-0.05"/>
 <B Value="15.49" Scale="None" Actual="15.49"/>
 <C Value="921.04" Scale="None" Actual="921.04"/>
-<D Value="0" Scale="milli" Actual="0"/>
+<D Value="-1.55" Scale="milli" Actual="-0.00155"/>
 </StimulusTension>
 <LengthTension>
 <ID>278e2bfa-2383-47ff-bfa0-1a100da06053</ID>
@@ -6054,9 +6054,9 @@
 <Density Value="3" Scale="None" Actual="3"/>
 <Mass Value="1.571" Scale="None" Actual="1.571"/>
 <COM>
-<X Value="0" Scale="None" Actual="0"/>
-<Y Value="0" Scale="None" Actual="0"/>
-<Z Value="0" Scale="None" Actual="0"/>
+<X Value="5.833" Scale="milli" Actual="0.005833"/>
+<Y Value="-3" Scale="milli" Actual="-0.003"/>
+<Z Value="0.298" Scale="milli" Actual="0.000298"/>
 </COM>
 <MaterialTypeID>DEFAULTMATERIAL</MaterialTypeID>
 <Freeze>False</Freeze>
@@ -7544,7 +7544,7 @@
 <Y Value="0" Scale="None" Actual="0"/>
 <Z Value="0" Scale="None" Actual="0"/>
 </Rotation>
-<LocalMatrix>1,1.38778e-017,1.73472e-017,0,-1.32408e-034,1,7.58942e-017,0,-1.04083e-017,-3.29597e-017,1,0,-0.00829937,-0.40429,-0.09276,1</LocalMatrix>
+<LocalMatrix>1,0,0,0,-0,1,0,0,0,-0,1,0,-0.0083,-0.40429,-0.09276,1</LocalMatrix>
 <DraggerSize Value="-1" Scale="None" Actual="-1"/>
 <Type>Attachment</Type>
 <PartType>AnimatGUI.DataObjects.Physical.Bodies.Attachment</PartType>
@@ -7833,7 +7833,7 @@
 <A Value="-50" Scale="milli" Actual="-0.05"/>
 <B Value="2.56" Scale="None" Actual="2.56"/>
 <C Value="921.04" Scale="None" Actual="921.04"/>
-<D Value="0" Scale="milli" Actual="0"/>
+<D Value="-0.26" Scale="milli" Actual="-0.00026"/>
 </StimulusTension>
 <LengthTension>
 <ID>4b3722d5-4a00-4b08-bd39-df97b4f7f4bf</ID>
@@ -7972,7 +7972,7 @@
 <A Value="-50" Scale="milli" Actual="-0.05"/>
 <B Value="19.83" Scale="None" Actual="19.83"/>
 <C Value="921.04" Scale="None" Actual="921.04"/>
-<D Value="0" Scale="milli" Actual="0"/>
+<D Value="-1.98" Scale="milli" Actual="-0.00198"/>
 </StimulusTension>
 <LengthTension>
 <ID>5bc59ca3-e73c-48d2-9344-a20e4a453da9</ID>
@@ -8731,7 +8731,7 @@
 <A Value="-50" Scale="milli" Actual="-0.05"/>
 <B Value="6.37" Scale="None" Actual="6.37"/>
 <C Value="921.04" Scale="None" Actual="921.04"/>
-<D Value="0" Scale="milli" Actual="0"/>
+<D Value="-0.64" Scale="milli" Actual="-0.00064"/>
 </StimulusTension>
 <LengthTension>
 <ID>7c1b3d99-7219-422f-8456-3a036343e4cf</ID>
@@ -8811,7 +8811,7 @@
 <A Value="-50" Scale="milli" Actual="-0.05"/>
 <B Value="5.26" Scale="None" Actual="5.26"/>
 <C Value="921.04" Scale="None" Actual="921.04"/>
-<D Value="0" Scale="milli" Actual="0"/>
+<D Value="-0.53" Scale="milli" Actual="-0.00053"/>
 </StimulusTension>
 <LengthTension>
 <ID>e44c4dfc-7309-4425-a627-f3ed3bc249ae</ID>
@@ -8881,7 +8881,7 @@
 <A Value="-50" Scale="milli" Actual="-0.05"/>
 <B Value="10.09" Scale="None" Actual="10.09"/>
 <C Value="921.04" Scale="None" Actual="921.04"/>
-<D Value="0" Scale="milli" Actual="0"/>
+<D Value="-1.01" Scale="milli" Actual="-0.00101"/>
 </StimulusTension>
 <LengthTension>
 <ID>84eca5f1-52b1-47b9-9a44-c705fdd66609</ID>
@@ -9019,7 +9019,7 @@
 <A Value="-50" Scale="milli" Actual="-0.05"/>
 <B Value="10.94" Scale="None" Actual="10.94"/>
 <C Value="921.04" Scale="None" Actual="921.04"/>
-<D Value="0" Scale="milli" Actual="0"/>
+<D Value="-1.09" Scale="milli" Actual="-0.00109"/>
 </StimulusTension>
 <LengthTension>
 <ID>4a2d93eb-251c-42b7-8f6d-a5215472079f</ID>
@@ -9299,7 +9299,7 @@
 <A Value="-50" Scale="milli" Actual="-0.05"/>
 <B Value="32.87" Scale="None" Actual="32.87"/>
 <C Value="921.04" Scale="None" Actual="921.04"/>
-<D Value="0" Scale="milli" Actual="0"/>
+<D Value="-3.29" Scale="milli" Actual="-0.00329"/>
 </StimulusTension>
 <LengthTension>
 <ID>91868d7e-39f5-4bbb-a3fe-a29939962411</ID>
@@ -10619,7 +10619,7 @@
 <A Value="-50" Scale="milli" Actual="-0.05"/>
 <B Value="5.43" Scale="None" Actual="5.43"/>
 <C Value="921.04" Scale="None" Actual="921.04"/>
-<D Value="0" Scale="milli" Actual="0"/>
+<D Value="-0.54" Scale="milli" Actual="-0.00054"/>
 </StimulusTension>
 <LengthTension>
 <ID>c123b9f6-ff7f-40fb-bab0-1637b5057a57</ID>
@@ -10686,7 +10686,7 @@
 <A Value="-50" Scale="milli" Actual="-0.05"/>
 <B Value="18.4" Scale="None" Actual="18.4"/>
 <C Value="921.04" Scale="None" Actual="921.04"/>
-<D Value="0" Scale="milli" Actual="0"/>
+<D Value="-1.84" Scale="milli" Actual="-0.00184"/>
 </StimulusTension>
 <LengthTension>
 <ID>2a1c4c48-1406-4ee8-a987-b0a5ca48d9c9</ID>
@@ -10822,7 +10822,7 @@
 <A Value="-50" Scale="milli" Actual="-0.05"/>
 <B Value="21.98" Scale="None" Actual="21.98"/>
 <C Value="921.04" Scale="None" Actual="921.04"/>
-<D Value="0" Scale="milli" Actual="0"/>
+<D Value="-2.2" Scale="milli" Actual="-0.0022"/>
 </StimulusTension>
 <LengthTension>
 <ID>c7316e9a-c0cd-4299-97fe-1181b96c462b</ID>
@@ -11237,7 +11237,7 @@
 <A Value="-50" Scale="milli" Actual="-0.05"/>
 <B Value="6.1" Scale="None" Actual="6.1"/>
 <C Value="921.04" Scale="None" Actual="921.04"/>
-<D Value="0" Scale="milli" Actual="0"/>
+<D Value="-0.61" Scale="milli" Actual="-0.00061"/>
 </StimulusTension>
 <LengthTension>
 <ID>957fc15a-51f8-499a-b37f-24d0fac6af78</ID>
@@ -11304,7 +11304,7 @@
 <A Value="-50" Scale="milli" Actual="-0.05"/>
 <B Value="5.13" Scale="None" Actual="5.13"/>
 <C Value="921.04" Scale="None" Actual="921.04"/>
-<D Value="0" Scale="milli" Actual="0"/>
+<D Value="-0.51" Scale="milli" Actual="-0.00051"/>
 </StimulusTension>
 <LengthTension>
 <ID>b6af827f-3e2e-4251-bd1b-f92eb986361e</ID>
@@ -11509,7 +11509,7 @@
 <A Value="-50" Scale="milli" Actual="-0.05"/>
 <B Value="4.23" Scale="None" Actual="4.23"/>
 <C Value="921.04" Scale="None" Actual="921.04"/>
-<D Value="0" Scale="milli" Actual="0"/>
+<D Value="-0.42" Scale="milli" Actual="-0.00042"/>
 </StimulusTension>
 <LengthTension>
 <ID>6827ca48-05d3-42a6-b7d8-0a68c32c26b1</ID>
@@ -11645,7 +11645,7 @@
 <A Value="-50" Scale="milli" Actual="-0.05"/>
 <B Value="5.42" Scale="None" Actual="5.42"/>
 <C Value="921.04" Scale="None" Actual="921.04"/>
-<D Value="0" Scale="milli" Actual="0"/>
+<D Value="-0.54" Scale="milli" Actual="-0.00054"/>
 </StimulusTension>
 <LengthTension>
 <ID>b828d40c-04c4-4664-af0f-e7028ac01045</ID>
@@ -11712,7 +11712,7 @@
 <A Value="-50" Scale="milli" Actual="-0.05"/>
 <B Value="33.74" Scale="None" Actual="33.74"/>
 <C Value="921.04" Scale="None" Actual="921.04"/>
-<D Value="0" Scale="milli" Actual="0"/>
+<D Value="-3.37" Scale="milli" Actual="-0.00337"/>
 </StimulusTension>
 <LengthTension>
 <ID>ac1ded0f-0dba-48fc-9162-988c9c53a17c</ID>
@@ -11779,7 +11779,7 @@
 <A Value="-50" Scale="milli" Actual="-0.05"/>
 <B Value="5.4" Scale="None" Actual="5.4"/>
 <C Value="921.04" Scale="None" Actual="921.04"/>
-<D Value="0" Scale="milli" Actual="0"/>
+<D Value="-0.54" Scale="milli" Actual="-0.00054"/>
 </StimulusTension>
 <LengthTension>
 <ID>b5a8704d-7f84-43aa-a981-4e4bb9328f62</ID>
@@ -12312,8 +12312,8 @@
 </Stimuli>
 <HudItems>
 <HudItem>
-<Name>79273ba4-2d7d-4e7e-b0ed-40a63ee61162</Name>
-<ID>79273ba4-2d7d-4e7e-b0ed-40a63ee61162</ID>
+<Name>bb471f89-ddab-489c-b358-57cf8715178f</Name>
+<ID>bb471f89-ddab-489c-b358-57cf8715178f</ID>
 <Type>HudText</Type>
 <CharSize>30</CharSize>
 <Text>Time: %3.3f</Text>
@@ -12426,7 +12426,7 @@
 <DockingConfig>&lt;?xml version="1.0" encoding="us-ascii"?&gt;
 &lt;!-- DotNetMagic, The User Interface library for .NET (www.crownwood.net) --&gt;
 &lt;!-- Modifying this generated file will probably render it invalid --&gt;
-&lt;DockingConfig FormatVersion="10" InsideFill="False" InnerMinimum="20, 20" SavedAt="02/04/2020 17:11:14"&gt;
+&lt;DockingConfig FormatVersion="10" InsideFill="False" InnerMinimum="20, 20" SavedAt="02/11/2020 15:58:56"&gt;
 &lt;Content Name="Playback Control" Visible="False" Docked="True" AutoHidden="False" CaptionBar="True" CloseButton="False" DisplaySize="150, 150" DisplayLocation="150, 150" AutoHideSize="150, 150" FloatingSize="150, 150" FullTitle="Playback Control" Office2003BackColor="Base" UniqueName="" Office2007BackColor="Base" MediaPlayerBackColor="Base"&gt;
 &lt;DefaultRestore Type="Crownwood.DotNetMagic.Docking.RestoreContentState"&gt;
 &lt;Content Name="Playback Control" UniqueName="" /&gt;

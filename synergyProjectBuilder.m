@@ -14,6 +14,13 @@ numMuscles = length(muscleIDs);
 nsys = CanvasModel;
 neurpos = [];
 
+%% The Time Debacle
+[beg,ennd] = obj.find_step_indices;
+times = obj.theta_motion_time([beg,ennd]);
+simTime = diff(times);
+nsys.proj_params.simendtime = simTime;
+nsys.proj_params.physicstimestep = obj.dt_motion;
+
 %Build a line of motor neurons and muscles first
 for ii = 1:numMuscles
     neurpos = [(ii)*25.90 250];
@@ -61,19 +68,7 @@ for ii = 1:size(W,2)
         load([file_dir,'\Data\h_equations.mat'])
         nsys.stimulus_objects(ii).eq = equations{ii};
     else
-        sinewavetest = 0;
-        if sinewavetest
-            tt = 0:.001:2*pi;
-            eqns = {2.5*sin(tt)+2.5;...
-                    10*sin(2*tt)+10;...
-                    5*cos(3*tt)+5;...
-                    2*cos(2*tt)+14;...
-                    4*sin(4*tt)+14};
-            nsys.stimulus_objects(ii).eq = generate_synergy_eq(eqns{ii});
-        else
-            nsys.stimulus_objects(ii).eq = generate_synergy_eq(bigH(ii,:));
-        end
-        %nsys.stimulus_objects(ii).eq = generate_synergy_eq(bigH(ii,:));
+        nsys.stimulus_objects(ii).eq = generate_synergy_eq(bigH(ii,:),simTime);
         equations{ii} = nsys.stimulus_objects(ii).eq;
         if  ii == size(W,2)
             save([file_dir,'\Data\h_equations.mat'],'equations')
@@ -85,10 +80,12 @@ end
 % Build datatool viewers for high action muscles to provide insight into motorneuron and muscle activity
 [muscForces,muscInds] = sortrows(max(forces)',1,'descend');
 muscles2check = muscInds(1:5);
+muscles2check = 1:38;
 numDTs = size(nsys.datatool_objects,1);
 nsys.addDatatool('KeyMNs')
 nsys.addDatatool('KeyMuscles')
 nsys.addDatatool('KeyMuscTen')
+nsys.addDatatool('KeyMuscAct')
 % For a given muscle, find that muscle's adapter information and then find the *neuron* that's feeding that adapter
 for ii = 1:length(muscles2check)
     adInd = find(contains({nsys.adapter_objects(:).destination_node_ID},nsys.muscle_objects(muscles2check(ii)).ID));
@@ -96,14 +93,20 @@ for ii = 1:length(muscles2check)
     nsys.addDTaxes(nsys.datatool_objects(numDTs+1),nsys.neuron_objects(nInd),'MembraneVoltage')
     nsys.addDTaxes(nsys.datatool_objects(numDTs+2),nsys.muscle_objects(muscles2check(ii)),'MembraneVoltage')
     nsys.addDTaxes(nsys.datatool_objects(numDTs+3),nsys.muscle_objects(muscles2check(ii)),'Tension')
+    nsys.addDTaxes(nsys.datatool_objects(numDTs+4),nsys.muscle_objects(muscles2check(ii)),'Activation')
+end
+
+for ii = 1:size(nsys.datatool_objects,1)
+    nsys.datatool_objects(ii).endtime = simTime-.01;
 end
 
 nsys.create_animatlab_project(proj_file);
 disp(['Animatlab project file ',projName,ext,' created.'])
 
-function equation = generate_synergy_eq(bigH)
+function equation = generate_synergy_eq(bigH,simTime)
     dt = .00054;
-    time = (99*dt:dt:10.01-10*dt)';
+%     time = (99*dt:dt:10.01-10*dt)';
+    time = (0:dt:simTime)';
     
     bigH = interpolate_for_time(time,bigH);
     

@@ -25,6 +25,9 @@ function [params,soln] = equilsolver_func(Lr,Fo)
     
     soln = soln(soln(:,3)>0,:);
     
+%     kpemax = sortrows(soln,2,'descend');
+%     params = kpemax(1,:);
+    
     %This reduces the complex solution environment to a single result
     %Vary this line to change the solution
     params = soln((soln(:,3) == min(soln(:,3))),:);

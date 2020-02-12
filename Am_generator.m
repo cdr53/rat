@@ -15,8 +15,8 @@ function [Am_musc,V_musc] = Am_generator(obj,forces)
     fl = @(Lm,Lr,Lw) 1-(Lm-Lr).^2./Lw^2;
     Am = @(Al,b,ks,T_dot,kp,delL,L_dot,T) (1./Al).*((b./ks).*T_dot-kp.*delL-b.*L_dot+(1+kp./ks).*T);
 %     V = @(A1,A2,A3,A) A1-(1./A3).*log((A2-A)./A); %Updated 2/3/2020 with the addition of yoff
-    V = @(A1,A2,A3,A4,A) A1-(1./A3).*log((A2)./(A-A4)-1);
-    st_curve = @(Fmax,steepness,xoff,V,yoff) Fmax./(1+exp(steepness*(xoff-V)))+yoff;
+    V = @(A1,A2,A3,A4,A) A1-(1./A3).*log(((A2)./(A-A4))-1);
+    st_curve = @(Fmax,steepness,xoff,V,yoff) (Fmax./(1+exp(steepness*(xoff-V))))+yoff;
     Am_musc = zeros(size(forces));
     Al_musc_all = Am_musc;
     V_musc = Am_musc;
@@ -28,12 +28,12 @@ function [Am_musc,V_musc] = Am_generator(obj,forces)
        Tdot = forces_dot(ii,:);
        T = forces(ii,:);
        Am_musc(ii,:) = Am(Al_musc',b,ks,Tdot,kp,delL_musc',mV',T);
-       Am_musc(ii,Am_musc(ii,:)<yoff) = 0;
+       Am_musc(ii,Am_musc(ii,:)<0) = 0;
        V_musc(ii,:) = real(V(xoff,ST_max,steepness,yoff,Am_musc(ii,:)));
        V_musc(ii,V_musc(ii,:)<-.06) = -.06;
        Al_musc_all(ii,:) = 1./Al_musc;
        %% For loop plotter 1: Plot 5 subplot fig of tension equation
-       if 0
+       if ii==17
        figure
         subplot(5,1,1)
             plot((1+kp./ks).*T)
@@ -55,7 +55,7 @@ function [Am_musc,V_musc] = Am_generator(obj,forces)
             %ylim([0 max(Am_musc(ii,:))*1.1])
        end
        %% For loop plotter 2: View one muscle's active and passive waveforms. When active is > passive, Am is possible.
-       if 0
+       if ii==17
             active = (b/ks).*Tdot+(1+kp/ks).*T;
             passive = kp.*delL_musc+b.*mV;
             yLims = [min([active',passive],[],'all') max([active',passive],[],'all')];

@@ -22,12 +22,11 @@ function [r2scores,recompiled,W,H] = NMFdecomposition(k,forces,to_plot,Wth)
         forces(forces<0)=0;
     end
     m = size(forces,1);
-    n = size(forces,2);
     %k = 4;
     gif_plot = 0;
     
+    rng(300)
     W = rand(m,k);
-    backupW = W;
     %H = rand(k,n);
     lamH = .01;
     lamW = .01;

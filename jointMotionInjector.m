@@ -55,6 +55,7 @@ function [obj] = jointMotionInjector(jointAngles,to_plot)
     parfor j = 1:3
         % Create a sum of sines equation for the joint angle waveforms
         %fitresult = sumsines8Fit(time, jointAnglesBig(:,j),8);
+        
         [fitresult] = sumsinesFit(time, jointAnglesBig(:,j));
         % Coeffs are the a, b, and c values in the equation a*sin(b*t+c)
         coeffs = [coeffnames(fitresult),num2cell(coeffvalues(fitresult)')];

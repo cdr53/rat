@@ -19,10 +19,11 @@ classdef JointSyn < matlab.mixin.SetGet
         joint_rotmat_profile
         rec_angle_time
         limits
+        fricCoeff
     end
     methods
-        function obj = JointSyn()
-            
+        function obj = JointSyn(Jname)
+            obj.name = Jname;
         end
         %% Function: Compute Muscle Force for Motion (outputs Musc_Tension, Musc_Length, Musc_vel, MN_act, etc)
         function [musc_tension, musc_length, musc_velocity, musc_act, MN_act, musc_tension_passive] = compute_musc_force_for_motion(obj,legobj)

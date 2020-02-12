@@ -1,8 +1,8 @@
 clear objmnames
 close all
 
-synData = processSimData([pwd,'\Animatlab\SynergyWalking\SynergyWalking20200109_Standalone.asim'],0);
-
+%synData = processSimData([pwd,'\Animatlab\SynergyWalking\SynergyWalking20200109_Standalone.asim'],0);
+synData =sdata;
 mn = synData(3).data;
 tn = synData(2).data;
 

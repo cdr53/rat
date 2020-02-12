@@ -24,8 +24,8 @@ function parameter_injector(fPath,params)
     etaval = .0001;
     eqns = [r/(1+exp(.01*g))==etaval,r/(1+exp(-.01*g))==(1+etaval)];
     S = solve(eqns,[r g]);
-    STfactor = double(vpa(S.r));
-    steepval = double(vpa(S.g));
+    STfactor = double(vpa(S.r,3));
+    steepval = double(vpa(S.g,3));
     clear r g eqns S
 
     % If not provided with a param's cell spreadsheet, build one.
@@ -43,12 +43,9 @@ function parameter_injector(fPath,params)
             xx = equilsolver_func(Lr,Fo);
             params{ii,2} = xx(1);
             params{ii,3} = xx(2);
-            % An internal debate: is the third column Am vals or the maximum force?
-            %params{ii,4} = xx(3);
             params{ii,4} = STfactor*Fo; %ST_max values, should be slight larger than Fmax to ensure Am values are possible.
-%             [params{:,5}] = deal(661.663); Updated value based on notes 2/3/2020
             [params{:,5}] = deal(steepval);
-            [params{:,6}] = deal(round(-etaval*Fo,3));
+            params{ii,6} = 1000*(-etaval*STfactor*Fo);
             [params{:,7}] = deal(-60);
             [params{:,8}] = deal(-40);
             [params{:,9}] = deal(0);

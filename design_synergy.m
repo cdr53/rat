@@ -10,6 +10,10 @@ if nargin < 1
     sim_file = [fileparts(mfilename('fullpath')),'\Animatlab\SynergyWalking\SynergyWalking20200109_Standalone.asim'];
 end
 
+if isstring(sim_file)
+    sim_file = char(sim_file);
+end
+
 meshMatch(sim_file)
 massCheck(sim_file)
 %proj_file = 'G:\My Drive\Rat\SynergyControl\Animatlab\SynergyWalking\SynergyWalking20200109_Standalone.asim';
@@ -73,6 +77,4 @@ else
     keyboard
 end
 
-clearvars ankle bodies col_head_slice data_struct executable full_run hip isohip_run joint_limits joint_profile joints knee message minimum_effort_run ...
-    proj_file sour_folder status
 end
