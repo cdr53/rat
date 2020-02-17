@@ -17,7 +17,7 @@ rng(300)
 meandiffs = zeros(length(wthreshs),10);
 synfocus = 5;
 numSyns = 10;
-caseNum = 2;
+caseNum = 1;
 
 figHandles = get(groot, 'Children');
 if ~isempty(figHandles)

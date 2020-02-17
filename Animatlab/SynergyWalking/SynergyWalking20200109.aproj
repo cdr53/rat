@@ -11889,11 +11889,232 @@
 </RigidBody>
 <CollisionExclusionPairs/>
 <NervousSystem>
-<NeuralModules/>
+<NeuralModules>
+<Node>
+<ID>P3XAL6W-module</ID>
+<AssemblyFile>IntegrateFireGUI.dll</AssemblyFile>
+<ClassName>IntegrateFireGUI.DataObjects.Behavior.NeuralModule</ClassName>
+<TimeStep Value="0.2" Scale="milli" Actual="0.0002"/>
+<ID>P3XAL6W-module</ID>
+<AHPEquilibriumPotential Value="-70" Scale="milli" Actual="-0.07"/>
+<SpikePeak Value="0" Scale="milli" Actual="0"/>
+<SpikeStrength>1</SpikeStrength>
+<CaEquilibriumPotential Value="200" Scale="milli" Actual="0.2"/>
+<RefractoryPeriod Value="2" Scale="milli" Actual="0.002"/>
+<UseCriticalPeriod>False</UseCriticalPeriod>
+<StartCriticalPeriod Value="0" Scale="None" Actual="0"/>
+<EndCriticalPeriod Value="5" Scale="None" Actual="5"/>
+<TTX>False</TTX>
+<Cd>False</Cd>
+<HH>False</HH>
+<FreezeHebb>False</FreezeHebb>
+<RetainHebbMemory>False</RetainHebbMemory>
+<SynapseTypes>
+<Link>
+<AssemblyFile>IntegrateFireGUI.dll</AssemblyFile>
+<ClassName>IntegrateFireGUI.DataObjects.Behavior.SynapseTypes.NonSpikingChemical</ClassName>
+<ID>signaltransmission1-ID</ID>
+<AdjustDst>False</AdjustDst>
+<AdjustOrg>False</AdjustOrg>
+<ArrowDestination>
+<Style>Fork</Style>
+<Size>Small</Size>
+<Angle>deg30</Angle>
+<Filled>False</Filled>
+</ArrowDestination>
+<ArrowMiddle>
+<Style>None</Style>
+<Size>Small</Size>
+<Angle>deg30</Angle>
+<Filled>False</Filled>
+</ArrowMiddle>
+<ArrowOrigin>
+<Style>None</Style>
+<Size>Small</Size>
+<Angle>deg30</Angle>
+<Filled>False</Filled>
+</ArrowOrigin>
+<BackMode>Transparent</BackMode>
+<DashStyle>Solid</DashStyle>
+<DrawColor>-16777216</DrawColor>
+<DrawWidth>1</DrawWidth>
+<DestinationID/>
+<Font Family="Arial" Size="12" Bold="False" Underline="False" Strikeout="False" Italic="False"/>
+<Hidden>False</Hidden>
+<Jump>Arc</Jump>
+<LineStyle>Polyline</LineStyle>
+<OrthogonalDynamic>True</OrthogonalDynamic>
+<OriginID/>
+<OrientedText>True</OrientedText>
+<Selectable>True</Selectable>
+<Stretchable>True</Stretchable>
+<Text/>
+<ToolTip/>
+<Url/>
+<ZOrder>0</ZOrder>
+<Name>SignalTransmission1</Name>
+<EquilibriumPotential Value="134" Scale="milli" Actual="0.134"/>
+<MaxSynapticConductance Value="0.115" Scale="micro" Actual="1.15e-07"/>
+<PreSynapticThreshold Value="-60" Scale="milli" Actual="-0.06"/>
+<PreSynapticSaturationLevel Value="-40" Scale="milli" Actual="-0.04"/>
+</Link>
+<Link>
+<AssemblyFile>IntegrateFireGUI.dll</AssemblyFile>
+<ClassName>IntegrateFireGUI.DataObjects.Behavior.SynapseTypes.NonSpikingChemical</ClassName>
+<ID>signalmodulation1-ID</ID>
+<AdjustDst>False</AdjustDst>
+<AdjustOrg>False</AdjustOrg>
+<ArrowDestination>
+<Style>Circle</Style>
+<Size>Small</Size>
+<Angle>deg30</Angle>
+<Filled>False</Filled>
+</ArrowDestination>
+<ArrowMiddle>
+<Style>None</Style>
+<Size>Small</Size>
+<Angle>deg30</Angle>
+<Filled>False</Filled>
+</ArrowMiddle>
+<ArrowOrigin>
+<Style>None</Style>
+<Size>Small</Size>
+<Angle>deg30</Angle>
+<Filled>False</Filled>
+</ArrowOrigin>
+<BackMode>Transparent</BackMode>
+<DashStyle>Solid</DashStyle>
+<DrawColor>-16777216</DrawColor>
+<DrawWidth>1</DrawWidth>
+<DestinationID/>
+<Font Family="Arial" Size="12" Bold="False" Underline="False" Strikeout="False" Italic="False"/>
+<Hidden>False</Hidden>
+<Jump>Arc</Jump>
+<LineStyle>Polyline</LineStyle>
+<OrthogonalDynamic>True</OrthogonalDynamic>
+<OriginID/>
+<OrientedText>True</OrientedText>
+<Selectable>True</Selectable>
+<Stretchable>True</Stretchable>
+<Text/>
+<ToolTip/>
+<Url/>
+<ZOrder>0</ZOrder>
+<Name>SignalModulation1</Name>
+<EquilibriumPotential Value="-100" Scale="milli" Actual="-0.1"/>
+<MaxSynapticConductance Value="0.558" Scale="micro" Actual="5.58e-07"/>
+<PreSynapticThreshold Value="-60" Scale="milli" Actual="-0.06"/>
+<PreSynapticSaturationLevel Value="-40" Scale="milli" Actual="-0.04"/>
+</Link>
+<Link>
+<AssemblyFile>IntegrateFireGUI.dll</AssemblyFile>
+<ClassName>IntegrateFireGUI.DataObjects.Behavior.SynapseTypes.NonSpikingChemical</ClassName>
+<ID>signalmodulation2-ID</ID>
+<AdjustDst>False</AdjustDst>
+<AdjustOrg>False</AdjustOrg>
+<ArrowDestination>
+<Style>Circle</Style>
+<Size>Small</Size>
+<Angle>deg30</Angle>
+<Filled>False</Filled>
+</ArrowDestination>
+<ArrowMiddle>
+<Style>None</Style>
+<Size>Small</Size>
+<Angle>deg30</Angle>
+<Filled>False</Filled>
+</ArrowMiddle>
+<ArrowOrigin>
+<Style>None</Style>
+<Size>Small</Size>
+<Angle>deg30</Angle>
+<Filled>False</Filled>
+</ArrowOrigin>
+<BackMode>Transparent</BackMode>
+<DashStyle>Solid</DashStyle>
+<DrawColor>-16777216</DrawColor>
+<DrawWidth>1</DrawWidth>
+<DestinationID/>
+<Font Family="Arial" Size="12" Bold="False" Underline="False" Strikeout="False" Italic="False"/>
+<Hidden>False</Hidden>
+<Jump>Arc</Jump>
+<LineStyle>Polyline</LineStyle>
+<OrthogonalDynamic>True</OrthogonalDynamic>
+<OriginID/>
+<OrientedText>True</OrientedText>
+<Selectable>True</Selectable>
+<Stretchable>True</Stretchable>
+<Text/>
+<ToolTip/>
+<Url/>
+<ZOrder>0</ZOrder>
+<Name>SignalModulation2</Name>
+<EquilibriumPotential Value="-60" Scale="milli" Actual="-0.06"/>
+<MaxSynapticConductance Value="19" Scale="micro" Actual="1.9e-05"/>
+<PreSynapticThreshold Value="-60" Scale="milli" Actual="-0.06"/>
+<PreSynapticSaturationLevel Value="-40" Scale="milli" Actual="-0.04"/>
+</Link>
+<Link>
+<AssemblyFile>IntegrateFireGUI.dll</AssemblyFile>
+<ClassName>IntegrateFireGUI.DataObjects.Behavior.SynapseTypes.NonSpikingChemical</ClassName>
+<ID>signalmodulation3-ID</ID>
+<AdjustDst>False</AdjustDst>
+<AdjustOrg>False</AdjustOrg>
+<ArrowDestination>
+<Style>Circle</Style>
+<Size>Small</Size>
+<Angle>deg30</Angle>
+<Filled>False</Filled>
+</ArrowDestination>
+<ArrowMiddle>
+<Style>None</Style>
+<Size>Small</Size>
+<Angle>deg30</Angle>
+<Filled>False</Filled>
+</ArrowMiddle>
+<ArrowOrigin>
+<Style>None</Style>
+<Size>Small</Size>
+<Angle>deg30</Angle>
+<Filled>False</Filled>
+</ArrowOrigin>
+<BackMode>Transparent</BackMode>
+<DashStyle>Solid</DashStyle>
+<DrawColor>-16777216</DrawColor>
+<DrawWidth>1</DrawWidth>
+<DestinationID/>
+<Font Family="Arial" Size="12" Bold="False" Underline="False" Strikeout="False" Italic="False"/>
+<Hidden>False</Hidden>
+<Jump>Arc</Jump>
+<LineStyle>Polyline</LineStyle>
+<OrthogonalDynamic>True</OrthogonalDynamic>
+<OriginID/>
+<OrientedText>True</OrientedText>
+<Selectable>True</Selectable>
+<Stretchable>True</Stretchable>
+<Text/>
+<ToolTip/>
+<Url/>
+<ZOrder>0</ZOrder>
+<Name>SignalModulation3</Name>
+<EquilibriumPotential Value="-61" Scale="milli" Actual="-0.061"/>
+<MaxSynapticConductance Value="20" Scale="micro" Actual="2e-05"/>
+<PreSynapticThreshold Value="-60" Scale="milli" Actual="-0.06"/>
+<PreSynapticSaturationLevel Value="-40" Scale="milli" Actual="-0.04"/>
+</Link>
+</SynapseTypes>
+</Node>
+<Node>
+<ID>1496cbb3-2e9f-4bbd-9ec0-503de005e1e8</ID>
+<AssemblyFile>AnimatGUI.dll</AssemblyFile>
+<ClassName>AnimatGUI.DataObjects.Behavior.PhysicsModule</ClassName>
+<TimeStep Value="2.5" Scale="milli" Actual="0.0025"/>
+</Node>
+</NeuralModules>
 <Node>
 <AssemblyFile>AnimatGUI.dll</AssemblyFile>
 <ClassName>AnimatGUI.DataObjects.Behavior.Nodes.Subsystem</ClassName>
-<ID>88c93a10-ad76-4a18-8bc6-aa150801048e</ID>
+<ID>P3XAL6W-ID</ID>
 <Alignment>CenterMiddle</Alignment>
 <AutoSize>None</AutoSize>
 <BackMode>Transparent</BackMode>
@@ -11919,7 +12140,7 @@
 <Shape>Rectangle</Shape>
 <ShapeOrientation>Angle0</ShapeOrientation>
 <Size Width="40" Height="40"/>
-<Text>Neural Subsystem</Text>
+<Text>P3XAL6W</Text>
 <TextColor>-16777216</TextColor>
 <TextMargin Width="0" Height="0"/>
 <ToolTip/>
@@ -11938,12 +12159,13 @@
 <OutLinks/>
 <Nodes/>
 <Links/>
-<DiagramXml><![CDATA[<Root>
+<DiagramXml>
+<![CDATA[<Root>
 <Diagram>
-<ID>d1adcdc5-0346-4aff-ae83-8c6f32f88836</ID>
+<ID>P3XAL6W-cdata</ID>
 <AssemblyFile>LicensedAnimatGUI.dll</AssemblyFile>
 <ClassName>LicensedAnimatGUI.Forms.Behavior.AddFlowDiagram</ClassName>
-<PageName>Neural Subsystem</PageName>
+<PageName>P3XAL6W</PageName>
 <ZoomX>1</ZoomX>
 <ZoomY>1</ZoomY>
 <BackColor Red="1" Green="1" Blue="1" Alpha="1"/>
@@ -11953,12 +12175,545 @@
 <GridStyle>DottedLines</GridStyle>
 <JumpSize>Medium</JumpSize>
 <SnapToGrid>False</SnapToGrid>
-<AddFlow Nodes="0" Links="0">
+<AddFlow Nodes="38" Links="0">
 <Version>1.5.0.1</Version>
+<Node Left="11" Top="50" Width="25" Height="116.25">
+<Shadow Style="None" Color="-16777216" Width="0" Height="0" />
+<Shape Style="Rectangle" Orientation="so_0" />
+<AutoSize>ImageToNode</AutoSize>
+<Alignment>CenterBOTTOM</Alignment>
+<FillColor>-1</FillColor>
+<DrawColor>16777215</DrawColor>
+<TextColor>-16777216</TextColor>
+<GradientColor>0</GradientColor>
+<Text>lh_adductorlongus-neural</Text>
+<Font Name="Arial" Size="14" Bold="True" Italic="False" Strikeout="False" Underline="False" />
+<ImageIndex>0</ImageIndex>
+<Tag>lh_adductorlongus-neural-ID</Tag>
+</Node>
+<Node Left="12" Top="50" Width="25" Height="116.25">
+<Shadow Style="None" Color="-16777216" Width="0" Height="0" />
+<Shape Style="Rectangle" Orientation="so_0" />
+<AutoSize>ImageToNode</AutoSize>
+<Alignment>CenterBOTTOM</Alignment>
+<FillColor>-1</FillColor>
+<DrawColor>16777215</DrawColor>
+<TextColor>-16777216</TextColor>
+<GradientColor>0</GradientColor>
+<Text>lh_illiopsoas-neural</Text>
+<Font Name="Arial" Size="14" Bold="True" Italic="False" Strikeout="False" Underline="False" />
+<ImageIndex>0</ImageIndex>
+<Tag>lh_illiopsoas-neural-ID</Tag>
+</Node>
+<Node Left="13" Top="50" Width="25" Height="116.25">
+<Shadow Style="None" Color="-16777216" Width="0" Height="0" />
+<Shape Style="Rectangle" Orientation="so_0" />
+<AutoSize>ImageToNode</AutoSize>
+<Alignment>CenterBOTTOM</Alignment>
+<FillColor>-1</FillColor>
+<DrawColor>16777215</DrawColor>
+<TextColor>-16777216</TextColor>
+<GradientColor>0</GradientColor>
+<Text>lh_gluteusmaximus-neural</Text>
+<Font Name="Arial" Size="14" Bold="True" Italic="False" Strikeout="False" Underline="False" />
+<ImageIndex>0</ImageIndex>
+<Tag>lh_gluteusmaximus-neural-ID</Tag>
+</Node>
+<Node Left="14" Top="50" Width="25" Height="116.25">
+<Shadow Style="None" Color="-16777216" Width="0" Height="0" />
+<Shape Style="Rectangle" Orientation="so_0" />
+<AutoSize>ImageToNode</AutoSize>
+<Alignment>CenterBOTTOM</Alignment>
+<FillColor>-1</FillColor>
+<DrawColor>16777215</DrawColor>
+<TextColor>-16777216</TextColor>
+<GradientColor>0</GradientColor>
+<Text>lh_gracilisanterior-neural</Text>
+<Font Name="Arial" Size="14" Bold="True" Italic="False" Strikeout="False" Underline="False" />
+<ImageIndex>0</ImageIndex>
+<Tag>lh_gracilisanterior-neural-ID</Tag>
+</Node>
+<Node Left="15" Top="50" Width="25" Height="116.25">
+<Shadow Style="None" Color="-16777216" Width="0" Height="0" />
+<Shape Style="Rectangle" Orientation="so_0" />
+<AutoSize>ImageToNode</AutoSize>
+<Alignment>CenterBOTTOM</Alignment>
+<FillColor>-1</FillColor>
+<DrawColor>16777215</DrawColor>
+<TextColor>-16777216</TextColor>
+<GradientColor>0</GradientColor>
+<Text>lh_pectineus-neural</Text>
+<Font Name="Arial" Size="14" Bold="True" Italic="False" Strikeout="False" Underline="False" />
+<ImageIndex>0</ImageIndex>
+<Tag>lh_pectineus-neural-ID</Tag>
+</Node>
+<Node Left="16" Top="50" Width="25" Height="116.25">
+<Shadow Style="None" Color="-16777216" Width="0" Height="0" />
+<Shape Style="Rectangle" Orientation="so_0" />
+<AutoSize>ImageToNode</AutoSize>
+<Alignment>CenterBOTTOM</Alignment>
+<FillColor>-1</FillColor>
+<DrawColor>16777215</DrawColor>
+<TextColor>-16777216</TextColor>
+<GradientColor>0</GradientColor>
+<Text>lh_gluteusminimus-neural</Text>
+<Font Name="Arial" Size="14" Bold="True" Italic="False" Strikeout="False" Underline="False" />
+<ImageIndex>0</ImageIndex>
+<Tag>lh_gluteusminimus-neural-ID</Tag>
+</Node>
+<Node Left="17" Top="50" Width="25" Height="116.25">
+<Shadow Style="None" Color="-16777216" Width="0" Height="0" />
+<Shape Style="Rectangle" Orientation="so_0" />
+<AutoSize>ImageToNode</AutoSize>
+<Alignment>CenterBOTTOM</Alignment>
+<FillColor>-1</FillColor>
+<DrawColor>16777215</DrawColor>
+<TextColor>-16777216</TextColor>
+<GradientColor>0</GradientColor>
+<Text>lh_semitendinosusprincipal-neural</Text>
+<Font Name="Arial" Size="14" Bold="True" Italic="False" Strikeout="False" Underline="False" />
+<ImageIndex>0</ImageIndex>
+<Tag>lh_semitendinosusprincipal-neural-ID</Tag>
+</Node>
+<Node Left="18" Top="50" Width="25" Height="116.25">
+<Shadow Style="None" Color="-16777216" Width="0" Height="0" />
+<Shape Style="Rectangle" Orientation="so_0" />
+<AutoSize>ImageToNode</AutoSize>
+<Alignment>CenterBOTTOM</Alignment>
+<FillColor>-1</FillColor>
+<DrawColor>16777215</DrawColor>
+<TextColor>-16777216</TextColor>
+<GradientColor>0</GradientColor>
+<Text>lh_tensorfascialatae-neural</Text>
+<Font Name="Arial" Size="14" Bold="True" Italic="False" Strikeout="False" Underline="False" />
+<ImageIndex>0</ImageIndex>
+<Tag>lh_tensorfascialatae-neural-ID</Tag>
+</Node>
+<Node Left="19" Top="50" Width="25" Height="116.25">
+<Shadow Style="None" Color="-16777216" Width="0" Height="0" />
+<Shape Style="Rectangle" Orientation="so_0" />
+<AutoSize>ImageToNode</AutoSize>
+<Alignment>CenterBOTTOM</Alignment>
+<FillColor>-1</FillColor>
+<DrawColor>16777215</DrawColor>
+<TextColor>-16777216</TextColor>
+<GradientColor>0</GradientColor>
+<Text>lh_obturatorexternus-neural</Text>
+<Font Name="Arial" Size="14" Bold="True" Italic="False" Strikeout="False" Underline="False" />
+<ImageIndex>0</ImageIndex>
+<Tag>lh_obturatorexternus-neural-ID</Tag>
+</Node>
+<Node Left="20" Top="50" Width="25" Height="116.25">
+<Shadow Style="None" Color="-16777216" Width="0" Height="0" />
+<Shape Style="Rectangle" Orientation="so_0" />
+<AutoSize>ImageToNode</AutoSize>
+<Alignment>CenterBOTTOM</Alignment>
+<FillColor>-1</FillColor>
+<DrawColor>16777215</DrawColor>
+<TextColor>-16777216</TextColor>
+<GradientColor>0</GradientColor>
+<Text>lh_piriformis-neural</Text>
+<Font Name="Arial" Size="14" Bold="True" Italic="False" Strikeout="False" Underline="False" />
+<ImageIndex>0</ImageIndex>
+<Tag>lh_piriformis-neural-ID</Tag>
+</Node>
+<Node Left="21" Top="50" Width="25" Height="116.25">
+<Shadow Style="None" Color="-16777216" Width="0" Height="0" />
+<Shape Style="Rectangle" Orientation="so_0" />
+<AutoSize>ImageToNode</AutoSize>
+<Alignment>CenterBOTTOM</Alignment>
+<FillColor>-1</FillColor>
+<DrawColor>16777215</DrawColor>
+<TextColor>-16777216</TextColor>
+<GradientColor>0</GradientColor>
+<Text>lh_bicepsfemorisposterior-neural</Text>
+<Font Name="Arial" Size="14" Bold="True" Italic="False" Strikeout="False" Underline="False" />
+<ImageIndex>0</ImageIndex>
+<Tag>lh_bicepsfemorisposterior-neural-ID</Tag>
+</Node>
+<Node Left="22" Top="50" Width="25" Height="116.25">
+<Shadow Style="None" Color="-16777216" Width="0" Height="0" />
+<Shape Style="Rectangle" Orientation="so_0" />
+<AutoSize>ImageToNode</AutoSize>
+<Alignment>CenterBOTTOM</Alignment>
+<FillColor>-1</FillColor>
+<DrawColor>16777215</DrawColor>
+<TextColor>-16777216</TextColor>
+<GradientColor>0</GradientColor>
+<Text>lh_rectusfemoris-neural</Text>
+<Font Name="Arial" Size="14" Bold="True" Italic="False" Strikeout="False" Underline="False" />
+<ImageIndex>0</ImageIndex>
+<Tag>lh_rectusfemoris-neural-ID</Tag>
+</Node>
+<Node Left="23" Top="50" Width="25" Height="116.25">
+<Shadow Style="None" Color="-16777216" Width="0" Height="0" />
+<Shape Style="Rectangle" Orientation="so_0" />
+<AutoSize>ImageToNode</AutoSize>
+<Alignment>CenterBOTTOM</Alignment>
+<FillColor>-1</FillColor>
+<DrawColor>16777215</DrawColor>
+<TextColor>-16777216</TextColor>
+<GradientColor>0</GradientColor>
+<Text>lh_gemellussuperior-neural</Text>
+<Font Name="Arial" Size="14" Bold="True" Italic="False" Strikeout="False" Underline="False" />
+<ImageIndex>0</ImageIndex>
+<Tag>lh_gemellussuperior-neural-ID</Tag>
+</Node>
+<Node Left="24" Top="50" Width="25" Height="116.25">
+<Shadow Style="None" Color="-16777216" Width="0" Height="0" />
+<Shape Style="Rectangle" Orientation="so_0" />
+<AutoSize>ImageToNode</AutoSize>
+<Alignment>CenterBOTTOM</Alignment>
+<FillColor>-1</FillColor>
+<DrawColor>16777215</DrawColor>
+<TextColor>-16777216</TextColor>
+<GradientColor>0</GradientColor>
+<Text>lh_semitendinosusaccessory-neural</Text>
+<Font Name="Arial" Size="14" Bold="True" Italic="False" Strikeout="False" Underline="False" />
+<ImageIndex>0</ImageIndex>
+<Tag>lh_semitendinosusaccessory-neural-ID</Tag>
+</Node>
+<Node Left="25" Top="50" Width="25" Height="116.25">
+<Shadow Style="None" Color="-16777216" Width="0" Height="0" />
+<Shape Style="Rectangle" Orientation="so_0" />
+<AutoSize>ImageToNode</AutoSize>
+<Alignment>CenterBOTTOM</Alignment>
+<FillColor>-1</FillColor>
+<DrawColor>16777215</DrawColor>
+<TextColor>-16777216</TextColor>
+<GradientColor>0</GradientColor>
+<Text>lh_caudofemoralis-neural</Text>
+<Font Name="Arial" Size="14" Bold="True" Italic="False" Strikeout="False" Underline="False" />
+<ImageIndex>0</ImageIndex>
+<Tag>lh_caudofemoralis-neural-ID</Tag>
+</Node>
+<Node Left="26" Top="50" Width="25" Height="116.25">
+<Shadow Style="None" Color="-16777216" Width="0" Height="0" />
+<Shape Style="Rectangle" Orientation="so_0" />
+<AutoSize>ImageToNode</AutoSize>
+<Alignment>CenterBOTTOM</Alignment>
+<FillColor>-1</FillColor>
+<DrawColor>16777215</DrawColor>
+<TextColor>-16777216</TextColor>
+<GradientColor>0</GradientColor>
+<Text>lh_vastuslateralis-neural</Text>
+<Font Name="Arial" Size="14" Bold="True" Italic="False" Strikeout="False" Underline="False" />
+<ImageIndex>0</ImageIndex>
+<Tag>lh_vastuslateralis-neural-ID</Tag>
+</Node>
+<Node Left="27" Top="50" Width="25" Height="116.25">
+<Shadow Style="None" Color="-16777216" Width="0" Height="0" />
+<Shape Style="Rectangle" Orientation="so_0" />
+<AutoSize>ImageToNode</AutoSize>
+<Alignment>CenterBOTTOM</Alignment>
+<FillColor>-1</FillColor>
+<DrawColor>16777215</DrawColor>
+<TextColor>-16777216</TextColor>
+<GradientColor>0</GradientColor>
+<Text>lh_medialgastrocnemius-neural</Text>
+<Font Name="Arial" Size="14" Bold="True" Italic="False" Strikeout="False" Underline="False" />
+<ImageIndex>0</ImageIndex>
+<Tag>lh_medialgastrocnemius-neural-ID</Tag>
+</Node>
+<Node Left="28" Top="50" Width="25" Height="116.25">
+<Shadow Style="None" Color="-16777216" Width="0" Height="0" />
+<Shape Style="Rectangle" Orientation="so_0" />
+<AutoSize>ImageToNode</AutoSize>
+<Alignment>CenterBOTTOM</Alignment>
+<FillColor>-1</FillColor>
+<DrawColor>16777215</DrawColor>
+<TextColor>-16777216</TextColor>
+<GradientColor>0</GradientColor>
+<Text>lh_vastusintermedius-neural</Text>
+<Font Name="Arial" Size="14" Bold="True" Italic="False" Strikeout="False" Underline="False" />
+<ImageIndex>0</ImageIndex>
+<Tag>lh_vastusintermedius-neural-ID</Tag>
+</Node>
+<Node Left="29" Top="50" Width="25" Height="116.25">
+<Shadow Style="None" Color="-16777216" Width="0" Height="0" />
+<Shape Style="Rectangle" Orientation="so_0" />
+<AutoSize>ImageToNode</AutoSize>
+<Alignment>CenterBOTTOM</Alignment>
+<FillColor>-1</FillColor>
+<DrawColor>16777215</DrawColor>
+<TextColor>-16777216</TextColor>
+<GradientColor>0</GradientColor>
+<Text>lh_flexorhallucislongus-neural</Text>
+<Font Name="Arial" Size="14" Bold="True" Italic="False" Strikeout="False" Underline="False" />
+<ImageIndex>0</ImageIndex>
+<Tag>lh_flexorhallucislongus-neural-ID</Tag>
+</Node>
+<Node Left="30" Top="50" Width="25" Height="116.25">
+<Shadow Style="None" Color="-16777216" Width="0" Height="0" />
+<Shape Style="Rectangle" Orientation="so_0" />
+<AutoSize>ImageToNode</AutoSize>
+<Alignment>CenterBOTTOM</Alignment>
+<FillColor>-1</FillColor>
+<DrawColor>16777215</DrawColor>
+<TextColor>-16777216</TextColor>
+<GradientColor>0</GradientColor>
+<Text>lh_extensordigitorumlongus-neural</Text>
+<Font Name="Arial" Size="14" Bold="True" Italic="False" Strikeout="False" Underline="False" />
+<ImageIndex>0</ImageIndex>
+<Tag>lh_extensordigitorumlongus-neural-ID</Tag>
+</Node>
+<Node Left="31" Top="50" Width="25" Height="116.25">
+<Shadow Style="None" Color="-16777216" Width="0" Height="0" />
+<Shape Style="Rectangle" Orientation="so_0" />
+<AutoSize>ImageToNode</AutoSize>
+<Alignment>CenterBOTTOM</Alignment>
+<FillColor>-1</FillColor>
+<DrawColor>16777215</DrawColor>
+<TextColor>-16777216</TextColor>
+<GradientColor>0</GradientColor>
+<Text>lh_peroneuslongus-neural</Text>
+<Font Name="Arial" Size="14" Bold="True" Italic="False" Strikeout="False" Underline="False" />
+<ImageIndex>0</ImageIndex>
+<Tag>lh_peroneuslongus-neural-ID</Tag>
+</Node>
+<Node Left="32" Top="50" Width="25" Height="116.25">
+<Shadow Style="None" Color="-16777216" Width="0" Height="0" />
+<Shape Style="Rectangle" Orientation="so_0" />
+<AutoSize>ImageToNode</AutoSize>
+<Alignment>CenterBOTTOM</Alignment>
+<FillColor>-1</FillColor>
+<DrawColor>16777215</DrawColor>
+<TextColor>-16777216</TextColor>
+<GradientColor>0</GradientColor>
+<Text>lh_tibialisanterior-neural</Text>
+<Font Name="Arial" Size="14" Bold="True" Italic="False" Strikeout="False" Underline="False" />
+<ImageIndex>0</ImageIndex>
+<Tag>lh_tibialisanterior-neural-ID</Tag>
+</Node>
+<Node Left="33" Top="50" Width="25" Height="116.25">
+<Shadow Style="None" Color="-16777216" Width="0" Height="0" />
+<Shape Style="Rectangle" Orientation="so_0" />
+<AutoSize>ImageToNode</AutoSize>
+<Alignment>CenterBOTTOM</Alignment>
+<FillColor>-1</FillColor>
+<DrawColor>16777215</DrawColor>
+<TextColor>-16777216</TextColor>
+<GradientColor>0</GradientColor>
+<Text>lh_soleus-neural</Text>
+<Font Name="Arial" Size="14" Bold="True" Italic="False" Strikeout="False" Underline="False" />
+<ImageIndex>0</ImageIndex>
+<Tag>lh_soleus-neural-ID</Tag>
+</Node>
+<Node Left="34" Top="50" Width="25" Height="116.25">
+<Shadow Style="None" Color="-16777216" Width="0" Height="0" />
+<Shape Style="Rectangle" Orientation="so_0" />
+<AutoSize>ImageToNode</AutoSize>
+<Alignment>CenterBOTTOM</Alignment>
+<FillColor>-1</FillColor>
+<DrawColor>16777215</DrawColor>
+<TextColor>-16777216</TextColor>
+<GradientColor>0</GradientColor>
+<Text>lh_flexordigitorumlongus-neural</Text>
+<Font Name="Arial" Size="14" Bold="True" Italic="False" Strikeout="False" Underline="False" />
+<ImageIndex>0</ImageIndex>
+<Tag>lh_flexordigitorumlongus-neural-ID</Tag>
+</Node>
+<Node Left="35" Top="50" Width="25" Height="116.25">
+<Shadow Style="None" Color="-16777216" Width="0" Height="0" />
+<Shape Style="Rectangle" Orientation="so_0" />
+<AutoSize>ImageToNode</AutoSize>
+<Alignment>CenterBOTTOM</Alignment>
+<FillColor>-1</FillColor>
+<DrawColor>16777215</DrawColor>
+<TextColor>-16777216</TextColor>
+<GradientColor>0</GradientColor>
+<Text>lh_tibialisposterior-neural</Text>
+<Font Name="Arial" Size="14" Bold="True" Italic="False" Strikeout="False" Underline="False" />
+<ImageIndex>0</ImageIndex>
+<Tag>lh_tibialisposterior-neural-ID</Tag>
+</Node>
+<Node Left="36" Top="50" Width="25" Height="116.25">
+<Shadow Style="None" Color="-16777216" Width="0" Height="0" />
+<Shape Style="Rectangle" Orientation="so_0" />
+<AutoSize>ImageToNode</AutoSize>
+<Alignment>CenterBOTTOM</Alignment>
+<FillColor>-1</FillColor>
+<DrawColor>16777215</DrawColor>
+<TextColor>-16777216</TextColor>
+<GradientColor>0</GradientColor>
+<Text>lh_popliteus-neural</Text>
+<Font Name="Arial" Size="14" Bold="True" Italic="False" Strikeout="False" Underline="False" />
+<ImageIndex>0</ImageIndex>
+<Tag>lh_popliteus-neural-ID</Tag>
+</Node>
+<Node Left="37" Top="50" Width="25" Height="116.25">
+<Shadow Style="None" Color="-16777216" Width="0" Height="0" />
+<Shape Style="Rectangle" Orientation="so_0" />
+<AutoSize>ImageToNode</AutoSize>
+<Alignment>CenterBOTTOM</Alignment>
+<FillColor>-1</FillColor>
+<DrawColor>16777215</DrawColor>
+<TextColor>-16777216</TextColor>
+<GradientColor>0</GradientColor>
+<Text>lh_plantaris-neural</Text>
+<Font Name="Arial" Size="14" Bold="True" Italic="False" Strikeout="False" Underline="False" />
+<ImageIndex>0</ImageIndex>
+<Tag>lh_plantaris-neural-ID</Tag>
+</Node>
+<Node Left="38" Top="50" Width="25" Height="116.25">
+<Shadow Style="None" Color="-16777216" Width="0" Height="0" />
+<Shape Style="Rectangle" Orientation="so_0" />
+<AutoSize>ImageToNode</AutoSize>
+<Alignment>CenterBOTTOM</Alignment>
+<FillColor>-1</FillColor>
+<DrawColor>16777215</DrawColor>
+<TextColor>-16777216</TextColor>
+<GradientColor>0</GradientColor>
+<Text>lh_vastusmedialis-neural</Text>
+<Font Name="Arial" Size="14" Bold="True" Italic="False" Strikeout="False" Underline="False" />
+<ImageIndex>0</ImageIndex>
+<Tag>lh_vastusmedialis-neural-ID</Tag>
+</Node>
+<Node Left="39" Top="50" Width="25" Height="116.25">
+<Shadow Style="None" Color="-16777216" Width="0" Height="0" />
+<Shape Style="Rectangle" Orientation="so_0" />
+<AutoSize>ImageToNode</AutoSize>
+<Alignment>CenterBOTTOM</Alignment>
+<FillColor>-1</FillColor>
+<DrawColor>16777215</DrawColor>
+<TextColor>-16777216</TextColor>
+<GradientColor>0</GradientColor>
+<Text>lh_lateralgastrocnemius-neural</Text>
+<Font Name="Arial" Size="14" Bold="True" Italic="False" Strikeout="False" Underline="False" />
+<ImageIndex>0</ImageIndex>
+<Tag>lh_lateralgastrocnemius-neural-ID</Tag>
+</Node>
+<Node Left="40" Top="50" Width="25" Height="116.25">
+<Shadow Style="None" Color="-16777216" Width="0" Height="0" />
+<Shape Style="Rectangle" Orientation="so_0" />
+<AutoSize>ImageToNode</AutoSize>
+<Alignment>CenterBOTTOM</Alignment>
+<FillColor>-1</FillColor>
+<DrawColor>16777215</DrawColor>
+<TextColor>-16777216</TextColor>
+<GradientColor>0</GradientColor>
+<Text>lh_adductormagnus-neural</Text>
+<Font Name="Arial" Size="14" Bold="True" Italic="False" Strikeout="False" Underline="False" />
+<ImageIndex>0</ImageIndex>
+<Tag>lh_adductormagnus-neural-ID</Tag>
+</Node>
+<Node Left="41" Top="50" Width="25" Height="116.25">
+<Shadow Style="None" Color="-16777216" Width="0" Height="0" />
+<Shape Style="Rectangle" Orientation="so_0" />
+<AutoSize>ImageToNode</AutoSize>
+<Alignment>CenterBOTTOM</Alignment>
+<FillColor>-1</FillColor>
+<DrawColor>16777215</DrawColor>
+<TextColor>-16777216</TextColor>
+<GradientColor>0</GradientColor>
+<Text>lh_semimembranosus-neural</Text>
+<Font Name="Arial" Size="14" Bold="True" Italic="False" Strikeout="False" Underline="False" />
+<ImageIndex>0</ImageIndex>
+<Tag>lh_semimembranosus-neural-ID</Tag>
+</Node>
+<Node Left="42" Top="50" Width="25" Height="116.25">
+<Shadow Style="None" Color="-16777216" Width="0" Height="0" />
+<Shape Style="Rectangle" Orientation="so_0" />
+<AutoSize>ImageToNode</AutoSize>
+<Alignment>CenterBOTTOM</Alignment>
+<FillColor>-1</FillColor>
+<DrawColor>16777215</DrawColor>
+<TextColor>-16777216</TextColor>
+<GradientColor>0</GradientColor>
+<Text>lh_adductorbrevis-neural</Text>
+<Font Name="Arial" Size="14" Bold="True" Italic="False" Strikeout="False" Underline="False" />
+<ImageIndex>0</ImageIndex>
+<Tag>lh_adductorbrevis-neural-ID</Tag>
+</Node>
+<Node Left="43" Top="50" Width="25" Height="116.25">
+<Shadow Style="None" Color="-16777216" Width="0" Height="0" />
+<Shape Style="Rectangle" Orientation="so_0" />
+<AutoSize>ImageToNode</AutoSize>
+<Alignment>CenterBOTTOM</Alignment>
+<FillColor>-1</FillColor>
+<DrawColor>16777215</DrawColor>
+<TextColor>-16777216</TextColor>
+<GradientColor>0</GradientColor>
+<Text>lh_bicepsfemorisanterior-neural</Text>
+<Font Name="Arial" Size="14" Bold="True" Italic="False" Strikeout="False" Underline="False" />
+<ImageIndex>0</ImageIndex>
+<Tag>lh_bicepsfemorisanterior-neural-ID</Tag>
+</Node>
+<Node Left="44" Top="50" Width="25" Height="116.25">
+<Shadow Style="None" Color="-16777216" Width="0" Height="0" />
+<Shape Style="Rectangle" Orientation="so_0" />
+<AutoSize>ImageToNode</AutoSize>
+<Alignment>CenterBOTTOM</Alignment>
+<FillColor>-1</FillColor>
+<DrawColor>16777215</DrawColor>
+<TextColor>-16777216</TextColor>
+<GradientColor>0</GradientColor>
+<Text>lh_gemellusinferior-neural</Text>
+<Font Name="Arial" Size="14" Bold="True" Italic="False" Strikeout="False" Underline="False" />
+<ImageIndex>0</ImageIndex>
+<Tag>lh_gemellusinferior-neural-ID</Tag>
+</Node>
+<Node Left="45" Top="50" Width="25" Height="116.25">
+<Shadow Style="None" Color="-16777216" Width="0" Height="0" />
+<Shape Style="Rectangle" Orientation="so_0" />
+<AutoSize>ImageToNode</AutoSize>
+<Alignment>CenterBOTTOM</Alignment>
+<FillColor>-1</FillColor>
+<DrawColor>16777215</DrawColor>
+<TextColor>-16777216</TextColor>
+<GradientColor>0</GradientColor>
+<Text>lh_gracilisposterior-neural</Text>
+<Font Name="Arial" Size="14" Bold="True" Italic="False" Strikeout="False" Underline="False" />
+<ImageIndex>0</ImageIndex>
+<Tag>lh_gracilisposterior-neural-ID</Tag>
+</Node>
+<Node Left="46" Top="50" Width="25" Height="116.25">
+<Shadow Style="None" Color="-16777216" Width="0" Height="0" />
+<Shape Style="Rectangle" Orientation="so_0" />
+<AutoSize>ImageToNode</AutoSize>
+<Alignment>CenterBOTTOM</Alignment>
+<FillColor>-1</FillColor>
+<DrawColor>16777215</DrawColor>
+<TextColor>-16777216</TextColor>
+<GradientColor>0</GradientColor>
+<Text>lh_obturatorinternus-neural</Text>
+<Font Name="Arial" Size="14" Bold="True" Italic="False" Strikeout="False" Underline="False" />
+<ImageIndex>0</ImageIndex>
+<Tag>lh_obturatorinternus-neural-ID</Tag>
+</Node>
+<Node Left="47" Top="50" Width="25" Height="116.25">
+<Shadow Style="None" Color="-16777216" Width="0" Height="0" />
+<Shape Style="Rectangle" Orientation="so_0" />
+<AutoSize>ImageToNode</AutoSize>
+<Alignment>CenterBOTTOM</Alignment>
+<FillColor>-1</FillColor>
+<DrawColor>16777215</DrawColor>
+<TextColor>-16777216</TextColor>
+<GradientColor>0</GradientColor>
+<Text>lh_gluteusmedius-neural</Text>
+<Font Name="Arial" Size="14" Bold="True" Italic="False" Strikeout="False" Underline="False" />
+<ImageIndex>0</ImageIndex>
+<Tag>lh_gluteusmedius-neural-ID</Tag>
+</Node>
+<Node Left="48" Top="50" Width="25" Height="116.25">
+<Shadow Style="None" Color="-16777216" Width="0" Height="0" />
+<Shape Style="Rectangle" Orientation="so_0" />
+<AutoSize>ImageToNode</AutoSize>
+<Alignment>CenterBOTTOM</Alignment>
+<FillColor>-1</FillColor>
+<DrawColor>16777215</DrawColor>
+<TextColor>-16777216</TextColor>
+<GradientColor>0</GradientColor>
+<Text>lh_quadratusfemoris-neural</Text>
+<Font Name="Arial" Size="14" Bold="True" Italic="False" Strikeout="False" Underline="False" />
+<ImageIndex>0</ImageIndex>
+<Tag>lh_quadratusfemoris-neural-ID</Tag>
+</Node>
 </AddFlow>
 </Diagram>
 </Root>
-]]></DiagramXml>
+]]>
+</DiagramXml>
 </Node>
 </NervousSystem>
 </Organism>
@@ -12154,6 +12909,13 @@
 <BaseClassName>LicensedAnimatGUI.Forms.Charts.LineChart</BaseClassName>
 <ToolFormID>1b1bb75a-f9ae-4839-8124-5172f1dbddcf</ToolFormID>
 </ToolHolder>
+<ToolHolder>
+<ID>dt-PassiveTension-ID</ID>
+<Name>PassiveTension</Name>
+<BaseAssemblyFile>LicensedAnimatGUI.dll</BaseAssemblyFile>
+<BaseClassName>LicensedAnimatGUI.Forms.Charts.LineChart</BaseClassName>
+<ToolFormID>dt-PassiveTension-tfID</ToolFormID>
+</ToolHolder>
 </ToolViewers>
 <Stimuli>
 <Stimulus>
@@ -12165,7 +12927,7 @@
 <EndTime Value="10" Scale="None" Actual="10"/>
 <StepInterval Value="0" Scale="milli" Actual="0"/>
 <AlwaysActive>False</AlwaysActive>
-<Enabled>True</Enabled>
+<Enabled>False</Enabled>
 <ValueType>Equation</ValueType>
 <Equation>0.0587*sin(0.7246*t + 2.326) + 0.06009*sin(5.647*t - 2.748) + 0.004938*sin(2.263*t - 1.667) + 0.4367*sin(0.3509*t + 0.7173) + 1.141*sin(0.1553*t - 1.845) + 0.2713*sin(3.768*t + 1.288) + 0.08073*sin(1.84*t + 0.2031) + 0.02449*sin(7.555*t + 0.923)</Equation>
 <StructureID>e40d2c4f-9c31-49f8-8a5c-5688fb768225</StructureID>
@@ -12250,7 +13012,7 @@
 <EndTime Value="10" Scale="None" Actual="10"/>
 <StepInterval Value="0" Scale="milli" Actual="0"/>
 <AlwaysActive>False</AlwaysActive>
-<Enabled>True</Enabled>
+<Enabled>False</Enabled>
 <ValueType>Equation</ValueType>
 <Equation>0.1995*sin(0.5822*t - 1.07) + 0.08642*sin(0.7588*t + 1.287) + 0.4931*sin(0.209*t - 2.524) + 0.1947*sin(3.768*t + 2.116) + 0.01519*sin(5.651*t - 0.3852) + 0.1605*sin(1.875*t + 0.2783) + 0.0206*sin(7.535*t + 2.37) + 0.003347*sin(2.283*t - 0.9653)</Equation>
 <StructureID>e40d2c4f-9c31-49f8-8a5c-5688fb768225</StructureID>
@@ -12267,7 +13029,7 @@
 <EndTime Value="10" Scale="None" Actual="10"/>
 <StepInterval Value="0" Scale="milli" Actual="0"/>
 <AlwaysActive>False</AlwaysActive>
-<Enabled>True</Enabled>
+<Enabled>False</Enabled>
 <ValueType>Equation</ValueType>
 <Equation>0.2466*sin(0.5468*t - 1.124) + 0.046*sin(1.003*t - 0.2206) + 0.07998*sin(3.77*t + 2.07) + 0.5721*sin(1.879*t - 1.298) + 0.6951*sin(0.2447*t + 3.506)</Equation>
 <StructureID>e40d2c4f-9c31-49f8-8a5c-5688fb768225</StructureID>
@@ -12312,8 +13074,8 @@
 </Stimuli>
 <HudItems>
 <HudItem>
-<Name>bb471f89-ddab-489c-b358-57cf8715178f</Name>
-<ID>bb471f89-ddab-489c-b358-57cf8715178f</ID>
+<Name>ed087f7c-4943-49fc-970e-f6c050b00712</Name>
+<ID>ed087f7c-4943-49fc-970e-f6c050b00712</ID>
 <Type>HudText</Type>
 <CharSize>30</CharSize>
 <Text>Time: %3.3f</Text>
@@ -12426,7 +13188,7 @@
 <DockingConfig>&lt;?xml version="1.0" encoding="us-ascii"?&gt;
 &lt;!-- DotNetMagic, The User Interface library for .NET (www.crownwood.net) --&gt;
 &lt;!-- Modifying this generated file will probably render it invalid --&gt;
-&lt;DockingConfig FormatVersion="10" InsideFill="False" InnerMinimum="20, 20" SavedAt="02/11/2020 15:58:56"&gt;
+&lt;DockingConfig FormatVersion="10" InsideFill="False" InnerMinimum="20, 20" SavedAt="02/17/2020 12:22:41"&gt;
 &lt;Content Name="Playback Control" Visible="False" Docked="True" AutoHidden="False" CaptionBar="True" CloseButton="False" DisplaySize="150, 150" DisplayLocation="150, 150" AutoHideSize="150, 150" FloatingSize="150, 150" FullTitle="Playback Control" Office2003BackColor="Base" UniqueName="" Office2007BackColor="Base" MediaPlayerBackColor="Base"&gt;
 &lt;DefaultRestore Type="Crownwood.DotNetMagic.Docking.RestoreContentState"&gt;
 &lt;Content Name="Playback Control" UniqueName="" /&gt;
@@ -12921,8 +13683,8 @@
 &lt;TabbedGroups FormatVersion="1" ActiveLeaf="7"&gt;
 &lt;CustomGlobalData /&gt;
 &lt;Sequence Count="1" Unique="0" Space="100" Direction="Horizontal"&gt;
-&lt;Leaf Count="3" Unique="7" Space="100"&gt;
-&lt;Page Title="Sim Window" ImageList="True" ImageIndex="0" Selected="True" Control="null" UniqueName=""&gt;
+&lt;Leaf Count="4" Unique="7" Space="100"&gt;
+&lt;Page Title="Sim Window" ImageList="True" ImageIndex="0" Selected="False" Control="null" UniqueName=""&gt;
 &lt;CustomPageData&gt;&lt;![CDATA[&lt;TabPage&gt;
 &lt;Form&gt;
 &lt;ID&gt;b1c3eb6f-fc15-4560-8750-275c275ef964&lt;/ID&gt;
@@ -12935,21 +13697,34 @@
 &lt;/TabPage&gt;
 ]]&gt;&lt;/CustomPageData&gt;
 &lt;/Page&gt;
-&lt;Page Title="Neural Subsystem" ImageList="True" ImageIndex="1" Selected="False" Control="null" UniqueName=""&gt;
+&lt;Page Title="P3XAL6W" ImageList="True" ImageIndex="1" Selected="True" Control="null" UniqueName=""&gt;
 &lt;CustomPageData&gt;&lt;![CDATA[&lt;TabPage&gt;
 &lt;Form&gt;
-&lt;ID&gt;d1adcdc5-0346-4aff-ae83-8c6f32f88836&lt;/ID&gt;
-&lt;Title&gt;Neural Subsystem&lt;/Title&gt;
-&lt;TabPageName&gt;Neural Subsystem&lt;/TabPageName&gt;
+&lt;ID&gt;P3XAL6W-cdata&lt;/ID&gt;
+&lt;Title&gt;P3XAL6W&lt;/Title&gt;
+&lt;TabPageName&gt;P3XAL6W&lt;/TabPageName&gt;
 &lt;AssemblyFile&gt;LicensedAnimatGUI.dll&lt;/AssemblyFile&gt;
 &lt;ClassName&gt;LicensedAnimatGUI.Forms.Behavior.AddFlowDiagram&lt;/ClassName&gt;
 &lt;OrganismID&gt;e40d2c4f-9c31-49f8-8a5c-5688fb768225&lt;/OrganismID&gt;
-&lt;SubSystemID&gt;88c93a10-ad76-4a18-8bc6-aa150801048e&lt;/SubSystemID&gt;
+&lt;SubSystemID&gt;P3XAL6W-ID&lt;/SubSystemID&gt;
 &lt;/Form&gt;
 &lt;/TabPage&gt;
 ]]&gt;&lt;/CustomPageData&gt;
 &lt;/Page&gt;
-&lt;Page Title="JointMotion" ImageList="True" ImageIndex="2" Selected="False" Control="null" UniqueName=""&gt;
+&lt;Page Title="PassiveTension" ImageList="True" ImageIndex="2" Selected="False" Control="null" UniqueName=""&gt;
+&lt;CustomPageData&gt;&lt;![CDATA[&lt;TabPage&gt;
+&lt;Form&gt;
+&lt;ID&gt;dt-PassiveTension-tfID&lt;/ID&gt;
+&lt;Title&gt;PassiveTension&lt;/Title&gt;
+&lt;TabPageName&gt;PassiveTension&lt;/TabPageName&gt;
+&lt;AssemblyFile&gt;LicensedAnimatGUI.dll&lt;/AssemblyFile&gt;
+&lt;ClassName&gt;LicensedAnimatGUI.Forms.Charts.LineChart&lt;/ClassName&gt;
+&lt;ExternalFile&gt;PassiveTension.aform&lt;/ExternalFile&gt;
+&lt;/Form&gt;
+&lt;/TabPage&gt;
+]]&gt;&lt;/CustomPageData&gt;
+&lt;/Page&gt;
+&lt;Page Title="JointMotion" ImageList="True" ImageIndex="2" Selected="True" Control="null" UniqueName=""&gt;
 &lt;CustomPageData&gt;&lt;![CDATA[&lt;TabPage&gt;
 &lt;Form&gt;
 &lt;ID&gt;1b1bb75a-f9ae-4839-8124-5172f1dbddcf&lt;/ID&gt;

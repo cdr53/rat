@@ -51,13 +51,13 @@ function sim_eqn = sum_of_sines_maker(coefficients,project_file)
                 cstring = [num2str(c),',+,'];
             end
             sim_eqn = [sim_eqn,astring,bstring,'t,*,',cstring,sinstring];
-            if j > 1
+             if j > 1 || (size(coefficients,1) == 3 && a < 0)
                 if a > 0
                     plus_trail = [plus_trail,'+,'];
                 else
                     plus_trail = [plus_trail,'-,'];
                 end
-            end
+             end
         end
         sim_eqn = [sim_eqn,plus_trail(1:end-1)];   
     end   

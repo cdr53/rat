@@ -7,6 +7,12 @@
     trial = 4;
 %     waveform = [BackRaw(:,trial,1)-98,BackRaw(:,trial,2)-90,BackRaw(:,trial,3)-116];
     waveform = [completeWaves(:,trial,1)-98,completeWaves(:,trial,2)-90,completeWaves(:,trial,3)-116];
+    initAngs = [-0.9656   -0.1941   -0.6678];
+    toeoff = [0.4315   -0.2007   -0.0678];
+    %waveform = [linspace(initAngs(1),toeoff(1),1000) ; linspace(initAngs(2),toeoff(2),1000) ; linspace(initAngs(3),toeoff(3),1000)]';
+    %waveform = repmat(initAngs,10000,1);
+    %jTemp = 2;
+    %waveform(:,jTemp) = ((initAngs(jTemp)-toeoff(jTemp))/2)*cos(.001*linspace(0,length(waveform),length(waveform)))+(initAngs(jTemp)+toeoff(jTemp))/2;
     
     tstart = tic;
     clear obj
@@ -53,10 +59,14 @@
 %             [r2scores,recompiled,W,H] = NMFdecomposition(5,current2inject',0,.04);
             [r2scores,recompiled,W,H] = NMFdecomposition(6,current2inject',0,0);
             wave2plot = current2inject';
+            
     end
     
     if isfile([file_dir,'\Data\h_equations.mat'])
-        delete([file_dir,'\Data\h_equations.mat']) 
+        delete([file_dir,'\Data\h_equations.mat'])
+    end
+    
+    if isfile([file_dir,'\Data\indiv_equations.mat'])
         delete([file_dir,'\Data\indiv_equations.mat']) 
     end
     

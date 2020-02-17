@@ -15,6 +15,14 @@ nsys = CanvasModel;
 neurpos = [];
 equations = cell(38,1);
 
+%% The Time Debacle
+[beg,ennd] = obj.find_step_indices;
+times = obj.theta_motion_time([obj.sampling_vector(1),obj.sampling_vector(end)]);
+simTime = diff(times);
+%simTime = max(obj.theta_motion_time);
+nsys.proj_params.simendtime = simTime+.01;
+nsys.proj_params.physicstimestep = 1000*(obj.dt_motion); % dt in ms
+
 %Build a line of motor neurons and muscles first
 for ii = 1:numMuscles
     neurpos = [(ii)*25.90 250];
@@ -28,7 +36,9 @@ for ii = 1:numMuscles
         load([file_dir,'\Data\indiv_equations.mat'])
         nsys.stimulus_objects(ii).eq = equations{ii};
     else
-        nsys.stimulus_objects(ii).eq = generate_synergy_eq(current2inject(ii,:));
+        %inputWave = mean(current2inject(ii,length(current2inject)*.1:length(current2inject)*.9));
+        inputWave = current2inject(ii,:);
+        nsys.stimulus_objects(ii).eq = generate_synergy_eq(inputWave,simTime,obj.dt_motion);
         equations{ii} = nsys.stimulus_objects(ii).eq;
         if  ii == 38
             save([file_dir,'\Data\indiv_equations.mat'],'equations')
@@ -36,63 +46,15 @@ for ii = 1:numMuscles
     end
 end
 
-% % Generate color palette for synergy nodes
-% cm = jet(3*size(W,2));
-% cm = round(cm(3:3:end,:)*255);
-% 
-% syngap = (958.5-size(W,2)*(25))/(size(W,2)+1);
-% 
-% relW = W./max(W);
-% bigH = (H'.*max(W))';
-% 
-% gsyn = arrayfun(@(x) (x*20)/(194-x*20),relW);
-
-% nsys.addDatatool('SynergyStim');
-% 
-% %Build synergy neurons and connections
-% for ii = 1:size(W,2)
-%     synpos = [(ii-1)*25+(ii)*syngap 100];
-%     nsys.addItem('n', synpos, [1000 1000]);
-%     colordec = rgb2anim(cm(ii,:));
-%     nsys.neuron_objects(numMuscles+ii).color = colordec;
-%     for jj = 1:length(W)
-%         if W(jj,ii) ~= 0 
-%             nsys.addLink(nsys.neuron_objects(ii+length(W)),nsys.neuron_objects(jj),'SignalTransmission1')
-%             nsys.createSynapseType({['Syn-',num2str(ii+numMuscles),'-',num2str(jj)],'delE',194,'k',relW(jj,ii)})
-%             %gsyn = (20*W(jj,ii))/(size(W,2)*194);
-%             %nsys.createSynapseType({['Syn-',num2str(ii+numMuscles),'-',num2str(jj)],'delE',194,'max_syn_cond',gsyn})
-%             numLinks = size(nsys.link_objects,1);
-%             numSyns = size(nsys.synapse_types,1);
-% %             nsys.synapse_types(numSyns).presyn_thresh = -120;
-% %             nsys.synapse_types(numSyns).presyn_sat = 0;
-%             nsys.link_objects(numLinks).synaptictype = nsys.synapse_types(numSyns).name;
-%         end
-%     end
-%     nsys.addStimulus(nsys.neuron_objects(numMuscles+ii))
-%     nsys.stimulus_objects(ii).starttime = 0;
-%     nsys.stimulus_objects(ii).endtime = 10;
-%     if isfile([file_dir,'\Data\h_equations.mat'])
-%         load([file_dir,'\Data\h_equations.mat'])
-%         nsys.stimulus_objects(ii).eq = equations{ii};
-%     else
-%         nsys.stimulus_objects(ii).eq = generate_synergy_eq(bigH(ii,:));
-%         equations{ii} = nsys.stimulus_objects(ii).eq;
-%         if  ii == size(W,2)
-%             save([file_dir,'\Data\h_equations.mat'],'equations')
-%         end
-%     end
-%     nsys.addDTaxes(nsys.datatool_objects(1),nsys.neuron_objects(numMuscles+ii),'MembraneVoltage')
-% end
-
 % Build datatool viewers for high action muscles to provide insight into motorneuron and muscle activity
 % [muscForces,muscInds] = sortrows(max(forces)',1,'descend');
 % muscles2check = muscInds(1:5);
 muscles2check = 1:38;
 numDTs = size(nsys.datatool_objects,1);
-nsys.addDatatool('KeyMNs')
-nsys.addDatatool('KeyMuscles')
-nsys.addDatatool('KeyMuscTen')
-nsys.addDatatool('KeyMuscAct')
+nsys.addDatatool({'KeyMNs','endtime',nsys.proj_params.simendtime-.01})
+nsys.addDatatool({'KeyMuscles','endtime',nsys.proj_params.simendtime-.01})
+nsys.addDatatool({'KeyMuscTen','endtime',nsys.proj_params.simendtime-.01})
+nsys.addDatatool({'KeyMuscAct','endtime',nsys.proj_params.simendtime-.01})
 % For a given muscle, find that muscle's adapter information and then find the *neuron* that's feeding that adapter
 for ii = 1:length(muscles2check)
     adInd = find(contains({nsys.adapter_objects(:).destination_node_ID},nsys.muscle_objects(muscles2check(ii)).ID));
@@ -106,18 +68,26 @@ end
 nsys.create_animatlab_project(proj_file);
 disp(['Animatlab project file ',projName,ext,' created.'])
 
-function equation = generate_synergy_eq(bigH)
-    dt = .00054;
-    time = (99*dt:dt:10.01-10*dt)';
+function equation = generate_synergy_eq(bigH,simTime,dt)
+    %dt = .00054;
+    time = (0:dt:simTime)';
     
-    bigH = interpolate_for_time(time,bigH);
-    
-    % Create a sum of sines equation for the joint angle waveforms
-    fitresult = sumsinesFit(time, bigH,8);
-    % Coeffs are the a, b, and c values in the equation a*sin(b*t+c)
-    coeffs = [coeffnames(fitresult),num2cell(coeffvalues(fitresult)')];
-    % Equations are in the format necessary for integration into Animatlab's .asim filetype
-    equation = sum_of_sines_maker(coeffs,1);
+    if sum(size(bigH)) == 2
+        coeffs = cell(3,2);
+        coeffs(1:3,1) = [{'a1'};{'b1'};{'c1'}];
+        coeffs(1:3,2) = [{bigH}, {0}, {1.5708}];
+        equation = sum_of_sines_maker(coeffs,1);
+    else
+
+        bigH = interpolate_for_time(time,bigH);
+
+        % Create a sum of sines equation for the joint angle waveforms
+        fitresult = sumsinesFit(time, bigH,8);
+        % Coeffs are the a, b, and c values in the equation a*sin(b*t+c)
+        coeffs = [coeffnames(fitresult),num2cell(coeffvalues(fitresult)')];
+        % Equations are in the format necessary for integration into Animatlab's .asim filetype
+        equation = sum_of_sines_maker(coeffs,1);
+    end
 end
 
 function waveformsBig = interpolate_for_time(time,waveforms)
@@ -127,6 +97,8 @@ function waveformsBig = interpolate_for_time(time,waveforms)
     n = length(waveforms);
     if m ~= n
         waveformsBig = interp1(1:n,waveforms,linspace(1,n,m));
+    else
+        waveformsBig = waveforms';
     end
 
     avgblocks = floor(.01*length(waveformsBig));

@@ -45,16 +45,18 @@ function sim_datatools = processSimData(sim_path,to_run)
         if isfile(fpath)
             
             ds = importdata(fpath);
-            sim_datatools(counter).name = filenames{ii}(1:end-4);
-            if isfield(ds,'colheaders')
-                sim_datatools(counter).time = ds.data(:,2);
-                sim_datatools(counter).data = ds.data(:,3:end);
-                sim_datatools(counter).data_cols = ds.colheaders(1,3:end);
-            else
-                sim_datatools(counter).time = ds.textdata(2:end,2);
-                sim_datatools(counter).data = ds.data;
+            if ~isempty(ds)
+                sim_datatools(counter).name = filenames{ii}(1:end-4);
+                if isfield(ds,'colheaders')
+                    sim_datatools(counter).time = ds.data(:,2);
+                    sim_datatools(counter).data = ds.data(:,3:end);
+                    sim_datatools(counter).data_cols = ds.colheaders(1,3:end);
+                else
+                    sim_datatools(counter).time = ds.textdata(2:end,2);
+                    sim_datatools(counter).data = ds.data;
+                end
+                counter = counter+1;
             end
-            counter = counter+1;
         else
             warning('%s does not exist. Try running the simulation file first. Set to_run to 1 and run again.\n',filenames{ii})
         end

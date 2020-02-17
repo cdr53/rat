@@ -7,10 +7,12 @@ function [Am_musc,V_musc] = Am_generator(obj,forces)
     if size(forces,2)<size(forces,1)
         forces = forces';
     end
-    [beg,ennd,~] = find_step_indices(obj);
+%     [beg,ennd,~] = find_step_indices(obj);
+    beg = obj.sampling_vector(1);
+    ennd = obj.sampling_vector(end);
     odt = obj.dt_motion;
     dt = ((ennd-beg)*odt)/length(forces);
-    forces_dot = gradient(forces,dt);
+    [forces_dot,forces_doty] = gradient(forces,dt);
 
     fl = @(Lm,Lr,Lw) 1-(Lm-Lr).^2./Lw^2;
     Am = @(Al,b,ks,T_dot,kp,delL,L_dot,T) (1./Al).*((b./ks).*T_dot-kp.*delL-b.*L_dot+(1+kp./ks).*T);
@@ -33,7 +35,7 @@ function [Am_musc,V_musc] = Am_generator(obj,forces)
        V_musc(ii,V_musc(ii,:)<-.06) = -.06;
        Al_musc_all(ii,:) = 1./Al_musc;
        %% For loop plotter 1: Plot 5 subplot fig of tension equation
-       if ii==17
+       if 0
        figure
         subplot(5,1,1)
             plot((1+kp./ks).*T)
@@ -55,7 +57,7 @@ function [Am_musc,V_musc] = Am_generator(obj,forces)
             %ylim([0 max(Am_musc(ii,:))*1.1])
        end
        %% For loop plotter 2: View one muscle's active and passive waveforms. When active is > passive, Am is possible.
-       if ii==17
+       if 0
             active = (b/ks).*Tdot+(1+kp/ks).*T;
             passive = kp.*delL_musc+b.*mV;
             yLims = [min([active',passive],[],'all') max([active',passive],[],'all')];
@@ -106,8 +108,10 @@ function [Am_musc,V_musc] = Am_generator(obj,forces)
     end
     %% getMuscParams
     function [b,ks,kp,Lw,Lr,xoff,Fmax,steepness,mL,mV,ST_max,yoff] = getMuscParams(obj,mnum,beg,ennd)
-        n = 500;
-        m = length(obj.theta_motion(beg:ennd));
+       % n = 500;
+        
+       m = length(obj.theta_motion(beg:ennd));
+       n = length(obj.sampling_vector);
        musc = obj.musc_obj{mnum};
        b = musc.damping;
        ks = musc.Kse;
@@ -122,7 +126,7 @@ function [Am_musc,V_musc] = Am_generator(obj,forces)
        Fmax = musc.max_force;
        steepness = musc.steepness;
        mL = interp1(1:m,musc.muscle_length_profile(beg:ennd),linspace(1,m,n))';
-       mV = interp1(1:m,musc.muscle_velocity_profile(beg:ennd),linspace(1,m,n))';
+       mV = interp1(1:m-1,musc.muscle_velocity_profile(beg:ennd-1),linspace(1,m-1,n))';
        ST_max = musc.ST_max;
        yoff = musc.y_off;
     end

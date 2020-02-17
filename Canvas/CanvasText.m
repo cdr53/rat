@@ -543,7 +543,7 @@ classdef CanvasText
         function out_text = build_stimulus(~,stimulus)
             if ~isempty(stimulus.eq)
                 valType = 'Equation';
-                eq = char(vpa(stimulus.eq,3));
+                eq = char(vpa(stimulus.eq,10));
             else
                 valType = 'Constant';
                 eq = num2str(0);
@@ -933,6 +933,5 @@ classdef CanvasText
                         ['<PreSynapticSaturationLevel Value="',num2str(synapse.presyn_sat),'" Scale="milli" Actual="',num2str(synapse.presyn_sat/1000),'"/>'];...
                         '</Link>'};
         end
-    end
-    
+    end   
 end

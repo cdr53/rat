@@ -1,10 +1,10 @@
-function inject_joint_waveforms(filepath,equations,end_time)
+function project_file = inject_joint_waveforms(project_file,equations,end_time)
     % Injects joint waveform equations into joint motor stimuli and overwrites the file. 
     % Input: filepath: simulation .asim file path
     % Input: equations: cell array of sum of sines equations for hip, knee, and ankle
     % Input: end_time: end time of simulation
     
-    project_file = importdata(filepath);
+%     project_file = importdata(filepath);
     hip_ind = find(contains(project_file,'<Name>Hipwalking'))+10;
     knee_ind = find(contains(project_file,'<Name>Kneewalking'))+10;
     ankle_ind = find(contains(project_file,'<Name>xAnklewalking'))+10;
@@ -26,13 +26,14 @@ function inject_joint_waveforms(filepath,equations,end_time)
         project_file{equation_inds(i)-2} = number_injector(old_endtime_line,num2str(end_time));
     end
 
-    fileID = fopen(filepath,'w');
-    formatSpec = '%s\n';
-    nrows = size(project_file);
-    for row = 1:nrows
-        fprintf(fileID,formatSpec,project_file{row,:});
-    end
-    fclose(fileID);
+%     fileID = fopen(filepath,'w');
+%     fprintf(fileID,'%s\n',project_file{:});
+% %     formatSpec = '%s\n';
+% %     nrows = size(project_file);
+% %     for row = 1:nrows
+% %         fprintf(fileID,formatSpec,project_file{row,:});
+% %     end
+%     fclose(fileID);
     
     function new_line = number_injector(old_line,new_eq)
         geq = find(old_line=='>');

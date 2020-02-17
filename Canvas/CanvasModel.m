@@ -267,7 +267,17 @@ classdef CanvasModel < handle
             obj.notify('linkAdded', CanvasModelEventData(linktype,[numLinks numLinks],[node1.location node2.location]));
         end
         %% addDatatool
-        function addDatatool(obj,name)
+        function addDatatool(obj,inParams)
+            parCell = iscell(inParams);
+            if parCell
+                name = inParams{1};
+                while ~ischar(name)
+                    name = input('First input parameter must be a string name for the datatool.\nPlase enter a string for the datatool name now: \n');
+                end
+            else
+                name = char(inParams);
+            end
+            
             if contains(name,' ')
                 warning('Datatool name contains a space, removing spaces.')
                 name = name(~isspace(name));
@@ -282,9 +292,29 @@ classdef CanvasModel < handle
             obj.num_datatools = numDatatools;
             
             if numDatatools == 0
+                datInd = 1;
                 obj.datatool_objects = obj.create_datatool(name);
             else
-                obj.datatool_objects(numDatatools+1,1) = obj.create_datatool(name);
+                if any(contains({obj.datatool_objects.name},name))
+                    warning(['CanvasModel.addDatatool: Datatool with name ''',name,''' already exists. Overwriting datatool with new information.'])
+                    datInd = find(contains({obj.datatool_objects.name},name),1,'first');
+                    obj.datatool_objects(datInd,1) = obj.create_datatool(name);
+                else
+                    datInd = numDatatools+1;
+                    obj.datatool_objects(datInd,1) = obj.create_datatool(name);
+                end
+            end
+            
+            if parCell
+                for ii = 2:2:length(inParams)
+                    parName = char(inParams{ii});
+                    parVal = double(inParams{ii+1});
+                    if any(contains(fields(obj.datatool_objects),parName))
+                        obj.datatool_objects(datInd,1).(parName) = parVal;
+                    else
+                        warning(['CanvasModel.addDatatool: ',parName,' for datatool ',name,' does not exist. Information not added to CanvasModel.'])
+                    end
+                end
             end
             
             obj.notify('itemAdded', CanvasModelEventData('datatool', numDatatools));
@@ -568,8 +598,13 @@ classdef CanvasModel < handle
                     else
                         delE = input('No delE was provided. Please enter a delE value in mV:\n');
                     end
-                    
-                    obj.synapse_types(synNum,1).max_syn_cond = (mod_param*20)/(delE-mod_param*20);
+                    tempSynCond = (mod_param*20)/(delE-mod_param*20);
+                    if log10(tempSynCond) < -3
+                        % If the calculated maximum synaptic conductance is very small, just set it to 0
+                        % This is done primarily to 1) avoid Animatlab errors and 2) deal with constant joint angle inputs
+                        tempSynCond = 0;
+                    end
+                    obj.synapse_types(synNum,1).max_syn_cond = tempSynCond;
                 end
                 if contains(lower(synaptic_properties{1,1}),modnames)
                     obj.synapse_types(synNum,1).arrow_dest_style = 'Circle';
@@ -719,9 +754,7 @@ classdef CanvasModel < handle
         end
         %% create_datatool
         function datatool = create_datatool(~,name)
-           if ~ischar(name)
-               name = char(str);
-           end
+           name = char(name);
            datatool = struct;
            datatool.name = name;
            datatool.ID = ['dt-',name,'-ID'];
@@ -822,6 +855,26 @@ classdef CanvasModel < handle
                 ns_nervoussystem_text;...
                 modified_text(nervoussystem_inject_end:end,1)];
             
+            %%%Modify existing datatools such that they terminate before the end of the simulation
+            extDTs = {'JointMotion';'PassiveTension'};
+            for ii = 1:length(extDTs)
+                %pInd = find(contains(modified_text,extDTs{ii}),1,'first');
+                aform_path = [fileparts(proj_file),'\',extDTs{ii},'.aform'];
+                aform_text = importdata(aform_path);
+                %temp_timeInd = find(contains(aform_text,'<CollectEndTime'));
+                pVal = obj.proj_params.simendtime-.01;
+                pInd = find(contains(aform_text,'<CollectEndTime'),1,'first');
+                sTemp = aform_text{pInd};
+                qTemp = reshape(strfind(sTemp,'"'),[2 3])';
+                scaler = 1;
+                aform_text{pInd} = [sTemp(1:qTemp(1,1)),num2str(pVal),sTemp(qTemp(1,2):qTemp(2,1)),'None',...
+                                        sTemp(qTemp(2,2):qTemp(3,1)),num2str(scaler*pVal),sTemp(qTemp(3,2):end)];
+                fileID = fopen(aform_path,'w');
+                fprintf(fileID,'%s\n',aform_text{:});
+                fclose(fileID);
+                clear fileID aform_text stemp qTemp pVal aform_path
+            end
+            
             %%%Inject Datatool Code
             try obj.datatool_objects(1).name;
                 numDatatools = size(obj.datatool_objects,1);
@@ -886,7 +939,7 @@ classdef CanvasModel < handle
             end
             
             %%%Overwrite the <TabbedGroupsConfig> Information
-            tab_inject_start = find(contains(modified_text,'&lt;Page Title="Neural Subsystem"'));
+            tab_inject_start = find(contains(modified_text,'&lt;SubSystemID&gt'),1,'first')-9;
             tab_inject_end_holder = find(contains(modified_text,'&lt;/Page&gt;'));
             tab_inject_end = tab_inject_end_holder(tab_inject_end_holder>tab_inject_start);
             modified_text = [modified_text(1:tab_inject_start-1,1);...

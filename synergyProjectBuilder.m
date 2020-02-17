@@ -16,10 +16,11 @@ neurpos = [];
 
 %% The Time Debacle
 [beg,ennd] = obj.find_step_indices;
-times = obj.theta_motion_time([beg,ennd]);
+times = obj.theta_motion_time([obj.sampling_vector(1),obj.sampling_vector(end)]);
 simTime = diff(times);
-nsys.proj_params.simendtime = simTime;
-nsys.proj_params.physicstimestep = obj.dt_motion;
+%simTime = 10;
+nsys.proj_params.simendtime = simTime+.01;
+nsys.proj_params.physicstimestep = 1000*(obj.dt_motion); % dt in ms
 
 %Build a line of motor neurons and muscles first
 for ii = 1:numMuscles
@@ -80,7 +81,7 @@ end
 % Build datatool viewers for high action muscles to provide insight into motorneuron and muscle activity
 [muscForces,muscInds] = sortrows(max(forces)',1,'descend');
 muscles2check = muscInds(1:5);
-muscles2check = 1:38;
+%muscles2check = 1:38;
 numDTs = size(nsys.datatool_objects,1);
 nsys.addDatatool('KeyMNs')
 nsys.addDatatool('KeyMuscles')

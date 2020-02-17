@@ -10,6 +10,7 @@ classdef Body < matlab.mixin.SetGet
         meshfile
         convexmeshfile
         scale
+        length
     end
     methods
         function obj = Body(Bname)

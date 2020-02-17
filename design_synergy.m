@@ -1,4 +1,4 @@
-function obj = design_synergy(sim_file)
+function [obj,sim_file,joints,bodies,joint_limits,joint_profile] = design_synergy(sim_file)
 
 sour_folder = 'C:\Program Files (x86)\NeuroRobotic Technologies\AnimatLab\bin';
 

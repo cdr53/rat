@@ -20,6 +20,7 @@ classdef JointSyn < matlab.mixin.SetGet
         rec_angle_time
         limits
         fricCoeff
+        init_rot
     end
     methods
         function obj = JointSyn(Jname)

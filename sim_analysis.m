@@ -72,19 +72,21 @@ function sim_analysis(muscnum,obj,sdata,V_musc,forces)
         legend({'Difference'},'Location','northeast')
         
     %% Passive
-    [b,ks,kp,Lw,Lr,xoff,Fmax,steepness,mL,mV,ST_max,yoff,dt] = getMuscParams(obj,muscnum,forces);
-    T = forces(:,muscnum);
-    Tdot = gradient(T,dt);
-    delL_musc = max(mL-Lr,0);
-                active = (b/ks).*Tdot+(1+kp/ks).*T;
-            passive = kp.*delL_musc+b.*mV;
-           figure
-            subplot(2,1,1)
-            plot(active)
-            ylabel('active')
-            subplot(2,1,2)
-            plot(passive)
-            ylabel('passive')
+    if 0
+        [b,ks,kp,Lw,Lr,xoff,Fmax,steepness,mL,mV,ST_max,yoff,dt] = getMuscParams(obj,muscnum,forces);
+        T = forces(:,muscnum);
+        Tdot = gradient(T,dt);
+        delL_musc = max(mL-Lr,0);
+                    active = (b/ks).*Tdot+(1+kp/ks).*T;
+                passive = kp.*delL_musc+b.*mV;
+               figure
+                subplot(2,1,1)
+                plot(active)
+                ylabel('active')
+                subplot(2,1,2)
+                plot(passive)
+                ylabel('passive')
+    end
     %% Function: getMuscParams    
     function [b,ks,kp,Lw,Lr,xoff,Fmax,steepness,mL,mV,ST_max,yoff,dt2] = getMuscParams(obj,mnum,forces)
         n2 = 500;
@@ -111,5 +113,4 @@ function sim_analysis(muscnum,obj,sdata,V_musc,forces)
     end
 st_curve = @(Fmax,steepness,xoff,V,yoff) (Fmax./(1+exp(steepness*(xoff-V))))+yoff;
 fl = @(Lm,Lr,Lw) 1-(Lm-Lr).^2./Lw^2;
-keyboard
 end

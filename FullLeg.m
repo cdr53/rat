@@ -53,6 +53,8 @@ classdef FullLeg < matlab.mixin.SetGet
         gsyn_hip_knee_out;
         elo_hip_knee_out;
         ehi_hip_knee_out;
+        
+        sampling_vector;
    end
    methods
         function obj = FullLeg(sim_file,joints,bodies,joint_limits,joint_profile)
@@ -301,6 +303,15 @@ classdef FullLeg < matlab.mixin.SetGet
                 obj.pos_bodies_w(:,i) = obj.pos_bodies_w(:,i-1) + obj.Cabs_bodies(:,:,i-1)*obj.pos_bodies(:,i);
                 %obj.pos_joints_w(:,i-1) = obj.pos_bodies_w(:,i) + obj.CR_bodies(:,:,i)*obj.pos_joints(:,i);
                 obj.joint_obj{i-1}.init_pos_w = obj.pos_bodies_w(:,i) + obj.Cabs_bodies(:,:,i)*obj.joint_obj{i-1}.init_pos;
+            end
+            
+            initToeW = [-.014793 -.084157 .020988];
+            for i = 2:obj.num_bodies
+                if i == obj.num_bodies
+                    obj.body_obj{i}.length = norm(initToeW-obj.joint_obj{i-1}.init_pos_w);
+                else
+                    obj.body_obj{i}.length = norm(obj.joint_obj{i}.init_pos_w-obj.joint_obj{i-1}.init_pos_w);
+                end
             end
         %% Find Muscles, Attachments, and Their Associated Bodies/Joints
             tstart = tic;
@@ -593,6 +604,7 @@ classdef FullLeg < matlab.mixin.SetGet
                 end
             [jointMotion,jointMotionDot] = store_joint_rotmat_profile(obj,joint_profile);
             store_torque_and_kinematic_data(obj,jointMotion,jointMotionDot,jointMotion(10,1)-jointMotion(9,1));
+            store_sampling_vector(obj);
             store_jointbodyw_position_profiles(obj,jointMotion);
             store_joint_params(obj);
             telapsed = toc(tstart);
@@ -608,7 +620,7 @@ classdef FullLeg < matlab.mixin.SetGet
             clear tstart telapsed
         end
         %% Function: Store the joint rotation matrices in the joint objects
-        function [joint_profile,jointMotionDot] = store_joint_rotmat_profile(obj,jointMotion)     
+        function [jointMotion,jointMotionDot] = store_joint_rotmat_profile(obj,jointMotion)     
             %load('joint_data_fullLeg')
             %load('joint_angles_maxmin.mat')
 %              jointMotion = [];
@@ -622,6 +634,7 @@ classdef FullLeg < matlab.mixin.SetGet
 %             load('joint_angles_realtime.mat','jointMotion','jointMotionDot')
 %             load('joint_angles_realtime_20190314.mat','jointMotion','jointMotionDot')
             %load('joint_data_fullLeg_trimmed')
+            %% For Moving a single joint at a time
             onejointonly = 0;
             if onejointonly
                 load('joint_angles_maxmin.mat')
@@ -694,15 +707,9 @@ classdef FullLeg < matlab.mixin.SetGet
                         jointMotionDot(:,2) = max(jointMotionDot(:,2))-min(jointMotionDot(:,2));
                         jointMotionDot(:,3) = max(jointMotionDot(:,3))-min(jointMotionDot(:,3));
                     end
-                else
-                    joint_profile = jointMotion(200:end,1:4);
-                    jointMotionDot = jointMotionDot(200:end,1:4);
                 end
-            else
-                joint_profile = jointMotion(100:end,1:4);
-                jointMotionDot = jointMotionDot(100:end,1:4);
             end
-
+            %% Continuing on once joint profile has been established
             for i = 1:obj.num_bodies-1
                 %uu_joint(:,i) = obj.CR_bodies(:,:,i+1)*obj.three_axis_rotation(obj.euler_angs_joints(:,i+1))*[-1;0;0];
                 %These are defined in the distal body's coordinate system (femur for the hip, etc).
@@ -715,28 +722,24 @@ classdef FullLeg < matlab.mixin.SetGet
                      %Need these?
                     obj.joint_obj{i}.uu_joint2 = axismatrix(:,2);
                     obj.joint_obj{i}.uu_joint3 = axismatrix(:,3);
+                    obj.joint_obj{i}.init_rot = jointMotion(1,i+1);
             end
             %This is the same thing as the above loops. The euler angs bodies term is the same as CR_bodies. This is how Alex solved for the u_joint axes
             %u_joint = obj.three_axis_rotation(obj.euler_angs_bodies(:,2))*obj.three_axis_rotation(obj.joint_obj{1}.euler_angs)*[-1;0;0];
-            a = zeros(3,3,size(joint_profile,1)); 
-            b = zeros(3,3,size(joint_profile,1)); 
-            c = zeros(3,3,size(joint_profile,1)); 
-            hip_uu2 = zeros(3,size(joint_profile,1));
+            a = zeros(3,3,size(jointMotion,1)); 
+            b = zeros(3,3,size(jointMotion,1)); 
+            c = zeros(3,3,size(jointMotion,1)); 
+            hip_uu2 = zeros(3,size(jointMotion,1));
             hip_uu3 = hip_uu2;
-            %knee_uu2 = hip_uu2;
-            %knee_uu3 = hip_uu2;
-            %ankle_uu2 = hip_uu2;
-            %ankle_uu3 = hip_uu2;
-            %knee = c;
             knee_uu2 = hip_uu2+obj.joint_obj{2}.uu_joint2;
             knee_uu3 = hip_uu2+obj.joint_obj{2}.uu_joint3;
             ankle_uu2 = hip_uu2+obj.joint_obj{3}.uu_joint2;
             ankle_uu3 = hip_uu2+obj.joint_obj{3}.uu_joint3;
             
-            parfor i=1:size(joint_profile,1)
-                a(:,:,i) = axis_angle_rotation(obj,joint_profile(i,2),obj.joint_obj{1}.uu_joint);
-                b(:,:,i) = axis_angle_rotation(obj,joint_profile(i,3),obj.joint_obj{2}.uu_joint);
-                c(:,:,i) = axis_angle_rotation(obj,joint_profile(i,4),obj.joint_obj{3}.uu_joint);
+            parfor i=1:size(jointMotion,1)
+                a(:,:,i) = axis_angle_rotation(obj,jointMotion(i,2),obj.joint_obj{1}.uu_joint);
+                b(:,:,i) = axis_angle_rotation(obj,jointMotion(i,3),obj.joint_obj{2}.uu_joint);
+                c(:,:,i) = axis_angle_rotation(obj,jointMotion(i,4),obj.joint_obj{3}.uu_joint);
                 knee  = -1*b(:,:,i)*obj.CR_bodies(:,:,3)*obj.three_axis_rotation(obj.joint_obj{2}.euler_angs);
                 ankle = -1*obj.CR_bodies(:,:,4)*obj.three_axis_rotation(obj.joint_obj{3}.euler_angs);
                 knee_uu2(:,i)  = knee(:,2);
@@ -753,23 +756,23 @@ classdef FullLeg < matlab.mixin.SetGet
             obj.joint_obj{2}.joint_rotmat_profile = b;
             obj.joint_obj{3}.joint_rotmat_profile = c;
             
-            obj.joint_obj{1}.uu_joint2  = hip_uu2;
-            obj.joint_obj{1}.uu_joint3  = hip_uu3;
-            obj.joint_obj{1}.uuw_joint = zeros(3,size(joint_profile,1))+obj.CR_bodies(:,:,1)*obj.joint_obj{1}.uu_joint;
-            obj.joint_obj{1}.uuw_joint2 = obj.CR_bodies(:,:,1)*hip_uu2;
-            obj.joint_obj{1}.uuw_joint3 = obj.CR_bodies(:,:,1)*hip_uu3;
+                obj.joint_obj{1}.uu_joint2  = hip_uu2;
+                obj.joint_obj{1}.uu_joint3  = hip_uu3;
+                obj.joint_obj{1}.uuw_joint = zeros(3,size(jointMotion,1))+obj.CR_bodies(:,:,1)*obj.joint_obj{1}.uu_joint;
+                obj.joint_obj{1}.uuw_joint2 = obj.CR_bodies(:,:,1)*hip_uu2;
+                obj.joint_obj{1}.uuw_joint3 = obj.CR_bodies(:,:,1)*hip_uu3;
             kneeworld = obj.CR_bodies(:,:,1)*obj.CR_bodies(:,:,2);
-            obj.joint_obj{2}.uu_joint2  = knee_uu2;
-            obj.joint_obj{2}.uu_joint3  = knee_uu3;
-            obj.joint_obj{2}.uuw_joint  = zeros(3,size(joint_profile,1))+kneeworld*obj.joint_obj{2}.uu_joint;
-            obj.joint_obj{2}.uuw_joint2 = kneeworld*knee_uu2;
-            obj.joint_obj{2}.uuw_joint3 = kneeworld*knee_uu3;
+                obj.joint_obj{2}.uu_joint2  = knee_uu2;
+                obj.joint_obj{2}.uu_joint3  = knee_uu3;
+                obj.joint_obj{2}.uuw_joint  = zeros(3,size(jointMotion,1))+kneeworld*obj.joint_obj{2}.uu_joint;
+                obj.joint_obj{2}.uuw_joint2 = kneeworld*knee_uu2;
+                obj.joint_obj{2}.uuw_joint3 = kneeworld*knee_uu3;
             ankleworld = obj.CR_bodies(:,:,1)*obj.CR_bodies(:,:,2)*obj.CR_bodies(:,:,3);
-            obj.joint_obj{3}.uu_joint2  = ankle_uu2;
-            obj.joint_obj{3}.uu_joint3  = ankle_uu3;
-            obj.joint_obj{3}.uuw_joint  = zeros(3,size(joint_profile,1))+ankleworld*obj.joint_obj{3}.uu_joint;
-            obj.joint_obj{3}.uuw_joint2 = ankleworld*ankle_uu2;
-            obj.joint_obj{3}.uuw_joint3 = ankleworld*ankle_uu3;
+                obj.joint_obj{3}.uu_joint2  = ankle_uu2;
+                obj.joint_obj{3}.uu_joint3  = ankle_uu3;
+                obj.joint_obj{3}.uuw_joint  = zeros(3,size(jointMotion,1))+ankleworld*obj.joint_obj{3}.uu_joint;
+                obj.joint_obj{3}.uuw_joint2 = ankleworld*ankle_uu2;
+                obj.joint_obj{3}.uuw_joint3 = ankleworld*ankle_uu3;
         end
         %% Function: Store the Torque and Kinematic Data from Torque, Theta, ThetaDot input
         function store_torque_and_kinematic_data(obj,theta,theta_dot,dt)
@@ -1083,6 +1086,14 @@ classdef FullLeg < matlab.mixin.SetGet
                 obj.musc_obj{i}.muscle_velocity_profile = diff(muscle_length)/obj.dt_motion;
             end   
         end
+        %% Function: Store the sampling vector
+        function store_sampling_vector(obj)
+            %% Optimization and simulations can take ages if not downsampled. This function creates a sampling vector which parses down analysis to a single step
+            [beg,ennd,~] = find_step_indices(obj);
+            div = 500;
+            alt = linspace(1,length(obj.theta_motion),length(obj.theta_motion));
+            obj.sampling_vector = floor(linspace(beg,ennd,div));
+        end
         %% Function: Find the Global Point Position Profile for a Local Point (input) in a Body Coordinate Frame (input)
         function [point_profile] = move_point_through_walking(obj,bodynum,localpoint)
             %Uses the joint rotation matrices at each timestep to calculate the muscle length and velocity. Stores this as a profile in the muscle object.
@@ -1283,6 +1294,15 @@ classdef FullLeg < matlab.mixin.SetGet
 %             mid = floor((beg+ennd)/2);
             
             jointprofile = obj.theta_motion;
+            trimmedjp = jointprofile(floor(length(jointprofile)*.1):floor(length(jointprofile)*.9),:);
+            if mean(range(trimmedjp)) < 1e-3
+                % If jointprofile is constant
+                beg = floor(length(jointprofile)*(1/3));
+                ennd = floor(length(jointprofile)*(2/3));
+                mid = floor((beg+ennd)/2);
+                return
+            end
+            
             if size(unique(jointprofile(:,1)),1) == 1
                 if size(unique(jointprofile(:,2)),1) == 1
                     maxvals = findpeaks(jointprofile(:,3));
@@ -1340,7 +1360,9 @@ classdef FullLeg < matlab.mixin.SetGet
             [beg,ennd,~] = find_step_indices(obj);
             %Higher div, the longer the program takes.
             div = 500;
-            xx = floor(linspace(beg,ennd,div));
+            plotX = floor(linspace(beg,ennd,div));
+            xx = linspace(1,length(obj.theta_motion),length(obj.theta_motion));
+            xx = obj.sampling_vector;
 
             axis = ['Ext/Flx';'Abd/Add';'ExR/InR'];
             %Defining values for plot axis limits
@@ -1424,13 +1446,13 @@ classdef FullLeg < matlab.mixin.SetGet
                         moment_arm_profile(count2,j+2) = signal2*norm(sig_momentarm);
                     %% For plotting the muscle and joint in 3D as the muscle moves
                     %Unnecessary to plot every time step. This sets it to plot only after a certain number of steps
-                    if mod(count2,20)==0
+                    if mod(count2,floor(length(xx)/24))==0
                         plotter = 1;
                     else
                         plotter = 0;
                     end
                     if plotval == 1 && plotter
-                        if i==xx(20)
+                        if i==floor(length(xx)/24)
                             figure('name','legplot','Position',[-955   130   960   985]);
                         end
                         %The muscle vector
@@ -1553,6 +1575,8 @@ classdef FullLeg < matlab.mixin.SetGet
             %Higher div, the longer the program takes.
             div = 500;
             xx = floor(linspace(beg,ennd,div));
+            xx = linspace(1,length(obj.theta_motion),length(obj.theta_motion));
+            xx = obj.sampling_vector;
 
             axis = ['Ext/Flx';'Abd/Add';'ExR/InR'];
             %Defining values for plot axis limits[moment_arm_profile] = compute_body_moment_arm(obj,obj.body_obj{2},1,1,0);
@@ -1779,21 +1803,24 @@ classdef FullLeg < matlab.mixin.SetGet
             count = 0;
             
             %Find the maximum change in muscle length (from lowest trough to highest peak)
-            muscleprofile = muscle.muscle_length_profile;
-            [~,maxlocs] = findpeaks(muscleprofile);
-            [~,minlocs] = findpeaks(-muscleprofile);
-            %minvals = minvals*-1;
-            a3 = unique([maxlocs;minlocs]);
-            a4 = muscleprofile(a3);
-            for i = 1:length(a4)-1
-                %signer(i,1) = sign(a4(i+1,1)-a4(i,1));
-                range(i,1) = abs(a4(i+1,1)-a4(i,1));
-            end
-            [~,dd] = max(range);
-            dd = dd(1);
-            beg = a3(dd);
-            ennd = a3(dd+1);
+             muscleprofile = muscle.muscle_length_profile;
+%             [~,maxlocs] = findpeaks(muscleprofile);
+%             [~,minlocs] = findpeaks(-muscleprofile);
+%             %minvals = minvals*-1;
+%             a3 = unique([maxlocs;minlocs]);
+%             a4 = muscleprofile(a3);
+%             for i = 1:length(a4)-1
+%                 %signer(i,1) = sign(a4(i+1,1)-a4(i,1));
+%                 range(i,1) = abs(a4(i+1,1)-a4(i,1));
+%             end
+%             [~,dd] = max(range);
+%             dd = dd(1);
+%             beg = a3(dd);
+%             ennd = a3(dd+1);
+            [beg,ennd,~] = obj.find_step_indices;
             xx = floor(linspace(beg,ennd,div));
+            xx = linspace(1,length(obj.theta_motion),length(obj.theta_motion));
+            xx = obj.sampling_vector;
             
             T = zeros(length(xx),1);
             T2 = zeros(length(xx),1);
@@ -1808,8 +1835,16 @@ classdef FullLeg < matlab.mixin.SetGet
             musclelength = muscle.muscle_length_profile;
             musclevelocity = muscle.muscle_velocity_profile;
             
+            % The solution will oscillate to infinity if abs(c)>1. To ensure this doesn't happen, we set the timestep very small and accept some error in the
+            % passive tension solution.
+            dt = .001;
+            
             a = dt*ks/b;
             c = (1-a*(1+(kp/ks)));
+            
+            if abs(c) > 1
+                error(['The passive tension solution for muscle ',muscle.muscle_name,' will oscillate to infinity.'])
+            end
             
             for i = 1:length(musclevelocity)
                 if i == 1
@@ -1827,7 +1862,7 @@ classdef FullLeg < matlab.mixin.SetGet
             
             T(T<0) = 0;
             
-            T_out(:,1) = muscleprofile(1:end-1);
+             T_out(:,1) = muscleprofile(1:end-1);
             T_out(:,2) = T;
             
             %[~,dd] = findpeaks(-L_pass);
@@ -1868,78 +1903,6 @@ classdef FullLeg < matlab.mixin.SetGet
 %                 Tsmooth = rescale(Tsmooth,min([T;flip(T);T;flip(T)]),max([T;flip(T);T;flip(T)]));
 %                 T_out(:,1) = L_pass;
 %                 T_out(:,2) = Tsmooth(200:299,1);
-            end
-        end
-        %% Function: PASSIVE JOINT TORQUE: Compute the passive joint torque for a joint over an entire walking cycle
-        function [passive_joint_torque,passive_joint_motion,passive_muscle_torque,Tpass_profile] = compute_passive_joint_torque(obj)
-            %Joint axis 1: ExR/InR
-            %Joint axis 2: Ext/Flx
-            %Joint axis 3: Abd/Add
-            num_muscles = length(obj.musc_obj);
-            
-            [beg,ennd,~] = find_step_indices(obj);
-            %Higher div, the longer the program takes.
-            div = 500;
-            xx = floor(linspace(beg,ennd,div));
-
-         for k = 1:3   
-            [moment_output] = compute_joint_moment_arms(obj,k,1);
-            Tpass_profile = zeros(size(moment_output));
-            
-            relevant_muscles{k} = find(moment_output(1:size(obj.musc_obj,1),1)~=0);
-            
-            %theta = (180/pi)*obj.theta_motion(:,k);
-            passTorque = zeros(num_muscles,size(moment_output,2));
-            %time = moment_output(39,:);
-            for i = 1:length(relevant_muscles{k})
-                muscle_num = relevant_muscles{k}(i);
-                %muscle_length = obj.musc_obj{muscle_num}.muscle_length_profile(round(time./obj.dt_motion));
-                [~,T_out] = compute_muscle_passive_tension(obj,obj.musc_obj{muscle_num},0);
-                %tlocations = ceil(rescale(muscle_length(xx),1,100));
-%                 for j = 1:size(moment_output,2)
-%                     r = muscle_length(j);
-%                     [~,tLoc] = min(abs(T_out(:,1)-r));
-%                     tLoclog(1,j) = tLoc;
-%                     Tpass_profile(muscle_num,j) = T_out(tLoc,2);
-%                     %%Tpass_profile(muscle_num,j) = T_out(tlocations(j),2);
-%                     passTorque(muscle_num,j) = Tpass_profile(muscle_num,j)*moment_output(muscle_num,j)/1000;
-%                 end
-                    Tpass_profile(muscle_num,:) = T_out(xx,2)';
-                    passTorque(muscle_num,:) = T_out(xx,2)'.*moment_output(muscle_num,:)./1000;
-            end
-            
-            passive_joint_motion(k,:) = moment_output(40,:);
-            passive_joint_torque(k,:) = sum(passTorque);
-            passive_muscle_torque(:,:,k) = passTorque;
-         end
-            plotter = 0;
-            if plotter
-                figure
-                plot(passive_joint_torque')
-                title('Passive Joint Torque')
-                xlabel('Percent Stride')
-                ylabel('Torque (Nm)')
-                legend({'Hip','Knee','Ankle'})
-                for k = 1:3
-                    figure
-                    count = 1;
-                    CM = hsv(size(relevant_muscles{k},1));
-                    legendcell = {};
-                    for i = 1:length(relevant_muscles{k})
-                        muscle_num = relevant_muscles{k}(i);
-                        plot(1000*passive_muscle_torque(muscle_num,:,k),'color',CM(count,:),'LineWidth',1.5)
-                        legendcell{end+1} = obj.musc_obj{muscle_num}.muscle_name(4:end);
-                        count = count + 1;
-                        %title(obj.musc_obj{i}.muscle_name,'Interpreter','none')
-                        hold on
-                    end
-                    title(['Passive Muscle Torque of the ',obj.joint_obj{k}.name(4:end)])
-                    xlabel('Percent Stride')
-                    ylabel('Torque (mN-m)')
-                    legend(legendcell,'Interpreter','none','Location','eastoutside')
-                    set(gcf,'Position',[500 500 900 500])
-                    saveas(gcf,['G:\My Drive\Rat\Optimizer\OutputFigures\passive_torque','_',obj.joint_obj{k}.name(4:end),'_',datestr(datetime('now'),'yyyymmdd'),'.png'])
-                end
             end
         end
         %% Function: lineInstersect3D: Find the closest point of intersection betweeen two vectors
@@ -2170,11 +2133,13 @@ classdef FullLeg < matlab.mixin.SetGet
                     forcesmooth = [lateralF,lateralF,lateralF;verticalF,verticalF,verticalF;propulsiveF,propulsiveF,propulsiveF]';
 
                     %For each joint, do the averaging of 10 data points many (originally set to 50) times
-                    for j=1:3
-                        for i=1:20
-                            forcesmooth(:,j) = filtfilt(coeffblocks,1,forcesmooth(:,j));
-                        end
-                    end
+%                     for j=1:3
+%                         for i=1:20
+%                             forcesmooth(:,j) = filtfilt(coeffblocks,1,forcesmooth(:,j));
+%                         end
+%                     end
+                    
+                    forcesmooth = smoothdata(forcesmooth,'gaussian',30);
 
                     sizer = floor(size(forcesmooth,1)/6);
                     forcesmooth = forcesmooth(3*sizer:5*sizer,:);
@@ -2274,7 +2239,7 @@ classdef FullLeg < matlab.mixin.SetGet
                                 set(ax(i).Title,'FontSize',16)
                             end
                          
-                        saveas(gcf,[pwd,'\OutputFigures\Images\compute_total_joint_torque\','total_load_torque_',datestr(datetime('now'),'yyyymmdd'),'.png'])
+                        %saveas(gcf,[pwd,'\OutputFigures\Images\compute_total_joint_torque\','total_load_torque_',datestr(datetime('now'),'yyyymmdd'),'.png'])
                 end
         end
         %% Function: Compute Body Torques
@@ -2283,6 +2248,8 @@ classdef FullLeg < matlab.mixin.SetGet
             %Higher div, the longer the program takes.
             div = 500;
             xx = floor(linspace(beg,ennd,div));
+            xx = linspace(1,length(obj.theta_motion),length(obj.theta_motion));
+            xx = obj.sampling_vector;
             
             gravDir = [0,-9.8,0]; % Gravity is along the Y-axis at -9.8 m/s^2
 
@@ -2302,6 +2269,88 @@ classdef FullLeg < matlab.mixin.SetGet
                 end
                 nJointTorque = (nJointArm(:,3)./1000).*sum(bodyMass(jj+2:end)).*9.8;
                 totaltorque(:,jj) = bodyTorque'+nJointTorque';
+            end
+        end
+        %% Function: Compute PASSIVE JOINT TORQUE: Compute the passive joint torque for a joint over an entire walking cycle
+        function [passive_joint_torque,passive_joint_motion,passive_muscle_torque,Tpass_profile] = compute_passive_joint_torque(obj)
+            %Joint axis 1: ExR/InR
+            %Joint axis 2: Ext/Flx
+            %Joint axis 3: Abd/Add
+            num_muscles = length(obj.musc_obj);
+            
+            [beg,ennd,~] = find_step_indices(obj);
+            %Higher div, the longer the program takes.
+            div = 500;
+            xx = floor(linspace(beg,ennd,div));
+            xx = linspace(1,length(obj.theta_motion),length(obj.theta_motion));
+            xx = obj.sampling_vector;
+            
+            load([pwd,'\Data\passiveTension.mat'],'passiveTension')
+            n = length(passiveTension);
+            m = length(obj.sampling_vector);
+            passiveTension = interp1(1:n,passiveTension,linspace(1,n,m));
+
+         for k = 1:3   
+            [moment_output] = compute_joint_moment_arms(obj,k,1);
+            Tpass_profile = zeros(size(moment_output));
+            
+            relevant_muscles{k} = find(moment_output(1:size(obj.musc_obj,1),1)~=0);
+            
+            %theta = (180/pi)*obj.theta_motion(:,k);
+            passTorque = zeros(num_muscles,size(moment_output,2));
+            %time = moment_output(39,:);
+            for i = 1:length(relevant_muscles{k})
+                muscle_num = relevant_muscles{k}(i);
+                %muscle_length = obj.musc_obj{muscle_num}.muscle_length_profile(round(time./obj.dt_motion));
+                [~,T_out] = compute_muscle_passive_tension(obj,obj.musc_obj{muscle_num},0);
+                %tlocations = ceil(rescale(muscle_length(xx),1,100));
+%                 for j = 1:size(moment_output,2)
+%                     r = muscle_length(j);
+%                     [~,tLoc] = min(abs(T_out(:,1)-r));
+%                     tLoclog(1,j) = tLoc;
+%                     Tpass_profile(muscle_num,j) = T_out(tLoc,2);
+%                     %%Tpass_profile(muscle_num,j) = T_out(tlocations(j),2);
+%                     passTorque(muscle_num,j) = Tpass_profile(muscle_num,j)*moment_output(muscle_num,j)/1000;
+%                 end
+%
+%                   Tpass_profile(muscle_num,:) = T_out(xx,2)';
+%                    passTorque(muscle_num,:) = T_out(xx,2)'.*moment_output(muscle_num,:)./1000;
+                    Tpass_profile(muscle_num,:) = passiveTension(:,i)';
+                    passTorque(muscle_num,:) = passiveTension(:,i)'.*moment_output(muscle_num,:)./1000;
+            end
+            
+            passive_joint_motion(k,:) = moment_output(40,:);
+            passive_joint_torque(k,:) = sum(passTorque);
+            passive_muscle_torque(:,:,k) = passTorque;
+         end
+            plotter = 0;
+            if plotter
+                figure
+                plot(passive_joint_torque')
+                title('Passive Joint Torque')
+                xlabel('Percent Stride')
+                ylabel('Torque (Nm)')
+                legend({'Hip','Knee','Ankle'})
+                for k = 1:3
+                    figure
+                    count = 1;
+                    CM = hsv(size(relevant_muscles{k},1));
+                    legendcell = {};
+                    for i = 1:length(relevant_muscles{k})
+                        muscle_num = relevant_muscles{k}(i);
+                        plot(1000*passive_muscle_torque(muscle_num,:,k),'color',CM(count,:),'LineWidth',1.5)
+                        legendcell{end+1} = obj.musc_obj{muscle_num}.muscle_name(4:end);
+                        count = count + 1;
+                        %title(obj.musc_obj{i}.muscle_name,'Interpreter','none')
+                        hold on
+                    end
+                    title(['Passive Muscle Torque of the ',obj.joint_obj{k}.name(4:end)])
+                    xlabel('Percent Stride')
+                    ylabel('Torque (mN-m)')
+                    legend(legendcell,'Interpreter','none','Location','eastoutside')
+                    set(gcf,'Position',[500 500 900 500])
+                    saveas(gcf,['G:\My Drive\Rat\Optimizer\OutputFigures\passive_torque','_',obj.joint_obj{k}.name(4:end),'_',datestr(datetime('now'),'yyyymmdd'),'.png'])
+                end
             end
         end
         %% Function: Compute Total Joint Torque (Passive)
@@ -3391,6 +3440,7 @@ classdef FullLeg < matlab.mixin.SetGet
             [beg,ennd,~] = find_step_indices(obj);
             div = 500;
             xx = floor(linspace(beg,ennd,div));
+            xx = obj.sampling_vector;
             
             x = 1:length(obj.torque_motion);
             v = obj.torque_motion;
@@ -3727,14 +3777,18 @@ classdef FullLeg < matlab.mixin.SetGet
                 toplot = 0;
             end
             
-            [beg,ennd,~] = find_step_indices(obj);
-            div = 500;
-            xx = floor(linspace(beg,ennd,div));
+%             [beg,ennd,~] = find_step_indices(obj);
+%             div = 500;
+%             xx = floor(linspace(beg,ennd,div));
+%             xx = linspace(1,length(obj.theta_motion),length(obj.theta_motion));
+            xx = obj.sampling_vector;
+            beg = obj.sampling_vector(1);
+            ennd = obj.sampling_vector(end);
             
-            x = 1:length(obj.torque_motion);
-            v = obj.torque_motion;
-            
-            xq = linspace(1,length(obj.torque_motion),length(xx));
+            v = [obj.torque_motion' obj.torque_motion'  obj.torque_motion']';
+            x = 1:length(v);
+           
+            xq = linspace(1,length(v),length(xx));
             measured_torque = interp1(x,v,xq);
             
             passive_torque = obj.compute_total_joint_torque(0);
@@ -3748,8 +3802,16 @@ classdef FullLeg < matlab.mixin.SetGet
             measured_torque(:,1) = measured_torque(:,2);
             measured_torque(:,2) = holder;
             
-             tau2 = measured_torque-passive_torque;
-            %tau2 = measured_torque;
+             %tau2 = measured_torque-passive_torque;
+             jointprofile = obj.theta_motion;
+             trimmedjp = jointprofile(floor(length(jointprofile)*.1):floor(length(jointprofile)*.9),:);
+            
+            if mean(range(trimmedjp)) < 1e-3
+                tau2 = -passive_torque;
+            else
+                tau2 = measured_torque-passive_torque;
+            end
+             %tau2 = measured_torque;
             
             mintypes = {'minfatigue','minsqforces','minforce','minwork','minforcePCSA','minforcetemporal'};
             nummuscles = size(obj.musc_obj,1);
@@ -3842,9 +3904,10 @@ classdef FullLeg < matlab.mixin.SetGet
                         if j>1
                             x0 = force(:,j-1);
                         end
-                          [force(:,j),fval(j,1),exitflag] = fmincon(fun,x0,[],[],Aeq,beq,lb(:,j),ub(:,j),[],options);
+                          [force(:,j),~,exitflag(j)] = fmincon(fun,x0,[],[],Aeq,beq,lb(:,j),ub(:,j),[],options);
                     end
                 end
+                fval = 10;
             telapsed = toc(tstart);
             if telapsed>60
                 min = num2str(floor(telapsed/60));
@@ -3999,6 +4062,7 @@ classdef FullLeg < matlab.mixin.SetGet
             [beg,ennd,~] = find_step_indices(obj);
             div = 500;
             xx = floor(linspace(beg,ennd,div));
+            xx = obj.sampling_vector;
             tempcolor = hot(256);
             mintitles = {'Minimizing the Summed Forces of All Muscles','Minimizing the Summed Work of All Muscles'};
             mintypes = {'minfatigue','minsqforces','minforce','minwork','minforcePCSA','minforcetemporal'};
@@ -4128,6 +4192,7 @@ classdef FullLeg < matlab.mixin.SetGet
             %Higher div, the longer the program takes.
             div = 100;
             xx = floor(linspace(beg,ennd,div));
+            xx = obj.sampling_vector;
             if 0
                 muscles = [11 11 33 33 27 27;...
                      1 2 1 2 2 3;...

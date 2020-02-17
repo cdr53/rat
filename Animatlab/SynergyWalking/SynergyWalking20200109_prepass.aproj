@@ -17,7 +17,7 @@
 <PlaybackControlMode>FastestPossible</PlaybackControlMode>
 <PresetPlaybackTimeStep Value="7" Scale="milli" Actual="0.007"/>
 <Environment>
-<PhysicsTimeStep Value="0.54" Scale="milli" Actual="0.00054"/>
+<PhysicsTimeStep Value="5" Scale="milli" Actual="0.005"/>
 <PhysicsSubsteps>1</PhysicsSubsteps>
 <Gravity Value="-9.81" Scale="None" Actual="-9.81"/>
 <MouseSpringStiffness Value="0.5" Scale="None" Actual="0.5"/>
@@ -2397,7 +2397,7 @@
 <A Value="-50" Scale="milli" Actual="-0.05"/>
 <B Value="0.67" Scale="None" Actual="0.67"/>
 <C Value="921.04" Scale="None" Actual="921.04"/>
-<D Value="-0.07" Scale="milli" Actual="-7e-05"/>
+<D Value="-0.07" Scale="milli" Actual="-7e-005"/>
 </StimulusTension>
 <LengthTension>
 <ID>eb78826e-7802-4472-bc17-e8b755ae9169</ID>
@@ -2966,9 +2966,9 @@
 <Density Value="8.26" Scale="None" Actual="8.26"/>
 <Mass Value="14.141" Scale="None" Actual="14.141"/>
 <COM>
-<X Value="0" Scale="None" Actual="0"/>
-<Y Value="0" Scale="None" Actual="0"/>
-<Z Value="0" Scale="None" Actual="0"/>
+<X Value="-8.315" Scale="milli" Actual="-0.008315"/>
+<Y Value="-1.975" Scale="milli" Actual="-0.001975"/>
+<Z Value="15.642" Scale="milli" Actual="0.015642"/>
 </COM>
 <MaterialTypeID>DEFAULTMATERIAL</MaterialTypeID>
 <Freeze>False</Freeze>
@@ -4334,9 +4334,9 @@
 <Density Value="2.471" Scale="None" Actual="2.471"/>
 <Mass Value="3.339" Scale="None" Actual="3.339"/>
 <COM>
-<X Value="0" Scale="None" Actual="0"/>
-<Y Value="0" Scale="None" Actual="0"/>
-<Z Value="0" Scale="None" Actual="0"/>
+<X Value="-1.833" Scale="milli" Actual="-0.001833"/>
+<Y Value="-17.219" Scale="milli" Actual="-0.017219"/>
+<Z Value="-5.01" Scale="milli" Actual="-0.00501"/>
 </COM>
 <MaterialTypeID>DEFAULTMATERIAL</MaterialTypeID>
 <Freeze>False</Freeze>
@@ -4858,7 +4858,7 @@
 <A Value="-50" Scale="milli" Actual="-0.05"/>
 <B Value="0.79" Scale="None" Actual="0.79"/>
 <C Value="921.04" Scale="None" Actual="921.04"/>
-<D Value="-0.08" Scale="milli" Actual="-8e-05"/>
+<D Value="-0.08" Scale="milli" Actual="-8e-005"/>
 </StimulusTension>
 <LengthTension>
 <ID>0a7ee3d4-dfe7-44bf-99c9-c24473d6dff3</ID>
@@ -6054,9 +6054,9 @@
 <Density Value="3" Scale="None" Actual="3"/>
 <Mass Value="1.571" Scale="None" Actual="1.571"/>
 <COM>
-<X Value="0" Scale="None" Actual="0"/>
-<Y Value="0" Scale="None" Actual="0"/>
-<Z Value="0" Scale="None" Actual="0"/>
+<X Value="5.833" Scale="milli" Actual="0.005833"/>
+<Y Value="-3" Scale="milli" Actual="-0.003"/>
+<Z Value="0.298" Scale="milli" Actual="0.000298"/>
 </COM>
 <MaterialTypeID>DEFAULTMATERIAL</MaterialTypeID>
 <Freeze>False</Freeze>
@@ -7544,7 +7544,7 @@
 <Y Value="0" Scale="None" Actual="0"/>
 <Z Value="0" Scale="None" Actual="0"/>
 </Rotation>
-<LocalMatrix>1,1.38778e-017,1.73472e-017,0,-1.32408e-034,1,7.58942e-017,0,-1.04083e-017,-3.29597e-017,1,0,-0.00829937,-0.40429,-0.09276,1</LocalMatrix>
+<LocalMatrix>1,0,0,0,-0,1,0,0,0,-0,1,0,-0.0083,-0.40429,-0.09276,1</LocalMatrix>
 <DraggerSize Value="-1" Scale="None" Actual="-1"/>
 <Type>Attachment</Type>
 <PartType>AnimatGUI.DataObjects.Physical.Bodies.Attachment</PartType>
@@ -12312,8 +12312,8 @@
 </Stimuli>
 <HudItems>
 <HudItem>
-<Name>79273ba4-2d7d-4e7e-b0ed-40a63ee61162</Name>
-<ID>79273ba4-2d7d-4e7e-b0ed-40a63ee61162</ID>
+<Name>ed087f7c-4943-49fc-970e-f6c050b00712</Name>
+<ID>ed087f7c-4943-49fc-970e-f6c050b00712</ID>
 <Type>HudText</Type>
 <CharSize>30</CharSize>
 <Text>Time: %3.3f</Text>
@@ -12426,7 +12426,7 @@
 <DockingConfig>&lt;?xml version="1.0" encoding="us-ascii"?&gt;
 &lt;!-- DotNetMagic, The User Interface library for .NET (www.crownwood.net) --&gt;
 &lt;!-- Modifying this generated file will probably render it invalid --&gt;
-&lt;DockingConfig FormatVersion="10" InsideFill="False" InnerMinimum="20, 20" SavedAt="02/04/2020 17:11:14"&gt;
+&lt;DockingConfig FormatVersion="10" InsideFill="False" InnerMinimum="20, 20" SavedAt="02/17/2020 12:22:41"&gt;
 &lt;Content Name="Playback Control" Visible="False" Docked="True" AutoHidden="False" CaptionBar="True" CloseButton="False" DisplaySize="150, 150" DisplayLocation="150, 150" AutoHideSize="150, 150" FloatingSize="150, 150" FullTitle="Playback Control" Office2003BackColor="Base" UniqueName="" Office2007BackColor="Base" MediaPlayerBackColor="Base"&gt;
 &lt;DefaultRestore Type="Crownwood.DotNetMagic.Docking.RestoreContentState"&gt;
 &lt;Content Name="Playback Control" UniqueName="" /&gt;
@@ -12922,7 +12922,7 @@
 &lt;CustomGlobalData /&gt;
 &lt;Sequence Count="1" Unique="0" Space="100" Direction="Horizontal"&gt;
 &lt;Leaf Count="3" Unique="7" Space="100"&gt;
-&lt;Page Title="Sim Window" ImageList="True" ImageIndex="0" Selected="True" Control="null" UniqueName=""&gt;
+&lt;Page Title="Sim Window" ImageList="True" ImageIndex="0" Selected="False" Control="null" UniqueName=""&gt;
 &lt;CustomPageData&gt;&lt;![CDATA[&lt;TabPage&gt;
 &lt;Form&gt;
 &lt;ID&gt;b1c3eb6f-fc15-4560-8750-275c275ef964&lt;/ID&gt;
@@ -12949,7 +12949,7 @@
 &lt;/TabPage&gt;
 ]]&gt;&lt;/CustomPageData&gt;
 &lt;/Page&gt;
-&lt;Page Title="JointMotion" ImageList="True" ImageIndex="2" Selected="False" Control="null" UniqueName=""&gt;
+&lt;Page Title="JointMotion" ImageList="True" ImageIndex="2" Selected="True" Control="null" UniqueName=""&gt;
 &lt;CustomPageData&gt;&lt;![CDATA[&lt;TabPage&gt;
 &lt;Form&gt;
 &lt;ID&gt;1b1bb75a-f9ae-4839-8124-5172f1dbddcf&lt;/ID&gt;
