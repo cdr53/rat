@@ -761,6 +761,7 @@ classdef CanvasModel < handle
            datatool.tfID = ['dt-',name,'-tfID'];
            datatool.starttime = 0;
            datatool.endtime = 10;
+           datatool.collectdatainterval = 0.54; % collect data interval in ms
            datatool.axes_objects = struct();
         end
         %% create_dtaxes
@@ -855,31 +856,13 @@ classdef CanvasModel < handle
                 ns_nervoussystem_text;...
                 modified_text(nervoussystem_inject_end:end,1)];
             
-            %%%Modify existing datatools such that they terminate before the end of the simulation
-            extDTs = {'JointMotion';'PassiveTension'};
-            for ii = 1:length(extDTs)
-                %pInd = find(contains(modified_text,extDTs{ii}),1,'first');
-                aform_path = [fileparts(proj_file),'\',extDTs{ii},'.aform'];
-                aform_text = importdata(aform_path);
-                %temp_timeInd = find(contains(aform_text,'<CollectEndTime'));
-                pVal = obj.proj_params.simendtime-.01;
-                pInd = find(contains(aform_text,'<CollectEndTime'),1,'first');
-                sTemp = aform_text{pInd};
-                qTemp = reshape(strfind(sTemp,'"'),[2 3])';
-                scaler = 1;
-                aform_text{pInd} = [sTemp(1:qTemp(1,1)),num2str(pVal),sTemp(qTemp(1,2):qTemp(2,1)),'None',...
-                                        sTemp(qTemp(2,2):qTemp(3,1)),num2str(scaler*pVal),sTemp(qTemp(3,2):end)];
-                fileID = fopen(aform_path,'w');
-                fprintf(fileID,'%s\n',aform_text{:});
-                fclose(fileID);
-                clear fileID aform_text stemp qTemp pVal aform_path
-            end
-            
             %%%Inject Datatool Code
             try obj.datatool_objects(1).name;
                 numDatatools = size(obj.datatool_objects,1);
+                aform_dt = obj.datatool_objects(1).collectdatainterval;
             catch
                 numDatatools = 0;
+                aform_dt = obj.proj_params.physicstimestep;
             end
             
             if numDatatools > 0 
@@ -910,6 +893,29 @@ classdef CanvasModel < handle
                 modified_text = [modified_text(1:datatool_inject-1);...
                                 datatool_text;...
                                 modified_text(datatool_inject+1:end)];
+            end
+            
+            %%%Modify existing datatools such that they terminate before the end of the simulation
+            
+            extDTs = {'JointMotion';'PassiveTension'};
+            parCell = {'<CollectEndTime',obj.proj_params.simendtime-.01;...
+                       '<CollectDataInterval',aform_dt/1000};
+            for ii = 1:length(extDTs)
+                aform_path = [fileparts(proj_file),'\',extDTs{ii},'.aform'];
+                aform_text = importdata(aform_path);
+                for jj = 1:size(parCell,1)
+                    pInd = find(contains(aform_text,parCell{jj,1}),1,'first');
+                    sTemp = aform_text{pInd};
+                    qTemp = reshape(strfind(sTemp,'"'),[2 3])';
+                    scaler = 1;
+                    pVal = parCell{jj,2};
+                    aform_text{pInd} = [sTemp(1:qTemp(1,1)),num2str(pVal),sTemp(qTemp(1,2):qTemp(2,1)),'None',...
+                                            sTemp(qTemp(2,2):qTemp(3,1)),num2str(scaler*pVal),sTemp(qTemp(3,2):end)];
+                end
+                fileID = fopen(aform_path,'w');
+                fprintf(fileID,'%s\n',aform_text{:});
+                fclose(fileID);
+                clear fileID aform_text stemp qTemp pVal aform_path
             end
             
             %%%Inject Stimulus Code

@@ -32,17 +32,33 @@ if ispc
             return
         end
         % Post-process data
-        data_struct = importdata([fileparts(sim_file),'\JointMotion.txt']);
-        col_head_slice = data_struct.colheaders;
-            hipInd = find(contains(col_head_slice,'Hip'),1,'first')-1;
-            kneeInd = find(contains(col_head_slice,'Knee'),1,'first')-1;
-            ankleInd = find(contains(col_head_slice,'Ankle'),1,'first')-1;
-        joint_profile = data_struct.data(:,2:5);
-            % Determine which columns correspond to which joint. Animatlab doesn't necessarily follow a hip->knee->ankle convention
-            hip = joint_profile(:,hipInd);
-            knee = joint_profile(:,kneeInd);
-            ankle = joint_profile(:,ankleInd);
-        joint_profile = [joint_profile(:,1),hip,knee,ankle];
+        sdata = processSimData(sim_file,0);
+        aForms = {'JointMotion';'PassiveTension'};
+        for ii = 1:length(aForms)
+            tempInd = find(contains({sdata.name},aForms{ii}));
+            data = sdata(tempInd).data;
+            %data_struct = importdata([fileparts(sim_file),'\',aForms{ii},'.txt']);
+            %col_head_slice = data_struct.colheaders;
+            col_head_slice = sdata(tempInd).data_cols;
+            switch aForms{ii}
+                case 'JointMotion'
+                        hipInd = find(contains(col_head_slice,'Hip'),1,'first');
+                        kneeInd = find(contains(col_head_slice,'Knee'),1,'first');
+                        ankleInd = find(contains(col_head_slice,'Ankle'),1,'first');
+                    joint_profile = sdata(tempInd).data;
+                        % Determine which columns correspond to which joint. Animatlab doesn't necessarily follow a hip->knee->ankle convention
+                        hip = joint_profile(:,hipInd);
+                        knee = joint_profile(:,kneeInd);
+                        ankle = joint_profile(:,ankleInd);
+                    joint_profile = [sdata(tempInd).time,hip,knee,ankle];
+                case 'PassiveTension'
+                    passive_tension = cell(length(col_head_slice),2);
+                    for jj = 1:length(col_head_slice)
+                        passive_tension{jj,1} = col_head_slice{jj};
+                        passive_tension{jj,2} = data(:,jj);
+                    end
+            end
+        end
         % Prepare object instantiation variables
         joints = {[],'LH_HipZ','LH_Knee','LH_AnkleZ'};
         bodies = {'Pelvis','LH_Femur','LH_Tibia','LH_Foot'};
@@ -51,7 +67,7 @@ if ispc
         % joint_limits = [-60,7.4;-50,60;-80,25]*pi/180;
         joint_limits = [min(joint_profile(:,2:end))' max(joint_profile(:,2:end))'];
         %Data_file = 'G:\My Drive\Rat\Rat Model Development\AllTraining.mat';
-        obj = FullLeg(sim_file,joints,bodies,joint_limits,joint_profile);
+        obj = FullLeg(sim_file,joints,bodies,joint_limits,joint_profile,passive_tension);
     elseif isohip_run
         sim_file = 'C:\Users\Fletcher\Documents\AnimatLab\FullMuscleLeg20190326\FullMuscleLeg20190326.aproj';
         joints = {[],'LH_HipZ'};

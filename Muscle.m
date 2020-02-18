@@ -26,6 +26,7 @@ classdef Muscle < matlab.mixin.SetGet
       lf_lm
       muscle_length_profile
       muscle_velocity_profile
+      passive_tension
     end
     methods
         function obj = Muscle()

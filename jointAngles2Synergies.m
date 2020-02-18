@@ -10,7 +10,7 @@
     initAngs = [-0.9656   -0.1941   -0.6678];
     toeoff = [0.4315   -0.2007   -0.0678];
     %waveform = [linspace(initAngs(1),toeoff(1),1000) ; linspace(initAngs(2),toeoff(2),1000) ; linspace(initAngs(3),toeoff(3),1000)]';
-    %waveform = repmat(initAngs,10000,1);
+    waveform = repmat(initAngs,10000,1);
     %jTemp = 2;
     %waveform(:,jTemp) = ((initAngs(jTemp)-toeoff(jTemp))/2)*cos(.001*linspace(0,length(waveform),length(waveform)))+(initAngs(jTemp)+toeoff(jTemp))/2;
     

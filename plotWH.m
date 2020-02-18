@@ -57,7 +57,7 @@ function plotWH(inArray,W,H,saver)
         elseif i == size(W,2)
             xlabel('Muscle #','FontSize',14)
         end
-        xlim([0 39])
+        xlim([0 size(W,1)+1])
         ylabel(num2str(i))
     end
     

@@ -55,9 +55,10 @@ classdef FullLeg < matlab.mixin.SetGet
         ehi_hip_knee_out;
         
         sampling_vector;
+        passive_tension;
    end
    methods
-        function obj = FullLeg(sim_file,joints,bodies,joint_limits,joint_profile)
+        function obj = FullLeg(sim_file,joints,bodies,joint_limits,joint_profile,passive_tension)
         %% Process the Simulation File
             obj.joint_types = cell(1,length(joints));
             obj.num_bodies = 0;
@@ -615,6 +616,7 @@ classdef FullLeg < matlab.mixin.SetGet
             store_animatlab_params(obj);
             store_johnson_params(obj);
             store_muscle_profiles(obj);
+            store_input_muscle_passive_tension(obj,passive_tension);
             telapsed = toc(tstart);
             %disp(['Muscle Properties Stored.',' (',num2str(telapsed),'s)'])
             clear tstart telapsed
@@ -1086,6 +1088,18 @@ classdef FullLeg < matlab.mixin.SetGet
                 obj.musc_obj{i}.muscle_velocity_profile = diff(muscle_length)/obj.dt_motion;
             end   
         end
+        %% Function: Store Input Muscle Passive Tension
+        function store_input_muscle_passive_tension(obj,passive_tension)
+            pt = passive_tension;
+            musc_names = cell(size(obj.musc_obj,1),1);
+            for ii = 1:size(obj.musc_obj,1)
+                musc_names{ii,1} = obj.musc_obj{ii}.muscle_name;
+            end
+            for ii = 1:size(passive_tension,1)
+                ptName = pt{ii,1};
+                obj.musc_obj{contains(musc_names,ptName)}.passive_tension = pt{ii,2};
+            end
+        end
         %% Function: Store the sampling vector
         function store_sampling_vector(obj)
             %% Optimization and simulations can take ages if not downsampled. This function creates a sampling vector which parses down analysis to a single step
@@ -1259,7 +1273,7 @@ classdef FullLeg < matlab.mixin.SetGet
                  a1*a2*(1-c)+a3*s, c+a2^2*(1-c), a2*a3*(1-c)-a1*s;...
                  a1*a3*(1-c)-a2*s, a2*a3*(1-c)+a1*s, c+a3^2*(1-c)];
         end
-        %% Function: find_step_indices: STEP INDICES Find the bounding indices for a single step
+        %% Function: FIND find_step_indices: STEP INDICES Find the bounding indices for a single step
         function [beg,ennd,mid] = find_step_indices(obj)
             %Finds the bounding indices for the second step in walking. This will be used to find muscle moment arms and passive tension
             %Over a step since individual joint motion can't be isolated. Using the second step prevents issues with initialization of the first step (t==0)
@@ -2285,10 +2299,10 @@ classdef FullLeg < matlab.mixin.SetGet
             xx = linspace(1,length(obj.theta_motion),length(obj.theta_motion));
             xx = obj.sampling_vector;
             
-            load([pwd,'\Data\passiveTension.mat'],'passiveTension')
-            n = length(passiveTension);
+            %load([pwd,'\Data\passiveTension.mat'],'passiveTension')
+            %n = length(passiveTension);
             m = length(obj.sampling_vector);
-            passiveTension = interp1(1:n,passiveTension,linspace(1,n,m));
+            %passiveTension = interp1(1:n,passiveTension,linspace(1,n,m));
 
          for k = 1:3   
             [moment_output] = compute_joint_moment_arms(obj,k,1);
@@ -2315,8 +2329,11 @@ classdef FullLeg < matlab.mixin.SetGet
 %
 %                   Tpass_profile(muscle_num,:) = T_out(xx,2)';
 %                    passTorque(muscle_num,:) = T_out(xx,2)'.*moment_output(muscle_num,:)./1000;
-                    Tpass_profile(muscle_num,:) = passiveTension(:,i)';
-                    passTorque(muscle_num,:) = passiveTension(:,i)'.*moment_output(muscle_num,:)./1000;
+                    pt = obj.musc_obj{muscle_num}.passive_tension;
+                    n = length(pt);
+                    pt = interp1(1:n,pt,linspace(1,n,m));
+                    Tpass_profile(muscle_num,:) = pt;
+                    passTorque(muscle_num,:) = pt.*moment_output(muscle_num,:)./1000;
             end
             
             passive_joint_motion(k,:) = moment_output(40,:);
