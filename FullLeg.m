@@ -1107,6 +1107,7 @@ classdef FullLeg < matlab.mixin.SetGet
             div = 500;
             alt = linspace(1,length(obj.theta_motion),length(obj.theta_motion));
             obj.sampling_vector = floor(linspace(beg,ennd,div));
+            obj.sampling_vector = alt;
         end
         %% Function: Find the Global Point Position Profile for a Local Point (input) in a Body Coordinate Frame (input)
         function [point_profile] = move_point_through_walking(obj,bodynum,localpoint)
@@ -1309,7 +1310,7 @@ classdef FullLeg < matlab.mixin.SetGet
             
             jointprofile = obj.theta_motion;
             trimmedjp = jointprofile(floor(length(jointprofile)*.1):floor(length(jointprofile)*.9),:);
-            if mean(range(trimmedjp)) < 1e-3
+            if mean(range(trimmedjp)) < 1e-3 || mean(std(trimmedjp)) < .01
                 % If jointprofile is constant
                 beg = floor(length(jointprofile)*(1/3));
                 ennd = floor(length(jointprofile)*(2/3));
@@ -1672,6 +1673,7 @@ classdef FullLeg < matlab.mixin.SetGet
                     if plotval == 1 && plotter
                         if i==xx(20)
                             figure('name','legplot','Position',[-955   130   960   985]);
+                            pause
                         end
                         %The muscle vector
                         for k = 1:2
@@ -1730,7 +1732,7 @@ classdef FullLeg < matlab.mixin.SetGet
                         %Set figure properties
                         title([{[objName,' ',axis(j,:),' about the ',obj.joint_obj{joint}.name(4:end),' joint']},...
                                {['Moment arm length: ',num2str(round(moment_arm_profile(count2,j+2),2)),' mm']},...
-                               {[obj.joint_obj{joint}.name(4:end),' joint angle: ',num2str(obj.joint_obj{joint}.rec_angle_profile(i)*(180/pi))]}])
+                               {[obj.joint_obj{joint}.name(4:end),' joint angle: ',num2str(obj.joint_obj{joint}.rec_angle_profile(i)*(180/pi))]}],'Interpreter','None')
                         legend('Muscle','Moment arm','Muscle Origin','Muscle Insertion','Joint of Interest','Joint vector Ext/Flx','Joint vector Add/Abd','Joint vector ExR/InR',...
                             'Muscle Projection onto Joint Plane','Hip','Femur','Knee','Tibia','Ankle','Foot')
                         view([0 90])
@@ -1875,9 +1877,10 @@ classdef FullLeg < matlab.mixin.SetGet
             end
             
             T(T<0) = 0;
+            Tlen = min([length(muscleprofile) length(T)]);
             
-             T_out(:,1) = muscleprofile(1:end-1);
-            T_out(:,2) = T;
+             T_out(:,1) = muscleprofile(1:Tlen);
+            T_out(:,2) = T(1:Tlen);
             
             %[~,dd] = findpeaks(-L_pass);
             tri = delaunayn(unique(T_out(:,1)));
@@ -2308,7 +2311,7 @@ classdef FullLeg < matlab.mixin.SetGet
             [moment_output] = compute_joint_moment_arms(obj,k,1);
             Tpass_profile = zeros(size(moment_output));
             
-            relevant_muscles{k} = find(moment_output(1:size(obj.musc_obj,1),1)~=0);
+            relevant_muscles{k} = find(sum(moment_output(1:38,:),2)~=0);
             
             %theta = (180/pi)*obj.theta_motion(:,k);
             passTorque = zeros(num_muscles,size(moment_output,2));
@@ -3788,7 +3791,7 @@ classdef FullLeg < matlab.mixin.SetGet
             end
         end
         %% Function: Optimize Forces for Torque Induction (newer, input cost function)
-        function [force,tau2,moment_output,fval,telapsed] = optimize_forces(obj,fun,toplot)
+        function [force,tau2,moment_output,fval,telapsed,indiv_torques] = optimize_forces(obj,fun,toplot)
             tstart = tic;
             if nargin < 2
                 toplot = 0;
@@ -3824,11 +3827,23 @@ classdef FullLeg < matlab.mixin.SetGet
              trimmedjp = jointprofile(floor(length(jointprofile)*.1):floor(length(jointprofile)*.9),:);
             
             if mean(range(trimmedjp)) < 1e-3
-                tau2 = -passive_torque;
+                 tau2 = -passive_torque;
+                 %tau2 = zeros(length(obj.sampling_vector),3);
+                %[body_torque] = compute_body_torques(obj);
+                %tau2 = body_torque;
             else
-                tau2 = measured_torque-passive_torque;
+%                 tau2 = measured_torque-passive_torque;
+                tau2 = -passive_torque;
+                [body_torque] = compute_body_torques(obj);
+                tau2 = body_torque;
             end
-             %tau2 = measured_torque;
+                [body_torque] = compute_body_torques(obj);
+%                 tau2 = body_torque;
+%                 tau2 = passive_torque;
+%                 [passive_joint_torque,passive_joint_motion] = compute_passive_joint_torque(obj);
+%                 tau2 = passive_joint_torque';
+%                 tau2 = -passive_joint_torque';
+                tau2 = -body_torque;
             
             mintypes = {'minfatigue','minsqforces','minforce','minwork','minforcePCSA','minforcetemporal'};
             nummuscles = size(obj.musc_obj,1);
@@ -3856,7 +3871,11 @@ classdef FullLeg < matlab.mixin.SetGet
                 parfor i=1:nummuscles
                     muscle = obj.musc_obj{i};
                     Lm = muscle.muscle_length_profile(xx);
-                    Vm = muscle.muscle_velocity_profile(xx);
+                    if length(xx) > length(muscle.muscle_velocity_profile)
+                        Vm = [0;muscle.muscle_velocity_profile];
+                    else
+                        Vm = muscle.muscle_velocity_profile(xx);
+                    end
                     Fmax(i,1) = muscle.max_force;
 % %                     Lw = abs(muscle.l_max-muscle.l_min)/sqrt(.3);
 %                     Lw = muscle.l_width;
@@ -3923,6 +3942,10 @@ classdef FullLeg < matlab.mixin.SetGet
                         end
                           [force(:,j),~,exitflag(j)] = fmincon(fun,x0,[],[],Aeq,beq,lb(:,j),ub(:,j),[],options);
                     end
+                end
+                
+                for ii = 1:3
+                    indiv_torques(1:38,:,ii) = moment_output(1:38,:,ii)./1000.*force;
                 end
                 fval = 10;
             telapsed = toc(tstart);
@@ -4020,13 +4043,14 @@ classdef FullLeg < matlab.mixin.SetGet
                 parpool('local',4);
             end
 
-            results_cell = cell(6,2);
+            results_cell = cell(7,2);
             results_cell(:,1) = {'';
                                  'Forces';
                                  'Torques';
                                  'Moment Arm output';
                                  'Fval';
-                                 'Opt Time'};
+                                 'Opt Time';
+                                 'Indiv Torques'};
             results_cell(1,2) = {' '};
 
             for i=1:38
@@ -4037,12 +4061,13 @@ classdef FullLeg < matlab.mixin.SetGet
             fun = @(x) sum((x./Fmax).^2);
             %fun = @(x) sum((x.^2)./Fmax);
 
-            [forces,tau,moment_output,fval,telapsed] = obj.optimize_forces(fun,0);
+            [forces,tau,moment_output,fval,telapsed,indiv_torques] = obj.optimize_forces(fun,0);
             results_cell{2,2} = forces;
             results_cell{3,2} = tau;
             results_cell{4,2} = moment_output;
             results_cell{5,2} = fval;
             results_cell{6,2} = telapsed;
+            results_cell{7,2} = indiv_torques;
         end
         %% Function: Optimized Torque Forces to MN
         function [Amval] = forces_to_MN(obj)

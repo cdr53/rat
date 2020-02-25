@@ -1,7 +1,7 @@
 file_dir = fileparts(mfilename('fullpath'));
 proj_file = [pwd,'\Animatlab\SynergyWalking\SynergyWalking20200109.aproj'];
 meshMatch(proj_file)
-revised_file = strcat(proj_file(1:end-6),'_fake.aproj');
+revised_file = strcat(proj_file(1:end-6),'.aproj');
 [projDir,projName,ext] = fileparts(revised_file);
 disp(['Starting to build Animatlab project ',projName,ext])
 delete([projDir,'\Trace*'])

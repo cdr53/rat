@@ -1,15 +1,22 @@
-file_dir = fileparts(mfilename('fullpath'));
-proj_file = [pwd,'\Animatlab\SynergyWalking\SynergyWalking20200109.aproj'];
-meshMatch(proj_file)
-revised_file = strcat(proj_file(1:end-6),'_fake.aproj');
-[projDir,projName,ext] = fileparts(revised_file);
-disp(['Starting to build Animatlab project ',projName,ext])
-delete([projDir,'\Trace*'])
+% file_dir = fileparts(mfilename('fullpath'));
+ proj_file = [pwd,'\Animatlab\SynergyWalking\SynergyWalking20200109.aproj'];
+% meshMatch(proj_file);
+% revised_file = strcat(proj_file(1:end-6),'_fake.aproj');
+% [projDir,projName,ext] = fileparts(revised_file);
+% disp(['Starting to build Animatlab project ',projName,ext])
+% delete([projDir,'\Trace*'])
+% 
+% original_text = importdata(proj_file);
+% muscleIDs = find(contains(original_text,'<PartType>AnimatGUI.DataObjects.Physical.Bodies.LinearHillMuscle</PartType>'))-2;
+% muscle_out = scrape_project_for_musc_info(original_text);
+% numMuscles = length(muscleIDs);
 
-original_text = importdata(proj_file);
-muscleIDs = find(contains(original_text,'<PartType>AnimatGUI.DataObjects.Physical.Bodies.LinearHillMuscle</PartType>'))-2;
-muscle_out = scrape_project_for_musc_info(original_text);
-numMuscles = length(muscleIDs);
+docPath = [pwd,'\Animatlab\SynergyWalking\motorStim.asim'];
+muscle_out = scrapeFileForMuscleInfo(docPath);
+numMuscles = length(muscle_out);
+[docDir,docName,docType] = fileparts(docPath);
+%disp(['Starting to build Animatlab ',docType,' file "',docName,docType,'".'])
+delete([docDir,'\Trace*'])
 
 nsys = CanvasModel;
 neurpos = [];
@@ -31,14 +38,17 @@ for ii = 1:numMuscles
     nsys.addLink(nsys.neuron_objects(ii),nsys.muscle_objects(ii),'adapter')
     nsys.addStimulus(nsys.neuron_objects(ii))
     nsys.stimulus_objects(ii).starttime = 0;
-    nsys.stimulus_objects(ii).endtime = 10;
+    nsys.stimulus_objects(ii).endtime = simTime;
     if isfile([file_dir,'\Data\indiv_equations.mat'])
         load([file_dir,'\Data\indiv_equations.mat'])
         nsys.stimulus_objects(ii).eq = equations{ii};
     else
         %inputWave = mean(current2inject(ii,length(current2inject)*.1:length(current2inject)*.9));
         inputWave = current2inject(ii,:);
-        nsys.stimulus_objects(ii).eq = generate_synergy_eq(inputWave,simTime,obj.dt_motion);
+        ci2 = movmean(current2inject',floor(length(current2inject)/3));
+        constvals = mean(ci2);
+        nsys.stimulus_objects(ii).eq = generate_synergy_eq(constvals(ii),simTime,obj.dt_motion,0);
+        %nsys.stimulus_objects(ii).eq = generate_synergy_eq(inputWave,simTime,obj.dt_motion,0);
         equations{ii} = nsys.stimulus_objects(ii).eq;
         if  ii == 38
             save([file_dir,'\Data\indiv_equations.mat'],'equations')
@@ -55,6 +65,7 @@ nsys.addDatatool({'KeyMNs','endtime',nsys.proj_params.simendtime-.01})
 nsys.addDatatool({'KeyMuscles','endtime',nsys.proj_params.simendtime-.01})
 nsys.addDatatool({'KeyMuscTen','endtime',nsys.proj_params.simendtime-.01})
 nsys.addDatatool({'KeyMuscAct','endtime',nsys.proj_params.simendtime-.01})
+nsys.addDatatool({'KeyMuscAl','endtime',nsys.proj_params.simendtime-.01})
 % For a given muscle, find that muscle's adapter information and then find the *neuron* that's feeding that adapter
 for ii = 1:length(muscles2check)
     adInd = find(contains({nsys.adapter_objects(:).destination_node_ID},nsys.muscle_objects(muscles2check(ii)).ID));
@@ -63,12 +74,14 @@ for ii = 1:length(muscles2check)
     nsys.addDTaxes(nsys.datatool_objects(numDTs+1),nsys.muscle_objects(muscles2check(ii)),'MembraneVoltage')
     nsys.addDTaxes(nsys.datatool_objects(numDTs+2),nsys.muscle_objects(muscles2check(ii)),'Tension')
     nsys.addDTaxes(nsys.datatool_objects(numDTs+3),nsys.muscle_objects(muscles2check(ii)),'Activation')
+    nsys.addDTaxes(nsys.datatool_objects(numDTs+4),nsys.muscle_objects(muscles2check(ii)),'Tl')
 end
 
-nsys.create_animatlab_project(proj_file);
-disp(['Animatlab project file ',projName,ext,' created.'])
+nsys.create_animatlab_simulation(docPath);
+%nsys.create_animatlab_project(proj_file);
+%disp(['Animatlab ',docType,' file "',docName,docType,' created.'])
 
-function equation = generate_synergy_eq(bigH,simTime,dt)
+function equation = generate_synergy_eq(bigH,simTime,dt,projBool)
     %dt = .00054;
     time = (0:dt:simTime)';
     
@@ -86,7 +99,7 @@ function equation = generate_synergy_eq(bigH,simTime,dt)
         % Coeffs are the a, b, and c values in the equation a*sin(b*t+c)
         coeffs = [coeffnames(fitresult),num2cell(coeffvalues(fitresult)')];
         % Equations are in the format necessary for integration into Animatlab's .asim filetype
-        equation = sum_of_sines_maker(coeffs,1);
+        equation = sum_of_sines_maker(coeffs,projBool);
     end
 end
 
@@ -107,20 +120,4 @@ function waveformsBig = interpolate_for_time(time,waveforms)
         waveformsBig = filtfilt(coeffblocks,1,waveformsBig);
     end
     waveformsBig = waveformsBig';
-end
-
-function muscle_out = scrape_project_for_musc_info(input_text)
-    % Scrape text for muscle information
-    % Input: input_text: cell array of text from an Animatlab project
-    % Output: muscle_out: cell array containing muscle indices, muscle names, and muscle ID's
-    muscleInds = find(contains(input_text,'<PartType>AnimatGUI.DataObjects.Physical.Bodies.LinearHillMuscle</PartType>'))-2;
-    if isempty(muscleInds)
-        error('No muscles in input text')
-    end
-    muscle_out = cell(length(muscleInds),3);
-    for ii = 1:length(muscleInds)
-        muscle_out{ii,1} = muscleInds(ii);
-        muscle_out{ii,2} = lower(input_text{muscleInds(ii)-1}(7:end-7));
-        muscle_out{ii,3} = input_text{muscleInds(ii)}(5:end-5);
-    end
 end

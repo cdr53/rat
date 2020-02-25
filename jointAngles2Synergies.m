@@ -8,11 +8,14 @@
 %     waveform = [BackRaw(:,trial,1)-98,BackRaw(:,trial,2)-90,BackRaw(:,trial,3)-116];
     waveform = [completeWaves(:,trial,1)-98,completeWaves(:,trial,2)-90,completeWaves(:,trial,3)-116];
     initAngs = [-0.9656   -0.1941   -0.6678];
+    naturalStopping = [-.748 -.01337 -.47064];
+    initAngs = naturalStopping;
     toeoff = [0.4315   -0.2007   -0.0678];
     %waveform = [linspace(initAngs(1),toeoff(1),1000) ; linspace(initAngs(2),toeoff(2),1000) ; linspace(initAngs(3),toeoff(3),1000)]';
-    waveform = repmat(initAngs,10000,1);
+    waveform = repmat(toeoff,10000,1);
     %jTemp = 2;
     %waveform(:,jTemp) = ((initAngs(jTemp)-toeoff(jTemp))/2)*cos(.001*linspace(0,length(waveform),length(waveform)))+(initAngs(jTemp)+toeoff(jTemp))/2;
+    clear trial
     
     tstart = tic;
     clear obj
@@ -27,6 +30,7 @@
         sec = num2str(round(telapsed,2));
     end
     disp(['Waveforms Injected and Simulated.',' (',mins,'m ',sec,'s)'])
+    clear mins sec telapsed tstart
     
     % Optimize forces to meet torque demands
     results_cell = obj.pedotti_optimization;
@@ -39,6 +43,13 @@
     %forces = lowpass(oforces,0.01,'Steepness',0.85,'StopbandAttenuation',60);
     forces = smoothdata(oforces,'gaussian',20);
     forces(forces<0) = 0;
+    
+    for ii = 1:38
+        pts(ii,:) = obj.musc_obj{ii}.passive_tension;
+    end
+    
+    %Subtract out the passive portion of the forces
+    forces = forces-pts(:,obj.sampling_vector)';
     
     synergysort = 'currents';
     switch synergysort
@@ -54,12 +65,11 @@
             wave2plot = forces;
         case 'currents'
             % Am signals that will generate the desired forces
-            [Am_musc,V_musc] = Am_generator(obj,forces');
+            [Am_musc,V_musc,Al_musc_all] = Am_generator(obj,forces');
             current2inject = 1000.*(V_musc+.06);
 %             [r2scores,recompiled,W,H] = NMFdecomposition(5,current2inject',0,.04);
             [r2scores,recompiled,W,H] = NMFdecomposition(6,current2inject',0,0);
-            wave2plot = current2inject';
-            
+            wave2plot = current2inject';   
     end
     
     if isfile([file_dir,'\Data\h_equations.mat'])
@@ -91,4 +101,4 @@
 %     xlabel('Forces Recompiled from Synergies')
 %     ylabel('Forces(N)')
     
-    plotWH(wave2plot,W,H,0)
+    %plotWH(wave2plot,W,H,0)

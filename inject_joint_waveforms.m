@@ -16,8 +16,8 @@ function project_file = inject_joint_waveforms(project_file,equations,end_time)
     limit_enable_ind = contains(project_file,'<EnableLimits>True</EnableLimits>');
     project_file(limit_enable_ind) = deal({'<EnableLimits>False</EnableLimits>'});
     
-    project_file{simtime_ind} = number_injector(project_file{simtime_ind},num2str(end_time+.01));
-    project_file{plot_ind} = number_injector(project_file{plot_ind},num2str(end_time));
+    project_file{simtime_ind} = number_injector(project_file{simtime_ind},num2str(end_time));
+    %project_file{plot_ind} = number_injector(project_file{plot_ind},num2str(end_time));
     
     for i = 1:length(equation_inds)
         old_eq_line = project_file{equation_inds(i)};

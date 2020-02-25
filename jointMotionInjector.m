@@ -24,12 +24,13 @@ function [obj] = jointMotionInjector(jointAngles,to_plot)
     
     % Which .asim file to modify?
     %simfilepath = [fileparts(mfilename('fullpath')),'\Animatlab\IndividualMuscleStim20191114.asim'];
-    simfilepath = [pwd,'\Animatlab\SynergyWalking\SynergyWalking20200109_Standalone.asim'];
-    meshMatch(simfilepath)
-    file_contents = importdata(simfilepath);
+    %simfilepath = [pwd,'\Animatlab\SynergyWalking\SynergyWalking20200109_Standalone.asim'];
+    load([pwd,'\Data\motorSim.mat'],'motorSim')
+    file_contents = meshMatch(motorSim);
     
     % Before moving forward, check that the simulation file contains the proper MotorPosition stimuli that are necessary to simulate walking
     file_contents = disableAllStims(file_contents);
+    file_contents = disableJointLimits(file_contents);
     reqNames = {'<Name>Hipwalking';'<Name>Kneewalking';'<Name>xAnklewalking';'JointMotion.txt'};
     for ii = 1:length(reqNames)
         file_contents = checkFor(file_contents,reqNames{ii});
@@ -76,12 +77,32 @@ function [obj] = jointMotionInjector(jointAngles,to_plot)
 
     % Injects new joint angles into motor stimuli at each joint
 %     inject_joint_waveforms(simfilepath,equations,round(simTime));
-    file_contents = inject_joint_waveforms(file_contents,equations,round(simTime));   
+    file_contents = inject_joint_waveforms(file_contents,equations,simTime);   
+    
+                %%%Modify existing datatools such that they terminate before the end of the simulation
+            
+    extDTs = {'JointMotion';'PassiveTension'};
+    parCell = {'<EndTime',simTime-.01;...
+               '<CollectInterval',dt/1000};
+    for ii = 1:length(extDTs)
+        dt_ind = find(contains(file_contents,['<Name>',extDTs{ii},'</Name>']));
+        for kk = 1:size(parCell,1)
+            dt_par_ind = find(contains(file_contents(dt_ind:end),parCell{kk,1}),1,'first')+dt_ind-1;
+            if strcmp(parCell{kk,1},'<EndTime')
+                file_contents{dt_par_ind} = replace(file_contents{dt_par_ind},extractBetween(file_contents{dt_par_ind},'>','<'),num2str(parCell{kk,2}));
+            else
+                spec = ['%.',num2str(abs(floor(log10(dt/1000)))),'f'];
+                file_contents{dt_par_ind} = replace(file_contents{dt_par_ind},extractBetween(file_contents{dt_par_ind},'>','<'),num2str(parCell{kk,2},spec));
+            end
+        end
+    end
     
     % Update the actual simulation file now that edits have been made
-    overwriteSimFile(simfilepath,file_contents);
+    %.asim path to write
+    simpath2w = [pwd,'\Animatlab\SynergyWalking\motorStim.asim'];
+    overwriteSimFile(simpath2w,file_contents);
     
-    obj = design_synergy(simfilepath);
+    obj = design_synergy(simpath2w);
     
     if to_plot
         ymax = 1.1*max(max([jointAnglesBig;obj.theta_motion]));
@@ -120,6 +141,13 @@ function [obj] = jointMotionInjector(jointAngles,to_plot)
             end
         end
     end
+    
+    function fileContents = disableJointLimits(fileContents)
+        jliminds = find(contains(fileContents,'<EnableLimits'));
+        for ii2 = 1:length(jliminds)
+            fileContents{jliminds(ii2)} = '<EnableLimits>False</EnableLimits>';
+        end
+    end
 
     function fileContents = checkFor(fileContents,reqName)
         stimSearch = contains(fileContents,reqName);
@@ -145,11 +173,6 @@ function [obj] = jointMotionInjector(jointAngles,to_plot)
     function overwriteSimFile(fPath,docContents)
         fileID = fopen(fPath,'w');
         fprintf(fileID,'%s\n',docContents{:});
-%         formatSpec = '%s\n';
-%         nrows = size(docContents);
-%         for row = 1:nrows
-%             fprintf(fileID,formatSpec,docContents{row,:});
-%         end
         fclose(fileID);
     end
 end

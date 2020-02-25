@@ -1,7 +1,5 @@
 function [obj,sim_file,joints,bodies,joint_limits,joint_profile] = design_synergy(sim_file)
 
-sour_folder = 'C:\Program Files (x86)\NeuroRobotic Technologies\AnimatLab\bin';
-
 full_run = 1;
 minimum_effort_run = 0;
 isohip_run = 0;
@@ -14,25 +12,12 @@ if isstring(sim_file)
     sim_file = char(sim_file);
 end
 
-meshMatch(sim_file)
-massCheck(sim_file)
-%proj_file = 'G:\My Drive\Rat\SynergyControl\Animatlab\SynergyWalking\SynergyWalking20200109_Standalone.asim';
-[~,simName,ext] = fileparts(sim_file);
-
 if ispc
     if full_run
         % Define Animatlab .asim file to run
         % sim_file = [fileparts(mfilename('fullpath')),'\Animatlab\','IndividualMuscleStim20190429_mod_Standalone.asim'];
         % Run .asim file with system
-        executable = ['"',sour_folder,'\AnimatSimulator" "',sim_file,'"'];
-        disp(['Running simulation. (',simName,ext,')'])
-        [status, message] = system(executable);
-        if status
-            error(message)
-            return
-        end
-        % Post-process data
-        sdata = processSimData(sim_file,0);
+        sdata = processSimData(sim_file);
         aForms = {'JointMotion';'PassiveTension'};
         for ii = 1:length(aForms)
             tempInd = find(contains({sdata.name},aForms{ii}));

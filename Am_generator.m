@@ -1,4 +1,4 @@
-function [Am_musc,V_musc] = Am_generator(obj,forces)
+function [Am_musc,V_musc,Al_musc_all] = Am_generator(obj,forces)
     % For input forces, generate Am and Vm values for all muscles
     % Input: forces: array of muscle forces over time
     % Output: Am_musc: array of Am values over time
@@ -14,7 +14,7 @@ function [Am_musc,V_musc] = Am_generator(obj,forces)
     dt = ((ennd-beg)*odt)/length(forces);
     [forces_dot,forces_doty] = gradient(forces,dt);
 
-    fl = @(Lm,Lr,Lw) 1-(Lm-Lr).^2./Lw^2;
+    fl = @(Lm,Lr,Lw) max(1-((Lm-Lr).^2./Lw^2),0);
     Am = @(Al,b,ks,T_dot,kp,delL,L_dot,T) (1./Al).*((b./ks).*T_dot-kp.*delL-b.*L_dot+(1+kp./ks).*T);
 %     V = @(A1,A2,A3,A) A1-(1./A3).*log((A2-A)./A); %Updated 2/3/2020 with the addition of yoff
     V = @(A1,A2,A3,A4,A) A1-(1./A3).*log(((A2)./(A-A4))-1);
@@ -33,38 +33,38 @@ function [Am_musc,V_musc] = Am_generator(obj,forces)
        Am_musc(ii,Am_musc(ii,:)<0) = 0;
        V_musc(ii,:) = real(V(xoff,ST_max,steepness,yoff,Am_musc(ii,:)));
        V_musc(ii,V_musc(ii,:)<-.06) = -.06;
-       Al_musc_all(ii,:) = 1./Al_musc;
+       Al_musc_all(ii,:) = Al_musc;
        %% For loop plotter 1: Plot 5 subplot fig of tension equation
-       if 0
+       if ii==5
        figure
         subplot(5,1,1)
-            plot((1+kp./ks).*T)
+            plot((1+kp./ks).*T(1:end-10))
             xlabel('(1+kp./ks).*T')
         subplot(5,1,2)
-            plot((b./ks).*Tdot)
+            plot((b./ks).*Tdot(1:end-10))
             xlabel('(b./ks).*Tdot')
         subplot(5,1,3)
-            plot(kp.*delL_musc)
+            plot(kp.*delL_musc(1:end-10))
             xlabel('kp.*delL_musc','Interpreter','None')
         subplot(5,1,4)
-            plot(b.*mV)
+            plot(b.*mV(1:end-10))
             xlabel('b.*mV')
         subplot(5,1,5)
-            plot(Am_musc(ii,:),'LineWidth',2)
+            plot(Am_musc(ii,1:end-10),'LineWidth',2)
             hold on
-            plot(zeros(length(Am_musc(ii,:)),1))
+            plot(zeros(length(Am_musc(ii,1:end-10)),1))
             xlabel('Am_musc','Interpreter','None')
             %ylim([0 max(Am_musc(ii,:))*1.1])
        end
        %% For loop plotter 2: View one muscle's active and passive waveforms. When active is > passive, Am is possible.
-       if 0
+       if ii==5
             active = (b/ks).*Tdot+(1+kp/ks).*T;
             passive = kp.*delL_musc+b.*mV;
             yLims = [min([active',passive],[],'all') max([active',passive],[],'all')];
             figure
-            plot(active,'r','LineWidth',2)
+            plot(active(1:end-10),'r','LineWidth',2)
             hold on
-            plot(passive,'b','LineWidth',2)
+            plot(passive(1:end-10),'b','LineWidth',2)
             legend({'Active','Passive'})
             ylim(yLims)
        end
@@ -116,11 +116,11 @@ function [Am_musc,V_musc] = Am_generator(obj,forces)
        b = musc.damping;
        ks = musc.Kse;
        kp = musc.Kpe;
-       if mnum == 8
-        Lw = musc.l_width*1.5;
-       else
-        Lw = musc.l_width;
-       end
+%        if mnum == 8
+%         Lw = musc.l_width*1.5;
+%        else
+         Lw = musc.l_width;
+%        end
        Lr = musc.RestingLength;
       xoff = musc.x_off;
        Fmax = musc.max_force;

@@ -322,7 +322,7 @@ classdef CanvasModel < handle
         end
         %% addDTaxes
         function addDTaxes(obj,datatool,target,datatype)
-            if ~any(contains({'MembraneVoltage','Tension','Activation'},datatype))
+            if ~any(contains({'MembraneVoltage','Tension','Activation','Tl'},datatype))
                 warning([target.name,' datatype (',datatype,') incorrect in addDTaxes'])
             end
             
@@ -710,6 +710,7 @@ classdef CanvasModel < handle
             adapter.origin_node_ID = neuron.ID;
             adapter.origin_node_name = neuron.name;
             adapter.destination_node_ID = muscle.ID;
+            adapter.destination_linked_ID = muscle.linkedID;
             adapter.origin_node_name = muscle.name;
             adapter.inlinks = [];
             adapter.outlinks = [];
@@ -806,10 +807,11 @@ classdef CanvasModel < handle
                 return
             end
 
-            fid = fopen(proj_file);
-            original_text = textscan(fid,'%s','delimiter','\n');
-            fclose(fid);
-            original_text = [original_text{:}];
+%             fid = fopen(proj_file);
+%             original_text = textscan(fid,'%s','delimiter','\n');
+%             fclose(fid);
+%             original_text = [original_text{:}];
+            original_text = importdata(proj_file);
             modified_text = original_text;
             
             %%%Overwrite Project Parameters
@@ -851,7 +853,7 @@ classdef CanvasModel < handle
                 nervoussystem_inject_start = find(contains(original_text,'<NeuralModules>'))-1;
             end
             nervoussystem_inject_end = find(contains(original_text,'</NervousSystem>'));
-            [ns_nervoussystem_text,ns_tab_text] = CanvasText(obj).build_text;            
+            [ns_nervoussystem_text,ns_tab_text] = CanvasText(obj).build_ns_text('project');            
             modified_text = [modified_text(1:nervoussystem_inject_start,1);...
                 ns_nervoussystem_text;...
                 modified_text(nervoussystem_inject_end:end,1)];
@@ -879,7 +881,7 @@ classdef CanvasModel < handle
                     datatool_holder = CanvasText(obj).build_datatool(datatool);
                     datatool_text = [datatool_text;datatool_holder];
                     aform_path = [fileparts(proj_file),'\',datatool.name,'.aform'];
-                    aform_text = CanvasText(obj).build_aform_text(datatool);
+                    aform_text = CanvasText(obj).build_aform_text(datatool,'project');
                         fileID = fopen(aform_path,'w');
                         fprintf(fileID,'%s\n',aform_text{:});
 %                         formatSpec = '%s\n';
@@ -936,7 +938,7 @@ classdef CanvasModel < handle
                 stimuli_inject = find(contains(modified_text,'</Stimuli>'));    
                 stim_text = {};
                 for i=1:numStims
-                    stim_holder = CanvasText(obj).build_stimulus(obj.stimulus_objects(i));
+                    stim_holder = CanvasText(obj).build_stimulus(obj.stimulus_objects(i),'project');
                     stim_text = [stim_text;stim_holder];
                 end
                 modified_text = [modified_text(1:stimuli_inject-1);...
@@ -961,6 +963,116 @@ classdef CanvasModel < handle
 %             for row = 1:nrows
 %                 fprintf(fileID,formatSpec,modified_text{row,:});
 %             end
+            fprintf(fileID,'%s\n',modified_text{:});
+            fclose(fileID);
+        end
+                %% create_animatlab project
+        function create_animatlab_simulation(obj,sim_file)
+
+            original_text = importdata(sim_file);
+            modified_text = original_text;
+            
+            %%%Overwrite Project Parameters
+            pFields = fields(obj.proj_params);
+            for ii = 1:size(pFields,1)
+                pInd = find(contains(lower(original_text),pFields{ii}));
+                sTemp = string(original_text{pInd});
+                sTemp = char(eraseBetween(sTemp,'>','<'));
+                gt = strfind(sTemp,'>');
+                if strcmp(pFields{ii},'physicstimestep')
+                    pStr = num2str(obj.proj_params.(pFields{ii})/1000);
+                else
+                    pStr = num2str(obj.proj_params.(pFields{ii}));
+                end
+                modified_text{pInd} = [sTemp(1:gt(1)),pStr,sTemp(gt(1)+1:end)];
+            end
+            
+            %%%Overwrite the <NervousSystem> neural subsystem information
+            if isempty(find(contains(original_text,'<NeuralModules>'),1))
+                nervoussystem_inject_start = find(contains(original_text,'<NeuralModules/>'))-1;
+            else
+                nervoussystem_inject_start = find(contains(original_text,'<NeuralModules>'))-1;
+            end
+            nervoussystem_inject_end = find(contains(original_text,'</NervousSystem>'));
+            ns_nervoussystem_text = CanvasText(obj).build_ns_text('simulation');            
+            modified_text = [modified_text(1:nervoussystem_inject_start,1);...
+                ns_nervoussystem_text;...
+                modified_text(nervoussystem_inject_end:end,1)];
+            
+            %%%Inject Datatool Code
+            try obj.datatool_objects(1).name;
+                numDatatools = size(obj.datatool_objects,1);
+                aform_dt = obj.datatool_objects(1).collectdatainterval;
+            catch
+                numDatatools = 0;
+                aform_dt = obj.proj_params.physicstimestep;
+            end
+            
+            if numDatatools > 0 
+                datatool_inject = find(contains(modified_text,'<DataCharts/>'),1);
+                if isempty(datatool_inject)
+                    datatool_inject = find(contains(modified_text,'</DataCharts>'));
+                    datatool_text = {};
+                else
+                    datatool_text = {'<DataCharts/>'};
+                end
+                
+                for i = 1:numDatatools
+                    datatool = obj.datatool_objects(i);
+                    chart_holder = CanvasText(obj).build_aform_text(datatool,'simulation');
+                    datatool_text = [datatool_text;chart_holder];
+                end
+                modified_text = [modified_text(1:datatool_inject-1);...
+                                datatool_text;...
+                                modified_text(datatool_inject:end)];
+            end
+            
+            %%%Modify existing datatools such that they terminate before the end of the simulation
+            
+            extDTs = {'<Name>JointMotion';...
+                      '<Name>PassiveTension'};
+            parCell = {'<EndTime',obj.proj_params.simendtime-.01;...
+                       '<CollectInterval',aform_dt/1000};
+            for ii = 1:length(extDTs)
+                for jj = 1:size(parCell,1)
+                    dtInd = find(contains(modified_text,extDTs{ii}));
+                    pInd = find(contains(modified_text(dtInd:end),parCell{jj,1}),1,'first')+dtInd-1;
+                    sTemp = string(modified_text{pInd});
+                    sTemp = char(eraseBetween(sTemp,'>','<'));
+                    gt = strfind(sTemp,'>');
+                    pStr = num2str(parCell{jj,2});
+                    modified_text{pInd} = [sTemp(1:gt(1)),pStr,sTemp(gt(1)+1:end)];
+                end
+            end
+            
+            %%%Inject Stimulus Code
+            try obj.stimulus_objects(1).name;            
+                numStims = size(obj.stimulus_objects,1);
+            catch
+                numStims = 0;
+            end 
+            
+            % Disable any existing stimuli
+            extStims = find(contains(modified_text,'<Stimulus>'));
+            for ii = 1:length(extStims)
+                enInd = find(contains(modified_text(extStims(ii):end),'<Enabled>'),1,'first')+extStims(ii)-1;
+                modified_text{enInd} = '<Enabled>False</Enabled>';
+            end
+            
+            if numStims > 0
+                stimuli_inject = find(contains(modified_text,'</ExternalStimuli>'));   
+                stim_text = {};
+                for i=1:numStims
+                    stim_holder = CanvasText(obj).build_stimulus(obj.stimulus_objects(i),'simulation');
+                    stim_text = [stim_text;stim_holder];
+                end
+                modified_text = [modified_text(1:stimuli_inject-1);...
+                                stim_text;...
+                                modified_text(stimuli_inject:end)];
+            end
+            
+            sim2write = [pwd,'\Animatlab\SynergyWalking\muscleStim.asim'];
+            fileID = fopen(sim2write,'w');
             fprintf(fileID,'%s\n',modified_text{:});
             fclose(fileID);
         end
