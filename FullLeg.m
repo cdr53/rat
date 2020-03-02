@@ -1105,9 +1105,10 @@ classdef FullLeg < matlab.mixin.SetGet
             %% Optimization and simulations can take ages if not downsampled. This function creates a sampling vector which parses down analysis to a single step
             [beg,ennd,~] = find_step_indices(obj);
             div = 500;
-            alt = linspace(1,length(obj.theta_motion),length(obj.theta_motion));
             obj.sampling_vector = floor(linspace(beg,ennd,div));
-            obj.sampling_vector = alt;
+            
+%             alt = linspace(1,length(obj.theta_motion),length(obj.theta_motion));
+%             obj.sampling_vector = alt;
         end
         %% Function: Find the Global Point Position Profile for a Local Point (input) in a Body Coordinate Frame (input)
         function [point_profile] = move_point_through_walking(obj,bodynum,localpoint)
@@ -1795,7 +1796,7 @@ classdef FullLeg < matlab.mixin.SetGet
                 count = 1;
                 CM = hsv(length(relevant_muscles));
                 legendcell = {};
-                for i=1:38
+                for i=1:num_muscles
                     if moment_output(i,1) ~=0
                         plot(moment_output(i,:),'color',CM(count,:),'LineWidth',1.5)
                         legendcell{end+1} = obj.musc_obj{i}.muscle_name(4:end);
@@ -2311,7 +2312,7 @@ classdef FullLeg < matlab.mixin.SetGet
             [moment_output] = compute_joint_moment_arms(obj,k,1);
             Tpass_profile = zeros(size(moment_output));
             
-            relevant_muscles{k} = find(sum(moment_output(1:38,:),2)~=0);
+            relevant_muscles{k} = find(sum(moment_output(1:num_muscles,:),2)~=0);
             
             %theta = (180/pi)*obj.theta_motion(:,k);
             passTorque = zeros(num_muscles,size(moment_output,2));
@@ -3602,7 +3603,7 @@ classdef FullLeg < matlab.mixin.SetGet
                 case 'minwork'
                     lb = zeros(1,nummuscles);
                     moment_output = zeros(nummuscles+2,size(xx,2),3);
-                    extlens = zeros(38,100);
+                    extlens = zeros(nummuscles,100);
                     fval = lb';
                     for i=1:3
                         moment_output(:,:,i) = compute_joint_moment_arms(obj,i,1);
@@ -3915,7 +3916,7 @@ classdef FullLeg < matlab.mixin.SetGet
                 parfor i=1:3
                     moment_output(:,:,i) = compute_joint_moment_arms(obj,i,1);
                 end
-                force = zeros(38,length(xx));
+                force = zeros(nummuscles,length(xx));
                 %lb(:,1) = lengthmat(:,1);
                 momentArmsHip = moment_output(:,:,1);
                 momentArmsKnee = moment_output(:,:,2);
@@ -3945,7 +3946,7 @@ classdef FullLeg < matlab.mixin.SetGet
                 end
                 
                 for ii = 1:3
-                    indiv_torques(1:38,:,ii) = moment_output(1:38,:,ii)./1000.*force;
+                    indiv_torques(1:nummuscles,:,ii) = moment_output(1:nummuscles,:,ii)./1000.*force;
                 end
                 fval = 10;
             telapsed = toc(tstart);
@@ -4052,8 +4053,8 @@ classdef FullLeg < matlab.mixin.SetGet
                                  'Opt Time';
                                  'Indiv Torques'};
             results_cell(1,2) = {' '};
-
-            for i=1:38
+            num_muscles = length(obj.musc_obj);
+            for i=1:num_muscles
                 muscle = obj.musc_obj{i};
                 Fmax(i,1) = muscle.max_force;
             end
@@ -4143,7 +4144,8 @@ classdef FullLeg < matlab.mixin.SetGet
                 widthvec = 2*(forces(:,timecount));
                 colorlog(:,timecount) = colorvec;
                 widthlog(:,timecount) = widthvec;
-                for musnum = 1:38
+                num_muscles = length(obj.musc_obj);
+                for musnum = 1:num_muscles
                     muscle = obj.musc_obj{musnum};
                     musclemat =zeros(size(muscle.pos_attachments,1),3);
                     for hh = 1:size(muscle.pos_attachments,1)

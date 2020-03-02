@@ -1,6 +1,6 @@
 file_dir = fileparts(mfilename('fullpath'));
 proj_file = [pwd,'\Animatlab\SynergyWalking\SynergyWalking20200109.aproj'];
-meshMatch(proj_file)
+meshMatch(proj_file);
 revised_file = strcat(proj_file(1:end-6),'.aproj');
 [projDir,projName,ext] = fileparts(revised_file);
 disp(['Starting to build Animatlab project ',projName,ext])
@@ -14,14 +14,14 @@ numMuscles = length(muscleIDs);
 nsys = CanvasModel;
 neurpos = [];
 
-nsys.addDatatool('PassiveTension');
+nsys.addDatatool('MuscleLength');
 
 for ii =1:38
     %scrape for muscle ii
     %add muscle to nsys
     nsys.addMuscle([muscle_out{ii,2},'-neural'],muscle_out{ii,3},[ii+10 50])
     %add DTaxes for that muscle
-    nsys.addDTaxes(nsys.datatool_objects(1),nsys.muscle_objects(ii),'Tension')
+    nsys.addDTaxes(nsys.datatool_objects(1),nsys.muscle_objects(ii),'MuscleLength')
 end
 
 nsys.create_animatlab_project(proj_file);

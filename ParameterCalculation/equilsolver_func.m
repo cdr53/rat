@@ -24,7 +24,7 @@ function [params,soln] = equilsolver_func(Lr,Fo)
     end
     
     soln = soln(soln(:,3)>0,:);
-    
+    bb = sortrows(soln(sum(soln>0,2)==3,:),1,'descend');
 %     kpemax = sortrows(soln,2,'descend');
 %     params = kpemax(1,:);
     

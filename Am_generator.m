@@ -35,7 +35,7 @@ function [Am_musc,V_musc,Al_musc_all] = Am_generator(obj,forces)
        V_musc(ii,V_musc(ii,:)<-.06) = -.06;
        Al_musc_all(ii,:) = Al_musc;
        %% For loop plotter 1: Plot 5 subplot fig of tension equation
-       if ii==5
+       if 0
        figure
         subplot(5,1,1)
             plot((1+kp./ks).*T(1:end-10))
@@ -57,7 +57,7 @@ function [Am_musc,V_musc,Al_musc_all] = Am_generator(obj,forces)
             %ylim([0 max(Am_musc(ii,:))*1.1])
        end
        %% For loop plotter 2: View one muscle's active and passive waveforms. When active is > passive, Am is possible.
-       if ii==5
+       if 0
             active = (b/ks).*Tdot+(1+kp/ks).*T;
             passive = kp.*delL_musc+b.*mV;
             yLims = [min([active',passive],[],'all') max([active',passive],[],'all')];

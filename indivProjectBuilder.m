@@ -11,10 +11,10 @@
 % muscle_out = scrape_project_for_musc_info(original_text);
 % numMuscles = length(muscleIDs);
 
-docPath = [pwd,'\Animatlab\SynergyWalking\motorStim.asim'];
-muscle_out = scrapeFileForMuscleInfo(docPath);
+simPath = [pwd,'\Animatlab\SynergyWalking\muscleStim.asim'];
+muscle_out = scrapeFileForMuscleInfo(simPath);
 numMuscles = length(muscle_out);
-[docDir,docName,docType] = fileparts(docPath);
+[docDir,docName,docType] = fileparts(simPath);
 %disp(['Starting to build Animatlab ',docType,' file "',docName,docType,'".'])
 delete([docDir,'\Trace*'])
 
@@ -23,12 +23,15 @@ neurpos = [];
 equations = cell(38,1);
 
 %% The Time Debacle
-[beg,ennd] = obj.find_step_indices;
+%[beg,ennd] = obj.find_step_indices;
 times = obj.theta_motion_time([obj.sampling_vector(1),obj.sampling_vector(end)]);
 simTime = diff(times);
 %simTime = max(obj.theta_motion_time);
 nsys.proj_params.simendtime = simTime+.01;
 nsys.proj_params.physicstimestep = 1000*(obj.dt_motion); % dt in ms
+
+ci2 = movmean(current2inject',floor(length(current2inject)/3));
+constvals = mean(ci2);
 
 %Build a line of motor neurons and muscles first
 for ii = 1:numMuscles
@@ -45,8 +48,6 @@ for ii = 1:numMuscles
     else
         %inputWave = mean(current2inject(ii,length(current2inject)*.1:length(current2inject)*.9));
         inputWave = current2inject(ii,:);
-        ci2 = movmean(current2inject',floor(length(current2inject)/3));
-        constvals = mean(ci2);
         nsys.stimulus_objects(ii).eq = generate_synergy_eq(constvals(ii),simTime,obj.dt_motion,0);
         %nsys.stimulus_objects(ii).eq = generate_synergy_eq(inputWave,simTime,obj.dt_motion,0);
         equations{ii} = nsys.stimulus_objects(ii).eq;
@@ -57,12 +58,12 @@ for ii = 1:numMuscles
 end
 
 % Build datatool viewers for high action muscles to provide insight into motorneuron and muscle activity
-% [muscForces,muscInds] = sortrows(max(forces)',1,'descend');
-% muscles2check = muscInds(1:5);
+[muscForces,muscInds] = sortrows(max(forces)',1,'descend');
+%muscles2check = muscInds(1:5);
 muscles2check = 1:38;
 numDTs = size(nsys.datatool_objects,1);
 nsys.addDatatool({'KeyMNs','endtime',nsys.proj_params.simendtime-.01})
-nsys.addDatatool({'KeyMuscles','endtime',nsys.proj_params.simendtime-.01})
+nsys.addDatatool({'KeyMuscleLen','endtime',nsys.proj_params.simendtime-.01})
 nsys.addDatatool({'KeyMuscTen','endtime',nsys.proj_params.simendtime-.01})
 nsys.addDatatool({'KeyMuscAct','endtime',nsys.proj_params.simendtime-.01})
 nsys.addDatatool({'KeyMuscAl','endtime',nsys.proj_params.simendtime-.01})
@@ -70,15 +71,15 @@ nsys.addDatatool({'KeyMuscAl','endtime',nsys.proj_params.simendtime-.01})
 for ii = 1:length(muscles2check)
     adInd = find(contains({nsys.adapter_objects(:).destination_node_ID},nsys.muscle_objects(muscles2check(ii)).ID));
     nInd = find(contains({nsys.neuron_objects(:).ID},nsys.adapter_objects(adInd).origin_node_ID));
-    nsys.addDTaxes(nsys.datatool_objects(numDTs),nsys.neuron_objects(nInd),'MembraneVoltage')
-    nsys.addDTaxes(nsys.datatool_objects(numDTs+1),nsys.muscle_objects(muscles2check(ii)),'MembraneVoltage')
-    nsys.addDTaxes(nsys.datatool_objects(numDTs+2),nsys.muscle_objects(muscles2check(ii)),'Tension')
-    nsys.addDTaxes(nsys.datatool_objects(numDTs+3),nsys.muscle_objects(muscles2check(ii)),'Activation')
-    nsys.addDTaxes(nsys.datatool_objects(numDTs+4),nsys.muscle_objects(muscles2check(ii)),'Tl')
+    nsys.addDTaxes('KeyMNs',nsys.neuron_objects(nInd),'MembraneVoltage')
+    nsys.addDTaxes('KeyMuscleLen',nsys.muscle_objects(muscles2check(ii)),'MuscleLength')
+    nsys.addDTaxes('KeyMuscTen',nsys.muscle_objects(muscles2check(ii)),'Tension')
+    nsys.addDTaxes('KeyMuscAct',nsys.muscle_objects(muscles2check(ii)),'Activation')
+    nsys.addDTaxes('KeyMuscAl',nsys.muscle_objects(muscles2check(ii)),'Tl')
 end
 
-nsys.create_animatlab_simulation(docPath);
-%nsys.create_animatlab_project(proj_file);
+nsys.create_animatlab_simulation(simPath);
+nsys.create_animatlab_project(proj_file);
 %disp(['Animatlab ',docType,' file "',docName,docType,' created.'])
 
 function equation = generate_synergy_eq(bigH,simTime,dt,projBool)

@@ -23,8 +23,8 @@ function simStruct = processSimData(sim_path)
     end
     
     % Pre-process .asim file to ensure that mesh filepaths and mass values are correct
-    meshMatch(sim_path);
-    massCheck(sim_path);
+%     meshMatch(sim_path);
+%     massCheck(sim_path);
     
     % Run the simulation file
     sour_folder = 'C:\Program Files (x86)\NeuroRobotic Technologies\AnimatLab\bin';

@@ -18,38 +18,27 @@ function parameter_injector(fPath,params)
     muscle_indices = find(muscle_addresses)-2;
     nummusc = length(muscle_indices);
     
-    %ST curve evaluation
-    r = []; g = [];
-    syms r g
-    etaval = .0001;
-    eqns = [r/(1+exp(.01*g))==etaval,r/(1+exp(-.01*g))==(1+etaval)];
-    S = solve(eqns,[r g]);
-    STfactor = double(vpa(S.r,3));
-    steepval = double(vpa(S.g,3));
-    clear r g eqns S
-
     % If not provided with a param's cell spreadsheet, build one.
+    rng(50)
     if nargin == 1
         params = cell(nummusc,4);
         for ii = 1:nummusc
             mInd = muscle_indices(ii);
             rInd = find(contains(project_file(mInd:end),'<RestingLength'),1,'first')-1;
             fInd = find(contains(project_file(mInd:end),'<MaximumTension'),1,'first')-1;
-%             Lr = obj.musc_obj{ii}.RestingLength;
-%             Fo = obj.musc_obj{ii}.max_force;
             Lr = number_injector(project_file{mInd+rInd},[]);
             Fo = number_injector(project_file{mInd+fInd},[]);
             params{ii,1} = cell2mat(extractBetween(lower(project_file{mInd}),'<name>','</name>'));
-            xx = equilsolver_func(Lr,Fo);
-            params{ii,2} = xx(1);
-            params{ii,3} = xx(2);
-            params{ii,4} = STfactor*Fo; %ST_max values, should be slight larger than Fmax to ensure Am values are possible.
-            [params{:,5}] = deal(steepval);
-            params{ii,6} = 1000*(-etaval*STfactor*Fo);
+            [ks,kp,stmax,steep,yoff] = parameterSolver2(Lr,Fo);
+            params{ii,2} = ks;
+            params{ii,3} = kp;
+            params{ii,4} = stmax; %ST_max values, should be slight larger than Fmax to ensure Am values are possible.
+            params{ii,5} = steep;
+            params{ii,6} = yoff;
             [params{:,7}] = deal(-60);
             [params{:,8}] = deal(-40);
             [params{:,9}] = deal(0);
-            params{ii,10} = STfactor*Fo;
+            params{ii,10} = stmax;
         end
     elseif nargin == 0
         error('Please include a path to an Animatlab project.\n')
@@ -106,14 +95,11 @@ function parameter_injector(fPath,params)
         % Record values into a spreadsheet
         spreadsheet = [pwd,'\ParameterCalculation\MuscleParameters_20190513.xlsx'];
         params2write = sortrows(params);
-        xlswrite(spreadsheet,params2write(:,2:end),'G2:P39');
+        Alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        xlswrite(spreadsheet,params2write(:,2:end),[Alphabet(7),'2:',Alphabet(7+13),num2str(length(params2write)+1)]);
         % Update the provided project file with the new parameters
         fileID = fopen(fPath,'w');
-        formatSpec = '%s\n';
-        nrows = size(project_file);
-        for row = 1:nrows
-            fprintf(fileID,formatSpec,project_file{row,:});
-        end
+        fprintf(fileID,'%s\n',project_file{:});
         fclose(fileID);
     end
     
@@ -148,27 +134,20 @@ function parameter_injector(fPath,params)
         revised_params(1:rows,1:cols) = params;
         
         %Generate a list of the Johnson data muscle names. These aren't in the same order as the project file
-        johnsonnamelist = cell(length(C),1);
+        johnsonforces = cell(length(C),2);
         for q = 2:length(C)
             temp = lower(C{q,1});
-            johnsonnamelist{q,1} = temp(~isspace(temp));
+            johnsonforces{q,1} = temp(~isspace(temp));
+            johnsonforces{q,2} = C{q,6};
         end
         
-        %Check if the imported resting lengths are in mm or centimeters. Want them in centimeters
-        resting_lengths = cell2mat(C(2:end,4));
-        if mean(resting_lengths)/10 > 1
-            scale = 10;
-        else
-            scale = 1;
-        end
+        clear C johnson_excel
         
         for p = 1:length(revised_params)
             %Determine which Johnson muscle to load
-            johnsonind = find(contains(johnsonnamelist(2:end),revised_params{p,1}(4:end)),1)+1;
+            johnsonind = find(contains(johnsonforces(2:end,1),revised_params{p,1}(4:end)),1)+1;
             % Set l_rest to the neutral length
             l_rest = neutral_lengths.lr{p,2}*100;
-            % Pull in the optimal force information from the spreadsheet
-            f_o = C{johnsonind,6};
             % Lower length limit of the LT curve
             revised_params{p,cols+1} = .5*l_rest;
             % L rest
@@ -177,8 +156,10 @@ function parameter_injector(fPath,params)
             revised_params{p,cols+3} = 1.5*l_rest;
             % L width
             revised_params{p,cols+4} = .5*l_rest;
+            % Pull in the optimal force information from the spreadsheet
+            f_o = johnsonforces{johnsonind,2};
             % Maximum tension
-            revised_params{p,cols+5} = 1.8*f_o;
+            revised_params{p,cols+5} = f_o;
         end
     end
 end

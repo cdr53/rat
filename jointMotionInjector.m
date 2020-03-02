@@ -72,6 +72,7 @@ function [obj] = jointMotionInjector(jointAngles,to_plot)
             coeffs = [coeffnames(fitresult),num2cell(coeffvalues(fitresult)')];
             % Equations are in the format necessary for integration into Animatlab's .asim filetype
             equations{j} = sum_of_sines_maker(coeffs,0);
+            equations_proj{j} = sum_of_sines_maker(coeffs,1);
         end
     end
 
@@ -79,11 +80,11 @@ function [obj] = jointMotionInjector(jointAngles,to_plot)
 %     inject_joint_waveforms(simfilepath,equations,round(simTime));
     file_contents = inject_joint_waveforms(file_contents,equations,simTime);   
     
-                %%%Modify existing datatools such that they terminate before the end of the simulation
+    %%%Modify existing datatools such that they terminate before the end of the simulation
             
     extDTs = {'JointMotion';'PassiveTension'};
     parCell = {'<EndTime',simTime-.01;...
-               '<CollectInterval',dt/1000};
+               '<CollectInterval',dt};
     for ii = 1:length(extDTs)
         dt_ind = find(contains(file_contents,['<Name>',extDTs{ii},'</Name>']));
         for kk = 1:size(parCell,1)

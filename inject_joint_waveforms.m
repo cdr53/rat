@@ -23,7 +23,7 @@ function project_file = inject_joint_waveforms(project_file,equations,end_time)
         old_eq_line = project_file{equation_inds(i)};
         old_endtime_line = project_file{equation_inds(i)-2};
         project_file{equation_inds(i)} = number_injector(old_eq_line,equations{i});
-        project_file{equation_inds(i)-2} = number_injector(old_endtime_line,num2str(end_time));
+        project_file{equation_inds(i)-2} = number_injector(old_endtime_line,num2str(end_time-.01));
     end
 
 %     fileID = fopen(filepath,'w');

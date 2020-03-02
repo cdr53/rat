@@ -322,8 +322,18 @@ classdef CanvasModel < handle
         end
         %% addDTaxes
         function addDTaxes(obj,datatool,target,datatype)
-            if ~any(contains({'MembraneVoltage','Tension','Activation','Tl'},datatype))
+            if ~any(contains({'MembraneVoltage','Tension','Activation','Tl','MuscleLength'},datatype))
                 warning([target.name,' datatype (',datatype,') incorrect in addDTaxes'])
+            end
+            
+            if ischar(datatool) || isstring(datatool)
+                % Datatool has been specified by a name string
+                dind = find(contains({obj.datatool_objects.name},datatool),1,'first');
+                if isempty(dind)
+                    error(['Specified datatool ',datatool,' does not exist.'])
+                else
+                    datatool = obj.datatool_objects(dind);
+                end
             end
             
             try datatool.axes_objects(1).name;            
@@ -800,7 +810,7 @@ classdef CanvasModel < handle
 % %             proj_file = fullfile(file_dir,...
 % %                 CanvasConstants.DATA_RELATIVE_PATH,...
 % %                 'animatlab_files\EmptySystem\EmptySystem.aproj');
-             proj_file = [fileparts(fileparts(mfilename('fullpath'))),'\Animatlab\SynergyWalking\SynergyWalking20200109.aproj'];
+             %proj_file = [fileparts(fileparts(mfilename('fullpath'))),'\Animatlab\SynergyWalking\SynergyWalking20200109.aproj'];
              revised_file = strcat(proj_file(1:end-6),'_fake.aproj');
 
             if size(revised_file,2) <= 7
@@ -957,16 +967,13 @@ classdef CanvasModel < handle
             leafInd = find(contains(modified_text,'&lt;Leaf Count'));
             modified_text{leafInd} = ['&lt;Leaf Count="',num2str(leaf_num),'" Unique="7" Space="100"&gt;'];
             
+            [~,projName,projExt] = fileparts(revised_file);
+            disp(['Project file ',projName,projExt,' has been updated.'])
             fileID = fopen(revised_file,'w');
-%             formatSpec = '%s\n';
-%             nrows = size(modified_text,1);
-%             for row = 1:nrows
-%                 fprintf(fileID,formatSpec,modified_text{row,:});
-%             end
             fprintf(fileID,'%s\n',modified_text{:});
             fclose(fileID);
         end
-                %% create_animatlab project
+        %% create_animatlab simulation
         function create_animatlab_simulation(obj,sim_file)
 
             original_text = importdata(sim_file);
@@ -1008,25 +1015,6 @@ classdef CanvasModel < handle
                 aform_dt = obj.proj_params.physicstimestep;
             end
             
-            if numDatatools > 0 
-                datatool_inject = find(contains(modified_text,'<DataCharts/>'),1);
-                if isempty(datatool_inject)
-                    datatool_inject = find(contains(modified_text,'</DataCharts>'));
-                    datatool_text = {};
-                else
-                    datatool_text = {'<DataCharts/>'};
-                end
-                
-                for i = 1:numDatatools
-                    datatool = obj.datatool_objects(i);
-                    chart_holder = CanvasText(obj).build_aform_text(datatool,'simulation');
-                    datatool_text = [datatool_text;chart_holder];
-                end
-                modified_text = [modified_text(1:datatool_inject-1);...
-                                datatool_text;...
-                                modified_text(datatool_inject:end)];
-            end
-            
             %%%Modify existing datatools such that they terminate before the end of the simulation
             
             extDTs = {'<Name>JointMotion';...
@@ -1042,7 +1030,36 @@ classdef CanvasModel < handle
                     gt = strfind(sTemp,'>');
                     pStr = num2str(parCell{jj,2});
                     modified_text{pInd} = [sTemp(1:gt(1)),pStr,sTemp(gt(1)+1:end)];
+                    chartEnd(ii) = find(contains(modified_text(dtInd:end),'</DataChart>'),1,'first')+dtInd-1;
                 end
+            end
+            
+            if numDatatools > 0
+                datatool_inject = find(contains(modified_text,'<DataCharts/>'),1);
+                if isempty(datatool_inject)
+                    datatool_inject0 = max(chartEnd);
+                    datatool_inject1 = find(contains(modified_text,'</DataCharts>'));
+                    datatool_text = {};
+                else
+                    datatool_inject0 = datatool_inject-1;
+                    datatool_inject1 = datatool_inject+1;
+                    datatool_text = {'<DataCharts>'};
+                end
+                
+                for i = 1:numDatatools
+                    datatool = obj.datatool_objects(i);
+                    chart_holder = CanvasText(obj).build_aform_text(datatool,'simulation');
+                    datatool_text = [datatool_text;chart_holder];
+                end
+                
+                if ~isempty(datatool_inject)
+                    % If there weren't any datacharts to begin with, append the DataCharts closer
+                    datatool_text{end+1} = '</DataCharts>';
+                end
+                
+                modified_text = [modified_text(1:datatool_inject0);...
+                                datatool_text;...
+                                modified_text(datatool_inject1:end)];
             end
             
             %%%Inject Stimulus Code
@@ -1060,18 +1077,26 @@ classdef CanvasModel < handle
             end
             
             if numStims > 0
-                stimuli_inject = find(contains(modified_text,'</ExternalStimuli>'));   
+%               stimuli_inject = find(contains(modified_text,'</ExternalStimuli>'));   
+                stimuli_inject_0 = find(contains(modified_text,'<ExternalStimuli>')); 
+                stimuli_inject_1 = find(contains(modified_text,'</ExternalStimuli>')); 
                 stim_text = {};
                 for i=1:numStims
                     stim_holder = CanvasText(obj).build_stimulus(obj.stimulus_objects(i),'simulation');
                     stim_text = [stim_text;stim_holder];
                 end
-                modified_text = [modified_text(1:stimuli_inject-1);...
+%                 modified_text = [modified_text(1:stimuli_inject-1);...
+%                                 stim_text;...
+%                                 modified_text(stimuli_inject:end)];
+                modified_text = [modified_text(1:stimuli_inject_0);...
                                 stim_text;...
-                                modified_text(stimuli_inject:end)];
+                                modified_text(stimuli_inject_1:end)];
             end
             
-            sim2write = [pwd,'\Animatlab\SynergyWalking\muscleStim.asim'];
+            [~,simName,simExt] = fileparts(sim_file);
+            disp(['Simulation file ',simName,simExt,' has been updated.'])
+            %sim2write = [pwd,'\Animatlab\SynergyWalking\muscleStim.asim'];
+            sim2write = sim_file;
             fileID = fopen(sim2write,'w');
             fprintf(fileID,'%s\n',modified_text{:});
             fclose(fileID);
