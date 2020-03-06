@@ -20,6 +20,7 @@
     tstart = tic;
     clear obj
     [obj] = jointMotionInjector(waveform,0);
+    numMuscles = length(obj.musc_obj);
     
     telapsed = toc(tstart);
     if telapsed>60
@@ -35,7 +36,7 @@
     % Optimize forces to meet torque demands
     results_cell = obj.pedotti_optimization;
     oforces = results_cell{2,2}';
-    if size(oforces,2) ~= 38
+    if size(oforces,2) ~= numMuscles
         oforces = oforces';
     end
 
@@ -44,12 +45,12 @@
     forces = smoothdata(oforces,'gaussian',20);
     forces(forces<0) = 0;
     
-    for ii = 1:38
+    for ii = 1:numMuscles
         pts(ii,:) = obj.musc_obj{ii}.passive_tension;
     end
     
     %Subtract out the passive portion of the forces
-    forces = forces-pts(:,obj.sampling_vector)';
+    forces = oforces-pts(:,obj.sampling_vector)';
     
     synergysort = 'currents';
     switch synergysort

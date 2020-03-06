@@ -1071,15 +1071,38 @@ classdef CanvasModel < handle
             
             % Disable any existing stimuli
             extStims = find(contains(modified_text,'<Stimulus>'));
+            if sum(contains(modified_text,'MotorPosition'))>0
+                motorStimEnd = zeros(sum(contains(modified_text,'MotorPosition')),1);
+            else
+                motorStimEnd = [];
+            end
             for ii = 1:length(extStims)
                 enInd = find(contains(modified_text(extStims(ii):end),'<Enabled>'),1,'first')+extStims(ii)-1;
                 modified_text{enInd} = '<Enabled>False</Enabled>';
+                if contains(modified_text{extStims(ii)+6},'MotorPosition')
+                    motorStimEnd(ii) = find(contains(modified_text(extStims(ii):end),'</Stimulus>'),1,'first')+extStims(ii)-1;
+                else
+                    motorStimEnd(ii) = 0;
+                end
             end
             
             if numStims > 0
-%               stimuli_inject = find(contains(modified_text,'</ExternalStimuli>'));   
-                stimuli_inject_0 = find(contains(modified_text,'<ExternalStimuli>')); 
-                stimuli_inject_1 = find(contains(modified_text,'</ExternalStimuli>')); 
+%               stimuli_inject = find(contains(modified_text,'</ExternalStimuli>'));  
+                if length(extStims) >= 1
+                    if ~isempty(motorStimEnd)
+                        stimuli_inject_0 = max(motorStimEnd);
+                    else
+                        stimuli_inject_0 = find(contains(modified_text,'<ExternalStimuli>')); 
+                    end
+                    stimuli_inject_1 = find(contains(modified_text,'</ExternalStimuli>')); 
+                else
+                    stimuli_inject_0 = find(contains(modified_text,'<ExternalStimuli/>'));
+                    modified_text{stimuli_inject_0} = '<ExternalStimuli>';
+                    stimuli_inject_1 = stimuli_inject_0+1;
+                    modified_text = [modified_text(1:stimuli_inject_0);...
+                                    '</ExternalStimuli>';...
+                                    modified_text(stimuli_inject_1:end)];
+                end
                 stim_text = {};
                 for i=1:numStims
                     stim_holder = CanvasText(obj).build_stimulus(obj.stimulus_objects(i),'simulation');
@@ -1093,11 +1116,11 @@ classdef CanvasModel < handle
                                 modified_text(stimuli_inject_1:end)];
             end
             
-            [~,simName,simExt] = fileparts(sim_file);
+            %sim_file_revised = strcat(sim_file(1:end-5),'_fake.asim');
+            sim_file_revised = [pwd,'\Animatlab\SynergyWalking\muscleStim.asim'];
+            [~,simName,simExt] = fileparts(sim_file_revised);
             disp(['Simulation file ',simName,simExt,' has been updated.'])
-            %sim2write = [pwd,'\Animatlab\SynergyWalking\muscleStim.asim'];
-            sim2write = sim_file;
-            fileID = fopen(sim2write,'w');
+            fileID = fopen(sim_file_revised,'w');
             fprintf(fileID,'%s\n',modified_text{:});
             fclose(fileID);
         end

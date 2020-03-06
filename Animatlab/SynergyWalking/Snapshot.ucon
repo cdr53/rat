@@ -76,7 +76,7 @@ constraint B2919FF8-3EFA-4549-97B4-A4BC77AD6E0A: attached to:
 	absax0 = 0.06, 0.01, 1.00
 	absax1 = 1.00, -0.00, -0.06
   Coord 0 is free
-  Coord 0 is limited at -1.22173 0.191986, curr pos = 0
+  Coord 0 is not limited, curr pos = 8.29415e-017
 
 Constraint: base:///VxAssembly/rootMechanism/VxHinge/55AF1C5F-E200-4870-B3FA-0501AB0B22DD
 constraint 55AF1C5F-E200-4870-B3FA-0501AB0B22DD: attached to:
@@ -95,7 +95,7 @@ constraint 55AF1C5F-E200-4870-B3FA-0501AB0B22DD: attached to:
 	absax0 = -0.06, -0.01, -1.00
 	absax1 = -1.00, 0.00, 0.06
   Coord 0 is free
-  Coord 0 is limited at -1.3439 0.0523599, curr pos = 0
+  Coord 0 is not limited, curr pos = -2.6563e-018
 
 Constraint: base:///VxAssembly/rootMechanism/VxHinge/C7DF3511-7E4C-411E-BE1F-1B71FF30C530
 constraint C7DF3511-7E4C-411E-BE1F-1B71FF30C530: attached to:
@@ -114,7 +114,7 @@ constraint C7DF3511-7E4C-411E-BE1F-1B71FF30C530: attached to:
 	absax0 = 0.06, 0.01, 1.00
 	absax1 = 1.00, -0.00, -0.06
   Coord 0 is free
-  Coord 0 is limited at -1.64061 0.0872665, curr pos = 0
+  Coord 0 is not limited, curr pos = 8.14778e-017
 
 
 dynamic part count = 3

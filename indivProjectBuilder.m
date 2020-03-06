@@ -1,17 +1,12 @@
-% file_dir = fileparts(mfilename('fullpath'));
- proj_file = [pwd,'\Animatlab\SynergyWalking\SynergyWalking20200109.aproj'];
-% meshMatch(proj_file);
-% revised_file = strcat(proj_file(1:end-6),'_fake.aproj');
-% [projDir,projName,ext] = fileparts(revised_file);
-% disp(['Starting to build Animatlab project ',projName,ext])
-% delete([projDir,'\Trace*'])
-% 
-% original_text = importdata(proj_file);
-% muscleIDs = find(contains(original_text,'<PartType>AnimatGUI.DataObjects.Physical.Bodies.LinearHillMuscle</PartType>'))-2;
-% muscle_out = scrape_project_for_musc_info(original_text);
-% numMuscles = length(muscleIDs);
+projPath = [pwd,'\Animatlab\SynergyWalking\SynergyWalking20200109.aproj'];
+%projPath = 'G:\My Drive\Rat\SynergyControl\Animatlab\SynergyWalking\SynergyWalking_reduced.aproj';
+%simPath = 'G:\My Drive\Rat\SynergyControl\Animatlab\SynergyWalking\SynergyWalking_reduced_Standalone.asim';
 
 simPath = [pwd,'\Animatlab\SynergyWalking\muscleStim.asim'];
+
+
+projPath = [pwd,'\Animatlab\SynergyWalking\SynergyWalking_reduced.aproj'];
+simPath = [pwd,'\Animatlab\SynergyWalking\SynergyWalking_reduced_Standalone.asim'];
 muscle_out = scrapeFileForMuscleInfo(simPath);
 numMuscles = length(muscle_out);
 [docDir,docName,docType] = fileparts(simPath);
@@ -60,7 +55,7 @@ end
 % Build datatool viewers for high action muscles to provide insight into motorneuron and muscle activity
 [muscForces,muscInds] = sortrows(max(forces)',1,'descend');
 %muscles2check = muscInds(1:5);
-muscles2check = 1:38;
+muscles2check = 1:length(obj.musc_obj);
 numDTs = size(nsys.datatool_objects,1);
 nsys.addDatatool({'KeyMNs','endtime',nsys.proj_params.simendtime-.01})
 nsys.addDatatool({'KeyMuscleLen','endtime',nsys.proj_params.simendtime-.01})
@@ -79,7 +74,7 @@ for ii = 1:length(muscles2check)
 end
 
 nsys.create_animatlab_simulation(simPath);
-nsys.create_animatlab_project(proj_file);
+nsys.create_animatlab_project(projPath);
 %disp(['Animatlab ',docType,' file "',docName,docType,' created.'])
 
 function equation = generate_synergy_eq(bigH,simTime,dt,projBool)

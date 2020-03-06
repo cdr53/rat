@@ -699,7 +699,7 @@ classdef CanvasText
                 case 'project'
                     if ~isempty(stimulus.eq)
                         valType = 'Equation';
-                        eq = char(vpa(stimulus.eq,10));
+                        eq = stimulus.eq;
                     else
                         valType = 'Constant';
                         eq = num2str(0);

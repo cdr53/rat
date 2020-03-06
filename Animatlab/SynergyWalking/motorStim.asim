@@ -8376,7 +8376,7 @@
 <StartTime>0</StartTime>
 <EndTime>10</EndTime>
 <TargetID>Position</TargetID>
-<Equation>0,0.0678,0,t,*,1.5708,+,sin,*,-</Equation>
+<Equation>0,.0678,0,t,*,1.5708,+,sin,*,-</Equation>
 <DisableMotorWhenDone>False</DisableMotorWhenDone>
 </Stimulus>
 <Stimulus>
@@ -8451,7 +8451,7 @@
 <StartTime>0</StartTime>
 <EndTime>10</EndTime>
 <TargetID>Position</TargetID>
-<Equation>0,0.2007,0,t,*,1.5708,+,sin,*,-</Equation>
+<Equation>0,.2007,0,t,*,1.5708,+,sin,*,-</Equation>
 <DisableMotorWhenDone>False</DisableMotorWhenDone>
 </Stimulus>
 <Stimulus>
@@ -8466,7 +8466,7 @@
 <StartTime>0</StartTime>
 <EndTime>10</EndTime>
 <TargetID>Position</TargetID>
-<Equation>0.4315,0,t,*,1.5708,+,sin,*,</Equation>
+<Equation>.4315,0,t,*,1.5708,+,sin,*</Equation>
 <DisableMotorWhenDone>False</DisableMotorWhenDone>
 </Stimulus>
 <Stimulus>

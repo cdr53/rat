@@ -13,19 +13,21 @@ function [Am_musc,V_musc,Al_musc_all] = Am_generator(obj,forces)
     odt = obj.dt_motion;
     dt = ((ennd-beg)*odt)/length(forces);
     [forces_dot,forces_doty] = gradient(forces,dt);
+    numMuscles = length(obj.musc_obj);
 
     fl = @(Lm,Lr,Lw) max(1-((Lm-Lr).^2./Lw^2),0);
-    Am = @(Al,b,ks,T_dot,kp,delL,L_dot,T) (1./Al).*((b./ks).*T_dot-kp.*delL-b.*L_dot+(1+kp./ks).*T);
-%     V = @(A1,A2,A3,A) A1-(1./A3).*log((A2-A)./A); %Updated 2/3/2020 with the addition of yoff
+    %Am = @(Al,b,ks,T_dot,kp,delL,L_dot,T) (1./Al).*((b./ks).*T_dot-kp.*delL-b.*L_dot+(1+kp./ks).*T);
+    Am = @(Al,b,ks,T_dot,kp,delL,L_dot,T) (1./Al).*((b./ks).*T_dot+(1+kp./ks).*T);
     V = @(A1,A2,A3,A4,A) A1-(1./A3).*log(((A2)./(A-A4))-1);
     st_curve = @(Fmax,steepness,xoff,V,yoff) (Fmax./(1+exp(steepness*(xoff-V))))+yoff;
+    ssTeqn = @(Am,ks,kp,mL,Lr,Al) (ks/(ks+kp)).*max(kp.*(mL-Lr)+Al.*Am,0);
     Am_musc = zeros(size(forces));
     Al_musc_all = Am_musc;
     V_musc = Am_musc;
 
-    for ii = 1:38
+    for ii = 1:numMuscles
        [b,ks,kp,Lw,Lr,xoff,Fmax,steepness,mL,mV,ST_max,yoff] = getMuscParams(obj,ii,beg,ennd);
-       delL_musc = max(mL-Lr,0);
+       delL_musc = abs(Lr-mL);
        Al_musc = fl(mL,Lr,Lw);
        Tdot = forces_dot(ii,:);
        T = forces(ii,:);
@@ -75,7 +77,7 @@ function [Am_musc,V_musc,Al_musc_all] = Am_generator(obj,forces)
     ... creating many flat plateaus, we smooth the data. This is preferable over a moving lowpass filter because it doesn't distort the ends of the data
     V_musc = smoothdata(V_musc','gaussian',10)';
 
-    outT = inputAmoutputT(obj,Am_musc,Al_musc_all,dt,beg,ennd);
+    outT = inputAmoutputT(obj,Am_musc,Al_musc_all,dt,beg,ennd,numMuscles);
 
     if 0
         figure
@@ -86,11 +88,11 @@ function [Am_musc,V_musc,Al_musc_all] = Am_generator(obj,forces)
         title('Original forces trying to recreate')
     end
     %% inputAmoutputT
-    function outT = inputAmoutputT(obj,Am,Al,dt,beg,ennd)
+    function outT = inputAmoutputT(obj,Am,Al,dt,beg,ennd,numMuscles)
         if any(any(Am<0))
             Am(Am<0) = 0;
         end
-        for j = 1:38
+        for j = 1:numMuscles
             [bhold,kshold,kphold,~,Lrhold,~,~,~,mLhold,mVhold] = getMuscParams(obj,j,beg,ennd);
             a = dt*kshold/bhold;
             c = (1-a*(1+(kphold/kshold)));

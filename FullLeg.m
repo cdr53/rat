@@ -68,41 +68,11 @@ classdef FullLeg < matlab.mixin.SetGet
                 i = i + 1;
             end
             obj.theta_range = joint_limits;
-            
-%             %Read the directory provided by the user.
-%             if ismac
-%                 dir_file_division = max(strfind(proj_file,'/'));
-%             else
-%                 dir_file_division = max(strfind(proj_file,'\'));
-%             end
-%                 proj_folder = proj_file(1:dir_file_division-1);
-%                 sim_files = dir(proj_folder);
-%                 obj.proj_file = proj_file;
-%             
-%             %How many files are in that folder?
-%                 len = length(sim_files);
-%                 sim_file_str = [];
-%             
-%             %Pull out the simulation file
-%                 for i=1:len
-%                     name_str = sim_files(i).name;        
-%                     if length(name_str) > 14 && strcmp(name_str(end-14:end),'Standalone.asim')
-%                         %We've found the file we need
-%                         if ismac
-%                             sim_file_str = [proj_folder,'/',name_str];
-%                         else
-%                             sim_file_str = [proj_folder,'\',name_str];
-%                         end
-%                         break
-%                     end
-%                 end
-            
-            %Load the text of the simulation file
-                try obj.original_text = importdata(sim_file);
-                catch
-                    disp('No simulation file exists. Open AnimatLab and export a standalone simulation.')
-                    keyboard
-                end
+            try obj.original_text = importdata(sim_file);
+            catch
+                disp('No simulation file exists. Open AnimatLab and export a standalone simulation.')
+                keyboard
+            end
         %% Initialize Body and Joint Rotations for Inertial and Local Frame
             %Orientation of the joint axis, in the inertial frame
             obj.Cabs_joints = zeros(3,3,obj.num_bodies);
@@ -1840,8 +1810,9 @@ classdef FullLeg < matlab.mixin.SetGet
             xx = obj.sampling_vector;
             
             T = zeros(length(xx),1);
-            T2 = zeros(length(xx),1);
-            L_pass = muscleprofile(xx);
+            delx = T;
+            Tdot = T;
+            mV = T;
             
             ks = muscle.Kse;
             kp = muscle.Kpe;
@@ -1849,13 +1820,12 @@ classdef FullLeg < matlab.mixin.SetGet
             b = muscle.damping;
             Lr = muscle.RestingLength;
             
-            musclelength = muscle.muscle_length_profile;
-            musclevelocity = muscle.muscle_velocity_profile;
+            musclelength = [muscle.muscle_length_profile(1); muscle.muscle_length_profile];
             
-            % The solution will oscillate to infinity if abs(c)>1. To ensure this doesn't happen, we set the timestep very small and accept some error in the
-            % passive tension solution.
-            dt = .001;
             
+            
+            dt = .54e-3;
+            dt = 2e-3;
             a = dt*ks/b;
             c = (1-a*(1+(kp/ks)));
             
@@ -1863,17 +1833,23 @@ classdef FullLeg < matlab.mixin.SetGet
                 error(['The passive tension solution for muscle ',muscle.muscle_name,' will oscillate to infinity.'])
             end
             
-            for i = 1:length(musclevelocity)
+            % Solution based on notes from 3-5-20
+            for i = 1:length(musclelength)
                 if i == 1
-                    mV(i,1) = musclevelocity(i);
-                    mL(i,1) = ks*max(0,musclelength(i)-Lr);
-                    T(i,1) = mL(i,1);
+                    delx(i,1) = musclelength(i)-Lr;
+                    mV(i,1) = 0;
+                    T(i,1) = ((ks*kp)/b)*delx(i,1)*dt;
+                    Tdot(i,1) = T(i,1)/dt;
+                elseif i == 2
+                    delx(i,1) = musclelength(i)-Lr;
+                    mV(i,1) = 0;
+                    T(i,1) = c*T(i-1,1)+a*kp*delx(i,1)+a*b*mV(i,1);
+                    Tdot(i,1) = (T(i,1)-T(i-1,1))/dt;
                 else
-                    mV(i,1) = (a*b)*musclevelocity(i-1);
-                    mL(i,1) = (a*kp)*max(0,musclelength(i-1)-Lr);
-                    % Based on observations with the program, it appears as though Animatlab does not factor in velocity when calculating passive tension
-                    T(i,1) = c*T(i-1,1) + mL(i,1);
-                    %+mV(i,1)
+                    delx(i,1) = musclelength(i)-Lr;
+                    mV(i,1) = (delx(i,1)-delx(i-1,1))/dt;
+                    T(i,1) = c*T(i-1,1)+a*kp*delx(i,1)+a*b*mV(i,1);
+                    Tdot(i,1) = (T(i,1)-T(i-1,1))/dt;
                 end
             end
             
@@ -2340,7 +2316,7 @@ classdef FullLeg < matlab.mixin.SetGet
                     passTorque(muscle_num,:) = pt.*moment_output(muscle_num,:)./1000;
             end
             
-            passive_joint_motion(k,:) = moment_output(40,:);
+            passive_joint_motion(k,:) = moment_output(end,:);
             passive_joint_torque(k,:) = sum(passTorque);
             passive_muscle_torque(:,:,k) = passTorque;
          end
@@ -3797,11 +3773,7 @@ classdef FullLeg < matlab.mixin.SetGet
             if nargin < 2
                 toplot = 0;
             end
-            
-%             [beg,ennd,~] = find_step_indices(obj);
-%             div = 500;
-%             xx = floor(linspace(beg,ennd,div));
-%             xx = linspace(1,length(obj.theta_motion),length(obj.theta_motion));
+        
             xx = obj.sampling_vector;
             beg = obj.sampling_vector(1);
             ennd = obj.sampling_vector(end);
@@ -3844,7 +3816,7 @@ classdef FullLeg < matlab.mixin.SetGet
 %                 [passive_joint_torque,passive_joint_motion] = compute_passive_joint_torque(obj);
 %                 tau2 = passive_joint_torque';
 %                 tau2 = -passive_joint_torque';
-                tau2 = -body_torque;
+                tau2 = -passive_torque-body_torque;
             
             mintypes = {'minfatigue','minsqforces','minforce','minwork','minforcePCSA','minforcetemporal'};
             nummuscles = size(obj.musc_obj,1);
@@ -3878,19 +3850,8 @@ classdef FullLeg < matlab.mixin.SetGet
                         Vm = muscle.muscle_velocity_profile(xx);
                     end
                     Fmax(i,1) = muscle.max_force;
-% %                     Lw = abs(muscle.l_max-muscle.l_min)/sqrt(.3);
-%                     Lw = muscle.l_width;
-                     Lr = muscle.RestingLength;
-%                     force_len = fl(Lm,Lr,Lw);
-%                     force_vel = fv(Vm);
-%                     force_pass = fp(6,Lm,.6);
-%                     phiopt = muscle.pennation_angle*(pi/180);
-%                     phi_now = cos(phi(Lopt(Lr,.15,0),phiopt,Lm));
-%                     Fmt(:,i) = Fmax(i,1).*(force_len.*force_vel+force_pass).*cos(phi_now);
-%                     s = muscle.steepness;
-%                     xoff = muscle.x_off;
-                    delLmat(i,:) = max(Lm-Lr,0);
-%                     mVmat(i,:) = Vm';
+                    Lr = muscle.RestingLength;
+                    delLmat(i,:) = Lm-Lr;
                     kp = muscle.Kpe;
                     ks = muscle.Kse;
                     dt = obj.dt_motion;
@@ -3910,6 +3871,7 @@ classdef FullLeg < matlab.mixin.SetGet
                         % Multiple Fmax by the sine of the angle between the muscle segment and the sagittal vector
                         % When the muscle is perfectly sagittal, the sine portion will equal 1. When perfectly non-sagittal, it will be 0
                     ub(i,:) = Fmax(i,1).*sin(atan2d(vecnorm(cross(sagvecmat,mvec,2),2,2),dot(sagvecmat,mvec,2))*(pi/180))'; % "out of plane penalty"
+                    lb(i,:) = 1.0000001.*muscle.passive_tension(obj.sampling_vector);
                 end
                 x0 = zeros(size(ub,1),1);
                 moment_output = zeros(nummuscles+2,size(xx,2),3);
@@ -3921,28 +3883,22 @@ classdef FullLeg < matlab.mixin.SetGet
                 momentArmsHip = moment_output(:,:,1);
                 momentArmsKnee = moment_output(:,:,2);
                 momentArmsAnkle = moment_output(:,:,3);
-                lb = zeros(size(force));
+                %lb = zeros(size(force));
                 for j = 1:length(xx)
                     % Set the lower bound such that the result is forced to satisfy the passive-active inequality that guarantees that Am > 0 
                     %p = [moment_output(1:nummuscles,j,1)';moment_output(1:nummuscles,j,2)';moment_output(1:nummuscles,j,3)'];
                     p = [momentArmsHip(1:nummuscles,j),momentArmsKnee(1:nummuscles,j),momentArmsAnkle(1:nummuscles,j)]';
                     beq = tau2(j,:);
                     Aeq = p/1000;
-                    if j == 1
-                        lb(:,j) = lengthmat(:,1);
-                    else
-                        lb(:,j) = max(Q.*force(:,j-1)+lengthmat(:,j),0); 
+%                     if j == 1
+%                         lb(:,j) = lengthmat(:,1);
+%                     else
+%                         lb(:,j) = max(Q.*force(:,j-1)+lengthmat(:,j),0); 
+%                     end
+                    if j>1
+                        x0 = force(:,j-1);
                     end
-                    if ischar(fun)
-%                         if strcmp(fun,'minwork')
-%                             [force(:,j),fval(j,1),exitflag] = linprog(delLmat(:,j),[],[],Aeq,beq,lb(:,j),ub,[],options);
-%                         end
-                    else
-                        if j>1
-                            x0 = force(:,j-1);
-                        end
-                          [force(:,j),~,exitflag(j)] = fmincon(fun,x0,[],[],Aeq,beq,lb(:,j),ub(:,j),[],options);
-                    end
+                    [force(:,j),~,exitflag(j)] = fmincon(fun,x0,[],[],Aeq,beq,lb(:,j),ub(:,j),[],options);
                 end
                 
                 for ii = 1:3

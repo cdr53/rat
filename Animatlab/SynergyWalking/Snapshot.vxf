@@ -3,7 +3,7 @@
 <boost_serialization signature="serialization::archive" version="8">
 <File class_id="0" tracking_level="1" version="520101122" object_id="_0">
 	<Description></Description>
-	<VortexInformation>CMLabs Simulations Inc. Vortex SDK 5.1 Saved from TheTitanic Fri Feb 07 15:01:49 2020
+	<VortexInformation>CMLabs Simulations Inc. Vortex SDK 5.1 Saved from TheTitanic Thu Mar 05 12:58:11 2020
 </VortexInformation>
 	<Vx__VxBase class_id="1" tracking_level="1" version="520100709" object_id="_1">
 		<Name>default_VxFile_50</Name>
@@ -430,13 +430,13 @@
 			</VxFileSection>
 			<GraphicSection class_id_reference="16" object_id_reference="_17"></GraphicSection>
 			<Universe class_id="20" tracking_level="1" version="520100929" object_id="_21">
-				<collisionGeometriesMaxCount>228</collisionGeometriesMaxCount>
-				<collisionGeometryPairMaxCount>9120</collisionGeometryPairMaxCount>
+				<collisionGeometriesMaxCount>134</collisionGeometriesMaxCount>
+				<collisionGeometryPairMaxCount>5320</collisionGeometryPairMaxCount>
 				<VxStepperBase class_id="21" tracking_level="0" version="0">
 					<Vx__VxBase object_id="_22">
 						<Name>default_VxUniverse_2</Name>
 					</Vx__VxBase>
-					<mTimeStep>0.00059999997029080987</mTimeStep>
+					<mTimeStep>0.00053999997908249497</mTimeStep>
 				</VxStepperBase>
 				<gravity class_id="22" tracking_level="0" version="2">
 					<x>0</x>
@@ -864,9 +864,9 @@
 											<a21>0</a21>
 											<a22>1</a22>
 											<a23>0</a23>
-											<a30>0.091553440170919043</a30>
-											<a31>-0.040986231974638132</a31>
-											<a32>0.00010532886593867495</a32>
+											<a30>0.058329999446868896</a30>
+											<a31>-0.030000001192092896</a31>
+											<a32>0.0029799998737871647</a32>
 											<a33>1</a33>
 										</COMLocalTM>
 										<InertiaTensor>
@@ -892,7 +892,7 @@
 										</InertiaTensor>
 									</MassProperties>
 									<MassLocked>0</MassLocked>
-									<COMLocked>0</COMLocked>
+									<COMLocked>1</COMLocked>
 									<InertiaLocked>0</InertiaLocked>
 									<dynamicsAwake>1</dynamicsAwake>
 									<enableSteps>0</enableSteps>
@@ -1099,9 +1099,9 @@
 											<a21>0</a21>
 											<a22>1</a22>
 											<a23>0</a23>
-											<a30>-0.0030529761369914987</a30>
-											<a31>-0.18173213339047878</a31>
-											<a32>-0.032864823103805202</a32>
+											<a30>-0.018330000340938568</a30>
+											<a31>-0.17218999564647675</a31>
+											<a32>-0.050099998712539673</a32>
 											<a33>1</a33>
 										</COMLocalTM>
 										<InertiaTensor>
@@ -1127,7 +1127,7 @@
 										</InertiaTensor>
 									</MassProperties>
 									<MassLocked>0</MassLocked>
-									<COMLocked>0</COMLocked>
+									<COMLocked>1</COMLocked>
 									<InertiaLocked>0</InertiaLocked>
 									<dynamicsAwake>1</dynamicsAwake>
 									<enableSteps>0</enableSteps>
@@ -1334,9 +1334,9 @@
 											<a21>0</a21>
 											<a22>1</a22>
 											<a23>0</a23>
-											<a30>-0.06534919169346827</a30>
-											<a31>-0.023242510987100506</a31>
-											<a32>0.15475406454864624</a32>
+											<a30>-0.083149999380111694</a30>
+											<a31>-0.019749999046325684</a31>
+											<a32>0.15642000734806061</a32>
 											<a33>1</a33>
 										</COMLocalTM>
 										<InertiaTensor>
@@ -1362,7 +1362,7 @@
 										</InertiaTensor>
 									</MassProperties>
 									<MassLocked>0</MassLocked>
-									<COMLocked>0</COMLocked>
+									<COMLocked>1</COMLocked>
 									<InertiaLocked>0</InertiaLocked>
 									<dynamicsAwake>1</dynamicsAwake>
 									<enableSteps>0</enableSteps>
@@ -1767,9 +1767,9 @@
 											<Path>base:///VxAssembly/rootMechanism/VxPart/A382CF3C-1731-4C23-B1FD-DD52C53DF3C6</Path>
 										</part>
 										<partAttachmentPosition>
-											<x>-1.9322636546359462e-010</x>
-											<y>-1.6982812517385426e-009</y>
-											<z>1.0453534149412747e-009</z>
+											<x>-1.9322635158580681e-010</x>
+											<y>-1.6982812101051792e-009</y>
+											<z>1.0453533594301234e-009</z>
 										</partAttachmentPosition>
 										<partAttachmentAxis1>
 											<x>-0.86602474677550623</x>
@@ -1793,9 +1793,9 @@
 												<z>0.50048106113976987</z>
 											</secondaryAxis>
 											<position object_id="_102">
-												<x>-1.9322636626610136e-010</x>
-												<y>-1.6982812339905496e-009</y>
-												<z>1.0453534063451256e-009</z>
+												<x>-1.9322636350216265e-010</x>
+												<y>-1.6982812360260016e-009</y>
+												<z>1.0453533564259259e-009</z>
 											</position>
 											<Part>
 												<Path>base:///VxAssembly/rootMechanism/VxPart/A382CF3C-1731-4C23-B1FD-DD52C53DF3C6</Path>
@@ -1819,17 +1819,17 @@
 										<lockMinimumForce>-1.7976931348623157e+308</lockMinimumForce>
 										<lockStiffness>1.7976931348623157e+308</lockStiffness>
 										<lockDamping>0</lockDamping>
-										<limitsActive>1</limitsActive>
-										<limitPositionLower>-1.2217299938201904</limitPositionLower>
-										<limitPositionHigher>0.19198599457740784</limitPositionHigher>
+										<limitsActive>0</limitsActive>
+										<limitPositionLower>-1.7976931348623157e+308</limitPositionLower>
+										<limitPositionHigher>1.7976931348623157e+308</limitPositionHigher>
 										<limitVelocityLower>0</limitVelocityLower>
 										<limitVelocityHigher>0</limitVelocityHigher>
-										<limitRestitutionLower>0.0099999997764825821</limitRestitutionLower>
-										<limitRestitutionHigher>0.0099999997764825821</limitRestitutionHigher>
-										<limitStiffnessLower>499999965184.00006</limitStiffnessLower>
-										<limitStiffnessHigher>499999965184.00006</limitStiffnessHigher>
-										<limitDampingLower>99999997952</limitDampingLower>
-										<limitDampingHigher>99999.9921875</limitDampingHigher>
+										<limitRestitutionLower>0</limitRestitutionLower>
+										<limitRestitutionHigher>0</limitRestitutionHigher>
+										<limitStiffnessLower>1.7976931348623157e+308</limitStiffnessLower>
+										<limitStiffnessHigher>1.7976931348623157e+308</limitStiffnessHigher>
+										<limitDampingLower>0</limitDampingLower>
+										<limitDampingHigher>0</limitDampingHigher>
 										<offset>0</offset>
 										<internalPosition>0</internalPosition>
 										<limitMaxForceLower>1.7976931348623157e+308</limitMaxForceLower>
@@ -1863,11 +1863,11 @@
 										</Friction2>
 										<Friction0Ang>
 											<Proportional>1</Proportional>
-											<Enabled>1</Enabled>
+											<Enabled>0</Enabled>
 											<PartRef>1</PartRef>
-											<MaxForce>99999.9921875</MaxForce>
+											<MaxForce>99999992</MaxForce>
 											<Loss>0</Loss>
-											<Coefficient>0.019999999552965164</Coefficient>
+											<Coefficient>0</Coefficient>
 											<StaticFrictionScale>1</StaticFrictionScale>
 										</Friction0Ang>
 										<Friction1Ang>
@@ -1940,8 +1940,8 @@
 											<Path>base:///VxAssembly/rootMechanism/VxPart/A382CF3C-1731-4C23-B1FD-DD52C53DF3C6</Path>
 										</part>
 										<partAttachmentPosition>
-											<x>-0.10167512182982857</x>
-											<y>-0.059527966187921666</y>
+											<x>-0.10167512182982856</x>
+											<y>-0.059527966187921631</y>
 											<z>0.33752205057023121</z>
 										</partAttachmentPosition>
 										<partAttachmentAxis1>
@@ -1968,7 +1968,7 @@
 											<position object_id="_108">
 												<x>-0.10167512182982857</x>
 												<y>-0.059527966187921673</y>
-												<z>0.33752205057023132</z>
+												<z>0.33752205057023127</z>
 											</position>
 											<Part>
 												<Path>base:///VxAssembly/rootMechanism/VxPart/A382CF3C-1731-4C23-B1FD-DD52C53DF3C6</Path>
@@ -1985,9 +1985,9 @@
 											<Path>base:///VxAssembly/rootMechanism/VxPart/7F834E52-399E-4F90-8795-C5B924FE5503</Path>
 										</part>
 										<partAttachmentPosition>
-											<x>-2.471231106398325e-007</x>
+											<x>-2.4712311063115888e-007</x>
 											<y>-9.3346217018008826e-006</y>
-											<z>7.9695718960201556e-006</z>
+											<z>7.9695718960479112e-006</z>
 										</partAttachmentPosition>
 										<partAttachmentAxis1>
 											<x>-0.99999989418392521</x>
@@ -2011,9 +2011,9 @@
 												<z>0.50078629178278211</z>
 											</secondaryAxis>
 											<position object_id="_112">
-												<x>-2.4712311065500741e-007</x>
-												<y>-9.3346217017831948e-006</y>
-												<z>7.9695718960058848e-006</z>
+												<x>-2.4712311062896184e-007</x>
+												<y>-9.334621701808699e-006</y>
+												<z>7.9695718960204436e-006</z>
 											</position>
 											<Part>
 												<Path>base:///VxAssembly/rootMechanism/VxPart/7F834E52-399E-4F90-8795-C5B924FE5503</Path>
@@ -2037,17 +2037,17 @@
 										<lockMinimumForce>-1.7976931348623157e+308</lockMinimumForce>
 										<lockStiffness>1.7976931348623157e+308</lockStiffness>
 										<lockDamping>0</lockDamping>
-										<limitsActive>1</limitsActive>
-										<limitPositionLower>-1.3438999652862549</limitPositionLower>
-										<limitPositionHigher>0.052359901368618011</limitPositionHigher>
+										<limitsActive>0</limitsActive>
+										<limitPositionLower>-1.7976931348623157e+308</limitPositionLower>
+										<limitPositionHigher>1.7976931348623157e+308</limitPositionHigher>
 										<limitVelocityLower>0</limitVelocityLower>
 										<limitVelocityHigher>0</limitVelocityHigher>
-										<limitRestitutionLower>0.0099999997764825821</limitRestitutionLower>
-										<limitRestitutionHigher>0.0099999997764825821</limitRestitutionHigher>
-										<limitStiffnessLower>499999965184.00006</limitStiffnessLower>
-										<limitStiffnessHigher>499999965184.00006</limitStiffnessHigher>
-										<limitDampingLower>99999997952</limitDampingLower>
-										<limitDampingHigher>99999997952</limitDampingHigher>
+										<limitRestitutionLower>0</limitRestitutionLower>
+										<limitRestitutionHigher>0</limitRestitutionHigher>
+										<limitStiffnessLower>1.7976931348623157e+308</limitStiffnessLower>
+										<limitStiffnessHigher>1.7976931348623157e+308</limitStiffnessHigher>
+										<limitDampingLower>0</limitDampingLower>
+										<limitDampingHigher>0</limitDampingHigher>
 										<offset>0</offset>
 										<internalPosition>0</internalPosition>
 										<limitMaxForceLower>1.7976931348623157e+308</limitMaxForceLower>
@@ -2081,11 +2081,11 @@
 										</Friction2>
 										<Friction0Ang>
 											<Proportional>1</Proportional>
-											<Enabled>1</Enabled>
+											<Enabled>0</Enabled>
 											<PartRef>1</PartRef>
-											<MaxForce>99999.9921875</MaxForce>
+											<MaxForce>99999992</MaxForce>
 											<Loss>0</Loss>
-											<Coefficient>0.019999999552965164</Coefficient>
+											<Coefficient>0</Coefficient>
 											<StaticFrictionScale>1</StaticFrictionScale>
 										</Friction0Ang>
 										<Friction1Ang>
@@ -2158,9 +2158,9 @@
 											<Path>base:///VxAssembly/rootMechanism/VxPart/7F834E52-399E-4F90-8795-C5B924FE5503</Path>
 										</part>
 										<partAttachmentPosition>
-											<x>-0.0032913403768785234</x>
+											<x>-0.0032913403768785147</x>
 											<y>-0.43868577890786636</y>
-											<z>-0.095862203694701623</z>
+											<z>-0.095862203694701581</z>
 										</partAttachmentPosition>
 										<partAttachmentAxis1>
 											<x>0.99999991792273846</x>
@@ -2203,9 +2203,9 @@
 											<Path>base:///VxAssembly/rootMechanism/VxPart/6A097D98-1B2A-44C1-83E7-706C3337F70B</Path>
 										</part>
 										<partAttachmentPosition>
-											<x>-7.6550886315834843e-006</x>
-											<y>-1.5799394352949969e-005</y>
-											<z>0.00070866091981817037</z>
+											<x>-7.6550886315487898e-006</x>
+											<y>-1.5799394352960378e-005</y>
+											<z>0.00070866091981814771</z>
 										</partAttachmentPosition>
 										<partAttachmentAxis1>
 											<x>-0.00020366815105639369</x>
@@ -2255,17 +2255,17 @@
 										<lockMinimumForce>-1.7976931348623157e+308</lockMinimumForce>
 										<lockStiffness>1.7976931348623157e+308</lockStiffness>
 										<lockDamping>0</lockDamping>
-										<limitsActive>1</limitsActive>
-										<limitPositionLower>-1.6406099796295166</limitPositionLower>
-										<limitPositionHigher>0.087266497313976288</limitPositionHigher>
+										<limitsActive>0</limitsActive>
+										<limitPositionLower>-1.7976931348623157e+308</limitPositionLower>
+										<limitPositionHigher>1.7976931348623157e+308</limitPositionHigher>
 										<limitVelocityLower>0</limitVelocityLower>
 										<limitVelocityHigher>0</limitVelocityHigher>
-										<limitRestitutionLower>0.0099999997764825821</limitRestitutionLower>
-										<limitRestitutionHigher>0.0099999997764825821</limitRestitutionHigher>
-										<limitStiffnessLower>499999965184.00006</limitStiffnessLower>
-										<limitStiffnessHigher>499999965184.00006</limitStiffnessHigher>
-										<limitDampingLower>99999997952</limitDampingLower>
-										<limitDampingHigher>99999997952</limitDampingHigher>
+										<limitRestitutionLower>0</limitRestitutionLower>
+										<limitRestitutionHigher>0</limitRestitutionHigher>
+										<limitStiffnessLower>1.7976931348623157e+308</limitStiffnessLower>
+										<limitStiffnessHigher>1.7976931348623157e+308</limitStiffnessHigher>
+										<limitDampingLower>0</limitDampingLower>
+										<limitDampingHigher>0</limitDampingHigher>
 										<offset>0</offset>
 										<internalPosition>0</internalPosition>
 										<limitMaxForceLower>1.7976931348623157e+308</limitMaxForceLower>
@@ -2299,11 +2299,11 @@
 										</Friction2>
 										<Friction0Ang>
 											<Proportional>1</Proportional>
-											<Enabled>1</Enabled>
+											<Enabled>0</Enabled>
 											<PartRef>1</PartRef>
-											<MaxForce>99999.9921875</MaxForce>
+											<MaxForce>99999992</MaxForce>
 											<Loss>0</Loss>
-											<Coefficient>0.019999999552965164</Coefficient>
+											<Coefficient>0</Coefficient>
 											<StaticFrictionScale>1</StaticFrictionScale>
 										</Friction0Ang>
 										<Friction1Ang>
@@ -2468,7 +2468,7 @@
 				</Vx__VxBase>
 			</VxFileSection>
 			<GraphicSection class_id_reference="16" object_id_reference="_17"></GraphicSection>
-			<TimeStep>0.00059999997029080987</TimeStep>
+			<TimeStep>0.00053999997908249497</TimeStep>
 			<MinTimeStep>0.012500000186264515</MinTimeStep>
 			<MaxTimeStep>0.05000000074505806</MaxTimeStep>
 			<TimeStepDelta>0.89999997615814209</TimeStepDelta>

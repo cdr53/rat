@@ -2,15 +2,19 @@ jointAngles2Synergies
 % synergyProjectBuilder
 indivProjectBuilder
 
-musclesim = [pwd,'\Animatlab\SynergyWalking\muscleStim.asim'];
-motorsim = [pwd,'\Animatlab\SynergyWalking\motorStim.asim'];
+ musclesim = [pwd,'\Animatlab\SynergyWalking\muscleStim.asim'];
+ motorsim = [pwd,'\Animatlab\SynergyWalking\motorStim.asim'];
+
+%musclesim = 'G:\My Drive\Rat\SynergyControl\Animatlab\SynergyWalking\SynergyWalking_reduced_Standalone.asim';
+%motorsim = 'G:\My Drive\Rat\SynergyControl\Animatlab\SynergyWalking\SynergyWalking_reduced_motorsim.asim';
 
 muscdata = processSimData(musclesim);
 motordata = processSimData(motorsim);
 close all
 clear pts mls
-    pts = zeros(38,length(obj.musc_obj{1}.passive_tension));
-    for ii = 1:38
+numMuscles = length(obj.musc_obj);
+    pts = zeros(numMuscles,length(obj.musc_obj{1}.passive_tension));
+    for ii = 1:numMuscles
         muscle = obj.musc_obj{ii};
         pts(ii,:) = muscle.passive_tension;
         mls(ii,:) = muscle.muscle_length_profile(obj.sampling_vector,1)';
@@ -32,7 +36,7 @@ for jj = 1:numSubs
         muscSimNames = muscdata(jj).data_cols;
         oldSimData = plotCell{jj,2};
         newSimData = zeros(size(oldSimData));
-        for ii = 1:38
+        for ii = 1:numMuscles
             muscObjName = obj.musc_obj{ii}.muscle_name;
             simInd = find(contains(muscSimNames,muscObjName(4:end)));
             if isempty(simInd)

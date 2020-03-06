@@ -25,8 +25,14 @@ function [obj] = jointMotionInjector(jointAngles,to_plot)
     % Which .asim file to modify?
     %simfilepath = [fileparts(mfilename('fullpath')),'\Animatlab\IndividualMuscleStim20191114.asim'];
     %simfilepath = [pwd,'\Animatlab\SynergyWalking\SynergyWalking20200109_Standalone.asim'];
-    load([pwd,'\Data\motorSim.mat'],'motorSim')
-    file_contents = meshMatch(motorSim);
+    
+    %motorSim = importdata("G:\My Drive\Rat\SynergyControl\Animatlab\SynergyWalking\SynergyWalking_reduced_Standalone.asim");
+    motorSim = "G:\My Drive\Rat\SynergyControl\Animatlab\SynergyWalking\SynergyWalking_reduced_Standalone.asim";
+    simpath2w = motorSim;
+    file_contents = importdata(motorSim);
+    %load([pwd,'\Data\motorSim.mat'],'motorSim')
+    %simpath2w = [pwd,'\Animatlab\SynergyWalking\motorStim.asim'];
+    %file_contents = meshMatch(motorSim);
     
     % Before moving forward, check that the simulation file contains the proper MotorPosition stimuli that are necessary to simulate walking
     file_contents = disableAllStims(file_contents);
@@ -86,7 +92,7 @@ function [obj] = jointMotionInjector(jointAngles,to_plot)
     parCell = {'<EndTime',simTime-.01;...
                '<CollectInterval',dt};
     for ii = 1:length(extDTs)
-        dt_ind = find(contains(file_contents,['<Name>',extDTs{ii},'</Name>']));
+        dt_ind = find(contains(file_contents,['<Name>',extDTs{ii}]));
         for kk = 1:size(parCell,1)
             dt_par_ind = find(contains(file_contents(dt_ind:end),parCell{kk,1}),1,'first')+dt_ind-1;
             if strcmp(parCell{kk,1},'<EndTime')
@@ -100,7 +106,6 @@ function [obj] = jointMotionInjector(jointAngles,to_plot)
     
     % Update the actual simulation file now that edits have been made
     %.asim path to write
-    simpath2w = [pwd,'\Animatlab\SynergyWalking\motorStim.asim'];
     overwriteSimFile(simpath2w,file_contents);
     
     obj = design_synergy(simpath2w);

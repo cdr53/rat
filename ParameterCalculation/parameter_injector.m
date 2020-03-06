@@ -29,7 +29,7 @@ function parameter_injector(fPath,params)
             Lr = number_injector(project_file{mInd+rInd},[]);
             Fo = number_injector(project_file{mInd+fInd},[]);
             params{ii,1} = cell2mat(extractBetween(lower(project_file{mInd}),'<name>','</name>'));
-            [ks,kp,stmax,steep,yoff] = parameterSolver2(Lr,Fo);
+            [ks,kp,stmax,steep,yoff] = parameterSolver(Lr,Fo);
             params{ii,2} = ks;
             params{ii,3} = kp;
             params{ii,4} = stmax; %ST_max values, should be slight larger than Fmax to ensure Am values are possible.
@@ -96,7 +96,13 @@ function parameter_injector(fPath,params)
         spreadsheet = [pwd,'\ParameterCalculation\MuscleParameters_20190513.xlsx'];
         params2write = sortrows(params);
         Alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-        xlswrite(spreadsheet,params2write(:,2:end),[Alphabet(7),'2:',Alphabet(7+13),num2str(length(params2write)+1)]);
+        temp_spr = importdata(spreadsheet);
+        spreadsheet_muscles = strrep(temp_spr.textdata(2:end,1),' ','');
+        for ii = 1:size(params2write,1)
+            sprrow = find(contains(spreadsheet_muscles,params2write{ii,1}(4:end)),1,'first');
+            temp_spr.data(sprrow,6:end) = cell2mat(params2write(ii,2:end));
+        end
+        xlswrite(spreadsheet,temp_spr.data(:,6:end),[Alphabet(7),'2:',Alphabet(7+13),'39']);
         % Update the provided project file with the new parameters
         fileID = fopen(fPath,'w');
         fprintf(fileID,'%s\n',project_file{:});
@@ -143,7 +149,7 @@ function parameter_injector(fPath,params)
         
         clear C johnson_excel
         
-        for p = 1:length(revised_params)
+        for p = 1:size(revised_params,1)
             %Determine which Johnson muscle to load
             johnsonind = find(contains(johnsonforces(2:end,1),revised_params{p,1}(4:end)),1)+1;
             % Set l_rest to the neutral length
