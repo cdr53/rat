@@ -10,7 +10,8 @@
     initAngs = [-0.9656   -0.1941   -0.6678];
     naturalStopping = [-.748 -.01337 -.47064];
     initAngs = naturalStopping;
-    toeoff = [0.4315   -0.2007   -0.0678];
+    toeoff_old = [0.4315   -0.2007   -0.0678];
+    toeoff = [.1583246 -.15 -.562388];
     %waveform = [linspace(initAngs(1),toeoff(1),1000) ; linspace(initAngs(2),toeoff(2),1000) ; linspace(initAngs(3),toeoff(3),1000)]';
     waveform = repmat(toeoff,10000,1);
     %jTemp = 2;

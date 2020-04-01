@@ -6,12 +6,12 @@
 <AssemblyFile>LicensedAnimatGUI.dll</AssemblyFile>
 <ClassName>LicensedAnimatGUI.Forms.Charts.LineChart</ClassName>
 <AutoCollectInterval>True</AutoCollectInterval>
-<CollectDataInterval Value="0.00054" Scale="None" Actual="0.00054"/>
-<CollectTimeWindow Value="4.335" Scale="None" Actual="4.335"/>
+<CollectDataInterval Value="0.54" Scale="milli" Actual="0.00054"/>
+<CollectTimeWindow Value="11" Scale="None" Actual="11"/>
 <UpdateDataInterval Value="200" Scale="milli" Actual="0.2"/>
 <SetStartEndTime>True</SetStartEndTime>
 <CollectStartTime Value="0" Scale="None" Actual="0"/>
-<CollectEndTime Value="3.335" Scale="None" Actual="3.335"/>
+<CollectEndTime Value="10" Scale="None" Actual="10"/>
 <AxisList>
 <Axis>
 <AssemblyFile>LicensedAnimatGUI.dll</AssemblyFile>
@@ -30,7 +30,7 @@
 <DataItemID>ac460912-0099-46ce-b9e2-23d3d511b3c7</DataItemID>
 <SelectedDataType>Tension</SelectedDataType>
 <DataSubSet>6</DataSubSet>
-<PrevDataSubset>31</PrevDataSubset>
+<PrevDataSubset>6</PrevDataSubset>
 <UseIncomingDataType>False</UseIncomingDataType>
 <LineType>MediumSolid</LineType>
 <PointType>Plus</PointType>
@@ -56,7 +56,7 @@
 <DataItemID>7df2c5f8-7338-4902-a14f-c4e8a0b8f8b5</DataItemID>
 <SelectedDataType>Tension</SelectedDataType>
 <DataSubSet>1</DataSubSet>
-<PrevDataSubset>10</PrevDataSubset>
+<PrevDataSubset>1</PrevDataSubset>
 <UseIncomingDataType>False</UseIncomingDataType>
 <LineType>MediumSolid</LineType>
 <PointType>Plus</PointType>
@@ -82,7 +82,7 @@
 <DataItemID>bc13d65c-82a8-4844-9bb7-aed20d83ed3e</DataItemID>
 <SelectedDataType>Tension</SelectedDataType>
 <DataSubSet>5</DataSubSet>
-<PrevDataSubset>23</PrevDataSubset>
+<PrevDataSubset>5</PrevDataSubset>
 <UseIncomingDataType>False</UseIncomingDataType>
 <LineType>MediumSolid</LineType>
 <PointType>Plus</PointType>
@@ -108,7 +108,7 @@
 <DataItemID>29f7f654-0872-4525-a5b4-8312eeaa9920</DataItemID>
 <SelectedDataType>Tension</SelectedDataType>
 <DataSubSet>3</DataSubSet>
-<PrevDataSubset>16</PrevDataSubset>
+<PrevDataSubset>3</PrevDataSubset>
 <UseIncomingDataType>False</UseIncomingDataType>
 <LineType>MediumSolid</LineType>
 <PointType>Plus</PointType>
@@ -134,7 +134,7 @@
 <DataItemID>8354630e-94d4-40ad-a53a-744655afaa0a</DataItemID>
 <SelectedDataType>Tension</SelectedDataType>
 <DataSubSet>2</DataSubSet>
-<PrevDataSubset>11</PrevDataSubset>
+<PrevDataSubset>2</PrevDataSubset>
 <UseIncomingDataType>False</UseIncomingDataType>
 <LineType>MediumSolid</LineType>
 <PointType>Plus</PointType>
@@ -160,7 +160,7 @@
 <DataItemID>61daa261-279a-4540-bb7e-026174d96daa</DataItemID>
 <SelectedDataType>Tension</SelectedDataType>
 <DataSubSet>0</DataSubSet>
-<PrevDataSubset>7</PrevDataSubset>
+<PrevDataSubset>0</PrevDataSubset>
 <UseIncomingDataType>False</UseIncomingDataType>
 <LineType>MediumSolid</LineType>
 <PointType>Plus</PointType>
@@ -186,7 +186,7 @@
 <DataItemID>686afd7d-b4d9-4a8d-a0a8-cf47558f17a7</DataItemID>
 <SelectedDataType>Tension</SelectedDataType>
 <DataSubSet>4</DataSubSet>
-<PrevDataSubset>21</PrevDataSubset>
+<PrevDataSubset>4</PrevDataSubset>
 <UseIncomingDataType>False</UseIncomingDataType>
 <LineType>MediumSolid</LineType>
 <PointType>Plus</PointType>
@@ -198,7 +198,7 @@
 </AxisList>
 <SaveDataWhenClosed>False</SaveDataWhenClosed>
 <UpdateChartAtEnd>True</UpdateChartAtEnd>
-<PointsToKeep>8028</PointsToKeep>
+<PointsToKeep>20371</PointsToKeep>
 <YAxisOffset>0</YAxisOffset>
 <GraphConfig ByteCount="9103"/>
 </Form>

@@ -1,4 +1,5 @@
 function [ks,kp,stmax] = passivePropSolver(Lr,Fo)
+%         beta = 1/(Lmax/Lr-1);
         passPropsolver = @(x) passivePropSolver_func(x,Lr,Fo);
     
     rng default % for reproducibility
@@ -40,7 +41,7 @@ function [ks,kp,stmax] = passivePropSolver(Lr,Fo)
 %     
 %     sortedsolns = sortedsolns(sortedsolns(:,3)>min_factor,:);
     
-    if ~all(sortedsolns,'all')
+    if all(sortedsolns==0,'all')
         pts = 1000*rand(N,1);
         pts(:,2) = 100*rand(N,1);
         pts(:,3) = 15*rand(N,1);
@@ -61,8 +62,9 @@ function [ks,kp,stmax] = passivePropSolver(Lr,Fo)
         kp = kptemp;
         stmax = sttemp;
     else
-        ks = sortedsolns(1,1);
-        kp = sortedsolns(1,2);
-        stmax = sortedsolns(1,3);
+        [~,maxKs] = max(sortedsolns(:,1));
+        ks = sortedsolns(maxKs,1);
+        kp = sortedsolns(maxKs,2);
+        stmax = sortedsolns(maxKs,3);
     end   
 end

@@ -8368,7 +8368,7 @@
 <ID>5f826170-822d-4722-9df4-ea27e8d88476</ID>
 <Name>xAnklewalking</Name>
 <AlwaysActive>False</AlwaysActive>
-<Enabled>False</Enabled>
+<Enabled>True</Enabled>
 <ModuleName/>
 <Type>MotorPosition</Type>
 <StructureID>e40d2c4f-9c31-49f8-8a5c-5688fb768225</StructureID>
@@ -8443,7 +8443,7 @@
 <ID>824fa45f-843e-4710-bfd0-a8758c014904</ID>
 <Name>Kneewalking</Name>
 <AlwaysActive>False</AlwaysActive>
-<Enabled>False</Enabled>
+<Enabled>True</Enabled>
 <ModuleName/>
 <Type>MotorPosition</Type>
 <StructureID>e40d2c4f-9c31-49f8-8a5c-5688fb768225</StructureID>
@@ -8458,7 +8458,7 @@
 <ID>de48c25f-7620-4ba2-bf8a-21b02bb6203e</ID>
 <Name>Hipwalking</Name>
 <AlwaysActive>False</AlwaysActive>
-<Enabled>False</Enabled>
+<Enabled>True</Enabled>
 <ModuleName/>
 <Type>MotorPosition</Type>
 <StructureID>e40d2c4f-9c31-49f8-8a5c-5688fb768225</StructureID>
@@ -8865,8 +8865,8 @@
 <HudItem>
 <ModuleName/>
 <Type>HudText</Type>
-<Name>f8c546c4-e612-4d8c-b9f7-3d9fada9098a</Name>
-<ID>f8c546c4-e612-4d8c-b9f7-3d9fada9098a</ID>
+<Name>c86672a5-5d08-47b2-a3a6-855ecb286c7a</Name>
+<ID>c86672a5-5d08-47b2-a3a6-855ecb286c7a</ID>
 <Type>HudText</Type>
 <CharSize>30</CharSize>
 <Text>Time: %3.3f</Text>

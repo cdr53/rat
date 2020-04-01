@@ -6,44 +6,25 @@
 <AssemblyFile>LicensedAnimatGUI.dll</AssemblyFile>
 <ClassName>LicensedAnimatGUI.Forms.Charts.LineChart</ClassName>
 <AutoCollectInterval>True</AutoCollectInterval>
-<CollectDataInterval Value="0.54" Scale="milli" Actual="0.00054"/>
-<CollectTimeWindow Value="6.009" Scale="None" Actual="6.009"/>
+<CollectDataInterval Value="5" Scale="milli" Actual="0.005"/>
+<CollectTimeWindow Value="3" Scale="None" Actual="3"/>
 <UpdateDataInterval Value="200" Scale="milli" Actual="0.2"/>
 <SetStartEndTime>True</SetStartEndTime>
 <CollectStartTime Value="0" Scale="None" Actual="0"/>
-<CollectEndTime Value="5.009" Scale="None" Actual="5.009"/>
+<CollectEndTime Value="10" Scale="None" Actual="10"/>
 <AxisList>
 <Axis>
 <AssemblyFile>LicensedAnimatGUI.dll</AssemblyFile>
 <ClassName>LicensedAnimatGUI.DataObjects.Charting.Pro2DAxis</ClassName>
 <Name>Y Axis 1</Name>
 <WorkingAxis>0</WorkingAxis>
-<DataColumns>
-<DataColumn>
-<AssemblyFile>LicensedAnimatGUI.dll</AssemblyFile>
-<ClassName>LicensedAnimatGUI.DataObjects.Charting.Pro2DColumn</ClassName>
-<Name>LH_Femur</Name>
-<ID>bf93765a-4003-49f2-a057-6868429a25b7</ID>
-<DataItemAssemblyFile>AnimatGUI.dll</DataItemAssemblyFile>
-<DataItemClassName>AnimatGUI.DataObjects.Physical.Bodies.Mesh</DataItemClassName>
-<StructureID>e40d2c4f-9c31-49f8-8a5c-5688fb768225</StructureID>
-<DataItemID>a382cf3c-1731-4c23-b1fd-dd52c53df3c6</DataItemID>
-<SelectedDataType>BodyTorqueY</SelectedDataType>
-<DataSubSet>0</DataSubSet>
-<PrevDataSubset>0</PrevDataSubset>
-<UseIncomingDataType>False</UseIncomingDataType>
-<LineType>MediumSolid</LineType>
-<PointType>Plus</PointType>
-<PlotMethodType>Line</PlotMethodType>
-<LineColor>-65536</LineColor>
-</DataColumn>
-</DataColumns>
+<DataColumns/>
 </Axis>
 </AxisList>
 <SaveDataWhenClosed>False</SaveDataWhenClosed>
 <UpdateChartAtEnd>True</UpdateChartAtEnd>
-<PointsToKeep>11128</PointsToKeep>
+<PointsToKeep>15000</PointsToKeep>
 <YAxisOffset>0</YAxisOffset>
-<GraphConfig ByteCount="8935"/>
+<GraphConfig ByteCount="8971"/>
 </Form>
 </Form>

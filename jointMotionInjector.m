@@ -151,7 +151,7 @@ function [obj] = jointMotionInjector(jointAngles,to_plot)
     function fileContents = disableJointLimits(fileContents)
         jliminds = find(contains(fileContents,'<EnableLimits'));
         for ii2 = 1:length(jliminds)
-            fileContents{jliminds(ii2)} = '<EnableLimits>False</EnableLimits>';
+            fileContents{jliminds(ii2)} = '<EnableLimits>True</EnableLimits>';
         end
     end
 

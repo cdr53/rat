@@ -4852,12 +4852,12 @@
 <LowerLimitScale Value="-60" Scale="milli" Actual="-0.06"/>
 <UpperLimitScale Value="-40" Scale="milli" Actual="-0.04"/>
 <LowerOutputScale Value="0" Scale="None" Actual="0"/>
-<UpperOutputScale Value="0.49" Scale="None" Actual="0.49"/>
+<UpperOutputScale Value="0" Scale="None" Actual="0"/>
 <IndependentUnits>Membrane Voltage (V)</IndependentUnits>
 <DependentUnits>Contractile Tension (N)</DependentUnits>
 <A Value="-50" Scale="milli" Actual="-0.05"/>
-<B Value="0.49" Scale="None" Actual="0.49"/>
-<C Value="970.59" Scale="None" Actual="970.59"/>
+<B Value="0" Scale="None" Actual="0"/>
+<C Value="223.81" Scale="None" Actual="223.81"/>
 <D Value="0" Scale="milli" Actual="0"/>
 </StimulusTension>
 <LengthTension>
@@ -4881,8 +4881,8 @@
 <MinPeLength Value="5" Scale="None" Actual="5"/>
 </LengthTension>
 <MaximumTension Value="0.44" Scale="None" Actual="0.44"/>
-<Kse Value="11.68" Scale="None" Actual="11.68"/>
-<Kpe Value="53.99" Scale="None" Actual="53.99"/>
+<Kse Value="0" Scale="None" Actual="0"/>
+<Kpe Value="0" Scale="None" Actual="0"/>
 <B Value="1.17" Scale="None" Actual="1.17"/>
 <IbDischarge Value="100" Scale="None" Actual="100"/>
 </RigidBody>
@@ -12172,7 +12172,7 @@
 <EndTime Value="10" Scale="None" Actual="10"/>
 <StepInterval Value="0" Scale="milli" Actual="0"/>
 <AlwaysActive>False</AlwaysActive>
-<Enabled>True</Enabled>
+<Enabled>False</Enabled>
 <ValueType>Equation</ValueType>
 <Equation>0.0587*sin(0.7246*t + 2.326) + 0.06009*sin(5.647*t - 2.748) + 0.004938*sin(2.263*t - 1.667) + 0.4367*sin(0.3509*t + 0.7173) + 1.141*sin(0.1553*t - 1.845) + 0.2713*sin(3.768*t + 1.288) + 0.08073*sin(1.84*t + 0.2031) + 0.02449*sin(7.555*t + 0.923)</Equation>
 <StructureID>e40d2c4f-9c31-49f8-8a5c-5688fb768225</StructureID>
@@ -12257,7 +12257,7 @@
 <EndTime Value="10" Scale="None" Actual="10"/>
 <StepInterval Value="0" Scale="milli" Actual="0"/>
 <AlwaysActive>False</AlwaysActive>
-<Enabled>True</Enabled>
+<Enabled>False</Enabled>
 <ValueType>Equation</ValueType>
 <Equation>0.1995*sin(0.5822*t - 1.07) + 0.08642*sin(0.7588*t + 1.287) + 0.4931*sin(0.209*t - 2.524) + 0.1947*sin(3.768*t + 2.116) + 0.01519*sin(5.651*t - 0.3852) + 0.1605*sin(1.875*t + 0.2783) + 0.0206*sin(7.535*t + 2.37) + 0.003347*sin(2.283*t - 0.9653)</Equation>
 <StructureID>e40d2c4f-9c31-49f8-8a5c-5688fb768225</StructureID>
@@ -12274,7 +12274,7 @@
 <EndTime Value="10" Scale="None" Actual="10"/>
 <StepInterval Value="0" Scale="milli" Actual="0"/>
 <AlwaysActive>False</AlwaysActive>
-<Enabled>True</Enabled>
+<Enabled>False</Enabled>
 <ValueType>Equation</ValueType>
 <Equation>0.2466*sin(0.5468*t - 1.124) + 0.046*sin(1.003*t - 0.2206) + 0.07998*sin(3.77*t + 2.07) + 0.5721*sin(1.879*t - 1.298) + 0.6951*sin(0.2447*t + 3.506)</Equation>
 <StructureID>e40d2c4f-9c31-49f8-8a5c-5688fb768225</StructureID>
@@ -12319,8 +12319,8 @@
 </Stimuli>
 <HudItems>
 <HudItem>
-<Name>c86672a5-5d08-47b2-a3a6-855ecb286c7a</Name>
-<ID>c86672a5-5d08-47b2-a3a6-855ecb286c7a</ID>
+<Name>7305448f-eb12-45d0-8606-ecd168d64773</Name>
+<ID>7305448f-eb12-45d0-8606-ecd168d64773</ID>
 <Type>HudText</Type>
 <CharSize>30</CharSize>
 <Text>Time: %3.3f</Text>
@@ -12433,7 +12433,7 @@
 <DockingConfig>&lt;?xml version="1.0" encoding="us-ascii"?&gt;
 &lt;!-- DotNetMagic, The User Interface library for .NET (www.crownwood.net) --&gt;
 &lt;!-- Modifying this generated file will probably render it invalid --&gt;
-&lt;DockingConfig FormatVersion="10" InsideFill="False" InnerMinimum="20, 20" SavedAt="04/01/2020 15:35:26"&gt;
+&lt;DockingConfig FormatVersion="10" InsideFill="False" InnerMinimum="20, 20" SavedAt="03/18/2020 12:14:56"&gt;
   &lt;Content Name="Playback Control" Visible="False" Docked="True" AutoHidden="False" CaptionBar="True" CloseButton="False" DisplaySize="150, 150" DisplayLocation="150, 150" AutoHideSize="150, 150" FloatingSize="150, 150" FullTitle="Playback Control" Office2003BackColor="Base" UniqueName="" Office2007BackColor="Base" MediaPlayerBackColor="Base"&gt;
     &lt;DefaultRestore Type="Crownwood.DotNetMagic.Docking.RestoreContentState"&gt;
       &lt;Content Name="Playback Control" UniqueName="" /&gt;
@@ -12929,7 +12929,7 @@
   &lt;CustomGlobalData /&gt;
   &lt;Sequence Count="1" Unique="0" Space="100" Direction="Horizontal"&gt;
     &lt;Leaf Count="4" Unique="7" Space="100"&gt;
-      &lt;Page Title="Sim Window" ImageList="True" ImageIndex="0" Selected="True" Control="null" UniqueName=""&gt;
+      &lt;Page Title="Sim Window" ImageList="True" ImageIndex="0" Selected="False" Control="null" UniqueName=""&gt;
         &lt;CustomPageData&gt;&lt;![CDATA[&lt;TabPage&gt;
 &lt;Form&gt;
 &lt;ID&gt;b1c3eb6f-fc15-4560-8750-275c275ef964&lt;/ID&gt;
@@ -12969,7 +12969,7 @@
 &lt;/TabPage&gt;
 ]]&gt;&lt;/CustomPageData&gt;
       &lt;/Page&gt;
-      &lt;Page Title="JointMotion" ImageList="True" ImageIndex="2" Selected="False" Control="null" UniqueName=""&gt;
+      &lt;Page Title="JointMotion" ImageList="True" ImageIndex="2" Selected="True" Control="null" UniqueName=""&gt;
         &lt;CustomPageData&gt;&lt;![CDATA[&lt;TabPage&gt;
 &lt;Form&gt;
 &lt;ID&gt;1b1bb75a-f9ae-4839-8124-5172f1dbddcf&lt;/ID&gt;

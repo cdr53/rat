@@ -39,13 +39,16 @@ for ii = 1:numMuscles
     nsys.stimulus_objects(ii).endtime = simTime;
     if isfile([file_dir,'\Data\indiv_equations.mat'])
         load([file_dir,'\Data\indiv_equations.mat'])
-        nsys.stimulus_objects(ii).eq = equations{ii};
+        nsys.stimulus_objects(ii).simeq = equations{ii,1};
+        nsys.stimulus_objects(ii).projeq = equations{ii,2};
     else
         %inputWave = mean(current2inject(ii,length(current2inject)*.1:length(current2inject)*.9));
         inputWave = current2inject(ii,:);
-        nsys.stimulus_objects(ii).eq = generate_synergy_eq(constvals(ii),simTime,obj.dt_motion,0);
+        nsys.stimulus_objects(ii).simeq = generate_synergy_eq(constvals(ii),simTime,obj.dt_motion,0);
+        nsys.stimulus_objects(ii).projeq = generate_synergy_eq(constvals(ii),simTime,obj.dt_motion,1);
         %nsys.stimulus_objects(ii).eq = generate_synergy_eq(inputWave,simTime,obj.dt_motion,0);
-        equations{ii} = nsys.stimulus_objects(ii).eq;
+        equations{ii,1} = nsys.stimulus_objects(ii).simeq;
+        equations{ii,2} = nsys.stimulus_objects(ii).projeq;
         if  ii == 38
             save([file_dir,'\Data\indiv_equations.mat'],'equations')
         end
@@ -85,7 +88,7 @@ function equation = generate_synergy_eq(bigH,simTime,dt,projBool)
         coeffs = cell(3,2);
         coeffs(1:3,1) = [{'a1'};{'b1'};{'c1'}];
         coeffs(1:3,2) = [{bigH}, {0}, {1.5708}];
-        equation = sum_of_sines_maker(coeffs,1);
+        equation = sum_of_sines_maker(coeffs,projBool);
     else
 
         bigH = interpolate_for_time(time,bigH);

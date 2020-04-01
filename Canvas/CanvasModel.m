@@ -758,7 +758,8 @@ classdef CanvasModel < handle
                 stimulus.starttime = 2;
                 stimulus.endtime = 5;
                 stimulus.magnitude = 10;
-                stimulus.eq = [];
+                stimulus.simeq = [];
+                stimulus.projeq = [];
             else
                 disp('Stims only for neurons. Please select a neuron.')
             end
@@ -841,7 +842,12 @@ classdef CanvasModel < handle
                         case 'nano'
                             scaler = 1e-9;
                         case 'micro'
-                            scaler = '1e-6';
+                            scaler = 1e-6;
+                    end
+                    if strcmp(pFields{ii},'physicstimestep')
+                        % Timestep will be given in milliseconds always, overwrite the original
+                        scaleStr = 'milli';
+                        scaler = 1e-3;
                     end
                     pVal = obj.proj_params.(pFields{ii});
                     modified_text{pInd} = [sTemp(1:qTemp(1,1)),num2str(pVal),sTemp(qTemp(1,2):qTemp(2,1)),scaleStr,...
@@ -1021,6 +1027,7 @@ classdef CanvasModel < handle
                       '<Name>PassiveTension'};
             parCell = {'<EndTime',obj.proj_params.simendtime-.01;...
                        '<CollectInterval',aform_dt/1000};
+            temp_extDatHolder = {};
             for ii = 1:length(extDTs)
                 for jj = 1:size(parCell,1)
                     dtInd = find(contains(modified_text,extDTs{ii}));
@@ -1030,14 +1037,22 @@ classdef CanvasModel < handle
                     gt = strfind(sTemp,'>');
                     pStr = num2str(parCell{jj,2});
                     modified_text{pInd} = [sTemp(1:gt(1)),pStr,sTemp(gt(1)+1:end)];
-                    chartEnd(ii) = find(contains(modified_text(dtInd:end),'</DataChart>'),1,'first')+dtInd-1;
                 end
+                dChartEnd = find(contains(modified_text(dtInd-4:end),'</DataChart>'),1,'first')+dtInd-5;
+                temp_extDatHolder = [temp_extDatHolder;modified_text((dtInd-4):dChartEnd)];
             end
+            
+            if ~isempty(extDTs)
+                modified_text = [modified_text(1:find(contains(modified_text,'<DataCharts>')));...
+                                temp_extDatHolder;...
+                                modified_text(find(contains(modified_text,'</DataCharts>')):end)];
+            end
+            
             
             if numDatatools > 0
                 datatool_inject = find(contains(modified_text,'<DataCharts/>'),1);
                 if isempty(datatool_inject)
-                    datatool_inject0 = max(chartEnd);
+                    datatool_inject0 = find(contains(modified_text,'</DataChart>'),1,'last');
                     datatool_inject1 = find(contains(modified_text,'</DataCharts>'));
                     datatool_text = {};
                 else
@@ -1071,26 +1086,33 @@ classdef CanvasModel < handle
             
             % Disable any existing stimuli
             extStims = find(contains(modified_text,'<Stimulus>'));
+            temp_extStimHolder = {};
             if sum(contains(modified_text,'MotorPosition'))>0
                 motorStimEnd = zeros(sum(contains(modified_text,'MotorPosition')),1);
             else
                 motorStimEnd = [];
             end
             for ii = 1:length(extStims)
-                enInd = find(contains(modified_text(extStims(ii):end),'<Enabled>'),1,'first')+extStims(ii)-1;
-                modified_text{enInd} = '<Enabled>False</Enabled>';
-                if contains(modified_text{extStims(ii)+6},'MotorPosition')
-                    motorStimEnd(ii) = find(contains(modified_text(extStims(ii):end),'</Stimulus>'),1,'first')+extStims(ii)-1;
-                else
-                    motorStimEnd(ii) = 0;
+                stimEnd = find(contains(modified_text(extStims(ii):end),'</Stimulus>'),1,'first')+extStims(ii)-1;
+                if ~isempty(find(contains(modified_text(extStims(ii):stimEnd),'MotorPosition')))
+                    enInd = find(contains(modified_text(extStims(ii):end),'<Enabled>'),1,'first')+extStims(ii)-1;
+                    modified_text{enInd} = '<Enabled>False</Enabled>';
+                    motorStimEnd(ii) = stimEnd;
+                    temp_extStimHolder = [temp_extStimHolder;modified_text(extStims(ii):stimEnd)];
                 end
+            end
+            
+            if ~isempty(extStims)
+                modified_text = [modified_text(1:find(contains(modified_text,'<ExternalStimuli>')));...
+                                temp_extStimHolder;...
+                                modified_text(find(contains(modified_text,'</ExternalStimuli>')):end)];
             end
             
             if numStims > 0
 %               stimuli_inject = find(contains(modified_text,'</ExternalStimuli>'));  
                 if length(extStims) >= 1
                     if ~isempty(motorStimEnd)
-                        stimuli_inject_0 = max(motorStimEnd);
+                        stimuli_inject_0 = max(find(contains(modified_text,'</Stimulus>'),1,'last'));
                     else
                         stimuli_inject_0 = find(contains(modified_text,'<ExternalStimuli>')); 
                     end

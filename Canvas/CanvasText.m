@@ -458,7 +458,7 @@ classdef CanvasText
                         ['<RelativeAccom>',num2str(tnode.relativeaccomodation),'</RelativeAccom>'];...
                         ['<AccomTimeConst>',num2str(tnode.accomodationtimeconstant),'</AccomTimeConst>'];...
                         ['<AHPAmp>',num2str(tnode.AHPconductance),'</AHPAmp>'];...
-                        ['<AHPTimeConst>',num2str(tnode.accomodationtimeconstant),'</AHPTimeConst>'];...
+                        ['<AHPTimeConst>',num2str(tnode.AHPtimeconstant),'</AHPTimeConst>'];...
                         '<GMaxCa>0</GMaxCa>';...
                         '<BurstInitAtBottom>True</BurstInitAtBottom>';...
                         '<CaActivation>';...
@@ -697,9 +697,9 @@ classdef CanvasText
         function out_text = build_stimulus(~,stimulus,fileType)
             switch fileType
                 case 'project'
-                    if ~isempty(stimulus.eq)
+                    if ~isempty(stimulus.projeq)
                         valType = 'Equation';
-                        eq = stimulus.eq;
+                        eq = stimulus.projeq;
                     else
                         valType = 'Constant';
                         eq = num2str(0);
@@ -727,8 +727,8 @@ classdef CanvasText
                         '<BurstOffDuration Value="0" Scale="None" Actual="0"/>';...
                         '</Stimulus>'};
                 case 'simulation'
-                    if ~isempty(stimulus.eq)
-                        eq = char(stimulus.eq);
+                    if ~isempty(stimulus.simeq)
+                        eq = char(stimulus.simeq);
                     else
                         eq = num2str(0);
                     end

@@ -18,34 +18,50 @@ function parameter_injector(fPath,params)
     muscle_indices = find(muscle_addresses)-2;
     nummusc = length(muscle_indices);
     
+    load([pwd,'\Data\neutral_lengths.mat'],'lr');
+    load([pwd,'\Data\johnsonMaxForces.mat'],'johnsonMaxForces');
+    %load([pwd,'\Data\muscle_ranges.mat'],'muscle_ranges');
+    
     % If not provided with a param's cell spreadsheet, build one.
     rng(50)
     if nargin == 1
         params = cell(nummusc,4);
         for ii = 1:nummusc
             mInd = muscle_indices(ii);
-            rInd = find(contains(project_file(mInd:end),'<RestingLength'),1,'first')-1;
-            fInd = find(contains(project_file(mInd:end),'<MaximumTension'),1,'first')-1;
-            Lr = number_injector(project_file{mInd+rInd},[]);
-            Fo = number_injector(project_file{mInd+fInd},[]);
+            lrInd = find(contains(lr(:,1),lower(project_file{mInd}(7:end-7))),1,'first');
+            %lrInd = find(contains(strrep(muscle_ranges(:,1),' ',''),lower(project_file{mInd}(10:end-7))),1,'first');
+            foInd = find(contains(strrep(johnsonMaxForces(:,1),' ',''),lower(project_file{mInd}(10:end-7))),1,'first');
+            Lr = lr{lrInd,2};
+            Fo = johnsonMaxForces{foInd,2};
+             %rInd = find(contains(project_file(mInd:end),'<RestingLength'),1,'first')-1;
+            %fInd = find(contains(project_file(mInd:end),'<MaximumTension'),1,'first')-1;
+             %Lr = number_injector(project_file{mInd+rInd},[]);
+            %Fo = number_injector(project_file{mInd+fInd},[]);
             params{ii,1} = cell2mat(extractBetween(lower(project_file{mInd}),'<name>','</name>'));
             [ks,kp,stmax,steep,yoff] = parameterSolver(Lr,Fo);
             params{ii,2} = ks;
             params{ii,3} = kp;
-            params{ii,4} = stmax; %ST_max values, should be slight larger than Fmax to ensure Am values are possible.
+            params{ii,4} = stmax; %ST_max values, should be slightly larger than Fmax to ensure Am values are possible.
             params{ii,5} = steep;
             params{ii,6} = yoff;
             [params{:,7}] = deal(-60);
             [params{:,8}] = deal(-40);
             [params{:,9}] = deal(0);
             params{ii,10} = stmax;
+            params{ii,11} = 100*(.5*Lr); % 'LT<LowerLimit'
+            params{ii,12} = 100*Lr; % '<RestingLength'
+            params{ii,13} = 100*(1.5*Lr); % 'LT<UpperLimit'
+            params{ii,14} = 100*(.5*Lr); % '<Lwidth'
+            params{ii,15} = Fo; % '<MaximumTension'
+            [params{:,16}] = deal(0); % 'LT<LowerOutput'
+            [params{:,17}] = deal(0); % 'Lt<UpperOutput'
         end
     elseif nargin == 0
         error('Please include a path to an Animatlab project.\n')
     end
     
-    lr = load([pwd,'\Data\neutral_lengths.mat'],'lr');
-    params = import_johnson_data(params,lr);
+%     lr = load([pwd,'\Data\neutral_lengths.mat'],'lr');
+%     params = import_johnson_data(params,lr);
         
     %These are the parameters represented in the .aproj file. We will iterate through them to update values. The order of these are important and correspond to
     %the column order in the params variable
@@ -62,7 +78,9 @@ function parameter_injector(fPath,params)
                        '<RestingLength';...
                        'LT<UpperLimit';...
                        '<Lwidth';...
-                       '<MaximumTension'};
+                       '<MaximumTension';...
+                       'LT<LowerOutput';...
+                       'LT<UpperOutput'};
                     
     for i=1:nummusc
         muscind = muscle_indices(i);

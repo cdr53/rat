@@ -3,9 +3,9 @@ jointAngles2Synergies
 indivProjectBuilder
 
  musclesim = [pwd,'\Animatlab\SynergyWalking\muscleStim.asim'];
- motorsim = [pwd,'\Animatlab\SynergyWalking\motorStim.asim'];
+ %motorsim = [pwd,'\Animatlab\SynergyWalking\motorStim.asim'];
 
-%musclesim = 'G:\My Drive\Rat\SynergyControl\Animatlab\SynergyWalking\SynergyWalking_reduced_Standalone.asim';
+motorsim = 'G:\My Drive\Rat\SynergyControl\Animatlab\SynergyWalking\SynergyWalking_reduced_Standalone.asim';
 %motorsim = 'G:\My Drive\Rat\SynergyControl\Animatlab\SynergyWalking\SynergyWalking_reduced_motorsim.asim';
 
 muscdata = processSimData(musclesim);
@@ -21,8 +21,8 @@ numMuscles = length(obj.musc_obj);
     end
 
 backer = 10;
-plotCell = {'PassiveTension',muscdata(1).data(1:end-backer,:),pts';...
-            'JointMotion',muscdata(2).data(1:end-backer,:),motordata(2).data;...
+plotCell = {'PassiveTension',muscdata(2).data(1:end-backer,:),pts';...
+            'JointMotion',muscdata(1).data(1:end-backer,:),motordata(2).data;...
             'MN Stimulation',muscdata(3).data(1:end-backer,:),V_musc';...
             'Muscle Length',muscdata(4).data(1:end-backer,:),mls';...
             'MuscleTension',muscdata(5).data(1:end-backer,:),forces;...
@@ -30,49 +30,53 @@ plotCell = {'PassiveTension',muscdata(1).data(1:end-backer,:),pts';...
             'Muscle Al',muscdata(7).data(1:end-backer,:),100.*Al_musc_all'};
 
 numSubs = size(plotCell,1);
-for jj = 1:numSubs
-    % Reorder muscles
-    if contains(plotCell{jj,1},'Musc')
-        muscSimNames = muscdata(jj).data_cols;
-        oldSimData = plotCell{jj,2};
-        newSimData = zeros(size(oldSimData));
-        for ii = 1:numMuscles
-            muscObjName = obj.musc_obj{ii}.muscle_name;
-            simInd = find(contains(muscSimNames,muscObjName(4:end)));
-            if isempty(simInd)
-                keyboard
+%screensize = [-1919,121,1920,1004];
+screensize = [1,301,1440,824];
+if 0
+    for jj = 1:numSubs
+        % Reorder muscles
+        if contains(plotCell{jj,1},'Musc')
+            muscSimNames = muscdata(jj).data_cols;
+            oldSimData = plotCell{jj,2};
+            newSimData = zeros(size(oldSimData));
+            for ii = 1:numMuscles
+                muscObjName = obj.musc_obj{ii}.muscle_name;
+                simInd = find(contains(muscSimNames,muscObjName(4:end)));
+                if isempty(simInd)
+                    keyboard
+                end
+                newSimData(:,ii) = oldSimData(:,simInd);
             end
-            newSimData(:,ii) = oldSimData(:,simInd);
+            plotCell{jj,2} = newSimData;
         end
-        plotCell{jj,2} = newSimData;
-    end
-    if strcmp(plotCell{jj,1},'Muscle Length')
-        meanSim = mean(plotCell{jj,2})';
-        meanCalc = mean(mls,2);
+        if strcmp(plotCell{jj,1},'Muscle Length')
+            meanSim = mean(plotCell{jj,2})';
+            meanCalc = mean(mls,2);
 
-        figure('Position',[-1919,121,1920,1004])
-        a = subplot(3,1,1);
-        bar(meanSim.*1000);
-        b = subplot(3,1,2);
-        bar(meanCalc.*1000);
-        c = subplot(3,1,3);
-        bar((meanSim-meanCalc).*1000);
-    else
-        figure('Position',[-1919,121,1920,1004])
-    %     vTemp = plotCell{jj,2};
-    %     vTemp = interp1(1:length(vTemp),vTemp,linspace(1,length(vTemp),length(plotCell{jj,3})));
-        yMax = max([max(plotCell{jj,2},[],'all') max(plotCell{jj,3},[],'all')]);
-        yMin = min([min(plotCell{jj,2},[],'all') min(plotCell{jj,3},[],'all')]);
-        subplot(2,1,1)
-        plot(plotCell{jj,2},'LineWidth',3)
-        ylim([yMin yMax])
-        ylabel('Sim Muscle Driven','FontSize',18)
-        xlim([0 length(plotCell{jj,2})])
-        title(plotCell{jj,1})
-        subplot(2,1,2)
-        plot(plotCell{jj,3},'LineWidth',3)
-        ylabel('Calc Based on Motor','FontSize',18)
-        ylim([yMin yMax])
+            figure('Position',screensize)
+            a = subplot(3,1,1);
+            bar(meanSim.*1000);
+            b = subplot(3,1,2);
+            bar(meanCalc.*1000);
+            c = subplot(3,1,3);
+            bar((meanSim-meanCalc).*1000);
+        else
+            figure('Position',screensize)
+        %     vTemp = plotCell{jj,2};
+        %     vTemp = interp1(1:length(vTemp),vTemp,linspace(1,length(vTemp),length(plotCell{jj,3})));
+            yMax = max([max(plotCell{jj,2},[],'all') max(plotCell{jj,3},[],'all')]);
+            yMin = min([min(plotCell{jj,2},[],'all') min(plotCell{jj,3},[],'all')]);
+            subplot(2,1,1)
+            plot(plotCell{jj,2},'LineWidth',3)
+            ylim([yMin yMax])
+            ylabel('Sim Muscle Driven','FontSize',18)
+            xlim([0 length(plotCell{jj,2})])
+            title(plotCell{jj,1})
+            subplot(2,1,2)
+            plot(plotCell{jj,3},'LineWidth',3)
+            ylabel('Calc Based on Motor','FontSize',18)
+            ylim([yMin yMax])
+        end
     end
 end
         

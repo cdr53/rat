@@ -15,7 +15,7 @@
 <APIFile/>
 <SimEndTime Value="10.01" Scale="None" Actual="10.01"/>
 <PlaybackControlMode>FastestPossible</PlaybackControlMode>
-<PresetPlaybackTimeStep Value="3" Scale="milli" Actual="0.003"/>
+<PresetPlaybackTimeStep Value="10" Scale="milli" Actual="0.01"/>
 <Environment>
 <PhysicsTimeStep Value="0.54" Scale="milli" Actual="0.00054"/>
 <PhysicsSubsteps>1</PhysicsSubsteps>
@@ -409,12 +409,12 @@
 <LowerLimitScale Value="-60" Scale="milli" Actual="-0.06"/>
 <UpperLimitScale Value="-40" Scale="milli" Actual="-0.04"/>
 <LowerOutputScale Value="0" Scale="None" Actual="0"/>
-<UpperOutputScale Value="4.28" Scale="None" Actual="4.28"/>
+<UpperOutputScale Value="4.16" Scale="None" Actual="4.16"/>
 <IndependentUnits>Membrane Voltage (V)</IndependentUnits>
 <DependentUnits>Contractile Tension (N)</DependentUnits>
 <A Value="-50" Scale="milli" Actual="-0.05"/>
-<B Value="4.28" Scale="None" Actual="4.28"/>
-<C Value="1285.52" Scale="None" Actual="1285.52"/>
+<B Value="4.16" Scale="None" Actual="4.16"/>
+<C Value="985.39" Scale="None" Actual="985.39"/>
 <D Value="0" Scale="milli" Actual="0"/>
 </StimulusTension>
 <LengthTension>
@@ -429,7 +429,7 @@
 <LowerLimitScale Value="0.96" Scale="centi" Actual="0.0096"/>
 <UpperLimitScale Value="2.87" Scale="centi" Actual="0.0287"/>
 <LowerOutputScale Value="0" Scale="None" Actual="0"/>
-<UpperOutputScale Value="1" Scale="None" Actual="1"/>
+<UpperOutputScale Value="0" Scale="None" Actual="0"/>
 <IndependentUnits>Meters</IndependentUnits>
 <DependentUnits>% Isometric Tension Used</DependentUnits>
 <RestingLength Value="1.92" Scale="centi" Actual="0.0192"/>
@@ -438,8 +438,8 @@
 <MinPeLength Value="5" Scale="None" Actual="5"/>
 </LengthTension>
 <MaximumTension Value="3.89" Scale="None" Actual="3.89"/>
-<Kse Value="624.06" Scale="None" Actual="624.06"/>
-<Kpe Value="66.65" Scale="None" Actual="66.65"/>
+<Kse Value="964.89" Scale="None" Actual="964.89"/>
+<Kpe Value="74.81" Scale="None" Actual="74.81"/>
 <B Value="7.84" Scale="None" Actual="7.84"/>
 <IbDischarge Value="100" Scale="None" Actual="100"/>
 </RigidBody>
@@ -477,12 +477,12 @@
 <LowerLimitScale Value="-60" Scale="milli" Actual="-0.06"/>
 <UpperLimitScale Value="-40" Scale="milli" Actual="-0.04"/>
 <LowerOutputScale Value="0" Scale="None" Actual="0"/>
-<UpperOutputScale Value="13.78" Scale="None" Actual="13.78"/>
+<UpperOutputScale Value="13.4" Scale="None" Actual="13.4"/>
 <IndependentUnits>Membrane Voltage (V)</IndependentUnits>
 <DependentUnits>Contractile Tension (N)</DependentUnits>
 <A Value="-50" Scale="milli" Actual="-0.05"/>
-<B Value="13.78" Scale="None" Actual="13.78"/>
-<C Value="2634" Scale="None" Actual="2634"/>
+<B Value="13.4" Scale="None" Actual="13.4"/>
+<C Value="1468.44" Scale="None" Actual="1468.44"/>
 <D Value="0" Scale="milli" Actual="0"/>
 </StimulusTension>
 <LengthTension>
@@ -506,8 +506,8 @@
 <MinPeLength Value="0.01" Scale="None" Actual="0.01"/>
 </LengthTension>
 <MaximumTension Value="12.49" Scale="None" Actual="12.49"/>
-<Kse Value="624.06" Scale="None" Actual="624.06"/>
-<Kpe Value="66.64" Scale="None" Actual="66.64"/>
+<Kse Value="964.89" Scale="None" Actual="964.89"/>
+<Kpe Value="74.81" Scale="None" Actual="74.81"/>
 <B Value="10" Scale="None" Actual="10"/>
 <IbDischarge Value="100" Scale="None" Actual="100"/>
 </RigidBody>
@@ -546,12 +546,12 @@
 <LowerLimitScale Value="-60" Scale="milli" Actual="-0.06"/>
 <UpperLimitScale Value="-40" Scale="milli" Actual="-0.04"/>
 <LowerOutputScale Value="0" Scale="None" Actual="0"/>
-<UpperOutputScale Value="18.2" Scale="None" Actual="18.2"/>
+<UpperOutputScale Value="17.71" Scale="None" Actual="17.71"/>
 <IndependentUnits>Membrane Voltage (V)</IndependentUnits>
 <DependentUnits>Contractile Tension (N)</DependentUnits>
 <A Value="-50" Scale="milli" Actual="-0.05"/>
-<B Value="18.2" Scale="None" Actual="18.2"/>
-<C Value="1791.16" Scale="None" Actual="1791.16"/>
+<B Value="17.71" Scale="None" Actual="17.71"/>
+<C Value="1788.97" Scale="None" Actual="1788.97"/>
 <D Value="0" Scale="milli" Actual="0"/>
 </StimulusTension>
 <LengthTension>
@@ -566,7 +566,7 @@
 <LowerLimitScale Value="2.23" Scale="centi" Actual="0.0223"/>
 <UpperLimitScale Value="6.69" Scale="centi" Actual="0.0669"/>
 <LowerOutputScale Value="0" Scale="None" Actual="0"/>
-<UpperOutputScale Value="1" Scale="None" Actual="1"/>
+<UpperOutputScale Value="0" Scale="None" Actual="0"/>
 <IndependentUnits>Meters</IndependentUnits>
 <DependentUnits>% Isometric Tension Used</DependentUnits>
 <RestingLength Value="4.46" Scale="centi" Actual="0.0446"/>
@@ -575,8 +575,8 @@
 <MinPeLength Value="5" Scale="None" Actual="5"/>
 </LengthTension>
 <MaximumTension Value="16.47" Scale="None" Actual="16.47"/>
-<Kse Value="624.06" Scale="None" Actual="624.06"/>
-<Kpe Value="66.63" Scale="None" Actual="66.63"/>
+<Kse Value="964.89" Scale="None" Actual="964.89"/>
+<Kpe Value="74.81" Scale="None" Actual="74.81"/>
 <B Value="27.46" Scale="None" Actual="27.46"/>
 <IbDischarge Value="100" Scale="None" Actual="100"/>
 </RigidBody>
@@ -747,7 +747,7 @@
 <SynchWithRobot>False</SynchWithRobot>
 <SynchUpdateInterval Value="0" Scale="milli" Actual="0"/>
 <Size Value="0.001" Scale="None" Actual="0.001"/>
-<EnableLimits>False</EnableLimits>
+<EnableLimits>True</EnableLimits>
 <Relaxation1>
 <AssemblyFile>AnimatGUI.dll</AssemblyFile>
 <ClassName>AnimatGUI.DataObjects.Physical.ConstraintRelaxationVortex</ClassName>
@@ -948,12 +948,12 @@
 <LowerLimitScale Value="-60" Scale="milli" Actual="-0.06"/>
 <UpperLimitScale Value="-40" Scale="milli" Actual="-0.04"/>
 <LowerOutputScale Value="0" Scale="None" Actual="0"/>
-<UpperOutputScale Value="12.83" Scale="None" Actual="12.83"/>
+<UpperOutputScale Value="12.48" Scale="None" Actual="12.48"/>
 <IndependentUnits>Membrane Voltage (V)</IndependentUnits>
 <DependentUnits>Contractile Tension (N)</DependentUnits>
 <A Value="-50" Scale="milli" Actual="-0.05"/>
-<B Value="12.83" Scale="None" Actual="12.83"/>
-<C Value="2647.38" Scale="None" Actual="2647.38"/>
+<B Value="12.48" Scale="None" Actual="12.48"/>
+<C Value="2674.88" Scale="None" Actual="2674.88"/>
 <D Value="0" Scale="milli" Actual="0"/>
 </StimulusTension>
 <LengthTension>
@@ -968,7 +968,7 @@
 <LowerLimitScale Value="2.53" Scale="centi" Actual="0.0253"/>
 <UpperLimitScale Value="7.6" Scale="centi" Actual="0.076"/>
 <LowerOutputScale Value="0" Scale="None" Actual="0"/>
-<UpperOutputScale Value="1" Scale="None" Actual="1"/>
+<UpperOutputScale Value="0" Scale="None" Actual="0"/>
 <IndependentUnits>Meters</IndependentUnits>
 <DependentUnits>% Isometric Tension Used</DependentUnits>
 <RestingLength Value="5.06" Scale="centi" Actual="0.0506"/>
@@ -977,8 +977,8 @@
 <MinPeLength Value="5" Scale="None" Actual="5"/>
 </LengthTension>
 <MaximumTension Value="11.64" Scale="None" Actual="11.64"/>
-<Kse Value="624.06" Scale="None" Actual="624.06"/>
-<Kpe Value="66.64" Scale="None" Actual="66.64"/>
+<Kse Value="964.89" Scale="None" Actual="964.89"/>
+<Kpe Value="74.81" Scale="None" Actual="74.81"/>
 <B Value="20.15" Scale="None" Actual="20.15"/>
 <IbDischarge Value="100" Scale="None" Actual="100"/>
 </RigidBody>
@@ -1080,7 +1080,7 @@
 <SynchWithRobot>False</SynchWithRobot>
 <SynchUpdateInterval Value="0" Scale="milli" Actual="0"/>
 <Size Value="0.001" Scale="None" Actual="0.001"/>
-<EnableLimits>False</EnableLimits>
+<EnableLimits>True</EnableLimits>
 <Relaxation1>
 <AssemblyFile>AnimatGUI.dll</AssemblyFile>
 <ClassName>AnimatGUI.DataObjects.Physical.ConstraintRelaxationVortex</ClassName>
@@ -1423,12 +1423,12 @@
 <LowerLimitScale Value="-60" Scale="milli" Actual="-0.06"/>
 <UpperLimitScale Value="-40" Scale="milli" Actual="-0.04"/>
 <LowerOutputScale Value="0" Scale="None" Actual="0"/>
-<UpperOutputScale Value="9.52" Scale="None" Actual="9.52"/>
+<UpperOutputScale Value="9.19" Scale="None" Actual="9.19"/>
 <IndependentUnits>Membrane Voltage (V)</IndependentUnits>
 <DependentUnits>Contractile Tension (N)</DependentUnits>
 <A Value="-50" Scale="milli" Actual="-0.05"/>
-<B Value="9.52" Scale="None" Actual="9.52"/>
-<C Value="1056.39" Scale="None" Actual="1056.39"/>
+<B Value="9.19" Scale="None" Actual="9.19"/>
+<C Value="1053.38" Scale="None" Actual="1053.38"/>
 <D Value="0" Scale="milli" Actual="0"/>
 </StimulusTension>
 <LengthTension>
@@ -1443,7 +1443,7 @@
 <LowerLimitScale Value="2.34" Scale="centi" Actual="0.0234"/>
 <UpperLimitScale Value="7.01" Scale="centi" Actual="0.0701"/>
 <LowerOutputScale Value="0" Scale="None" Actual="0"/>
-<UpperOutputScale Value="1" Scale="None" Actual="1"/>
+<UpperOutputScale Value="0" Scale="None" Actual="0"/>
 <IndependentUnits>Meters</IndependentUnits>
 <DependentUnits>% Isometric Tension Used</DependentUnits>
 <RestingLength Value="4.68" Scale="centi" Actual="0.0468"/>
@@ -1452,8 +1452,8 @@
 <MinPeLength Value="5" Scale="None" Actual="5"/>
 </LengthTension>
 <MaximumTension Value="8.6" Scale="None" Actual="8.6"/>
-<Kse Value="721.23" Scale="None" Actual="721.23"/>
-<Kpe Value="85.55" Scale="None" Actual="85.55"/>
+<Kse Value="964.89" Scale="None" Actual="964.89"/>
+<Kpe Value="74.81" Scale="None" Actual="74.81"/>
 <B Value="18.1" Scale="None" Actual="18.1"/>
 <IbDischarge Value="100" Scale="None" Actual="100"/>
 </RigidBody>
@@ -1555,7 +1555,7 @@
 <SynchWithRobot>False</SynchWithRobot>
 <SynchUpdateInterval Value="0" Scale="milli" Actual="0"/>
 <Size Value="0.001" Scale="None" Actual="0.001"/>
-<EnableLimits>False</EnableLimits>
+<EnableLimits>True</EnableLimits>
 <Relaxation1>
 <AssemblyFile>AnimatGUI.dll</AssemblyFile>
 <ClassName>AnimatGUI.DataObjects.Physical.ConstraintRelaxationVortex</ClassName>
@@ -2462,12 +2462,12 @@
 <LowerLimitScale Value="-60" Scale="milli" Actual="-0.06"/>
 <UpperLimitScale Value="-40" Scale="milli" Actual="-0.04"/>
 <LowerOutputScale Value="0" Scale="None" Actual="0"/>
-<UpperOutputScale Value="12.18" Scale="None" Actual="12.18"/>
+<UpperOutputScale Value="11.75" Scale="None" Actual="11.75"/>
 <IndependentUnits>Membrane Voltage (V)</IndependentUnits>
 <DependentUnits>Contractile Tension (N)</DependentUnits>
 <A Value="-50" Scale="milli" Actual="-0.05"/>
-<B Value="12.18" Scale="None" Actual="12.18"/>
-<C Value="1375.93" Scale="None" Actual="1375.93"/>
+<B Value="11.75" Scale="None" Actual="11.75"/>
+<C Value="2640.31" Scale="None" Actual="2640.31"/>
 <D Value="0" Scale="milli" Actual="0"/>
 </StimulusTension>
 <LengthTension>
@@ -2482,7 +2482,7 @@
 <LowerLimitScale Value="3.18" Scale="centi" Actual="0.0318"/>
 <UpperLimitScale Value="9.53" Scale="centi" Actual="0.0953"/>
 <LowerOutputScale Value="0" Scale="None" Actual="0"/>
-<UpperOutputScale Value="1" Scale="None" Actual="1"/>
+<UpperOutputScale Value="0" Scale="None" Actual="0"/>
 <IndependentUnits>Meters</IndependentUnits>
 <DependentUnits>% Isometric Tension Used</DependentUnits>
 <RestingLength Value="6.35" Scale="centi" Actual="0.0635"/>
@@ -2491,8 +2491,8 @@
 <MinPeLength Value="5" Scale="None" Actual="5"/>
 </LengthTension>
 <MaximumTension Value="11.02" Scale="None" Actual="11.02"/>
-<Kse Value="721.23" Scale="None" Actual="721.23"/>
-<Kpe Value="85.55" Scale="None" Actual="85.55"/>
+<Kse Value="964.89" Scale="None" Actual="964.89"/>
+<Kpe Value="74.81" Scale="None" Actual="74.81"/>
 <B Value="20.65" Scale="None" Actual="20.65"/>
 <IbDischarge Value="100" Scale="None" Actual="100"/>
 </RigidBody>
@@ -3176,12 +3176,12 @@
 <LowerLimitScale Value="-60" Scale="milli" Actual="-0.06"/>
 <UpperLimitScale Value="-40" Scale="milli" Actual="-0.04"/>
 <LowerOutputScale Value="0" Scale="None" Actual="0"/>
-<UpperOutputScale Value="13.5" Scale="None" Actual="13.5"/>
+<UpperOutputScale Value="13.15" Scale="None" Actual="13.15"/>
 <IndependentUnits>Membrane Voltage (V)</IndependentUnits>
 <DependentUnits>Contractile Tension (N)</DependentUnits>
 <A Value="-50" Scale="milli" Actual="-0.05"/>
-<B Value="13.5" Scale="None" Actual="13.5"/>
-<C Value="1469.07" Scale="None" Actual="1469.07"/>
+<B Value="13.15" Scale="None" Actual="13.15"/>
+<C Value="1466.76" Scale="None" Actual="1466.76"/>
 <D Value="0" Scale="milli" Actual="0"/>
 </StimulusTension>
 <LengthTension>
@@ -3196,7 +3196,7 @@
 <LowerLimitScale Value="1.07" Scale="centi" Actual="0.0107"/>
 <UpperLimitScale Value="3.22" Scale="centi" Actual="0.0322"/>
 <LowerOutputScale Value="0" Scale="None" Actual="0"/>
-<UpperOutputScale Value="1" Scale="None" Actual="1"/>
+<UpperOutputScale Value="0" Scale="None" Actual="0"/>
 <IndependentUnits>Meters</IndependentUnits>
 <DependentUnits>% Isometric Tension Used</DependentUnits>
 <RestingLength Value="2.15" Scale="centi" Actual="0.0215"/>
@@ -3205,8 +3205,8 @@
 <MinPeLength Value="5" Scale="None" Actual="5"/>
 </LengthTension>
 <MaximumTension Value="12.21" Scale="None" Actual="12.21"/>
-<Kse Value="624.06" Scale="None" Actual="624.06"/>
-<Kpe Value="66.64" Scale="None" Actual="66.64"/>
+<Kse Value="964.89" Scale="None" Actual="964.89"/>
+<Kpe Value="74.81" Scale="None" Actual="74.81"/>
 <B Value="22.557" Scale="None" Actual="22.557"/>
 <IbDischarge Value="100" Scale="None" Actual="100"/>
 </RigidBody>
@@ -3506,7 +3506,7 @@
 <EndTime Value="10" Scale="None" Actual="10"/>
 <StepInterval Value="0" Scale="milli" Actual="0"/>
 <AlwaysActive>False</AlwaysActive>
-<Enabled>True</Enabled>
+<Enabled>False</Enabled>
 <ValueType>Equation</ValueType>
 <Equation>0.0587*sin(0.7246*t + 2.326) + 0.06009*sin(5.647*t - 2.748) + 0.004938*sin(2.263*t - 1.667) + 0.4367*sin(0.3509*t + 0.7173) + 1.141*sin(0.1553*t - 1.845) + 0.2713*sin(3.768*t + 1.288) + 0.08073*sin(1.84*t + 0.2031) + 0.02449*sin(7.555*t + 0.923)</Equation>
 <StructureID>e40d2c4f-9c31-49f8-8a5c-5688fb768225</StructureID>
@@ -3591,7 +3591,7 @@
 <EndTime Value="10" Scale="None" Actual="10"/>
 <StepInterval Value="0" Scale="milli" Actual="0"/>
 <AlwaysActive>False</AlwaysActive>
-<Enabled>True</Enabled>
+<Enabled>False</Enabled>
 <ValueType>Equation</ValueType>
 <Equation>0.1995*sin(0.5822*t - 1.07) + 0.08642*sin(0.7588*t + 1.287) + 0.4931*sin(0.209*t - 2.524) + 0.1947*sin(3.768*t + 2.116) + 0.01519*sin(5.651*t - 0.3852) + 0.1605*sin(1.875*t + 0.2783) + 0.0206*sin(7.535*t + 2.37) + 0.003347*sin(2.283*t - 0.9653)</Equation>
 <StructureID>e40d2c4f-9c31-49f8-8a5c-5688fb768225</StructureID>
@@ -3608,7 +3608,7 @@
 <EndTime Value="10" Scale="None" Actual="10"/>
 <StepInterval Value="0" Scale="milli" Actual="0"/>
 <AlwaysActive>False</AlwaysActive>
-<Enabled>True</Enabled>
+<Enabled>False</Enabled>
 <ValueType>Equation</ValueType>
 <Equation>0.2466*sin(0.5468*t - 1.124) + 0.046*sin(1.003*t - 0.2206) + 0.07998*sin(3.77*t + 2.07) + 0.5721*sin(1.879*t - 1.298) + 0.6951*sin(0.2447*t + 3.506)</Equation>
 <StructureID>e40d2c4f-9c31-49f8-8a5c-5688fb768225</StructureID>
@@ -3653,8 +3653,8 @@
 </Stimuli>
 <HudItems>
 <HudItem>
-<Name>893abb15-aae2-4581-af75-1a17f0ab6350</Name>
-<ID>893abb15-aae2-4581-af75-1a17f0ab6350</ID>
+<Name>47da042a-fa4a-4b22-99ea-d586aa6a92a3</Name>
+<ID>47da042a-fa4a-4b22-99ea-d586aa6a92a3</ID>
 <Type>HudText</Type>
 <CharSize>30</CharSize>
 <Text>Time: %3.3f</Text>
@@ -3740,9 +3740,9 @@
 <AutomaticTimeScale>True</AutomaticTimeScale>
 <DivisionMarkFactor>4</DivisionMarkFactor>
 <Divisions>10</Divisions>
-<MajorInterval>500</MajorInterval>
+<MajorInterval>2</MajorInterval>
 <MiddleMarkFactor>3</MiddleMarkFactor>
-<TimeScale>MilliSeconds</TimeScale>
+<TimeScale>Seconds</TimeScale>
 </Form>
 <Form>
 <ID>1b017d76-832a-49f4-b2ac-cbe969fb62f2</ID>
@@ -3767,7 +3767,7 @@
 <DockingConfig>&lt;?xml version="1.0" encoding="us-ascii"?&gt;
 &lt;!-- DotNetMagic, The User Interface library for .NET (www.crownwood.net) --&gt;
 &lt;!-- Modifying this generated file will probably render it invalid --&gt;
-&lt;DockingConfig FormatVersion="10" InsideFill="False" InnerMinimum="20, 20" SavedAt="03/06/2020 10:07:32"&gt;
+&lt;DockingConfig FormatVersion="10" InsideFill="False" InnerMinimum="20, 20" SavedAt="03/16/2020 14:32:41"&gt;
   &lt;Content Name="Playback Control" Visible="False" Docked="True" AutoHidden="False" CaptionBar="True" CloseButton="False" DisplaySize="150, 150" DisplayLocation="150, 150" AutoHideSize="150, 150" FloatingSize="150, 150" FullTitle="Playback Control" Office2003BackColor="Base" UniqueName="" Office2007BackColor="Base" MediaPlayerBackColor="Base"&gt;
     &lt;DefaultRestore Type="Crownwood.DotNetMagic.Docking.RestoreContentState"&gt;
       &lt;Content Name="Playback Control" UniqueName="" /&gt;
@@ -3875,7 +3875,7 @@
       &lt;Child Type="null" /&gt;
     &lt;/FloatingRestore&gt;
   &lt;/Content&gt;
-  &lt;Content Name="Workspace" Visible="True" Docked="True" AutoHidden="False" CaptionBar="True" CloseButton="False" DisplaySize="417, 150" DisplayLocation="150, 150" AutoHideSize="200, 150" FloatingSize="150, 150" FullTitle="Workspace" Office2003BackColor="Base" UniqueName="" Office2007BackColor="Base" MediaPlayerBackColor="Base"&gt;
+  &lt;Content Name="Workspace" Visible="True" Docked="True" AutoHidden="False" CaptionBar="True" CloseButton="False" DisplaySize="361, 150" DisplayLocation="150, 150" AutoHideSize="200, 150" FloatingSize="150, 150" FullTitle="Workspace" Office2003BackColor="Base" UniqueName="" Office2007BackColor="Base" MediaPlayerBackColor="Base"&gt;
     &lt;DefaultRestore Type="Crownwood.DotNetMagic.Docking.RestoreContentState"&gt;
       &lt;Content Name="Workspace" UniqueName="" /&gt;
       &lt;State Value="DockLeft" /&gt;
@@ -3889,7 +3889,7 @@
     &lt;DockingRestore Type="Crownwood.DotNetMagic.Docking.RestoreContentDockingAffinity"&gt;
       &lt;Content Name="Workspace" UniqueName="" /&gt;
       &lt;State Value="DockLeft" /&gt;
-      &lt;Position Size="417, 150" Location="150, 150" /&gt;
+      &lt;Position Size="361, 150" Location="150, 150" /&gt;
       &lt;Best Count="1"&gt;
         &lt;Item Name="Workspace" /&gt;
       &lt;/Best&gt;
@@ -3922,7 +3922,7 @@
       &lt;Child Type="null" /&gt;
     &lt;/FloatingRestore&gt;
   &lt;/Content&gt;
-  &lt;Content Name="Properties" Visible="True" Docked="True" AutoHidden="False" CaptionBar="True" CloseButton="False" DisplaySize="218, 150" DisplayLocation="150, 150" AutoHideSize="200, 150" FloatingSize="150, 150" FullTitle="Properties" Office2003BackColor="Base" UniqueName="" Office2007BackColor="Base" MediaPlayerBackColor="Base"&gt;
+  &lt;Content Name="Properties" Visible="True" Docked="True" AutoHidden="False" CaptionBar="True" CloseButton="False" DisplaySize="274, 150" DisplayLocation="150, 150" AutoHideSize="200, 150" FloatingSize="150, 150" FullTitle="Properties" Office2003BackColor="Base" UniqueName="" Office2007BackColor="Base" MediaPlayerBackColor="Base"&gt;
     &lt;DefaultRestore Type="Crownwood.DotNetMagic.Docking.RestoreContentState"&gt;
       &lt;Content Name="Properties" UniqueName="" /&gt;
       &lt;State Value="DockLeft" /&gt;
@@ -3936,7 +3936,7 @@
     &lt;DockingRestore Type="Crownwood.DotNetMagic.Docking.RestoreContentDockingAffinity"&gt;
       &lt;Content Name="Properties" UniqueName="" /&gt;
       &lt;State Value="DockRight" /&gt;
-      &lt;Position Size="218, 150" Location="150, 150" /&gt;
+      &lt;Position Size="274, 150" Location="150, 150" /&gt;
       &lt;Best Count="1"&gt;
         &lt;Item Name="Properties" /&gt;
       &lt;/Best&gt;
@@ -4263,7 +4263,7 @@
   &lt;CustomGlobalData /&gt;
   &lt;Sequence Count="1" Unique="0" Space="100" Direction="Horizontal"&gt;
     &lt;Leaf Count="4" Unique="7" Space="100"&gt;
-      &lt;Page Title="Sim Window" ImageList="True" ImageIndex="0" Selected="True" Control="null" UniqueName=""&gt;
+      &lt;Page Title="Sim Window" ImageList="True" ImageIndex="0" Selected="False" Control="null" UniqueName=""&gt;
         &lt;CustomPageData&gt;&lt;![CDATA[&lt;TabPage&gt;
 &lt;Form&gt;
 &lt;ID&gt;b1c3eb6f-fc15-4560-8750-275c275ef964&lt;/ID&gt;
@@ -4303,7 +4303,7 @@
 &lt;/TabPage&gt;
 ]]&gt;&lt;/CustomPageData&gt;
       &lt;/Page&gt;
-      &lt;Page Title="JointMotion" ImageList="True" ImageIndex="2" Selected="False" Control="null" UniqueName=""&gt;
+      &lt;Page Title="JointMotion" ImageList="True" ImageIndex="2" Selected="True" Control="null" UniqueName=""&gt;
         &lt;CustomPageData&gt;&lt;![CDATA[&lt;TabPage&gt;
 &lt;Form&gt;
 &lt;ID&gt;1b1bb75a-f9ae-4839-8124-5172f1dbddcf&lt;/ID&gt;

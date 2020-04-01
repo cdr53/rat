@@ -3811,12 +3811,14 @@ classdef FullLeg < matlab.mixin.SetGet
                 tau2 = body_torque;
             end
                 [body_torque] = compute_body_torques(obj);
-%                 tau2 = body_torque;
-%                 tau2 = passive_torque;
+                % tau2 = body_torque;
+%                 tau2 = -passive_torque;
 %                 [passive_joint_torque,passive_joint_motion] = compute_passive_joint_torque(obj);
 %                 tau2 = passive_joint_torque';
 %                 tau2 = -passive_joint_torque';
-                tau2 = -passive_torque-body_torque;
+                tau2 = passive_torque-body_torque;
+                tau2 = [.045127 .054354 .001];
+                tau2 = repmat(tau2,500,1);
             
             mintypes = {'minfatigue','minsqforces','minforce','minwork','minforcePCSA','minforcetemporal'};
             nummuscles = size(obj.musc_obj,1);
