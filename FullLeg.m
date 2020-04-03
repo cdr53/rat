@@ -1727,9 +1727,7 @@ classdef FullLeg < matlab.mixin.SetGet
         end
         %% Function: JOINT MOMENT ARM: Compute the relevant moment arms of all muscles articulating a designated joint for a specified configuration
         function [moment_output] = compute_joint_moment_arms(obj,joint,axis)
-            %Joint axis 1: ExR/InR
-            %Joint axis 2: Ext/Flx
-            %Joint axis 3: Abd/Add
+
             relevant_muscles = [];
             num_muscles = length(obj.musc_obj);
             
