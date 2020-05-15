@@ -414,7 +414,7 @@
 <DependentUnits>Contractile Tension (N)</DependentUnits>
 <A Value="-50" Scale="milli" Actual="-0.05"/>
 <B Value="4.16" Scale="None" Actual="4.16"/>
-<C Value="985.39" Scale="None" Actual="985.39"/>
+<C Value="1382.67" Scale="None" Actual="1382.67"/>
 <D Value="0" Scale="milli" Actual="0"/>
 </StimulusTension>
 <LengthTension>
@@ -482,7 +482,7 @@
 <DependentUnits>Contractile Tension (N)</DependentUnits>
 <A Value="-50" Scale="milli" Actual="-0.05"/>
 <B Value="13.4" Scale="None" Actual="13.4"/>
-<C Value="1468.44" Scale="None" Actual="1468.44"/>
+<C Value="1273.72" Scale="None" Actual="1273.72"/>
 <D Value="0" Scale="milli" Actual="0"/>
 </StimulusTension>
 <LengthTension>
@@ -551,7 +551,7 @@
 <DependentUnits>Contractile Tension (N)</DependentUnits>
 <A Value="-50" Scale="milli" Actual="-0.05"/>
 <B Value="17.71" Scale="None" Actual="17.71"/>
-<C Value="1788.97" Scale="None" Actual="1788.97"/>
+<C Value="1607.74" Scale="None" Actual="1607.74"/>
 <D Value="0" Scale="milli" Actual="0"/>
 </StimulusTension>
 <LengthTension>
@@ -948,12 +948,12 @@
 <LowerLimitScale Value="-60" Scale="milli" Actual="-0.06"/>
 <UpperLimitScale Value="-40" Scale="milli" Actual="-0.04"/>
 <LowerOutputScale Value="0" Scale="None" Actual="0"/>
-<UpperOutputScale Value="12.48" Scale="None" Actual="12.48"/>
+<UpperOutputScale Value="12.47" Scale="None" Actual="12.47"/>
 <IndependentUnits>Membrane Voltage (V)</IndependentUnits>
 <DependentUnits>Contractile Tension (N)</DependentUnits>
 <A Value="-50" Scale="milli" Actual="-0.05"/>
-<B Value="12.48" Scale="None" Actual="12.48"/>
-<C Value="2674.88" Scale="None" Actual="2674.88"/>
+<B Value="12.47" Scale="None" Actual="12.47"/>
+<C Value="2713.95" Scale="None" Actual="2713.95"/>
 <D Value="0" Scale="milli" Actual="0"/>
 </StimulusTension>
 <LengthTension>
@@ -1428,7 +1428,7 @@
 <DependentUnits>Contractile Tension (N)</DependentUnits>
 <A Value="-50" Scale="milli" Actual="-0.05"/>
 <B Value="9.19" Scale="None" Actual="9.19"/>
-<C Value="1053.38" Scale="None" Actual="1053.38"/>
+<C Value="1251.94" Scale="None" Actual="1251.94"/>
 <D Value="0" Scale="milli" Actual="0"/>
 </StimulusTension>
 <LengthTension>
@@ -2467,7 +2467,7 @@
 <DependentUnits>Contractile Tension (N)</DependentUnits>
 <A Value="-50" Scale="milli" Actual="-0.05"/>
 <B Value="11.75" Scale="None" Actual="11.75"/>
-<C Value="2640.31" Scale="None" Actual="2640.31"/>
+<C Value="1555.57" Scale="None" Actual="1555.57"/>
 <D Value="0" Scale="milli" Actual="0"/>
 </StimulusTension>
 <LengthTension>
@@ -3181,7 +3181,7 @@
 <DependentUnits>Contractile Tension (N)</DependentUnits>
 <A Value="-50" Scale="milli" Actual="-0.05"/>
 <B Value="13.15" Scale="None" Actual="13.15"/>
-<C Value="1466.76" Scale="None" Actual="1466.76"/>
+<C Value="1681.89" Scale="None" Actual="1681.89"/>
 <D Value="0" Scale="milli" Actual="0"/>
 </StimulusTension>
 <LengthTension>
@@ -3523,7 +3523,7 @@
 <EndTime Value="10" Scale="None" Actual="10"/>
 <StepInterval Value="0" Scale="milli" Actual="0"/>
 <AlwaysActive>False</AlwaysActive>
-<Enabled>False</Enabled>
+<Enabled>True</Enabled>
 <ValueType>Equation</ValueType>
 <Equation>-.646+.6981*sin(t)</Equation>
 <StructureID>e40d2c4f-9c31-49f8-8a5c-5688fb768225</StructureID>
@@ -3557,7 +3557,7 @@
 <EndTime Value="10" Scale="None" Actual="10"/>
 <StepInterval Value="0" Scale="milli" Actual="0"/>
 <AlwaysActive>False</AlwaysActive>
-<Enabled>False</Enabled>
+<Enabled>True</Enabled>
 <ValueType>Equation</ValueType>
 <Equation>-.515+.7069*sin(t)</Equation>
 <StructureID>e40d2c4f-9c31-49f8-8a5c-5688fb768225</StructureID>
@@ -3625,7 +3625,7 @@
 <EndTime Value="10" Scale="None" Actual="10"/>
 <StepInterval Value="0" Scale="milli" Actual="0"/>
 <AlwaysActive>False</AlwaysActive>
-<Enabled>False</Enabled>
+<Enabled>True</Enabled>
 <ValueType>Equation</ValueType>
 <Equation>-.777+.8639*sin(t)</Equation>
 <StructureID>e40d2c4f-9c31-49f8-8a5c-5688fb768225</StructureID>
@@ -3653,8 +3653,8 @@
 </Stimuli>
 <HudItems>
 <HudItem>
-<Name>47da042a-fa4a-4b22-99ea-d586aa6a92a3</Name>
-<ID>47da042a-fa4a-4b22-99ea-d586aa6a92a3</ID>
+<Name>8a3eb8de-eef1-4fe9-879e-ddd48daf6cb6</Name>
+<ID>8a3eb8de-eef1-4fe9-879e-ddd48daf6cb6</ID>
 <Type>HudText</Type>
 <CharSize>30</CharSize>
 <Text>Time: %3.3f</Text>
@@ -3740,7 +3740,7 @@
 <AutomaticTimeScale>True</AutomaticTimeScale>
 <DivisionMarkFactor>4</DivisionMarkFactor>
 <Divisions>10</Divisions>
-<MajorInterval>2</MajorInterval>
+<MajorInterval>1</MajorInterval>
 <MiddleMarkFactor>3</MiddleMarkFactor>
 <TimeScale>Seconds</TimeScale>
 </Form>
@@ -3767,7 +3767,7 @@
 <DockingConfig>&lt;?xml version="1.0" encoding="us-ascii"?&gt;
 &lt;!-- DotNetMagic, The User Interface library for .NET (www.crownwood.net) --&gt;
 &lt;!-- Modifying this generated file will probably render it invalid --&gt;
-&lt;DockingConfig FormatVersion="10" InsideFill="False" InnerMinimum="20, 20" SavedAt="03/16/2020 14:32:41"&gt;
+&lt;DockingConfig FormatVersion="10" InsideFill="False" InnerMinimum="20, 20" SavedAt="05/04/2020 17:11:00"&gt;
   &lt;Content Name="Playback Control" Visible="False" Docked="True" AutoHidden="False" CaptionBar="True" CloseButton="False" DisplaySize="150, 150" DisplayLocation="150, 150" AutoHideSize="150, 150" FloatingSize="150, 150" FullTitle="Playback Control" Office2003BackColor="Base" UniqueName="" Office2007BackColor="Base" MediaPlayerBackColor="Base"&gt;
     &lt;DefaultRestore Type="Crownwood.DotNetMagic.Docking.RestoreContentState"&gt;
       &lt;Content Name="Playback Control" UniqueName="" /&gt;
@@ -4263,7 +4263,7 @@
   &lt;CustomGlobalData /&gt;
   &lt;Sequence Count="1" Unique="0" Space="100" Direction="Horizontal"&gt;
     &lt;Leaf Count="4" Unique="7" Space="100"&gt;
-      &lt;Page Title="Sim Window" ImageList="True" ImageIndex="0" Selected="False" Control="null" UniqueName=""&gt;
+      &lt;Page Title="Sim Window" ImageList="True" ImageIndex="0" Selected="True" Control="null" UniqueName=""&gt;
         &lt;CustomPageData&gt;&lt;![CDATA[&lt;TabPage&gt;
 &lt;Form&gt;
 &lt;ID&gt;b1c3eb6f-fc15-4560-8750-275c275ef964&lt;/ID&gt;
@@ -4303,7 +4303,7 @@
 &lt;/TabPage&gt;
 ]]&gt;&lt;/CustomPageData&gt;
       &lt;/Page&gt;
-      &lt;Page Title="JointMotion" ImageList="True" ImageIndex="2" Selected="True" Control="null" UniqueName=""&gt;
+      &lt;Page Title="JointMotion" ImageList="True" ImageIndex="2" Selected="False" Control="null" UniqueName=""&gt;
         &lt;CustomPageData&gt;&lt;![CDATA[&lt;TabPage&gt;
 &lt;Form&gt;
 &lt;ID&gt;1b1bb75a-f9ae-4839-8124-5172f1dbddcf&lt;/ID&gt;

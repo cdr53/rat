@@ -1,4 +1,4 @@
-function [obj] = jointMotionInjector(jointAngles,to_plot)
+function [obj] = jointMotionInjector(motorSim,jointAngles,to_plot)
     % Inject joint angle waveform array and generate a FullLeg object from the simulation results
     % Input: jointAngles: nx3 sagittal-plane joint angle waveforms with columns formatted as hip-knee-ankle
     % Input: to_plot: boolean for determining whether to plot results
@@ -24,10 +24,10 @@ function [obj] = jointMotionInjector(jointAngles,to_plot)
     
     % Which .asim file to modify?
     %simfilepath = [fileparts(mfilename('fullpath')),'\Animatlab\IndividualMuscleStim20191114.asim'];
-    %simfilepath = [pwd,'\Animatlab\SynergyWalking\SynergyWalking20200109_Standalone.asim'];
+    %motorSim = [pwd,'\Animatlab\SynergyWalking\SynergyWalking20200109_Standalone.asim'];
     
     %motorSim = importdata("G:\My Drive\Rat\SynergyControl\Animatlab\SynergyWalking\SynergyWalking_reduced_Standalone.asim");
-    motorSim = "G:\My Drive\Rat\SynergyControl\Animatlab\SynergyWalking\SynergyWalking_reduced_Standalone.asim";
+    %motorSim = "G:\My Drive\Rat\SynergyControl\Animatlab\SynergyWalking\SynergyWalking_reduced_Standalone.asim";
     simpath2w = motorSim;
     file_contents = importdata(motorSim);
     %load([pwd,'\Data\motorSim.mat'],'motorSim')

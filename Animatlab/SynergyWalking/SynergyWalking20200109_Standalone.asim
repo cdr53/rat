@@ -426,7 +426,7 @@
 <UpperOutput>12.15</UpperOutput>
 <A>-0.05</A>
 <B>12.15</B>
-<C>2708.8</C>
+<C>1362.3</C>
 <D>0</D>
 </StimulusTension>
 <LengthTension>
@@ -477,7 +477,7 @@
 <UpperOutput>9.94</UpperOutput>
 <A>-0.05</A>
 <B>9.94</B>
-<C>1159.32</C>
+<C>1124.71</C>
 <D>0</D>
 </StimulusTension>
 <LengthTension>
@@ -1049,7 +1049,7 @@
 <UpperOutput>4.77</UpperOutput>
 <A>-0.05</A>
 <B>4.77</B>
-<C>1096.12</C>
+<C>997.1</C>
 <D>0</D>
 </StimulusTension>
 <LengthTension>
@@ -1100,7 +1100,7 @@
 <UpperOutput>4.16</UpperOutput>
 <A>-0.05</A>
 <B>4.16</B>
-<C>985.39</C>
+<C>1382.67</C>
 <D>0</D>
 </StimulusTension>
 <LengthTension>
@@ -1151,7 +1151,7 @@
 <UpperOutput>7.72</UpperOutput>
 <A>-0.05</A>
 <B>7.72</B>
-<C>1137.56</C>
+<C>1436.12</C>
 <D>0</D>
 </StimulusTension>
 <LengthTension>
@@ -1202,7 +1202,7 @@
 <UpperOutput>12</UpperOutput>
 <A>-0.05</A>
 <B>12</B>
-<C>1854.93</C>
+<C>1954.05</C>
 <D>0</D>
 </StimulusTension>
 <LengthTension>
@@ -1392,7 +1392,7 @@
 <UpperOutput>13.4</UpperOutput>
 <A>-0.05</A>
 <B>13.4</B>
-<C>1468.44</C>
+<C>1273.72</C>
 <D>0</D>
 </StimulusTension>
 <LengthTension>
@@ -1537,7 +1537,7 @@
 <UpperOutput>17.71</UpperOutput>
 <A>-0.05</A>
 <B>17.71</B>
-<C>1788.97</C>
+<C>1607.74</C>
 <D>0</D>
 </StimulusTension>
 <LengthTension>
@@ -2214,7 +2214,7 @@
 <UpperOutput>15.98</UpperOutput>
 <A>-0.05</A>
 <B>15.98</B>
-<C>1698.76</C>
+<C>1680.96</C>
 <D>0</D>
 </StimulusTension>
 <LengthTension>
@@ -2494,10 +2494,10 @@
 <LowerLimit>-0.06</LowerLimit>
 <UpperLimit>-0.04</UpperLimit>
 <LowerOutput>0</LowerOutput>
-<UpperOutput>12.48</UpperOutput>
+<UpperOutput>12.47</UpperOutput>
 <A>-0.05</A>
-<B>12.48</B>
-<C>2674.88</C>
+<B>12.47</B>
+<C>2713.95</C>
 <D>0</D>
 </StimulusTension>
 <LengthTension>
@@ -2780,7 +2780,7 @@
 <UpperOutput>2.69</UpperOutput>
 <A>-0.05</A>
 <B>2.69</B>
-<C>1046.61</C>
+<C>1046.6</C>
 <D>0</D>
 </StimulusTension>
 <LengthTension>
@@ -3719,9 +3719,9 @@
 <LowerLimit>-0.06</LowerLimit>
 <UpperLimit>-0.04</UpperLimit>
 <LowerOutput>0</LowerOutput>
-<UpperOutput>2.34</UpperOutput>
+<UpperOutput>2.33</UpperOutput>
 <A>-0.05</A>
-<B>2.34</B>
+<B>2.33</B>
 <C>970.59</C>
 <D>0</D>
 </StimulusTension>
@@ -3822,7 +3822,7 @@
 <UpperOutput>4.16</UpperOutput>
 <A>-0.05</A>
 <B>4.16</B>
-<C>985.39</C>
+<C>1084.35</C>
 <D>0</D>
 </StimulusTension>
 <LengthTension>
@@ -4059,7 +4059,7 @@
 <UpperOutput>9.19</UpperOutput>
 <A>-0.05</A>
 <B>9.19</B>
-<C>1053.38</C>
+<C>1251.94</C>
 <D>0</D>
 </StimulusTension>
 <LengthTension>
@@ -5516,7 +5516,7 @@
 <UpperOutput>11.75</UpperOutput>
 <A>-0.05</A>
 <B>11.75</B>
-<C>2640.31</C>
+<C>1555.57</C>
 <D>0</D>
 </StimulusTension>
 <LengthTension>
@@ -6029,7 +6029,7 @@
 <UpperOutput>3.72</UpperOutput>
 <A>-0.05</A>
 <B>3.72</B>
-<C>975.67</C>
+<C>1074.59</C>
 <D>0</D>
 </StimulusTension>
 <LengthTension>
@@ -6093,7 +6093,7 @@
 <UpperOutput>3.09</UpperOutput>
 <A>-0.05</A>
 <B>3.09</B>
-<C>1157.87</C>
+<C>970.59</C>
 <D>0</D>
 </StimulusTension>
 <LengthTension>
@@ -6147,7 +6147,7 @@
 <UpperOutput>5.89</UpperOutput>
 <A>-0.05</A>
 <B>5.89</B>
-<C>1114.26</C>
+<C>1015.17</C>
 <D>0</D>
 </StimulusTension>
 <LengthTension>
@@ -6246,7 +6246,7 @@
 <UpperOutput>6.46</UpperOutput>
 <A>-0.05</A>
 <B>6.46</B>
-<C>1122.17</C>
+<C>1023.07</C>
 <D>0</D>
 </StimulusTension>
 <LengthTension>
@@ -6434,10 +6434,10 @@
 <LowerLimit>-0.06</LowerLimit>
 <UpperLimit>-0.04</UpperLimit>
 <LowerOutput>0</LowerOutput>
-<UpperOutput>19.63</UpperOutput>
+<UpperOutput>19.62</UpperOutput>
 <A>-0.05</A>
-<B>19.63</B>
-<C>2661.9</C>
+<B>19.62</B>
+<C>2763.12</C>
 <D>0</D>
 </StimulusTension>
 <LengthTension>
@@ -7378,7 +7378,7 @@
 <UpperOutput>10.97</UpperOutput>
 <A>-0.05</A>
 <B>10.97</B>
-<C>2671.61</C>
+<C>1944.92</C>
 <D>0</D>
 </StimulusTension>
 <LengthTension>
@@ -7475,7 +7475,7 @@
 <UpperOutput>13.15</UpperOutput>
 <A>-0.05</A>
 <B>13.15</B>
-<C>1466.76</C>
+<C>1681.89</C>
 <D>0</D>
 </StimulusTension>
 <LengthTension>
@@ -7759,7 +7759,7 @@
 <UpperOutput>3.57</UpperOutput>
 <A>-0.05</A>
 <B>3.57</B>
-<C>1071.19</C>
+<C>972.25</C>
 <D>0</D>
 </StimulusTension>
 <LengthTension>
@@ -7810,7 +7810,7 @@
 <UpperOutput>3.05</UpperOutput>
 <A>-0.05</A>
 <B>3.05</B>
-<C>970.59</C>
+<C>1057.55</C>
 <D>0</D>
 </StimulusTension>
 <LengthTension>
@@ -8050,7 +8050,7 @@
 <UpperOutput>3.22</UpperOutput>
 <A>-0.05</A>
 <B>3.22</B>
-<C>1062.24</C>
+<C>1161.43</C>
 <D>0</D>
 </StimulusTension>
 <LengthTension>
@@ -8101,7 +8101,7 @@
 <UpperOutput>20.18</UpperOutput>
 <A>-0.05</A>
 <B>20.18</B>
-<C>2682.85</C>
+<C>2764.97</C>
 <D>0</D>
 </StimulusTension>
 <LengthTension>
@@ -8152,7 +8152,7 @@
 <UpperOutput>3.2</UpperOutput>
 <A>-0.05</A>
 <B>3.2</B>
-<C>1061.8</C>
+<C>970.59</C>
 <D>0</D>
 </StimulusTension>
 <LengthTension>
@@ -8376,7 +8376,7 @@
 <StartTime>0</StartTime>
 <EndTime>10</EndTime>
 <TargetID>Position</TargetID>
-<Equation>0.0587,0.7246,t,*,2.326,+,sin,*,0.06009,5.647,t,*,2.748,-,sin,*,0.004938,2.263,t,*,1.667,-,sin,*,0.4367,0.3509,t,*,0.7173,+,sin,*,1.141,0.1553,t,*,1.845,-,sin,*,0.2713,3.768,t,*,1.288,+,sin,*,0.08073,1.84,t,*,0.2031,+,sin,*,0.02449,7.555,t,*,0.923,+,sin,*,+,+,+,+,+,+,+</Equation>
+<Equation>1.0498,0.37674,t,*,3.2212,-,sin,*,.35641,3.758,t,*,1.7606,+,sin,*,.65099,0.73715,t,*,1.676,-,sin,*,.48967,1.676,t,*,0.33317,+,sin,*,.44696,1.3333,t,*,1.2313,-,sin,*,+,+,+,+</Equation>
 <DisableMotorWhenDone>False</DisableMotorWhenDone>
 </Stimulus>
 <Stimulus>
@@ -8451,7 +8451,7 @@
 <StartTime>0</StartTime>
 <EndTime>10</EndTime>
 <TargetID>Position</TargetID>
-<Equation>0.1995,0.5822,t,*,1.07,-,sin,*,0.08642,0.7588,t,*,1.287,+,sin,*,0.4931,0.209,t,*,2.524,-,sin,*,0.1947,3.768,t,*,2.116,+,sin,*,0.01519,5.651,t,*,0.3852,-,sin,*,0.1605,1.875,t,*,0.2783,+,sin,*,0.0206,7.535,t,*,2.37,+,sin,*,0.003347,2.283,t,*,0.9653,-,sin,*,+,+,+,+,+,+,+</Equation>
+<Equation>.59118,0.31776,t,*,3.1819,-,sin,*,.28082,0.64302,t,*,1.6938,-,sin,*,.19156,3.7473,t,*,2.2384,+,sin,*,.20816,1.8957,t,*,0.60969,+,sin,*,.06841,1.0886,t,*,0.85056,-,sin,*,.03691,7.4764,t,*,2.7994,-,sin,*,+,+,+,+,+</Equation>
 <DisableMotorWhenDone>False</DisableMotorWhenDone>
 </Stimulus>
 <Stimulus>
@@ -8466,7 +8466,7 @@
 <StartTime>0</StartTime>
 <EndTime>10</EndTime>
 <TargetID>Position</TargetID>
-<Equation>0.2466,0.5468,t,*,1.124,-,sin,*,0.046,1.003,t,*,0.2206,-,sin,*,0.07998,3.77,t,*,2.07,+,sin,*,0.5721,1.879,t,*,1.298,-,sin,*,0.6951,0.2447,t,*,3.506,+,sin,*,+,+,+,+</Equation>
+<Equation>.74389,0.19401,t,*,2.5408,-,sin,*,.66595,1.8842,t,*,1.3008,-,sin,*,.3342,0.29752,t,*,0.088143,+,sin,*,.14001,3.7587,t,*,1.7976,+,sin,*,+,+,+</Equation>
 <DisableMotorWhenDone>False</DisableMotorWhenDone>
 </Stimulus>
 <Stimulus>
@@ -8511,7 +8511,7 @@
 <AlwaysActive>False</AlwaysActive>
 <StartTime>0</StartTime>
 <EndTime>10</EndTime>
-<CollectInterval>0.00054</CollectInterval>
+<CollectInterval>0.0005400</CollectInterval>
 <DataColumns>
 <DataColumn>
 <ModuleName/>
@@ -8829,7 +8829,7 @@
 <AlwaysActive>False</AlwaysActive>
 <StartTime>0</StartTime>
 <EndTime>10</EndTime>
-<CollectInterval>0.00054</CollectInterval>
+<CollectInterval>0.0005400</CollectInterval>
 <DataColumns>
 <DataColumn>
 <ModuleName/>
@@ -8865,8 +8865,8 @@
 <HudItem>
 <ModuleName/>
 <Type>HudText</Type>
-<Name>b46804ce-4dba-4e91-8052-9e6a9882f471</Name>
-<ID>b46804ce-4dba-4e91-8052-9e6a9882f471</ID>
+<Name>3e63e679-a5ad-4427-acfd-de6ae68e2d47</Name>
+<ID>3e63e679-a5ad-4427-acfd-de6ae68e2d47</ID>
 <Type>HudText</Type>
 <CharSize>30</CharSize>
 <Text>Time: %3.3f</Text>

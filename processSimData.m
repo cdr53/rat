@@ -27,7 +27,8 @@ function simStruct = processSimData(sim_path)
 %     massCheck(sim_path);
     
     % Run the simulation file
-    sour_folder = 'C:\Program Files (x86)\NeuroRobotic Technologies\AnimatLab\bin';
+    sour_folder = 'C:\AnimatLabSDK\AnimatLabPublicSource\bin';
+    %sour_folder = 'C:\Program Files (x86)\NeuroRobotic Technologies\AnimatLab\bin';
     executable = ['"',sour_folder,'\AnimatSimulator" "',sim_path,'"'];
     [status, message] = system(executable);
     if status

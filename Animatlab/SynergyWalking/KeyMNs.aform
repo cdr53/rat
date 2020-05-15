@@ -7,11 +7,11 @@
 <ClassName>LicensedAnimatGUI.Forms.Charts.LineChart</ClassName>
 <AutoCollectInterval>True</AutoCollectInterval>
 <CollectDataInterval Value="0.54" Scale="milli" Actual="0.00054"/>
-<CollectTimeWindow Value="4.335" Scale="None" Actual="4.335"/>
+<CollectTimeWindow Value="11" Scale="None" Actual="11"/>
 <UpdateDataInterval Value="200" Scale="milli" Actual="0.2"/>
 <SetStartEndTime>True</SetStartEndTime>
 <CollectStartTime Value="0" Scale="None" Actual="0"/>
-<CollectEndTime Value="3.335" Scale="None" Actual="3.335"/>
+<CollectEndTime Value="10" Scale="None" Actual="10"/>
 <AxisList>
 <Axis>
 <AssemblyFile>LicensedAnimatGUI.dll</AssemblyFile>
@@ -35,7 +35,7 @@
 <LineType>MediumSolid</LineType>
 <PointType>Plus</PointType>
 <PlotMethodType>Line</PlotMethodType>
-<LineColor>-7876870</LineColor>
+<LineColor>-32768</LineColor>
 </DataColumn>
 </DataColumns>
 </Axis>
@@ -61,7 +61,7 @@
 <LineType>MediumSolid</LineType>
 <PointType>Plus</PointType>
 <PlotMethodType>Line</PlotMethodType>
-<LineColor>-7876870</LineColor>
+<LineColor>-16776961</LineColor>
 </DataColumn>
 </DataColumns>
 </Axis>
@@ -113,7 +113,7 @@
 <LineType>MediumSolid</LineType>
 <PointType>Plus</PointType>
 <PlotMethodType>Line</PlotMethodType>
-<LineColor>-7876870</LineColor>
+<LineColor>-65281</LineColor>
 </DataColumn>
 </DataColumns>
 </Axis>
@@ -139,7 +139,7 @@
 <LineType>MediumSolid</LineType>
 <PointType>Plus</PointType>
 <PlotMethodType>Line</PlotMethodType>
-<LineColor>-7876870</LineColor>
+<LineColor>-16711681</LineColor>
 </DataColumn>
 </DataColumns>
 </Axis>
@@ -165,7 +165,7 @@
 <LineType>MediumSolid</LineType>
 <PointType>Plus</PointType>
 <PlotMethodType>Line</PlotMethodType>
-<LineColor>-7876870</LineColor>
+<LineColor>-65536</LineColor>
 </DataColumn>
 </DataColumns>
 </Axis>
@@ -198,7 +198,7 @@
 </AxisList>
 <SaveDataWhenClosed>False</SaveDataWhenClosed>
 <UpdateChartAtEnd>True</UpdateChartAtEnd>
-<PointsToKeep>8028</PointsToKeep>
+<PointsToKeep>20371</PointsToKeep>
 <YAxisOffset>0</YAxisOffset>
 <GraphConfig ByteCount="8945"/>
 </Form>

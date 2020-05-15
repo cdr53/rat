@@ -7,20 +7,15 @@
     trial = 4;
 %     waveform = [BackRaw(:,trial,1)-98,BackRaw(:,trial,2)-90,BackRaw(:,trial,3)-116];
     waveform = [completeWaves(:,trial,1)-98,completeWaves(:,trial,2)-90,completeWaves(:,trial,3)-116];
-    initAngs = [-0.9656   -0.1941   -0.6678];
-    naturalStopping = [-.748 -.01337 -.47064];
-    initAngs = naturalStopping;
-    toeoff_old = [0.4315   -0.2007   -0.0678];
-    toeoff = [.1583246 -.15 -.562388];
-    %waveform = [linspace(initAngs(1),toeoff(1),1000) ; linspace(initAngs(2),toeoff(2),1000) ; linspace(initAngs(3),toeoff(3),1000)]';
+        initAngs = [-0.9656   -0.1941   -0.6678];
+        naturalStopping = [-.748 -.01337 -.47064];
+        toeoff = [.1583246 -.15 -.562388];
     waveform = repmat(toeoff,10000,1);
-    %jTemp = 2;
-    %waveform(:,jTemp) = ((initAngs(jTemp)-toeoff(jTemp))/2)*cos(.001*linspace(0,length(waveform),length(waveform)))+(initAngs(jTemp)+toeoff(jTemp))/2;
     clear trial
     
     tstart = tic;
     clear obj
-    [obj] = jointMotionInjector(waveform,0);
+    [obj] = jointMotionInjector(motorSim,waveform,0);
     numMuscles = length(obj.musc_obj);
     
     telapsed = toc(tstart);
@@ -41,10 +36,9 @@
         oforces = oforces';
     end
 
-    % Either smoothing technique works but lowpass distorts the data ends
-    %forces = lowpass(oforces,0.01,'Steepness',0.85,'StopbandAttenuation',60);
     forces = smoothdata(oforces,'gaussian',20);
     forces(forces<0) = 0;
+    pts = zeros(numMuscles,length(obj.theta_motion));
     
     for ii = 1:numMuscles
         pts(ii,:) = obj.musc_obj{ii}.passive_tension;

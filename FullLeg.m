@@ -1278,9 +1278,11 @@ classdef FullLeg < matlab.mixin.SetGet
 %             beg = a3(dd);
 %             ennd = a3(dd+1);
 %             mid = floor((beg+ennd)/2);
-            
             jointprofile = obj.theta_motion;
             trimmedjp = jointprofile(floor(length(jointprofile)*.1):floor(length(jointprofile)*.9),:);
+            beg = 1;
+            ennd = size(jointprofile,1);
+            mid = floor((beg+ennd)/2);
             if mean(range(trimmedjp)) < 1e-3 || mean(std(trimmedjp)) < .01
                 % If jointprofile is constant
                 beg = floor(length(jointprofile)*(1/3));
@@ -1298,8 +1300,8 @@ classdef FullLeg < matlab.mixin.SetGet
                     [minvals,minlocs]= findpeaks(-jointprofile(:,2));
                 end
             else
-                maxvals = findpeaks(jointprofile(:,1));
-                [minvals,minlocs]= findpeaks(-jointprofile(:,1));
+                maxvals = findpeaks(trimmedjp(:,1));
+                [minvals,minlocs]= findpeaks(-trimmedjp(:,1));
             end
             if size(maxvals,1) > 2
 %                 [minvals,minlocs]= findpeaks(-jointprofile(:,1));
@@ -1312,13 +1314,13 @@ classdef FullLeg < matlab.mixin.SetGet
                     ennd = minlocs(3);
                 end
                 mid = floor((beg+ennd)/2);
-            elseif size(maxvals,1) == 1 && size(minvals,1) == 1
+            elseif size(maxvals,1) == 1 && (size(minvals,1) == 1 || isempty(minvals))
                 beg = 1;
                 ennd = size(jointprofile,1);
                 mid = floor((beg+ennd)/2);
             else
-                plot(jointprofile)
-                disp('Are you using a simulation that has at least three steps? Check that the boundaries are going to be defined correctly for a single step')
+                %plot(jointprofile)
+                %disp('Are you using a simulation that has at least three steps? Check that the boundaries are going to be defined correctly for a single step')
                 return
             end
         end
@@ -1356,7 +1358,12 @@ classdef FullLeg < matlab.mixin.SetGet
                 jointmat = [obj.joint_obj{1}.sim_position_profile(beg:ennd,:);...
                                 obj.joint_obj{2}.sim_position_profile(beg:ennd,:);...
                                 obj.joint_obj{3}.sim_position_profile(beg:ennd,:)];
-                toemat = obj.musc_obj{20,1}.pos_attachments{5,4};
+                if size(obj.musc_obj,1) ~= 38
+                    toeMusc = obj.musc_obj{6,1};
+                else
+                    toeMusc = obj.musc_obj{20,1};
+                end
+                toemat = toeMusc.pos_attachments{5,4};
                 jointaxmat = (1/100).*[obj.joint_obj{joint}.uuw_joint(:,xx)';...
                     obj.joint_obj{joint}.uuw_joint2(:,xx)';...
                     obj.joint_obj{joint}.uuw_joint3(:,xx)'];
@@ -1453,7 +1460,7 @@ classdef FullLeg < matlab.mixin.SetGet
                         tibia = scale*[obj.joint_obj{2}.sim_position_profile(i,1),obj.joint_obj{2}.sim_position_profile(i,2),obj.joint_obj{2}.sim_position_profile(i,3);...
                             obj.joint_obj{3}.sim_position_profile(i,1),obj.joint_obj{3}.sim_position_profile(i,2),obj.joint_obj{3}.sim_position_profile(i,3)];
                         foot = scale*[obj.joint_obj{3}.sim_position_profile(i,1),obj.joint_obj{3}.sim_position_profile(i,2),obj.joint_obj{3}.sim_position_profile(i,3);...
-                            obj.musc_obj{20, 1}.pos_attachments{5,4}(i,:)];
+                            toemat(i,:)];
                                 %flongco = [fflat(:,i-beg+1)'+scale*muscle.pos_attachments{1,4}(i,:);flong(:,i-beg+1)'+fflat(:,i-beg+1)'+scale*muscle.pos_attachments{1,4}(i,:)];
                                 %fflatco = [scale*muscle.pos_attachments{1,4}(i,:);fflat(:,i-beg+1)'+scale*muscle.pos_attachments{1,4}(i,:)];
                                 %mprojection = [originprojection';insprojection'];

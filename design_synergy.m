@@ -1,4 +1,4 @@
-function [obj,sim_file,joints,bodies,joint_limits,joint_profile] = design_synergy(sim_file)
+function [obj,sim_file,joints,bodies,joint_limits,joint_profile,sdata] = design_synergy(sim_file)
 
 full_run = 1;
 minimum_effort_run = 0;

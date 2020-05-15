@@ -1,15 +1,20 @@
+muscleSim = [pwd,'\Animatlab\SynergyWalking\muscleStim.asim'];
+% motorProj = 'G:\My Drive\Rat\SynergyControl\Animatlab\SynergyWalking\SynergyWalking20200109.aproj';
+% motorSim = 'G:\My Drive\Rat\SynergyControl\Animatlab\SynergyWalking\SynergyWalking20200109_Standalone.asim';
+motorProj = 'G:\My Drive\Rat\SynergyControl\Animatlab\SynergyWalking\SynergyWalking_reduced.aproj';
+motorSim = 'G:\My Drive\Rat\SynergyControl\Animatlab\SynergyWalking\SynergyWalking_reduced_Standalone.asim';
+
 jointAngles2Synergies
 % synergyProjectBuilder
-indivProjectBuilder
+[nsys] = indivProjectBuilder(motorProj,motorSim,current2inject,forces,obj);
 
- musclesim = [pwd,'\Animatlab\SynergyWalking\muscleStim.asim'];
- %motorsim = [pwd,'\Animatlab\SynergyWalking\motorStim.asim'];
+%motorsim = [pwd,'\Animatlab\SynergyWalking\motorStim.asim'];
 
-motorsim = 'G:\My Drive\Rat\SynergyControl\Animatlab\SynergyWalking\SynergyWalking_reduced_Standalone.asim';
+%motorsim = 'G:\My Drive\Rat\SynergyControl\Animatlab\SynergyWalking\SynergyWalking_reduced_Standalone.asim';
 %motorsim = 'G:\My Drive\Rat\SynergyControl\Animatlab\SynergyWalking\SynergyWalking_reduced_motorsim.asim';
 
-muscdata = processSimData(musclesim);
-motordata = processSimData(motorsim);
+muscdata = processSimData(muscleSim);
+motordata = processSimData(motorSim);
 close all
 clear pts mls
 numMuscles = length(obj.musc_obj);

@@ -282,7 +282,7 @@
 <UpperOutput>4.16</UpperOutput>
 <A>-0.05</A>
 <B>4.16</B>
-<C>985.39</C>
+<C>1382.67</C>
 <D>0</D>
 </StimulusTension>
 <LengthTension>
@@ -334,7 +334,7 @@
 <UpperOutput>13.4</UpperOutput>
 <A>-0.05</A>
 <B>13.4</B>
-<C>1468.44</C>
+<C>1273.72</C>
 <D>0</D>
 </StimulusTension>
 <LengthTension>
@@ -387,7 +387,7 @@
 <UpperOutput>17.71</UpperOutput>
 <A>-0.05</A>
 <B>17.71</B>
-<C>1788.97</C>
+<C>1607.74</C>
 <D>0</D>
 </StimulusTension>
 <LengthTension>
@@ -673,10 +673,10 @@
 <LowerLimit>-0.06</LowerLimit>
 <UpperLimit>-0.04</UpperLimit>
 <LowerOutput>0</LowerOutput>
-<UpperOutput>12.48</UpperOutput>
+<UpperOutput>12.47</UpperOutput>
 <A>-0.05</A>
-<B>12.48</B>
-<C>2674.88</C>
+<B>12.47</B>
+<C>2713.95</C>
 <D>0</D>
 </StimulusTension>
 <LengthTension>
@@ -1011,7 +1011,7 @@
 <UpperOutput>9.19</UpperOutput>
 <A>-0.05</A>
 <B>9.19</B>
-<C>1053.38</C>
+<C>1251.94</C>
 <D>0</D>
 </StimulusTension>
 <LengthTension>
@@ -1726,7 +1726,7 @@
 <UpperOutput>11.75</UpperOutput>
 <A>-0.05</A>
 <B>11.75</B>
-<C>2640.31</C>
+<C>1555.57</C>
 <D>0</D>
 </StimulusTension>
 <LengthTension>
@@ -2213,7 +2213,7 @@
 <UpperOutput>13.15</UpperOutput>
 <A>-0.05</A>
 <B>13.15</B>
-<C>1466.76</C>
+<C>1681.89</C>
 <D>0</D>
 </StimulusTension>
 <LengthTension>
@@ -3068,7 +3068,7 @@
 <CurrentOn>1e-08</CurrentOn>
 <CurrentOff>0</CurrentOff>
 <CurrentBurstOff>0</CurrentBurstOff>
-<CurrentOnEquation>1.2317,0,t,*,1.5708,+,sin,*</CurrentOnEquation>
+<CurrentOnEquation>1.2578,0,t,*,1.5708,+,sin,*</CurrentOnEquation>
 </Stimulus>
 <Stimulus>
 <ID>stTC1-neur4-ID</ID>
@@ -3128,7 +3128,7 @@
 <CurrentOn>1e-08</CurrentOn>
 <CurrentOff>0</CurrentOff>
 <CurrentBurstOff>0</CurrentBurstOff>
-<CurrentOnEquation>8.9149,0,t,*,1.5708,+,sin,*</CurrentOnEquation>
+<CurrentOnEquation>8.1582,0,t,*,1.5708,+,sin,*</CurrentOnEquation>
 </Stimulus>
 <Stimulus>
 <ID>stTC1-neur7-ID</ID>
@@ -3148,7 +3148,7 @@
 <CurrentOn>1e-08</CurrentOn>
 <CurrentOff>0</CurrentOff>
 <CurrentBurstOff>0</CurrentBurstOff>
-<CurrentOnEquation>1.1912,0,t,*,1.5708,+,sin,*</CurrentOnEquation>
+<CurrentOnEquation>1.1667,0,t,*,1.5708,+,sin,*</CurrentOnEquation>
 </Stimulus>
 </ExternalStimuli>
 <DataCharts>
@@ -3618,8 +3618,8 @@
 <HudItem>
 <ModuleName/>
 <Type>HudText</Type>
-<Name>d9c31f02-cb3f-4980-be7f-5b30c689c22e</Name>
-<ID>d9c31f02-cb3f-4980-be7f-5b30c689c22e</ID>
+<Name>43c87aba-7f22-47ac-9ce8-822108177db0</Name>
+<ID>43c87aba-7f22-47ac-9ce8-822108177db0</ID>
 <Type>HudText</Type>
 <CharSize>30</CharSize>
 <Text>Time: %3.3f</Text>

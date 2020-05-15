@@ -620,7 +620,7 @@
 <DependentUnits>Contractile Tension (N)</DependentUnits>
 <A Value="-50" Scale="milli" Actual="-0.05"/>
 <B Value="12.15" Scale="None" Actual="12.15"/>
-<C Value="2708.8" Scale="None" Actual="2708.8"/>
+<C Value="1362.3" Scale="None" Actual="1362.3"/>
 <D Value="0" Scale="milli" Actual="0"/>
 </StimulusTension>
 <LengthTension>
@@ -687,7 +687,7 @@
 <DependentUnits>Contractile Tension (N)</DependentUnits>
 <A Value="-50" Scale="milli" Actual="-0.05"/>
 <B Value="9.94" Scale="None" Actual="9.94"/>
-<C Value="1159.32" Scale="None" Actual="1159.32"/>
+<C Value="1124.71" Scale="None" Actual="1124.71"/>
 <D Value="0" Scale="milli" Actual="0"/>
 </StimulusTension>
 <LengthTension>
@@ -1507,7 +1507,7 @@
 <DependentUnits>Contractile Tension (N)</DependentUnits>
 <A Value="-50" Scale="milli" Actual="-0.05"/>
 <B Value="4.77" Scale="None" Actual="4.77"/>
-<C Value="1096.12" Scale="None" Actual="1096.12"/>
+<C Value="997.1" Scale="None" Actual="997.1"/>
 <D Value="0" Scale="milli" Actual="0"/>
 </StimulusTension>
 <LengthTension>
@@ -1574,7 +1574,7 @@
 <DependentUnits>Contractile Tension (N)</DependentUnits>
 <A Value="-50" Scale="milli" Actual="-0.05"/>
 <B Value="4.16" Scale="None" Actual="4.16"/>
-<C Value="985.39" Scale="None" Actual="985.39"/>
+<C Value="1382.67" Scale="None" Actual="1382.67"/>
 <D Value="0" Scale="milli" Actual="0"/>
 </StimulusTension>
 <LengthTension>
@@ -1641,7 +1641,7 @@
 <DependentUnits>Contractile Tension (N)</DependentUnits>
 <A Value="-50" Scale="milli" Actual="-0.05"/>
 <B Value="7.72" Scale="None" Actual="7.72"/>
-<C Value="1137.56" Scale="None" Actual="1137.56"/>
+<C Value="1436.12" Scale="None" Actual="1436.12"/>
 <D Value="0" Scale="milli" Actual="0"/>
 </StimulusTension>
 <LengthTension>
@@ -1708,7 +1708,7 @@
 <DependentUnits>Contractile Tension (N)</DependentUnits>
 <A Value="-50" Scale="milli" Actual="-0.05"/>
 <B Value="12" Scale="None" Actual="12"/>
-<C Value="1854.93" Scale="None" Actual="1854.93"/>
+<C Value="1954.05" Scale="None" Actual="1954.05"/>
 <D Value="0" Scale="milli" Actual="0"/>
 </StimulusTension>
 <LengthTension>
@@ -1983,7 +1983,7 @@
 <DependentUnits>Contractile Tension (N)</DependentUnits>
 <A Value="-50" Scale="milli" Actual="-0.05"/>
 <B Value="13.4" Scale="None" Actual="13.4"/>
-<C Value="1468.44" Scale="None" Actual="1468.44"/>
+<C Value="1273.72" Scale="None" Actual="1273.72"/>
 <D Value="0" Scale="milli" Actual="0"/>
 </StimulusTension>
 <LengthTension>
@@ -2190,7 +2190,7 @@
 <DependentUnits>Contractile Tension (N)</DependentUnits>
 <A Value="-50" Scale="milli" Actual="-0.05"/>
 <B Value="17.71" Scale="None" Actual="17.71"/>
-<C Value="1788.97" Scale="None" Actual="1788.97"/>
+<C Value="1607.74" Scale="None" Actual="1607.74"/>
 <D Value="0" Scale="milli" Actual="0"/>
 </StimulusTension>
 <LengthTension>
@@ -3143,7 +3143,7 @@
 <DependentUnits>Contractile Tension (N)</DependentUnits>
 <A Value="-50" Scale="milli" Actual="-0.05"/>
 <B Value="15.98" Scale="None" Actual="15.98"/>
-<C Value="1698.76" Scale="None" Actual="1698.76"/>
+<C Value="1680.96" Scale="None" Actual="1680.96"/>
 <D Value="0" Scale="milli" Actual="0"/>
 </StimulusTension>
 <LengthTension>
@@ -3552,12 +3552,12 @@
 <LowerLimitScale Value="-60" Scale="milli" Actual="-0.06"/>
 <UpperLimitScale Value="-40" Scale="milli" Actual="-0.04"/>
 <LowerOutputScale Value="0" Scale="None" Actual="0"/>
-<UpperOutputScale Value="12.48" Scale="None" Actual="12.48"/>
+<UpperOutputScale Value="12.47" Scale="None" Actual="12.47"/>
 <IndependentUnits>Membrane Voltage (V)</IndependentUnits>
 <DependentUnits>Contractile Tension (N)</DependentUnits>
 <A Value="-50" Scale="milli" Actual="-0.05"/>
-<B Value="12.48" Scale="None" Actual="12.48"/>
-<C Value="2674.88" Scale="None" Actual="2674.88"/>
+<B Value="12.47" Scale="None" Actual="12.47"/>
+<C Value="2713.95" Scale="None" Actual="2713.95"/>
 <D Value="0" Scale="milli" Actual="0"/>
 </StimulusTension>
 <LengthTension>
@@ -3971,7 +3971,7 @@
 <DependentUnits>Contractile Tension (N)</DependentUnits>
 <A Value="-50" Scale="milli" Actual="-0.05"/>
 <B Value="2.69" Scale="None" Actual="2.69"/>
-<C Value="1046.61" Scale="None" Actual="1046.61"/>
+<C Value="1046.6" Scale="None" Actual="1046.6"/>
 <D Value="0" Scale="milli" Actual="0"/>
 </StimulusTension>
 <LengthTension>
@@ -5340,11 +5340,11 @@
 <LowerLimitScale Value="-60" Scale="milli" Actual="-0.06"/>
 <UpperLimitScale Value="-40" Scale="milli" Actual="-0.04"/>
 <LowerOutputScale Value="0" Scale="None" Actual="0"/>
-<UpperOutputScale Value="2.34" Scale="None" Actual="2.34"/>
+<UpperOutputScale Value="2.33" Scale="None" Actual="2.33"/>
 <IndependentUnits>Membrane Voltage (V)</IndependentUnits>
 <DependentUnits>Contractile Tension (N)</DependentUnits>
 <A Value="-50" Scale="milli" Actual="-0.05"/>
-<B Value="2.34" Scale="None" Actual="2.34"/>
+<B Value="2.33" Scale="None" Actual="2.33"/>
 <C Value="970.59" Scale="None" Actual="970.59"/>
 <D Value="0" Scale="milli" Actual="0"/>
 </StimulusTension>
@@ -5484,7 +5484,7 @@
 <DependentUnits>Contractile Tension (N)</DependentUnits>
 <A Value="-50" Scale="milli" Actual="-0.05"/>
 <B Value="4.16" Scale="None" Actual="4.16"/>
-<C Value="985.39" Scale="None" Actual="985.39"/>
+<C Value="1084.35" Scale="None" Actual="1084.35"/>
 <D Value="0" Scale="milli" Actual="0"/>
 </StimulusTension>
 <LengthTension>
@@ -5829,7 +5829,7 @@
 <DependentUnits>Contractile Tension (N)</DependentUnits>
 <A Value="-50" Scale="milli" Actual="-0.05"/>
 <B Value="9.19" Scale="None" Actual="9.19"/>
-<C Value="1053.38" Scale="None" Actual="1053.38"/>
+<C Value="1251.94" Scale="None" Actual="1251.94"/>
 <D Value="0" Scale="milli" Actual="0"/>
 </StimulusTension>
 <LengthTension>
@@ -7971,7 +7971,7 @@
 <DependentUnits>Contractile Tension (N)</DependentUnits>
 <A Value="-50" Scale="milli" Actual="-0.05"/>
 <B Value="11.75" Scale="None" Actual="11.75"/>
-<C Value="2640.31" Scale="None" Actual="2640.31"/>
+<C Value="1555.57" Scale="None" Actual="1555.57"/>
 <D Value="0" Scale="milli" Actual="0"/>
 </StimulusTension>
 <LengthTension>
@@ -8730,7 +8730,7 @@
 <DependentUnits>Contractile Tension (N)</DependentUnits>
 <A Value="-50" Scale="milli" Actual="-0.05"/>
 <B Value="3.72" Scale="None" Actual="3.72"/>
-<C Value="975.67" Scale="None" Actual="975.67"/>
+<C Value="1074.59" Scale="None" Actual="1074.59"/>
 <D Value="0" Scale="milli" Actual="0"/>
 </StimulusTension>
 <LengthTension>
@@ -8810,7 +8810,7 @@
 <DependentUnits>Contractile Tension (N)</DependentUnits>
 <A Value="-50" Scale="milli" Actual="-0.05"/>
 <B Value="3.09" Scale="None" Actual="3.09"/>
-<C Value="1157.87" Scale="None" Actual="1157.87"/>
+<C Value="970.59" Scale="None" Actual="970.59"/>
 <D Value="0" Scale="milli" Actual="0"/>
 </StimulusTension>
 <LengthTension>
@@ -8880,7 +8880,7 @@
 <DependentUnits>Contractile Tension (N)</DependentUnits>
 <A Value="-50" Scale="milli" Actual="-0.05"/>
 <B Value="5.89" Scale="None" Actual="5.89"/>
-<C Value="1114.26" Scale="None" Actual="1114.26"/>
+<C Value="1015.17" Scale="None" Actual="1015.17"/>
 <D Value="0" Scale="milli" Actual="0"/>
 </StimulusTension>
 <LengthTension>
@@ -9018,7 +9018,7 @@
 <DependentUnits>Contractile Tension (N)</DependentUnits>
 <A Value="-50" Scale="milli" Actual="-0.05"/>
 <B Value="6.46" Scale="None" Actual="6.46"/>
-<C Value="1122.17" Scale="None" Actual="1122.17"/>
+<C Value="1023.07" Scale="None" Actual="1023.07"/>
 <D Value="0" Scale="milli" Actual="0"/>
 </StimulusTension>
 <LengthTension>
@@ -9293,12 +9293,12 @@
 <LowerLimitScale Value="-60" Scale="milli" Actual="-0.06"/>
 <UpperLimitScale Value="-40" Scale="milli" Actual="-0.04"/>
 <LowerOutputScale Value="0" Scale="None" Actual="0"/>
-<UpperOutputScale Value="19.63" Scale="None" Actual="19.63"/>
+<UpperOutputScale Value="19.62" Scale="None" Actual="19.62"/>
 <IndependentUnits>Membrane Voltage (V)</IndependentUnits>
 <DependentUnits>Contractile Tension (N)</DependentUnits>
 <A Value="-50" Scale="milli" Actual="-0.05"/>
-<B Value="19.63" Scale="None" Actual="19.63"/>
-<C Value="2661.9" Scale="None" Actual="2661.9"/>
+<B Value="19.62" Scale="None" Actual="19.62"/>
+<C Value="2763.12" Scale="None" Actual="2763.12"/>
 <D Value="0" Scale="milli" Actual="0"/>
 </StimulusTension>
 <LengthTension>
@@ -10685,7 +10685,7 @@
 <DependentUnits>Contractile Tension (N)</DependentUnits>
 <A Value="-50" Scale="milli" Actual="-0.05"/>
 <B Value="10.97" Scale="None" Actual="10.97"/>
-<C Value="2671.61" Scale="None" Actual="2671.61"/>
+<C Value="1944.92" Scale="None" Actual="1944.92"/>
 <D Value="0" Scale="milli" Actual="0"/>
 </StimulusTension>
 <LengthTension>
@@ -10821,7 +10821,7 @@
 <DependentUnits>Contractile Tension (N)</DependentUnits>
 <A Value="-50" Scale="milli" Actual="-0.05"/>
 <B Value="13.15" Scale="None" Actual="13.15"/>
-<C Value="1466.76" Scale="None" Actual="1466.76"/>
+<C Value="1681.89" Scale="None" Actual="1681.89"/>
 <D Value="0" Scale="milli" Actual="0"/>
 </StimulusTension>
 <LengthTension>
@@ -11236,7 +11236,7 @@
 <DependentUnits>Contractile Tension (N)</DependentUnits>
 <A Value="-50" Scale="milli" Actual="-0.05"/>
 <B Value="3.57" Scale="None" Actual="3.57"/>
-<C Value="1071.19" Scale="None" Actual="1071.19"/>
+<C Value="972.25" Scale="None" Actual="972.25"/>
 <D Value="0" Scale="milli" Actual="0"/>
 </StimulusTension>
 <LengthTension>
@@ -11303,7 +11303,7 @@
 <DependentUnits>Contractile Tension (N)</DependentUnits>
 <A Value="-50" Scale="milli" Actual="-0.05"/>
 <B Value="3.05" Scale="None" Actual="3.05"/>
-<C Value="970.59" Scale="None" Actual="970.59"/>
+<C Value="1057.55" Scale="None" Actual="1057.55"/>
 <D Value="0" Scale="milli" Actual="0"/>
 </StimulusTension>
 <LengthTension>
@@ -11644,7 +11644,7 @@
 <DependentUnits>Contractile Tension (N)</DependentUnits>
 <A Value="-50" Scale="milli" Actual="-0.05"/>
 <B Value="3.22" Scale="None" Actual="3.22"/>
-<C Value="1062.24" Scale="None" Actual="1062.24"/>
+<C Value="1161.43" Scale="None" Actual="1161.43"/>
 <D Value="0" Scale="milli" Actual="0"/>
 </StimulusTension>
 <LengthTension>
@@ -11711,7 +11711,7 @@
 <DependentUnits>Contractile Tension (N)</DependentUnits>
 <A Value="-50" Scale="milli" Actual="-0.05"/>
 <B Value="20.18" Scale="None" Actual="20.18"/>
-<C Value="2682.85" Scale="None" Actual="2682.85"/>
+<C Value="2764.97" Scale="None" Actual="2764.97"/>
 <D Value="0" Scale="milli" Actual="0"/>
 </StimulusTension>
 <LengthTension>
@@ -11778,7 +11778,7 @@
 <DependentUnits>Contractile Tension (N)</DependentUnits>
 <A Value="-50" Scale="milli" Actual="-0.05"/>
 <B Value="3.2" Scale="None" Actual="3.2"/>
-<C Value="1061.8" Scale="None" Actual="1061.8"/>
+<C Value="970.59" Scale="None" Actual="970.59"/>
 <D Value="0" Scale="milli" Actual="0"/>
 </StimulusTension>
 <LengthTension>
