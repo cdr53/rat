@@ -2893,7 +2893,7 @@
 <CurrentOn>0</CurrentOn>
 <CurrentOff>0</CurrentOff>
 <CurrentBurstOff>0</CurrentBurstOff>
-<CurrentOnEquation>8.3705,0.13405,t,*,0.96946,+,sin,*,3.3501,3.6169,t,*,1.8059,+,sin,*,2.9005,1.8137,t,*,0.87005,+,sin,*,3.5772,0.21061,t,*,3.7705,+,sin,*,1.5991,5.437,t,*,1.5966,+,sin,*,1.3454,7.2461,t,*,1.5055,+,sin,*,.17246,3.4468,t,*,6.8079,-,sin,*,.8405,9.037,t,*,1.9247,+,sin,*,+,+,+,+,+,+,+</CurrentOnEquation>
+<CurrentOnEquation>1.1948,0.28476,t,*,0.22082,+,sin,*,4.2972,0.56355,t,*,2.0421,+,sin,*,.7798,1.1356,t,*,2.4804,+,sin,*,.80407,1.8088,t,*,2.2794,+,sin,*,.415,3.8281,t,*,0.68404,+,sin,*,.66715,1.9174,t,*,5.3529,+,sin,*,.030912,3.0238,t,*,3.6315,+,sin,*,.14657,4.0135,t,*,3.1307,+,sin,*,+,+,+,+,+,+,+</CurrentOnEquation>
 </Stimulus>
 <Stimulus>
 <ID>stTC1-neur1-ID</ID>
@@ -2912,7 +2912,7 @@
 <BurstOffDuration>0</BurstOffDuration>
 <CurrentOn>0</CurrentOn>
 <CurrentOff>0</CurrentOff>
-<CurrentOnEquation>23.3303,0.23591,t,*,0.95359,+,sin,*,11.0153,0.52824,t,*,3.0102,+,sin,*,6.3412,1.7057,t,*,3.7099,+,sin,*,3.9721,5.4501,t,*,2.0828,+,sin,*,5.1984,3.7859,t,*,2.8446,+,sin,*,1.8697,4.3132,t,*,0.19435,+,sin,*,3.7559,1.1719,t,*,3.1919,+,sin,*,4.1085,4.0946,t,*,1.8524,-,sin,*,+,+,+,+,+,+,+</CurrentOnEquation>
+<CurrentOnEquation>3.5499,0.28125,t,*,0.16827,+,sin,*,12.7624,0.58372,t,*,1.8011,+,sin,*,2.6396,1.0657,t,*,2.5403,+,sin,*,.20649,1.7677,t,*,1.66,+,sin,*,.58474,1.7205,t,*,2.5895,+,sin,*,.055802,3.0149,t,*,2.2196,+,sin,*,.32772,2.1445,t,*,9.7664,+,sin,*,.020142,4.2769,t,*,2.2548,+,sin,*,+,+,+,+,+,+,+</CurrentOnEquation>
 <CurrentBurstOff>0</CurrentBurstOff>
 </Stimulus>
 <Stimulus>
@@ -2946,7 +2946,7 @@
 <BurstOnDuration>5</BurstOnDuration>
 <BurstOffDuration>0</BurstOffDuration>
 <CurrentOn>0</CurrentOn>
-<CurrentOnEquation>17.6862,0.15715,t,*,0.75689,+,sin,*,7.1852,0.25595,t,*,3.3882,+,sin,*,.34075,7.1601,t,*,0.48284,-,sin,*,2.8056,3.6298,t,*,2.9493,+,sin,*,2.9051,5.4398,t,*,4.2358,+,sin,*,2.3535,1.8163,t,*,0.28142,+,sin,*,3.1511,7.2703,t,*,0.90528,-,sin,*,2.2254,9.063,t,*,2.2283,-,sin,*,+,+,+,+,+,+,+</CurrentOnEquation>
+<CurrentOnEquation>1.5542,0.28816,t,*,0.13107,+,sin,*,.6458,0.58046,t,*,1.8127,+,sin,*,.12026,1.1392,t,*,2.1594,+,sin,*,.045608,1.7799,t,*,2.0987,+,sin,*,.00048879,2.2794,t,*,0.908,+,sin,*,.007761,2.9455,t,*,2.5458,+,sin,*,.022317,2.2503,t,*,9.2253,+,sin,*,.0025894,4.398,t,*,1.576,+,sin,*,+,+,+,+,+,+,+</CurrentOnEquation>
 <CurrentOff>0</CurrentOff>
 <CurrentBurstOff>0</CurrentBurstOff>
 </Stimulus>
@@ -2965,7 +2965,7 @@
 <CycleOffDuration>0</CycleOffDuration>
 <BurstOnDuration>5</BurstOnDuration>
 <BurstOffDuration>0</BurstOffDuration>
-<CurrentOnEquation>14.216,0.26663,t,*,0.29596,+,sin,*,7.5363,0.49991,t,*,2.32,+,sin,*,1.5704,1.8018,t,*,1.5773,+,sin,*,.56285,5.5753,t,*,0.80867,+,sin,*,1.0937,3.6141,t,*,1.5203,+,sin,*,1.6093,0.76728,t,*,4.186,+,sin,*,.64656,7.2226,t,*,1.7996,+,sin,*,.76067,5.3549,t,*,4.4852,-,sin,*,+,+,+,+,+,+,+</CurrentOnEquation>
+<CurrentOnEquation>11.9833,0.29019,t,*,0.2243,+,sin,*,5.1259,0.59286,t,*,1.9617,+,sin,*,1.0845,1.1187,t,*,2.6638,+,sin,*,.88468,2.2072,t,*,4.016,+,sin,*,.26093,3.6784,t,*,1.8655,-,sin,*,.41362,2.4031,t,*,6.2845,+,sin,*,.20356,5.5656,t,*,0.023326,+,sin,*,.29025,1.9638,t,*,2.1689,+,sin,*,+,+,+,+,+,+,+</CurrentOnEquation>
 <CurrentOn>0</CurrentOn>
 <CurrentOff>0</CurrentOff>
 <CurrentBurstOff>0</CurrentBurstOff>
@@ -3001,6 +3001,21 @@
 <DisableMotorWhenDone>False</DisableMotorWhenDone>
 </Stimulus>
 <Stimulus>
+<ID>5f826170-822d-4722-9df4-ea27e8d88476</ID>
+<Name>xAnklewalking</Name>
+<AlwaysActive>False</AlwaysActive>
+<Enabled>False</Enabled>
+<ModuleName/>
+<Type>MotorPosition</Type>
+<StructureID>e40d2c4f-9c31-49f8-8a5c-5688fb768225</StructureID>
+<JointID>c7df3511-7e4c-411e-be1f-1b71ff30c530</JointID>
+<StartTime>0</StartTime>
+<EndTime>10</EndTime>
+<TargetID>Position</TargetID>
+<Equation>0.0587,0.7246,t,*,2.326,+,sin,*,0.06009,5.647,t,*,2.748,-,sin,*,0.004938,2.263,t,*,1.667,-,sin,*,0.4367,0.3509,t,*,0.7173,+,sin,*,1.141,0.1553,t,*,1.845,-,sin,*,0.2713,3.768,t,*,1.288,+,sin,*,0.08073,1.84,t,*,0.2031,+,sin,*,0.02449,7.555,t,*,0.923,+,sin,*,+,+,+,+,+,+,+</Equation>
+<DisableMotorWhenDone>False</DisableMotorWhenDone>
+</Stimulus>
+<Stimulus>
 <ID>stTC1-neur7-ID</ID>
 <Name>stTC1-7AB</Name>
 <AlwaysActive>True</AlwaysActive>
@@ -3014,7 +3029,7 @@
 <CycleOnDuration>5</CycleOnDuration>
 <CycleOffDuration>0</CycleOffDuration>
 <BurstOnDuration>5</BurstOnDuration>
-<CurrentOnEquation>6.9805,0.21752,t,*,0.66895,+,sin,*,4.2638,1.8207,t,*,1.0395,-,sin,*,3.7534,0.48255,t,*,2.8633,+,sin,*,1.6573,3.7568,t,*,1.6127,+,sin,*,1.6671,0.57213,t,*,5.7708,+,sin,*,1.4596,7.2417,t,*,0.29735,-,sin,*,.028698,6.9962,t,*,4.8161,-,sin,*,1.0456,3.525,t,*,3.4888,-,sin,*,+,+,+,+,+,+,+</CurrentOnEquation>
+<CurrentOnEquation>14.502,0.30352,t,*,0.084501,+,sin,*,6.1255,0.61206,t,*,1.7162,+,sin,*,1.2592,1.2157,t,*,1.9076,+,sin,*,.33365,3.6155,t,*,2.5897,+,sin,*,.20779,2.4272,t,*,1.9717,+,sin,*,.17251,7.4357,t,*,2.5798,+,sin,*,.17629,2.9786,t,*,2.6399,+,sin,*,.20479,2.1922,t,*,2.5901,-,sin,*,+,+,+,+,+,+,+</CurrentOnEquation>
 <BurstOffDuration>0</BurstOffDuration>
 <CurrentOn>0</CurrentOn>
 <CurrentOff>0</CurrentOff>
@@ -3081,21 +3096,6 @@
 <DisableMotorWhenDone>True</DisableMotorWhenDone>
 </Stimulus>
 <Stimulus>
-<ID>5f826170-822d-4722-9df4-ea27e8d88476</ID>
-<Name>xAnklewalking</Name>
-<AlwaysActive>False</AlwaysActive>
-<Enabled>False</Enabled>
-<ModuleName/>
-<Type>MotorPosition</Type>
-<StructureID>e40d2c4f-9c31-49f8-8a5c-5688fb768225</StructureID>
-<JointID>c7df3511-7e4c-411e-be1f-1b71ff30c530</JointID>
-<StartTime>0</StartTime>
-<EndTime>10</EndTime>
-<TargetID>Position</TargetID>
-<Equation>0.0587,0.7246,t,*,2.326,+,sin,*,0.06009,5.647,t,*,2.748,-,sin,*,0.004938,2.263,t,*,1.667,-,sin,*,0.4367,0.3509,t,*,0.7173,+,sin,*,1.141,0.1553,t,*,1.845,-,sin,*,0.2713,3.768,t,*,1.288,+,sin,*,0.08073,1.84,t,*,0.2031,+,sin,*,0.02449,7.555,t,*,0.923,+,sin,*,+,+,+,+,+,+,+</Equation>
-<DisableMotorWhenDone>False</DisableMotorWhenDone>
-</Stimulus>
-<Stimulus>
 <ID>stTC1-neur4-ID</ID>
 <Name>stTC1-4MG</Name>
 <AlwaysActive>True</AlwaysActive>
@@ -3108,7 +3108,7 @@
 <EndTime>5</EndTime>
 <CycleOnDuration>5</CycleOnDuration>
 <CycleOffDuration>0</CycleOffDuration>
-<CurrentOnEquation>3.8476,0.15647,t,*,0.79035,+,sin,*,1.1977,0.29221,t,*,3.2548,+,sin,*,1.1434,5.7858,t,*,3.5469,-,sin,*,.40366,3.735,t,*,2.4537,-,sin,*,.78135,1.8211,t,*,1.4128,+,sin,*,1.1914,5.3823,t,*,1.6201,-,sin,*,.98312,3.5845,t,*,1.7029,-,sin,*,.78513,5.8884,t,*,0.89071,-,sin,*,+,+,+,+,+,+,+</CurrentOnEquation>
+<CurrentOnEquation>7.8283,0.28796,t,*,0.1283,+,sin,*,3.2746,0.57402,t,*,1.8369,+,sin,*,.60558,1.1512,t,*,2.087,+,sin,*,.28111,1.7659,t,*,2.1521,+,sin,*,0,3.0302,t,*,2.5662,-,sin,*,.021898,2.9828,t,*,2.348,+,sin,*,.14496,2.1144,t,*,9.8562,+,sin,*,.0084069,4.2853,t,*,2.1342,+,sin,*,+,+,+,-,+,+,+</CurrentOnEquation>
 <BurstOnDuration>5</BurstOnDuration>
 <BurstOffDuration>0</BurstOffDuration>
 <CurrentOn>0</CurrentOn>
@@ -3142,7 +3142,7 @@
 <StartTime>0</StartTime>
 <EndTime>5</EndTime>
 <CycleOnDuration>5</CycleOnDuration>
-<CurrentOnEquation>8.7777,0.40343,t,*,0.48959,-,sin,*,2.6821,1.9309,t,*,1.8152,-,sin,*,6.1058,0.77798,t,*,0.74755,+,sin,*,1.9434,5.4554,t,*,3.3215,+,sin,*,.19923,7.5482,t,*,1.1594,-,sin,*,2.3136,7.2416,t,*,0.50218,+,sin,*,1.6037,9.1021,t,*,3.6947,-,sin,*,3.0548,1.2328,t,*,1.5928,+,sin,*,+,+,+,+,+,+,+</CurrentOnEquation>
+<CurrentOnEquation>8.5251,0.24075,t,*,0.42254,+,sin,*,3.8091,0.5135,t,*,2.2697,+,sin,*,1.2782,1.8566,t,*,2.7258,-,sin,*,.9595,0.76101,t,*,4.2497,+,sin,*,.6125,3.7074,t,*,0.81988,-,sin,*,.2699,5.6015,t,*,1.2129,+,sin,*,+,+,+,+,+</CurrentOnEquation>
 <CycleOffDuration>0</CycleOffDuration>
 <BurstOnDuration>5</BurstOnDuration>
 <BurstOffDuration>0</BurstOffDuration>
@@ -3161,7 +3161,7 @@
 <CollectTimeWindow>-1</CollectTimeWindow>
 <AlwaysActive>False</AlwaysActive>
 <StartTime>0</StartTime>
-<EndTime>10</EndTime>
+<EndTime>3.3388</EndTime>
 <CollectInterval>0.00054</CollectInterval>
 <DataColumns>
 <DataColumn>
@@ -3231,7 +3231,7 @@
 <CollectTimeWindow>-1</CollectTimeWindow>
 <AlwaysActive>False</AlwaysActive>
 <StartTime>0</StartTime>
-<EndTime>10</EndTime>
+<EndTime>3.3388</EndTime>
 <CollectInterval>0.00162</CollectInterval>
 <DataColumns>
 <DataColumn>
@@ -3301,7 +3301,7 @@
 <CollectTimeWindow>-1</CollectTimeWindow>
 <AlwaysActive>False</AlwaysActive>
 <StartTime>0</StartTime>
-<EndTime>10</EndTime>
+<EndTime>3.3388</EndTime>
 <CollectInterval>0.00162</CollectInterval>
 <DataColumns>
 <DataColumn>
@@ -3371,7 +3371,7 @@
 <CollectTimeWindow>-1</CollectTimeWindow>
 <AlwaysActive>False</AlwaysActive>
 <StartTime>0</StartTime>
-<EndTime>10</EndTime>
+<EndTime>3.3388</EndTime>
 <CollectInterval>0.00162</CollectInterval>
 <DataColumns>
 <DataColumn>
@@ -3441,7 +3441,7 @@
 <CollectTimeWindow>-1</CollectTimeWindow>
 <AlwaysActive>False</AlwaysActive>
 <StartTime>0</StartTime>
-<EndTime>10</EndTime>
+<EndTime>3.3388</EndTime>
 <CollectInterval>0.00162</CollectInterval>
 <DataColumns>
 <DataColumn>
@@ -3581,7 +3581,7 @@
 <CollectTimeWindow>-1</CollectTimeWindow>
 <AlwaysActive>False</AlwaysActive>
 <StartTime>0</StartTime>
-<EndTime>10</EndTime>
+<EndTime>3.3388</EndTime>
 <CollectInterval>0.00162</CollectInterval>
 <DataColumns>
 <DataColumn>
@@ -3664,8 +3664,8 @@
 <HudItem>
 <ModuleName/>
 <Type>HudText</Type>
-<Name>49731f8d-6557-4cb8-8b9b-0c87ea375990</Name>
-<ID>49731f8d-6557-4cb8-8b9b-0c87ea375990</ID>
+<Name>eed43e26-9efd-46cd-a994-5d395d41490d</Name>
+<ID>eed43e26-9efd-46cd-a994-5d395d41490d</ID>
 <Type>HudText</Type>
 <CharSize>30</CharSize>
 <Text>Time: %3.3f</Text>

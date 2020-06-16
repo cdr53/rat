@@ -13,11 +13,11 @@
 <EnableSimRecording>True</EnableSimRecording>
 <SetSimEnd>True</SetSimEnd>
 <APIFile/>
-<SimEndTime Value="3.345" Scale="None" Actual="3.345"/>
+<SimEndTime Value="3.3488" Scale="None" Actual="3.3488"/>
 <PlaybackControlMode>FastestPossible</PlaybackControlMode>
 <PresetPlaybackTimeStep Value="10" Scale="milli" Actual="0.01"/>
 <Environment>
-<PhysicsTimeStep Value="0.54" Scale="milli" Actual="0.00054"/>
+<PhysicsTimeStep Value="1.62" Scale="milli" Actual="0.00162"/>
 <PhysicsSubsteps>1</PhysicsSubsteps>
 <Gravity Value="-9.81" Scale="None" Actual="-9.81"/>
 <MouseSpringStiffness Value="0.5" Scale="None" Actual="0.5"/>
@@ -3228,7 +3228,7 @@
 <ID>CZO1YI9-module</ID>
 <AssemblyFile>IntegrateFireGUI.dll</AssemblyFile>
 <ClassName>IntegrateFireGUI.DataObjects.Behavior.NeuralModule</ClassName>
-<TimeStep Value="0.54" Scale="milli" Actual="0.00054"/>
+<TimeStep Value="1.62" Scale="milli" Actual="0.00162"/>
 <ID>CZO1YI9-module</ID>
 <AHPEquilibriumPotential Value="-70" Scale="milli" Actual="-0.07"/>
 <SpikePeak Value="0" Scale="milli" Actual="0"/>
@@ -6399,7 +6399,7 @@
 <Name>stTC1-neur1</Name>
 <ID>stTC1-neur1-ID</ID>
 <StartTime Value="0" Scale="None" Actual="0"/>
-<EndTime Value="3.335" Scale="None" Actual="3.335"/>
+<EndTime Value="3.3388" Scale="None" Actual="3.3388"/>
 <StepInterval Value="0" Scale="milli" Actual="0"/>
 <AlwaysActive>False</AlwaysActive>
 <Enabled>True</Enabled>
@@ -6421,7 +6421,7 @@
 <Name>stTC1-neur2</Name>
 <ID>stTC1-neur2-ID</ID>
 <StartTime Value="0" Scale="None" Actual="0"/>
-<EndTime Value="3.335" Scale="None" Actual="3.335"/>
+<EndTime Value="3.3388" Scale="None" Actual="3.3388"/>
 <StepInterval Value="0" Scale="milli" Actual="0"/>
 <AlwaysActive>False</AlwaysActive>
 <Enabled>True</Enabled>
@@ -6443,7 +6443,7 @@
 <Name>stTC1-neur3</Name>
 <ID>stTC1-neur3-ID</ID>
 <StartTime Value="0" Scale="None" Actual="0"/>
-<EndTime Value="3.335" Scale="None" Actual="3.335"/>
+<EndTime Value="3.3388" Scale="None" Actual="3.3388"/>
 <StepInterval Value="0" Scale="milli" Actual="0"/>
 <AlwaysActive>False</AlwaysActive>
 <Enabled>True</Enabled>
@@ -6465,7 +6465,7 @@
 <Name>stTC1-neur4</Name>
 <ID>stTC1-neur4-ID</ID>
 <StartTime Value="0" Scale="None" Actual="0"/>
-<EndTime Value="3.335" Scale="None" Actual="3.335"/>
+<EndTime Value="3.3388" Scale="None" Actual="3.3388"/>
 <StepInterval Value="0" Scale="milli" Actual="0"/>
 <AlwaysActive>False</AlwaysActive>
 <Enabled>True</Enabled>
@@ -6487,7 +6487,7 @@
 <Name>stTC1-neur5</Name>
 <ID>stTC1-neur5-ID</ID>
 <StartTime Value="0" Scale="None" Actual="0"/>
-<EndTime Value="3.335" Scale="None" Actual="3.335"/>
+<EndTime Value="3.3388" Scale="None" Actual="3.3388"/>
 <StepInterval Value="0" Scale="milli" Actual="0"/>
 <AlwaysActive>False</AlwaysActive>
 <Enabled>True</Enabled>
@@ -6509,7 +6509,7 @@
 <Name>stTC1-neur6</Name>
 <ID>stTC1-neur6-ID</ID>
 <StartTime Value="0" Scale="None" Actual="0"/>
-<EndTime Value="3.335" Scale="None" Actual="3.335"/>
+<EndTime Value="3.3388" Scale="None" Actual="3.3388"/>
 <StepInterval Value="0" Scale="milli" Actual="0"/>
 <AlwaysActive>False</AlwaysActive>
 <Enabled>True</Enabled>
@@ -6531,7 +6531,7 @@
 <Name>stTC1-neur7</Name>
 <ID>stTC1-neur7-ID</ID>
 <StartTime Value="0" Scale="None" Actual="0"/>
-<EndTime Value="3.335" Scale="None" Actual="3.335"/>
+<EndTime Value="3.3388" Scale="None" Actual="3.3388"/>
 <StepInterval Value="0" Scale="milli" Actual="0"/>
 <AlwaysActive>False</AlwaysActive>
 <Enabled>True</Enabled>
@@ -6550,8 +6550,8 @@
 </Stimuli>
 <HudItems>
 <HudItem>
-<Name>43c87aba-7f22-47ac-9ce8-822108177db0</Name>
-<ID>43c87aba-7f22-47ac-9ce8-822108177db0</ID>
+<Name>8a3eb8de-eef1-4fe9-879e-ddd48daf6cb6</Name>
+<ID>8a3eb8de-eef1-4fe9-879e-ddd48daf6cb6</ID>
 <Type>HudText</Type>
 <CharSize>30</CharSize>
 <Text>Time: %3.3f</Text>
@@ -6664,7 +6664,7 @@
 <DockingConfig>&lt;?xml version="1.0" encoding="us-ascii"?&gt;
 &lt;!-- DotNetMagic, The User Interface library for .NET (www.crownwood.net) --&gt;
 &lt;!-- Modifying this generated file will probably render it invalid --&gt;
-&lt;DockingConfig FormatVersion="10" InsideFill="False" InnerMinimum="20, 20" SavedAt="05/04/2020 17:00:17"&gt;
+&lt;DockingConfig FormatVersion="10" InsideFill="False" InnerMinimum="20, 20" SavedAt="05/04/2020 17:11:00"&gt;
   &lt;Content Name="Playback Control" Visible="False" Docked="True" AutoHidden="False" CaptionBar="True" CloseButton="False" DisplaySize="150, 150" DisplayLocation="150, 150" AutoHideSize="150, 150" FloatingSize="150, 150" FullTitle="Playback Control" Office2003BackColor="Base" UniqueName="" Office2007BackColor="Base" MediaPlayerBackColor="Base"&gt;
     &lt;DefaultRestore Type="Crownwood.DotNetMagic.Docking.RestoreContentState"&gt;
       &lt;Content Name="Playback Control" UniqueName="" /&gt;
@@ -7160,7 +7160,7 @@
   &lt;CustomGlobalData /&gt;
   &lt;Sequence Count="1" Unique="0" Space="100" Direction="Horizontal"&gt;
 &lt;Leaf Count="9" Unique="7" Space="100"&gt;
-      &lt;Page Title="Sim Window" ImageList="True" ImageIndex="0" Selected="False" Control="null" UniqueName=""&gt;
+      &lt;Page Title="Sim Window" ImageList="True" ImageIndex="0" Selected="True" Control="null" UniqueName=""&gt;
         &lt;CustomPageData&gt;&lt;![CDATA[&lt;TabPage&gt;
 &lt;Form&gt;
 &lt;ID&gt;b1c3eb6f-fc15-4560-8750-275c275ef964&lt;/ID&gt;
@@ -7265,7 +7265,7 @@
 &lt;/TabPage&gt;
 ]]&gt;&lt;/CustomPageData&gt;
       &lt;/Page&gt;
-      &lt;Page Title="JointMotion" ImageList="True" ImageIndex="2" Selected="True" Control="null" UniqueName=""&gt;
+      &lt;Page Title="JointMotion" ImageList="True" ImageIndex="2" Selected="False" Control="null" UniqueName=""&gt;
         &lt;CustomPageData&gt;&lt;![CDATA[&lt;TabPage&gt;
 &lt;Form&gt;
 &lt;ID&gt;1b1bb75a-f9ae-4839-8124-5172f1dbddcf&lt;/ID&gt;

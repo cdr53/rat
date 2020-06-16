@@ -1,11 +1,16 @@
-function sim_eqn = sum_of_sines_maker(coefficients,project_file)
+function sim_eqn = sum_of_sines_maker(coefficients,project_file,dType)
     % project_file is a boolean that determines whether or not the output function is for a sim or project file
     % The equations for these two different file types are quite different
+    % dType: char: decomposition type ('sumSines','fourier')
+    
+    if nargin < 3
+        dType = 'sumSines';
+    end
     
     %Animatlab doesn't play well with small exponential numbers, this is pre-processing to remove especially small numbers
     coefficients(log10(cell2mat(coefficients(:,2)))<-4,2)={0};
     
-    if project_file
+    if project_file && strcmp(dType,'sumSines')
         % This section allows the user to create a sum of sines equation in the format used by the .aproj files from Animatlab
         % For automated simulations, most injections occur in the .asim file, instead, which uses a different format
         %syms a b c t
@@ -18,7 +23,7 @@ function sim_eqn = sum_of_sines_maker(coefficients,project_file)
                 b = coefficients{i+1,2};
                 c = coefficients{i+2,2};
 %                 eqn(count,1) = vpa(a*sin(b*t+c),5);
-                if a > 0 && i ~=1
+                if a >= 0 && i ~=1
                     astring = ['+',num2str(a)];
                 else
                     astring = num2str(a);
@@ -31,6 +36,36 @@ function sim_eqn = sum_of_sines_maker(coefficients,project_file)
                 sim_eqn = [sim_eqn,astring,'*sin(',num2str(b),'*t',cstring,')'];
             end
 %             sim_eqn = vpa(sum(eqn(1:end)),5);
+    elseif project_file && strcmp(dType,'fourier')
+        % This section allows the user to create a sum of sines equation in the format used by the .aproj files from Animatlab
+        % For automated simulations, most injections occur in the .asim file, instead, which uses a different format
+        %syms a b c t
+%         eqn = sym(zeros(length(coefficients)/3,1));
+%         count = 0;
+        sim_eqn = [];
+        w = num2str(coefficients{end,2});
+        if w < 0
+            error('w is negative, this may cause problems')
+        end
+        a0 = coefficients{1,2};
+        sim_eqn = num2str(a0);
+        count = 1;
+            for i=2:2:length(coefficients)-2
+                a = coefficients{i,2};
+                b = coefficients{i+1,2};
+                if a >= 0
+                    astring = ['+',num2str(a)];
+                else
+                    astring = num2str(a);
+                end
+                if b >= 0
+                    bstring = ['+',num2str(b)];
+                else
+                    bstring = num2str(b);
+                end
+                sim_eqn = [sim_eqn,astring,'*cos(',num2str(count),'*t*',w,')',bstring,'*sin(',num2str(count),'*t*',w,')'];
+                count = count + 1;
+            end
     else
         % This section creates sum of sines equations formatted for .asim files
         % These equations are more compact than the .aproj counterparts and store sine algebra in a "tail" refered here as the plus_trail

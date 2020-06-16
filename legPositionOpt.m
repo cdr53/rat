@@ -1,9 +1,9 @@
-function [outI,fVal,outFull] = legPositionOpt(desPos)
-simPath = "G:\My Drive\Rat\SynergyControl\Animatlab\SynergyWalking\SynergyWalking_reduced_Standalone.asim";
-trialPath = 'C:\Users\fry16\OneDrive\Desktop\stimulusOptimization\';
-delete([trialPath,'*.*'])
+function [outI,fVal,outFull] = legPositionOpt(desPos,prevPos)
+    simPath = "G:\My Drive\Rat\SynergyControl\Animatlab\SynergyWalking\SynergyWalking_reduced_Standalone.asim";
+    trialPath = 'C:\Users\fry16\OneDrive\Desktop\stimulusOptimization\';
+    jsystem(['del /q ',trialPath,'*']);
 
-inText = importdata(simPath);
+    inText = importdata(simPath);
     stimInds = find(contains(inText,'<CurrentType>Tonic</CurrentType>'));
     stimNames = inText(stimInds-4);
     %check that all the simuli link to muscles
@@ -14,14 +14,16 @@ inText = importdata(simPath);
                 error('Stimulus Error')
             end
         end
-    fun = @(I) objFun(I,inText,stimInds,trialPath,desPos);
+    
 %     options = optimoptions('fmincon','Algorithm','sqp','TolFun',1e-10,'FiniteDifferenceStepSize',.01,'TolCon',1e-8,'Display','iter-detailed');
      options = optimoptions('fmincon','Algorithm','sqp','Display','iter-detailed',...
          'PlotFcn',{'optimplotx';'optimplotfval';'optimplotstepsize'},'UseParallel',true,'FiniteDifferenceType','central');
     %options = optimoptions('fmincon','Algorithm','sqp','FiniteDifferenceType','central','UseParallel',true,'Display','iter-detailed');
-    findIO = 1;
+     pattOpts = optimoptions('patternsearch',...
+         'PlotFcn',{'psplotbestx','psplotbestf','psplotmeshsize'},'UseParallel',true,'MaxIterations',200,'MeshTolerance',8e-4,'FunctionTolerance',1e-3,'MaxFunEvals',150);
+    findIO = 0;
     if findIO
-        numTests =  160;
+        numTests =  20;
         counter = 1;
         bestVal = 1000;
         while counter <= numTests
@@ -41,15 +43,19 @@ inText = importdata(simPath);
         delete([trialPath,'*.*'])
     else
         i0 = randi(20,[1 7]);
+        %i0 = zeros([1 7]);
     end
-    i0(i0==20) = 19.999;
-    i0(i0==0) =.001;
+    i0 = prevPos;
+    i0(i0>=20) = 19.999;
+    i0(i0<=0) =.001;
+    fun = @(I) objFun(I,inText,stimInds,trialPath,desPos,i0);
     lb = zeros(1,length(stimInds));
     ub = 20.*ones(1,length(stimInds));
     %i0 = [3 14 3 7.75 .7 4 3];
     %i0 = [3.3243   15.1194   18.1518    7.5710    2.3926    5.3407    3.1727];
     %i0 = zeros([1 7]);
-    [outI,fVal] = fmincon(fun,i0,[],[],[],[],lb,ub,[],options);
+    [outI,fVal] = patternsearch(fun,i0,[],[],[],[],lb,ub,[],pattOpts);
+    %[outI,fVal] = fmincon(fun,i0,[],[],[],[],lb,ub,[],options);
     outFull = cell(length(stimNames),2);
     for pp = 1:length(stimNames)
         outFull{pp,1} = stimNames{pp};
@@ -60,7 +66,7 @@ inText = importdata(simPath);
     outFull{length(stimNames)+1,2} = outPos(2);
     outFull{length(stimNames)+1,3} = outPos(3);
     
-    function [outFunc,simPos] = objFun(I,inText,stimInds,trialPath,desPos)
+    function [outFunc,simPos] = objFun(I,inText,stimInds,trialPath,desPos,prevPos)
         %desired position. Make sure the ORDER corresponds to jointProfile order
             %desPos = [-.562388, -.15, .1583246];
             %desPos = [-.487339, -.1888, -.9496332];
@@ -79,14 +85,17 @@ inText = importdata(simPath);
             fclose(fileID);
         %evaluate the sim file
             sour_folder = 'C:\AnimatLabSDK\AnimatLabPublicSource\bin';
-            executable = ['"',sour_folder,'\AnimatSimulator" "',trialFileName,'"'];
-            [~,~,err] = jsystem(executable,'noshell');
+            executable = [string([sour_folder,'\AnimatSimulator']),string(trialFileName)];
+            %executable = ['"',sour_folder,'\AnimatSimulator','" "',trialFileName,'"'];
+            %[~,~,err] = jsystem(executable,'noshell');
+            jsystem(executable);
         %subtract simPos from desPos
-            if isempty(err)
                 ds = importdata([trialPath,['JointMotion',['_',num2str(numJM)],'.txt']]);
                 jointProfile = ds.data(:,3:5);
-                simPos = mean(jointProfile(2000:6000,:));
-                outFunc = (simPos(1)-desPos(1))^2+(simPos(2)-desPos(2))^2+(simPos(3)-desPos(3))^2;
-            end
+                temp = length(jointProfile);
+                lbb = floor(temp/3);
+                ubb = floor(.99*temp);
+                simPos = mean(jointProfile(lbb:ubb,:));
+                outFunc = (1/length(simPos)).*sum((simPos-desPos).^2)+(.5/length(I))*sum(((I-prevPos)./(prevPos)).^2);
     end
 end

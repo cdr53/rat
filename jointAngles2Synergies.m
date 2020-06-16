@@ -10,7 +10,7 @@
         initAngs = [-0.9656   -0.1941   -0.6678];
         naturalStopping = [-.748 -.01337 -.47064];
         toeoff = [.1583246 -.15 -.562388];
-    waveform = repmat(toeoff,10000,1);
+    %waveform = repmat(toeoff,10000,1);
     clear trial
     
     tstart = tic;

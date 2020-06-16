@@ -2,8 +2,7 @@ tstart = tic;
 simPath = "G:\My Drive\Rat\SynergyControl\Animatlab\SynergyWalking\SynergyWalking_reduced_Standalone.asim";
 %trialPath = 'G:\My Drive\Rat\SynergyControl\JointStiffnessAnalysis\HipStiffness\';
 trialPath = 'C:\Users\fry16\OneDrive\Desktop\HipStiffness\';
-executable = ['del \F \Q',trialPath,'*.*'];
-jsystem(executable,'noshell');
+delete([trialPath,'*.*'])
 
 simContents = importdata(simPath);
 %Hip
@@ -48,84 +47,85 @@ m2StimVals = linspace(0,20,numStims);
 stiffCoeffs = linspace(0,.75,numStiffs);
 %stiffCoeffs = 0;
 
-
-fun = @(m1Steep,m2Steep,stiffVal) objFunc(m1Steep,m2Steep,stiffVal,simContents,stiffCoeffs,m1StimVals,m2StimVals,m1Ind,m2Ind,fricInd,trialPath,muscTags,jointNum,muscNames);
+fun = @(inVec) objFunc(inVec,simContents,m1StimVals,m2StimVals,m1Ind,m2Ind,fricInd,trialPath,muscTags,jointNum,muscNames);
 %     options = optimoptions('fmincon','Algorithm','sqp','TolFun',1e-10,'FiniteDifferenceStepSize',.01,'TolCon',1e-8,'Display','iter-detailed');
      options = optimoptions('fmincon','Algorithm','sqp','Display','iter-detailed',...
-         'PlotFcn',{'optimplotx';'optimplotfval';'optimplotstepsize'},'UseParallel',true,'FiniteDifferenceType','central');
+         'PlotFcn',{'optimplotx';'optimplotfval';'optimplotstepsize'});
     %options = optimoptions('fmincon','Algorithm','sqp','FiniteDifferenceType','central','UseParallel',true,'Display','iter-detailed');
-    i0 = [m1Steep_0,m2Steep_0,0];
-    lb = zeros(1,length(stimInds));
+    findIO = 0;
+    if findIO
+        numTests =  5;
+        counter = 1;
+        bestVal = 1000;
+        while counter <= numTests
+            testI = [m1Steep_0*rand(1,1) m2Steep_0*rand(1,1) rand(1,1)];
+            testOut = fun(testI);
+            if testOut < bestVal
+                bestVal = testOut;
+                i0 = testI;
+            end
+            counter = counter+1;
+            if ~mod(counter,20)
+                disp(num2str(counter))
+            end
+        end
+        delete([trialPath,'*.*'])
+    else
+        i0 = [m1Steep_0,.5*m2Steep_0,1];
+    end
+    lb = zeros(1,3);
     ub = [1e5,1e5,1];
-    %[outI,fVal] = fmincon(fun,i0,[],[],[],[],lb,ub,[],options);
-    [outVal,stiffCell] = fun(m1Steep_0,m2Steep_0,.5);
+    outI = fmincon(fun,i0,[],[],[],[],lb,ub,[],options);
+    [outVal,stiffCell] = fun(outI);
 
 [m1plotStim,m2plotStim] = meshgrid(m1StimVals,m2StimVals);
-zlims = [min(cell2mat(stiffCell),[],'all') max(cell2mat(stiffCell),[],'all')];
+zlims = [min(stiffCell,[],'all') max(stiffCell,[],'all')];
 
-for ii = 1:length(stiffCoeffs)
-    subplot(1,length(stiffCoeffs),ii)
-surf(m1plotStim,m2plotStim,stiffCell{ii}');
+figure
+surf(m1plotStim,m2plotStim,stiffCell');
 pbaspect([1,1,1])
 xlabel([muscTags{1},' Stim'])
 ylabel([muscTags{2},' Stim'])
-zlabel(['Stiffness ',num2str(stiffCoeffs(ii))])
+zlabel(['Stiffness ',num2str(50000)])
 zlim(zlims);
 view([45 40])
-end
+
     telapsed = toc(tstart);
     disp(['Calculation time:',' ',num2str(telapsed),'s for ',num2str(length(resCell)),' calculations. (',num2str(telapsed/length(resCell)),'s per).'])
-
-if length(stiffCoeffs)>1            
-    for ii = 1:length(resCell)
-        initPos(ii) = mean(resCell{ii}{2}(1:20,2));
-    end
-    for ii=1:length(stiffCell)
-        coStimPos(ii) = stiffCell{ii}(end,end);
-        stiffRange(ii) = max(stiffCell{ii},[],'all')-min(stiffCell{ii},[],'all');
-    end
-    [~,temp1] = min(abs(coStimPos-mean(initPos)));
-    [~,temp2] = max(stiffRange);
-    disp(['Stiffness where mutual full stimulation is closest to initial position: ',num2str(stiffCoeffs(temp1))])
-    disp(['Stiffness with largest range: ',num2str(stiffCoeffs(temp2))])
-%     figure; plot(stiffCoeffs,coStimPos)
-%     hold on
-%     plot(stiffCoeffs,mean(initPos).*ones(1,length(stiffCoeffs)))
-end
             
-function [outVal,stiffCell] = objFunc(steep1,steep2,stiffness,simContents,stiffCoeffs,m1StimVals,m2StimVals,m1Ind,m2Ind,fricInd,trialPath,muscTags,jointNum,muscNames)
-
+function [outVal,stiffCell] = objFunc(inVec,simContents,m1StimVals,m2StimVals,m1Ind,m2Ind,fricInd,trialPath,muscTags,jointNum,muscNames)
+    
+    steep1 = inVec(1);
+    steep2 = inVec(2);
+    stiffness = inVec(3);
     % muscName = '<Name>LH_TensorFasciaLatae</Name>';
     for tt = 1:length(muscNames)
         muscName = muscNames{tt};
-        temp = find(contains(simContents,muscName));
-        muscStiffInd = find(contains(simContents(temp:end),'<C>'),1,'first')+temp-1;
+        temp = find(contains(simContents,['<Name>',muscName,'</Name>']));
+        muscSteepInd = find(contains(simContents(temp:end),'<C>'),1,'first')+temp-1;
         switch tt
             case 1
                 newSteepVal = steep1;
             case 2
                 newSteepVal = steep2;
         end
-        simContents{muscStiffInd} = replaceBetween(simContents{muscStiffInd},'>','<',num2str(newStiffVal));
+        simContents{muscSteepInd} = replaceBetween(simContents{muscSteepInd},'>','<',num2str(newSteepVal));
     end
-    numStims = length(stiffCoeffs);
+    numStims = length(m1StimVals);
 
-    for kk = 1:length(stiffCoeffs)
-        fric = stiffCoeffs(kk);
-        simContents{fricInd} = replaceBetween(simContents{fricInd},'>','<',num2str(fric));
-        for ii = 1:numStims
-            m1Stim = m1StimVals(ii);
-            for jj = 1:numStims
-                m2Stim = m2StimVals(jj);
-                simContents{m1Ind} = replaceBetween(simContents{m1Ind},'>','<',[num2str(m1Stim/10),'e-008']);
-                simContents{m2Ind} = replaceBetween(simContents{m2Ind},'>','<',[num2str(m2Stim/10),'e-008']);
-                txtInd = find(contains(simContents,'OutputFilename>Joint'));
-                simContents{txtInd} = replaceBetween(simContents{txtInd},'ion','.txt',['_',num2str(m1Stim),'_',num2str(m2Stim),'_',num2str(fric)]);
-                trialFileName = [trialPath,muscTags{1},num2str(m1Stim),'_',muscTags{2},num2str(m2Stim),'_stiff',num2str(fric),'.asim'];
-                fileID = fopen(trialFileName,'w');
-                fprintf(fileID,'%s\n',simContents{:});
-                fclose(fileID);
-            end
+    simContents{fricInd} = replaceBetween(simContents{fricInd},'>','<',num2str(stiffness));
+    for ii = 1:numStims
+        m1Stim = m1StimVals(ii);
+        for jj = 1:numStims
+            m2Stim = m2StimVals(jj);
+            simContents{m1Ind} = replaceBetween(simContents{m1Ind},'>','<',[num2str(m1Stim/10),'e-008']);
+            simContents{m2Ind} = replaceBetween(simContents{m2Ind},'>','<',[num2str(m2Stim/10),'e-008']);
+            txtInd = find(contains(simContents,'OutputFilename>Joint'));
+            simContents{txtInd} = replaceBetween(simContents{txtInd},'ion','.txt',['_',num2str(m1Stim),'_',num2str(m2Stim),'_',num2str(stiffness)]);
+            trialFileName = [trialPath,muscTags{1},num2str(m1Stim),'_',muscTags{2},num2str(m2Stim),'_stiff',num2str(stiffness),'.asim'];
+            fileID = fopen(trialFileName,'w');
+            fprintf(fileID,'%s\n',simContents{:});
+            fclose(fileID);
         end
     end
     trialFiles = dir(trialPath);
@@ -147,9 +147,8 @@ function [outVal,stiffCell] = objFunc(steep1,steep2,stiffness,simContents,stiffC
             jointProfile = ds.data(:,3:5);
             resCell{i} = [{fileName},{jointProfile},{mean(jointProfile(2000:6000,jointNum))}];
         end
-
-    stiffCell = cell(1,length(stiffCoeffs));
-    stiffRes = stiffCell;
+    
+    stiffCell = zeros(length(m1StimVals),length(m1StimVals));
     for ii = 1:length(resCell)
         fileString = string(resCell{ii}{1});
         m1Val = str2double((extractBetween(fileString,muscTags{1},'_')));
@@ -157,11 +156,17 @@ function [outVal,stiffCell] = objFunc(steep1,steep2,stiffness,simContents,stiffC
         m2Val = str2double((extractBetween(fileString,muscTags{2},'_')));
             [~,m2Ind] = min(abs(m2StimVals-m2Val));
         stiffVal = str2double((extractBetween(fileString,'stiff','.asim')));
-        [~,stiffBin] = min(abs(stiffCoeffs-stiffVal));
-        temp = size(stiffCell{stiffBin},1);
-        stiffCell{stiffBin}(m1Ind,m2Ind) = resCell{ii}{3};
-        stiffRes{stiffBin}{m1Ind,m2Ind} = resCell{ii}{2};
+        stiffCell(m1Ind,m2Ind) = resCell{ii}{3};
+        %stiffRes(m1Ind,m2Ind) = resCell{ii}{2};
     end
     
-    outVal = 1;
+    jointLims = [-70 11;...
+                 -77 3;...
+                 -94 5]*(pi/180);
+             
+    jLim = jointLims(jointNum,:);
+    
+    resBnds = [min(stiffCell,[],'all') max(stiffCell,[],'all')];
+    
+    outVal = sum((resBnds-jLim).^2) + 20*max(gradient(stiffCell),[],'all') + 6*sum(gradient(stiffCell)./max(gradient(stiffCell),[],'all')<=.005,'all')/numel(stiffCell);
 end

@@ -7,7 +7,7 @@
 <SetSimEnd>True</SetSimEnd>
 <APIFile/>
 <SimEndTime>10.01</SimEndTime>
-<PlaybackControlMode>0</PlaybackControlMode>
+<PlaybackControlMode>1</PlaybackControlMode>
 <PresetPlaybackTimeStep>0.001</PresetPlaybackTimeStep>
 <Environment>
 <PhysicsTimeStep>0.00162</PhysicsTimeStep>
@@ -160,6 +160,52 @@
 <MeshFile>G:\My Drive\Rat\SynergyControl\Animatlab\Meshes\Rat\Body\Pelvis_Graph.stl</MeshFile>
 <MeshType>Triangular</MeshType>
 <Scale x="1" y="1" z="1"/>
+</RigidBody>
+<RigidBody>
+<Name>Body_6</Name>
+<ID>1b1965e4-68f1-4546-b54d-a00c32c8f7b9</ID>
+<Description/>
+<GraphicsAlpha>1</GraphicsAlpha>
+<CollisionsAlpha>0.5</CollisionsAlpha>
+<JointsAlpha>0.5</JointsAlpha>
+<ReceptiveFieldsAlpha>0.5</ReceptiveFieldsAlpha>
+<SimulationAlpha>1</SimulationAlpha>
+<IsVisible>True</IsVisible>
+<Ambient Red="0.0980392" Green="0.0980392" Blue="0.0980392" Alpha="1"/>
+<Diffuse Red="1" Green="0.647059" Blue="0" Alpha="1"/>
+<Specular Red="0.25098" Green="0.25098" Blue="0.25098" Alpha="1"/>
+<Shininess>64</Shininess>
+<Texture/>
+<Position x="0.006131" y="8.0819e-005" z="0.010616"/>
+<Rotation x="0" y="0" z="0"/>
+<DraggerSize>-1</DraggerSize>
+<Type>Attachment</Type>
+<PartType>AnimatGUI.DataObjects.Physical.Bodies.Attachment</PartType>
+<SynchWithRobot>False</SynchWithRobot>
+<SynchUpdateInterval>0</SynchUpdateInterval>
+<IsContactSensor>False</IsContactSensor>
+<IsCollisionObject>False</IsCollisionObject>
+<BuoyancyCenter x="0" y="0" z="0"/>
+<BuoyancyScale>1</BuoyancyScale>
+<LinearDrag x="1" y="1" z="1"/>
+<AngularDrag x="0.05" y="0.05" z="0.05"/>
+<MaxHydroForce>50</MaxHydroForce>
+<MaxHydroTorque>20</MaxHydroTorque>
+<Magnus>0</Magnus>
+<EnableFluids>False</EnableFluids>
+<Density>1</Density>
+<Mass>0</Mass>
+<COM x="0" y="0" z="0"/>
+<Freeze>False</Freeze>
+<MaterialTypeID>DEFAULTMATERIAL</MaterialTypeID>
+<FoodSource>False</FoodSource>
+<FoodQuantity>100</FoodQuantity>
+<MaxFoodQuantity>10000</MaxFoodQuantity>
+<FoodReplenishRate>1</FoodReplenishRate>
+<FoodEnergyContent>1000</FoodEnergyContent>
+<Radius>0.001</Radius>
+<LatitudeSegments>20</LatitudeSegments>
+<LongtitudeSegments>20</LongtitudeSegments>
 </RigidBody>
 <RigidBody>
 <Name>AdductorBrevisOrigin Pelvis LH_HipZ Ext</Name>
@@ -509,13 +555,13 @@
 <Texture/>
 <Position x="0" y="0" z="0"/>
 <Rotation x="1.571" y="0.5236" z="3.142"/>
-<DraggerSize>0.001</DraggerSize>
+<DraggerSize>0.03</DraggerSize>
 <Type>Hinge</Type>
 <PartType>AnimatGUI.DataObjects.Physical.Joints.Hinge</PartType>
 <SynchWithRobot>False</SynchWithRobot>
 <SynchUpdateInterval>0</SynchUpdateInterval>
 <Size>0.001</Size>
-<EnableLimits>True</EnableLimits>
+<EnableLimits>False</EnableLimits>
 <Relaxation1>
 <ID>63ac8fec-bc87-4e4a-b0a6-d520498eeb63</ID>
 <Name>X Axis Displacement</Name>
@@ -752,13 +798,13 @@
 <Texture/>
 <Position x="-2.4949e-008" y="-9.33e-007" z="7.97e-007"/>
 <Rotation x="-3.142" y="0" z="3.142"/>
-<DraggerSize>0.01</DraggerSize>
+<DraggerSize>0.03</DraggerSize>
 <Type>Hinge</Type>
 <PartType>AnimatGUI.DataObjects.Physical.Joints.Hinge</PartType>
 <SynchWithRobot>False</SynchWithRobot>
 <SynchUpdateInterval>0</SynchUpdateInterval>
 <Size>0.001</Size>
-<EnableLimits>True</EnableLimits>
+<EnableLimits>False</EnableLimits>
 <Relaxation1>
 <ID>872a82a9-9c7b-4a8e-8ac5-cbc888584a6a</ID>
 <Name>X Axis Displacement</Name>
@@ -1093,7 +1139,7 @@
 <SynchWithRobot>False</SynchWithRobot>
 <SynchUpdateInterval>0</SynchUpdateInterval>
 <Size>0.001</Size>
-<EnableLimits>True</EnableLimits>
+<EnableLimits>False</EnableLimits>
 <Relaxation1>
 <ID>a1e13d3d-18af-4fe3-8a0b-0a9a58a2326d</ID>
 <Name>X Axis Displacement</Name>
@@ -1285,6 +1331,98 @@
 <Shininess>64</Shininess>
 <Texture/>
 <Position x="0.00298" y="-0.004406" z="-0.000154"/>
+<Rotation x="0" y="0" z="0"/>
+<DraggerSize>-1</DraggerSize>
+<Type>Attachment</Type>
+<PartType>AnimatGUI.DataObjects.Physical.Bodies.Attachment</PartType>
+<SynchWithRobot>False</SynchWithRobot>
+<SynchUpdateInterval>0</SynchUpdateInterval>
+<IsContactSensor>False</IsContactSensor>
+<IsCollisionObject>False</IsCollisionObject>
+<BuoyancyCenter x="0" y="0" z="0"/>
+<BuoyancyScale>1</BuoyancyScale>
+<LinearDrag x="1" y="1" z="1"/>
+<AngularDrag x="0.05" y="0.05" z="0.05"/>
+<MaxHydroForce>50</MaxHydroForce>
+<MaxHydroTorque>20</MaxHydroTorque>
+<Magnus>0</Magnus>
+<EnableFluids>False</EnableFluids>
+<Density>1</Density>
+<Mass>0</Mass>
+<COM x="0" y="0" z="0"/>
+<Freeze>False</Freeze>
+<MaterialTypeID>DEFAULTMATERIAL</MaterialTypeID>
+<FoodSource>False</FoodSource>
+<FoodQuantity>100</FoodQuantity>
+<MaxFoodQuantity>10000</MaxFoodQuantity>
+<FoodReplenishRate>1</FoodReplenishRate>
+<FoodEnergyContent>1000</FoodEnergyContent>
+<Radius>0.0005</Radius>
+<LatitudeSegments>20</LatitudeSegments>
+<LongtitudeSegments>20</LongtitudeSegments>
+</RigidBody>
+<RigidBody>
+<Name>COM</Name>
+<ID>446ad93e-447c-4dd5-bcdb-6fbefc1b92b8</ID>
+<Description/>
+<GraphicsAlpha>1</GraphicsAlpha>
+<CollisionsAlpha>0.5</CollisionsAlpha>
+<JointsAlpha>0.5</JointsAlpha>
+<ReceptiveFieldsAlpha>0.5</ReceptiveFieldsAlpha>
+<SimulationAlpha>1</SimulationAlpha>
+<IsVisible>True</IsVisible>
+<Ambient Red="0.0980392" Green="0.0980392" Blue="0.0980392" Alpha="1"/>
+<Diffuse Red="1" Green="0.647059" Blue="0" Alpha="1"/>
+<Specular Red="0.25098" Green="0.25098" Blue="0.25098" Alpha="1"/>
+<Shininess>64</Shininess>
+<Texture/>
+<Position x="0.005833" y="-0.003" z="0.0002981"/>
+<Rotation x="0" y="0" z="0"/>
+<DraggerSize>-1</DraggerSize>
+<Type>Attachment</Type>
+<PartType>AnimatGUI.DataObjects.Physical.Bodies.Attachment</PartType>
+<SynchWithRobot>False</SynchWithRobot>
+<SynchUpdateInterval>0</SynchUpdateInterval>
+<IsContactSensor>False</IsContactSensor>
+<IsCollisionObject>False</IsCollisionObject>
+<BuoyancyCenter x="0" y="0" z="0"/>
+<BuoyancyScale>1</BuoyancyScale>
+<LinearDrag x="1" y="1" z="1"/>
+<AngularDrag x="0.05" y="0.05" z="0.05"/>
+<MaxHydroForce>50</MaxHydroForce>
+<MaxHydroTorque>20</MaxHydroTorque>
+<Magnus>0</Magnus>
+<EnableFluids>False</EnableFluids>
+<Density>1</Density>
+<Mass>0</Mass>
+<COM x="0" y="0" z="0"/>
+<Freeze>False</Freeze>
+<MaterialTypeID>DEFAULTMATERIAL</MaterialTypeID>
+<FoodSource>False</FoodSource>
+<FoodQuantity>100</FoodQuantity>
+<MaxFoodQuantity>10000</MaxFoodQuantity>
+<FoodReplenishRate>1</FoodReplenishRate>
+<FoodEnergyContent>1000</FoodEnergyContent>
+<Radius>0.001</Radius>
+<LatitudeSegments>20</LatitudeSegments>
+<LongtitudeSegments>20</LongtitudeSegments>
+</RigidBody>
+<RigidBody>
+<Name>Body_4</Name>
+<ID>58d24fd7-ca06-4953-81c9-91d2b6b9bdd5</ID>
+<Description/>
+<GraphicsAlpha>1</GraphicsAlpha>
+<CollisionsAlpha>0.5</CollisionsAlpha>
+<JointsAlpha>0.5</JointsAlpha>
+<ReceptiveFieldsAlpha>0.5</ReceptiveFieldsAlpha>
+<SimulationAlpha>1</SimulationAlpha>
+<IsVisible>True</IsVisible>
+<Ambient Red="0.0980392" Green="0.0980392" Blue="0.0980392" Alpha="1"/>
+<Diffuse Red="1" Green="0.647059" Blue="0" Alpha="1"/>
+<Specular Red="0.25098" Green="0.25098" Blue="0.25098" Alpha="1"/>
+<Shininess>64</Shininess>
+<Texture/>
+<Position x="0.001123" y="-0.001616" z="-0.005458"/>
 <Rotation x="0" y="0" z="0"/>
 <DraggerSize>-1</DraggerSize>
 <Type>Attachment</Type>
@@ -1795,6 +1933,52 @@
 <LongtitudeSegments>20</LongtitudeSegments>
 </RigidBody>
 <RigidBody>
+<Name>COM</Name>
+<ID>da4a07c9-84a1-4846-ad01-34fc74bb4ef4</ID>
+<Description/>
+<GraphicsAlpha>1</GraphicsAlpha>
+<CollisionsAlpha>0.5</CollisionsAlpha>
+<JointsAlpha>0.5</JointsAlpha>
+<ReceptiveFieldsAlpha>0.5</ReceptiveFieldsAlpha>
+<SimulationAlpha>1</SimulationAlpha>
+<IsVisible>True</IsVisible>
+<Ambient Red="0.0980392" Green="0.0980392" Blue="0.0980392" Alpha="1"/>
+<Diffuse Red="1" Green="0.647059" Blue="0" Alpha="1"/>
+<Specular Red="0.25098" Green="0.25098" Blue="0.25098" Alpha="1"/>
+<Shininess>64</Shininess>
+<Texture/>
+<Position x="-0.001833" y="-0.017219" z="-0.00501"/>
+<Rotation x="0" y="0" z="0"/>
+<DraggerSize>-1</DraggerSize>
+<Type>Attachment</Type>
+<PartType>AnimatGUI.DataObjects.Physical.Bodies.Attachment</PartType>
+<SynchWithRobot>False</SynchWithRobot>
+<SynchUpdateInterval>0</SynchUpdateInterval>
+<IsContactSensor>False</IsContactSensor>
+<IsCollisionObject>False</IsCollisionObject>
+<BuoyancyCenter x="0" y="0" z="0"/>
+<BuoyancyScale>1</BuoyancyScale>
+<LinearDrag x="1" y="1" z="1"/>
+<AngularDrag x="0.05" y="0.05" z="0.05"/>
+<MaxHydroForce>50</MaxHydroForce>
+<MaxHydroTorque>20</MaxHydroTorque>
+<Magnus>0</Magnus>
+<EnableFluids>False</EnableFluids>
+<Density>1</Density>
+<Mass>0</Mass>
+<COM x="0" y="0" z="0"/>
+<Freeze>False</Freeze>
+<MaterialTypeID>DEFAULTMATERIAL</MaterialTypeID>
+<FoodSource>False</FoodSource>
+<FoodQuantity>100</FoodQuantity>
+<MaxFoodQuantity>10000</MaxFoodQuantity>
+<FoodReplenishRate>1</FoodReplenishRate>
+<FoodEnergyContent>1000</FoodEnergyContent>
+<Radius>0.001</Radius>
+<LatitudeSegments>20</LatitudeSegments>
+<LongtitudeSegments>20</LongtitudeSegments>
+</RigidBody>
+<RigidBody>
 <Name>MedialGastrocnemiusVia Tibia LH_AnkleZ Ext</Name>
 <ID>da98174c-94e9-4353-a4bf-a1550d37db65</ID>
 <Description/>
@@ -1952,7 +2136,7 @@
 <JointsAlpha>0.5</JointsAlpha>
 <ReceptiveFieldsAlpha>0.5</ReceptiveFieldsAlpha>
 <SimulationAlpha>1</SimulationAlpha>
-<IsVisible>True</IsVisible>
+<IsVisible>False</IsVisible>
 <Ambient Red="0.0980392" Green="0.0980392" Blue="0.0980392" Alpha="1"/>
 <Diffuse Red="1" Green="1" Blue="1" Alpha="1"/>
 <Specular Red="0.25098" Green="0.25098" Blue="0.25098" Alpha="1"/>
@@ -2032,6 +2216,52 @@
 <FoodReplenishRate>1</FoodReplenishRate>
 <FoodEnergyContent>1000</FoodEnergyContent>
 <Radius>0.0005</Radius>
+<LatitudeSegments>20</LatitudeSegments>
+<LongtitudeSegments>20</LongtitudeSegments>
+</RigidBody>
+<RigidBody>
+<Name>COM</Name>
+<ID>cf94b2a3-5595-43ff-aec8-3d88a34089db</ID>
+<Description/>
+<GraphicsAlpha>1</GraphicsAlpha>
+<CollisionsAlpha>0.5</CollisionsAlpha>
+<JointsAlpha>0.5</JointsAlpha>
+<ReceptiveFieldsAlpha>0.5</ReceptiveFieldsAlpha>
+<SimulationAlpha>1</SimulationAlpha>
+<IsVisible>True</IsVisible>
+<Ambient Red="0.0980392" Green="0.0980392" Blue="0.0980392" Alpha="1"/>
+<Diffuse Red="1" Green="0.647059" Blue="0" Alpha="1"/>
+<Specular Red="0.25098" Green="0.25098" Blue="0.25098" Alpha="1"/>
+<Shininess>64</Shininess>
+<Texture/>
+<Position x="-0.008315" y="-0.001975" z="0.015642"/>
+<Rotation x="0" y="0" z="0"/>
+<DraggerSize>0.0005</DraggerSize>
+<Type>Attachment</Type>
+<PartType>AnimatGUI.DataObjects.Physical.Bodies.Attachment</PartType>
+<SynchWithRobot>False</SynchWithRobot>
+<SynchUpdateInterval>0</SynchUpdateInterval>
+<IsContactSensor>False</IsContactSensor>
+<IsCollisionObject>False</IsCollisionObject>
+<BuoyancyCenter x="0" y="0" z="0"/>
+<BuoyancyScale>1</BuoyancyScale>
+<LinearDrag x="1" y="1" z="1"/>
+<AngularDrag x="0.05" y="0.05" z="0.05"/>
+<MaxHydroForce>50</MaxHydroForce>
+<MaxHydroTorque>20</MaxHydroTorque>
+<Magnus>0</Magnus>
+<EnableFluids>False</EnableFluids>
+<Density>1</Density>
+<Mass>0</Mass>
+<COM x="0" y="0" z="0"/>
+<Freeze>False</Freeze>
+<MaterialTypeID>DEFAULTMATERIAL</MaterialTypeID>
+<FoodSource>False</FoodSource>
+<FoodQuantity>100</FoodQuantity>
+<MaxFoodQuantity>10000</MaxFoodQuantity>
+<FoodReplenishRate>1</FoodReplenishRate>
+<FoodEnergyContent>1000</FoodEnergyContent>
+<Radius>0.001</Radius>
 <LatitudeSegments>20</LatitudeSegments>
 <LongtitudeSegments>20</LongtitudeSegments>
 </RigidBody>
@@ -2778,7 +3008,7 @@
 <ReceptiveFieldsAlpha>1</ReceptiveFieldsAlpha>
 <SimulationAlpha>1</SimulationAlpha>
 <IsVisible>True</IsVisible>
-<Ambient Red="0" Green="0" Blue="0" Alpha="1"/>
+<Ambient Red="0.25098" Green="0.25098" Blue="0.25098" Alpha="1"/>
 <Diffuse Red="1" Green="1" Blue="1" Alpha="1"/>
 <Specular Red="0.25098" Green="0.25098" Blue="0.25098" Alpha="1"/>
 <Shininess>64</Shininess>
@@ -2879,7 +3109,7 @@
 <ID>stTC1-neur6-ID</ID>
 <Name>stTC1-6FDL</Name>
 <AlwaysActive>True</AlwaysActive>
-<Enabled>True</Enabled>
+<Enabled>False</Enabled>
 <Type>Current</Type>
 <CurrentType>Tonic</CurrentType>
 <OrganismID>e40d2c4f-9c31-49f8-8a5c-5688fb768225</OrganismID>
@@ -2897,19 +3127,19 @@
 <Stimulus>
 <ID>stTC1-neur1-ID</ID>
 <Name>stTC1-1TFL</Name>
-<AlwaysActive>True</AlwaysActive>
-<Enabled>True</Enabled>
+<AlwaysActive>False</AlwaysActive>
+<Enabled>False</Enabled>
 <Type>Current</Type>
 <CurrentType>Tonic</CurrentType>
 <OrganismID>e40d2c4f-9c31-49f8-8a5c-5688fb768225</OrganismID>
 <TargetNodeID>neur1-ID</TargetNodeID>
-<StartTime>0</StartTime>
-<EndTime>5</EndTime>
-<CycleOnDuration>5</CycleOnDuration>
+<StartTime>2</StartTime>
+<EndTime>2.3</EndTime>
+<CycleOnDuration>0.3</CycleOnDuration>
 <CycleOffDuration>0</CycleOffDuration>
-<BurstOnDuration>5</BurstOnDuration>
+<BurstOnDuration>0.3</BurstOnDuration>
 <BurstOffDuration>0</BurstOffDuration>
-<CurrentOn>0</CurrentOn>
+<CurrentOn>2e-008</CurrentOn>
 <CurrentOff>0</CurrentOff>
 <CurrentBurstOff>0</CurrentBurstOff>
 </Stimulus>
@@ -2922,17 +3152,17 @@
 <Type>MotorPosition</Type>
 <StructureID>e40d2c4f-9c31-49f8-8a5c-5688fb768225</StructureID>
 <JointID>55af1c5f-e200-4870-b3fa-0501ab0b22dd</JointID>
-<StartTime>5</StartTime>
+<StartTime>1</StartTime>
 <EndTime>10</EndTime>
 <TargetID>Position</TargetID>
-<Equation>-0.3931</Equation>
+<Equation>-0.5727</Equation>
 <DisableMotorWhenDone>True</DisableMotorWhenDone>
 </Stimulus>
 <Stimulus>
 <ID>stTC1-neur3-ID</ID>
 <Name>stTC1-3RF</Name>
 <AlwaysActive>True</AlwaysActive>
-<Enabled>True</Enabled>
+<Enabled>False</Enabled>
 <Type>Current</Type>
 <CurrentType>Tonic</CurrentType>
 <OrganismID>e40d2c4f-9c31-49f8-8a5c-5688fb768225</OrganismID>
@@ -2951,7 +3181,7 @@
 <ID>stTC1-neur5-ID</ID>
 <Name>stTC1-5TA</Name>
 <AlwaysActive>True</AlwaysActive>
-<Enabled>True</Enabled>
+<Enabled>False</Enabled>
 <Type>Current</Type>
 <CurrentType>Tonic</CurrentType>
 <OrganismID>e40d2c4f-9c31-49f8-8a5c-5688fb768225</OrganismID>
@@ -2985,7 +3215,7 @@
 <ID>824fa45f-843e-4710-bfd0-a8758c014904</ID>
 <Name>Kneewalking</Name>
 <AlwaysActive>False</AlwaysActive>
-<Enabled>False</Enabled>
+<Enabled>True</Enabled>
 <ModuleName/>
 <Type>MotorPosition</Type>
 <StructureID>e40d2c4f-9c31-49f8-8a5c-5688fb768225</StructureID>
@@ -2993,14 +3223,29 @@
 <StartTime>0</StartTime>
 <EndTime>10</EndTime>
 <TargetID>Position</TargetID>
-<Equation>0.1995,0.5822,t,*,1.07,-,sin,*,0.08642,0.7588,t,*,1.287,+,sin,*,0.4931,0.209,t,*,2.524,-,sin,*,0.1947,3.768,t,*,2.116,+,sin,*,0.01519,5.651,t,*,0.3852,-,sin,*,0.1605,1.875,t,*,0.2783,+,sin,*,0.0206,7.535,t,*,2.37,+,sin,*,0.003347,2.283,t,*,0.9653,-,sin,*,+,+,+,+,+,+,+</Equation>
+<Equation>.59145,0.31788,t,*,3.1822,-,sin,*,.28095,0.64281,t,*,1.6921,-,sin,*,.19165,3.7473,t,*,2.2385,+,sin,*,.20818,1.8956,t,*,0.60974,+,sin,*,.068273,1.0892,t,*,0.85287,-,sin,*,.036973,7.4764,t,*,2.7993,-,sin,*,+,+,+,+,+</Equation>
+<DisableMotorWhenDone>False</DisableMotorWhenDone>
+</Stimulus>
+<Stimulus>
+<ID>5f826170-822d-4722-9df4-ea27e8d88476</ID>
+<Name>xAnklewalking</Name>
+<AlwaysActive>False</AlwaysActive>
+<Enabled>True</Enabled>
+<ModuleName/>
+<Type>MotorPosition</Type>
+<StructureID>e40d2c4f-9c31-49f8-8a5c-5688fb768225</StructureID>
+<JointID>c7df3511-7e4c-411e-be1f-1b71ff30c530</JointID>
+<StartTime>0</StartTime>
+<EndTime>10</EndTime>
+<TargetID>Position</TargetID>
+<Equation>1.0563,0.3786,t,*,3.2299,-,sin,*,.35656,3.758,t,*,1.7607,+,sin,*,.66162,0.73786,t,*,1.68,-,sin,*,.48732,1.6762,t,*,0.33135,+,sin,*,.44879,1.3288,t,*,1.2116,-,sin,*,+,+,+,+</Equation>
 <DisableMotorWhenDone>False</DisableMotorWhenDone>
 </Stimulus>
 <Stimulus>
 <ID>stTC1-neur7-ID</ID>
 <Name>stTC1-7AB</Name>
 <AlwaysActive>True</AlwaysActive>
-<Enabled>True</Enabled>
+<Enabled>False</Enabled>
 <Type>Current</Type>
 <CurrentType>Tonic</CurrentType>
 <OrganismID>e40d2c4f-9c31-49f8-8a5c-5688fb768225</OrganismID>
@@ -3019,7 +3264,7 @@
 <ID>de48c25f-7620-4ba2-bf8a-21b02bb6203e</ID>
 <Name>Hipwalking</Name>
 <AlwaysActive>False</AlwaysActive>
-<Enabled>False</Enabled>
+<Enabled>True</Enabled>
 <ModuleName/>
 <Type>MotorPosition</Type>
 <StructureID>e40d2c4f-9c31-49f8-8a5c-5688fb768225</StructureID>
@@ -3027,7 +3272,7 @@
 <StartTime>0</StartTime>
 <EndTime>10</EndTime>
 <TargetID>Position</TargetID>
-<Equation>0.2466,0.5468,t,*,1.124,-,sin,*,0.046,1.003,t,*,0.2206,-,sin,*,0.07998,3.77,t,*,2.07,+,sin,*,0.5721,1.879,t,*,1.298,-,sin,*,0.6951,0.2447,t,*,3.506,+,sin,*,+,+,+,+</Equation>
+<Equation>.76847,0.19883,t,*,2.5648,-,sin,*,.66612,1.8843,t,*,1.3011,-,sin,*,.35885,0.29908,t,*,0.080285,+,sin,*,.14005,3.7585,t,*,1.7984,+,sin,*,+,+,+</Equation>
 <DisableMotorWhenDone>False</DisableMotorWhenDone>
 </Stimulus>
 <Stimulus>
@@ -3039,10 +3284,10 @@
 <Type>MotorPosition</Type>
 <StructureID>e40d2c4f-9c31-49f8-8a5c-5688fb768225</StructureID>
 <JointID>b2919ff8-3efa-4549-97b4-a4bc77ad6e0a</JointID>
-<StartTime>5</StartTime>
+<StartTime>1</StartTime>
 <EndTime>10</EndTime>
 <TargetID>Position</TargetID>
-<Equation>-0.4681</Equation>
+<Equation>-0.8385</Equation>
 <DisableMotorWhenDone>True</DisableMotorWhenDone>
 </Stimulus>
 <Stimulus>
@@ -3069,32 +3314,17 @@
 <Type>MotorPosition</Type>
 <StructureID>e40d2c4f-9c31-49f8-8a5c-5688fb768225</StructureID>
 <JointID>c7df3511-7e4c-411e-be1f-1b71ff30c530</JointID>
-<StartTime>5</StartTime>
+<StartTime>1</StartTime>
 <EndTime>10</EndTime>
 <TargetID>Position</TargetID>
-<Equation>-0.8353</Equation>
+<Equation>-1.0631</Equation>
 <DisableMotorWhenDone>True</DisableMotorWhenDone>
-</Stimulus>
-<Stimulus>
-<ID>5f826170-822d-4722-9df4-ea27e8d88476</ID>
-<Name>xAnklewalking</Name>
-<AlwaysActive>False</AlwaysActive>
-<Enabled>False</Enabled>
-<ModuleName/>
-<Type>MotorPosition</Type>
-<StructureID>e40d2c4f-9c31-49f8-8a5c-5688fb768225</StructureID>
-<JointID>c7df3511-7e4c-411e-be1f-1b71ff30c530</JointID>
-<StartTime>0</StartTime>
-<EndTime>10</EndTime>
-<TargetID>Position</TargetID>
-<Equation>0.0587,0.7246,t,*,2.326,+,sin,*,0.06009,5.647,t,*,2.748,-,sin,*,0.004938,2.263,t,*,1.667,-,sin,*,0.4367,0.3509,t,*,0.7173,+,sin,*,1.141,0.1553,t,*,1.845,-,sin,*,0.2713,3.768,t,*,1.288,+,sin,*,0.08073,1.84,t,*,0.2031,+,sin,*,0.02449,7.555,t,*,0.923,+,sin,*,+,+,+,+,+,+,+</Equation>
-<DisableMotorWhenDone>False</DisableMotorWhenDone>
 </Stimulus>
 <Stimulus>
 <ID>stTC1-neur4-ID</ID>
 <Name>stTC1-4MG</Name>
 <AlwaysActive>True</AlwaysActive>
-<Enabled>True</Enabled>
+<Enabled>False</Enabled>
 <Type>Current</Type>
 <CurrentType>Tonic</CurrentType>
 <OrganismID>e40d2c4f-9c31-49f8-8a5c-5688fb768225</OrganismID>
@@ -3128,7 +3358,7 @@
 <ID>stTC1-neur2-ID</ID>
 <Name>stTC1-2BFP</Name>
 <AlwaysActive>True</AlwaysActive>
-<Enabled>True</Enabled>
+<Enabled>False</Enabled>
 <Type>Current</Type>
 <CurrentType>Tonic</CurrentType>
 <OrganismID>e40d2c4f-9c31-49f8-8a5c-5688fb768225</OrganismID>
@@ -3154,7 +3384,7 @@
 <CollectTimeWindow>-1</CollectTimeWindow>
 <AlwaysActive>False</AlwaysActive>
 <StartTime>0</StartTime>
-<EndTime>10</EndTime>
+<EndTime>3.3388</EndTime>
 <CollectInterval>0.00054</CollectInterval>
 <DataColumns>
 <DataColumn>
@@ -3224,7 +3454,7 @@
 <CollectTimeWindow>-1</CollectTimeWindow>
 <AlwaysActive>False</AlwaysActive>
 <StartTime>0</StartTime>
-<EndTime>10</EndTime>
+<EndTime>3.3388</EndTime>
 <CollectInterval>0.00162</CollectInterval>
 <DataColumns>
 <DataColumn>
@@ -3294,7 +3524,7 @@
 <CollectTimeWindow>-1</CollectTimeWindow>
 <AlwaysActive>False</AlwaysActive>
 <StartTime>0</StartTime>
-<EndTime>10</EndTime>
+<EndTime>3.3388</EndTime>
 <CollectInterval>0.00162</CollectInterval>
 <DataColumns>
 <DataColumn>
@@ -3364,7 +3594,7 @@
 <CollectTimeWindow>-1</CollectTimeWindow>
 <AlwaysActive>False</AlwaysActive>
 <StartTime>0</StartTime>
-<EndTime>10</EndTime>
+<EndTime>3.3388</EndTime>
 <CollectInterval>0.00162</CollectInterval>
 <DataColumns>
 <DataColumn>
@@ -3434,7 +3664,7 @@
 <CollectTimeWindow>-1</CollectTimeWindow>
 <AlwaysActive>False</AlwaysActive>
 <StartTime>0</StartTime>
-<EndTime>10</EndTime>
+<EndTime>3.3388</EndTime>
 <CollectInterval>0.00162</CollectInterval>
 <DataColumns>
 <DataColumn>
@@ -3505,7 +3735,7 @@
 <AlwaysActive>False</AlwaysActive>
 <StartTime>0</StartTime>
 <EndTime>10</EndTime>
-<CollectInterval>0.00162</CollectInterval>
+<CollectInterval>0.001620</CollectInterval>
 <DataColumns>
 <DataColumn>
 <ModuleName/>
@@ -3575,7 +3805,7 @@
 <AlwaysActive>False</AlwaysActive>
 <StartTime>0</StartTime>
 <EndTime>10</EndTime>
-<CollectInterval>0.00162</CollectInterval>
+<CollectInterval>0.001620</CollectInterval>
 <DataColumns>
 <DataColumn>
 <ModuleName/>
@@ -3657,8 +3887,8 @@
 <HudItem>
 <ModuleName/>
 <Type>HudText</Type>
-<Name>49731f8d-6557-4cb8-8b9b-0c87ea375990</Name>
-<ID>49731f8d-6557-4cb8-8b9b-0c87ea375990</ID>
+<Name>b169de25-8840-465b-b1d3-c8b10205dd5f</Name>
+<ID>b169de25-8840-465b-b1d3-c8b10205dd5f</ID>
 <Type>HudText</Type>
 <CharSize>30</CharSize>
 <Text>Time: %3.3f</Text>

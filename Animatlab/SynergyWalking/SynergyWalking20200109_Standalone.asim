@@ -8376,7 +8376,7 @@
 <StartTime>0</StartTime>
 <EndTime>10</EndTime>
 <TargetID>Position</TargetID>
-<Equation>1.0498,0.37674,t,*,3.2212,-,sin,*,.35641,3.758,t,*,1.7606,+,sin,*,.65099,0.73715,t,*,1.676,-,sin,*,.48967,1.676,t,*,0.33317,+,sin,*,.44696,1.3333,t,*,1.2313,-,sin,*,+,+,+,+</Equation>
+<Equation>0.0587,0.7246,t,*,2.326,+,sin,*,0.06009,5.647,t,*,2.748,-,sin,*,0.004938,2.263,t,*,1.667,-,sin,*,0.4367,0.3509,t,*,0.7173,+,sin,*,1.141,0.1553,t,*,1.845,-,sin,*,0.2713,3.768,t,*,1.288,+,sin,*,0.08073,1.84,t,*,0.2031,+,sin,*,0.02449,7.555,t,*,0.923,+,sin,*,+,+,+,+,+,+,+</Equation>
 <DisableMotorWhenDone>False</DisableMotorWhenDone>
 </Stimulus>
 <Stimulus>
@@ -8451,7 +8451,7 @@
 <StartTime>0</StartTime>
 <EndTime>10</EndTime>
 <TargetID>Position</TargetID>
-<Equation>.59118,0.31776,t,*,3.1819,-,sin,*,.28082,0.64302,t,*,1.6938,-,sin,*,.19156,3.7473,t,*,2.2384,+,sin,*,.20816,1.8957,t,*,0.60969,+,sin,*,.06841,1.0886,t,*,0.85056,-,sin,*,.03691,7.4764,t,*,2.7994,-,sin,*,+,+,+,+,+</Equation>
+<Equation>0.1995,0.5822,t,*,1.07,-,sin,*,0.08642,0.7588,t,*,1.287,+,sin,*,0.4931,0.209,t,*,2.524,-,sin,*,0.1947,3.768,t,*,2.116,+,sin,*,0.01519,5.651,t,*,0.3852,-,sin,*,0.1605,1.875,t,*,0.2783,+,sin,*,0.0206,7.535,t,*,2.37,+,sin,*,0.003347,2.283,t,*,0.9653,-,sin,*,+,+,+,+,+,+,+</Equation>
 <DisableMotorWhenDone>False</DisableMotorWhenDone>
 </Stimulus>
 <Stimulus>
@@ -8466,7 +8466,7 @@
 <StartTime>0</StartTime>
 <EndTime>10</EndTime>
 <TargetID>Position</TargetID>
-<Equation>.74389,0.19401,t,*,2.5408,-,sin,*,.66595,1.8842,t,*,1.3008,-,sin,*,.3342,0.29752,t,*,0.088143,+,sin,*,.14001,3.7587,t,*,1.7976,+,sin,*,+,+,+</Equation>
+<Equation>0.2466,0.5468,t,*,1.124,-,sin,*,0.046,1.003,t,*,0.2206,-,sin,*,0.07998,3.77,t,*,2.07,+,sin,*,0.5721,1.879,t,*,1.298,-,sin,*,0.6951,0.2447,t,*,3.506,+,sin,*,+,+,+,+</Equation>
 <DisableMotorWhenDone>False</DisableMotorWhenDone>
 </Stimulus>
 <Stimulus>
@@ -8510,8 +8510,8 @@
 <CollectTimeWindow>-1</CollectTimeWindow>
 <AlwaysActive>False</AlwaysActive>
 <StartTime>0</StartTime>
-<EndTime>10</EndTime>
-<CollectInterval>0.0005400</CollectInterval>
+<EndTime>3.3388</EndTime>
+<CollectInterval>0.00054</CollectInterval>
 <DataColumns>
 <DataColumn>
 <ModuleName/>
@@ -8829,7 +8829,7 @@
 <AlwaysActive>False</AlwaysActive>
 <StartTime>0</StartTime>
 <EndTime>10</EndTime>
-<CollectInterval>0.0005400</CollectInterval>
+<CollectInterval>0.00054</CollectInterval>
 <DataColumns>
 <DataColumn>
 <ModuleName/>
@@ -8865,8 +8865,8 @@
 <HudItem>
 <ModuleName/>
 <Type>HudText</Type>
-<Name>3e63e679-a5ad-4427-acfd-de6ae68e2d47</Name>
-<ID>3e63e679-a5ad-4427-acfd-de6ae68e2d47</ID>
+<Name>fc73085d-5be8-460a-ba9d-09c872deb8be</Name>
+<ID>fc73085d-5be8-460a-ba9d-09c872deb8be</ID>
 <Type>HudText</Type>
 <CharSize>30</CharSize>
 <Text>Time: %3.3f</Text>

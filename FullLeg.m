@@ -746,6 +746,25 @@ classdef FullLeg < matlab.mixin.SetGet
                 obj.joint_obj{3}.uuw_joint2 = ankleworld*ankle_uu2;
                 obj.joint_obj{3}.uuw_joint3 = ankleworld*ankle_uu3;
         end
+        %% Function: Joint World Axes on Demand
+        function axesMat = joint_axes_from_angles(obj,theta)
+            warnFlag = 0;
+            for ii = 1:3
+                limBool = [theta(ii) > max(obj.joint_obj{ii}.limits) theta(ii) < min(obj.joint_obj{ii}.limits)];
+                if any(limBool)
+                    warnFlag = 1;
+                    theta(ii) = obj.joint_obj{ii}.limits(limBool);
+                end
+            end
+            
+            if warnFlag
+                warning('Function: FullLeg.joint_axes_from_angles: desired theta is outside joint limits.')
+            end
+            
+            axesMat(:,1) = obj.CR_bodies(:,:,1)*obj.CR_bodies(:,:,2)*obj.three_axis_rotation(obj.joint_obj{1}.euler_angs)*[-1;0;0];
+            axesMat(:,2) = axis_angle_rotation(obj,theta(1),axesMat(:,1))*obj.CR_bodies(:,:,1)*obj.CR_bodies(:,:,2)*obj.CR_bodies(:,:,3)*obj.three_axis_rotation(obj.joint_obj{2}.euler_angs)*[-1;0;0];
+            axesMat(:,3) = axis_angle_rotation(obj,theta(2),axesMat(:,2))*obj.CR_bodies(:,:,1)*obj.CR_bodies(:,:,2)*obj.CR_bodies(:,:,3)*obj.CR_bodies(:,:,4)*obj.three_axis_rotation(obj.joint_obj{3}.euler_angs)*[-1;0;0];
+        end
         %% Function: Store the Torque and Kinematic Data from Torque, Theta, ThetaDot input
         function store_torque_and_kinematic_data(obj,theta,theta_dot,dt)
             %Saves torque, angle, and velocity data from desired motions
@@ -816,6 +835,57 @@ classdef FullLeg < matlab.mixin.SetGet
             obj.joint_obj{2}.sim_position_profile = kneepos;
             %obj.joint_obj{2}.sim_position_profile = kneepos+.001*ones(length(kneepos),1);
             obj.joint_obj{3}.sim_position_profile = anklepos;
+        end
+        %% Function: Joint Position on Demand
+        function jointMat = joint_pos_on_demand(obj,theta)
+            % For an input theta vector, output world positions of the three joints
+            warnFlag = 0;
+            for ii = 1:3
+                limBool = [theta(ii) > max(obj.joint_obj{ii}.limits) theta(ii) < min(obj.joint_obj{ii}.limits)];
+                if any(limBool)
+                    warnFlag = 1;
+                    theta(ii) = obj.joint_obj{ii}.limits(limBool);
+                end
+            end
+            
+            if warnFlag
+                warning('Function: FullLeg.joint_pos_on_demand: desired theta is outside joint limits.')
+            end
+            
+            [r,c] = size(theta);
+            if ~(r==3 && c==1) && ~(r==1 && c==3)
+                if any([r,c]==3)
+                    if r == 3
+                        theta = theta(:,1);
+                    elseif c == 3
+                        theta = theta(1,:);
+                    else
+                        error('weird error')
+                    end
+                else
+                    error('Function: FullLeg.joint_pos_on_demand: input theta vector is not 1x3')
+                end
+            end
+            
+            axesMat = zeros(3,3);
+            for i = 1:3
+                axesMat(:,i) = obj.CR_bodies(:,:,i+1)*obj.three_axis_rotation(obj.joint_obj{i}.euler_angs)*[-1;0;0];
+            end
+                
+            a = axis_angle_rotation(obj,theta(1),axesMat(:,1));
+            b = axis_angle_rotation(obj,theta(2),axesMat(:,2));
+            c = axis_angle_rotation(obj,theta(3),axesMat(:,3));
+
+            tibiapos = obj.CR_bodies(:,:,1)*obj.pos_bodies(:,2)+obj.CR_bodies(:,:,1)*a*obj.CR_bodies(:,:,2)*obj.pos_bodies(:,3);
+            kneerel = obj.CR_bodies(:,:,1)*a*obj.CR_bodies(:,:,2)*b*obj.CR_bodies(:,:,3);
+            kneepos = tibiapos+(kneerel*obj.joint_obj{2}.init_pos);
+            footpos = tibiapos+(kneerel*obj.pos_bodies(:,4));
+            anklerel = kneerel*c*obj.CR_bodies(:,:,4);
+            anklepos = footpos+(anklerel*obj.joint_obj{3}.init_pos);
+
+            jointMat(:,1) = obj.joint_obj{1}.init_pos_w;
+            jointMat(:,2) = kneepos;
+            jointMat(:,3) = anklepos;
         end
         %% Function: Store Animatlab Parameters Simulation File in the Muscle Objects
         function store_animatlab_params( obj )
@@ -1077,8 +1147,8 @@ classdef FullLeg < matlab.mixin.SetGet
             div = 500;
             obj.sampling_vector = floor(linspace(beg,ennd,div));
             
-%             alt = linspace(1,length(obj.theta_motion),length(obj.theta_motion));
-%             obj.sampling_vector = alt;
+              alt = linspace(1,length(obj.theta_motion),length(obj.theta_motion));
+              obj.sampling_vector = alt;
         end
         %% Function: Find the Global Point Position Profile for a Local Point (input) in a Body Coordinate Frame (input)
         function [point_profile] = move_point_through_walking(obj,bodynum,localpoint)
@@ -1310,8 +1380,8 @@ classdef FullLeg < matlab.mixin.SetGet
                     beg = minlocs(1);
                     ennd = minlocs(2);
                 else
-                    beg = minlocs(2);
-                    ennd = minlocs(3);
+                    beg = minlocs(end-1);
+                    ennd = minlocs(end);
                 end
                 mid = floor((beg+ennd)/2);
             elseif size(maxvals,1) == 1 && (size(minvals,1) == 1 || isempty(minvals))
@@ -1351,6 +1421,8 @@ classdef FullLeg < matlab.mixin.SetGet
             plotX = floor(linspace(beg,ennd,div));
             xx = linspace(1,length(obj.theta_motion),length(obj.theta_motion));
             xx = obj.sampling_vector;
+            %%% REVERT THIS OR THE PROGRAM WILL TAKE AGES
+            %xx = 1:length(obj.theta_motion);
 
             axis = ['Ext/Flx';'Abd/Add';'ExR/InR'];
             %Defining values for plot axis limits
@@ -3783,11 +3855,11 @@ classdef FullLeg < matlab.mixin.SetGet
             beg = obj.sampling_vector(1);
             ennd = obj.sampling_vector(end);
             
-            v = [obj.torque_motion' obj.torque_motion'  obj.torque_motion']';
-            x = 1:length(v);
-           
-            xq = linspace(1,length(v),length(xx));
-            measured_torque = interp1(x,v,xq);
+%             v = [obj.torque_motion' obj.torque_motion'  obj.torque_motion']';
+%             x = 1:length(v);
+%            
+%             xq = linspace(1,length(v),length(xx));
+%             measured_torque = interp1(x,v,xq);
             
             passive_torque = obj.compute_total_joint_torque(0);
             x = 1:length(passive_torque);
@@ -3795,10 +3867,10 @@ classdef FullLeg < matlab.mixin.SetGet
             passive_torque = interp1(x,passive_torque,xq);
             clear x xq 
             
-            %%Hip and Knee data in wrong order
-            holder  = measured_torque(:,1);
-            measured_torque(:,1) = measured_torque(:,2);
-            measured_torque(:,2) = holder;
+%             %%Hip and Knee data in wrong order
+%             holder  = measured_torque(:,1);
+%             measured_torque(:,1) = measured_torque(:,2);
+%             measured_torque(:,2) = holder;
             
              %tau2 = measured_torque-passive_torque;
              jointprofile = obj.theta_motion;
@@ -3882,6 +3954,7 @@ classdef FullLeg < matlab.mixin.SetGet
                 end
                 x0 = zeros(size(ub,1),1);
                 moment_output = zeros(nummuscles+2,size(xx,2),3);
+                %%% REMEMBER TO REVERT SAMPLING VECTOR IN compute_muscle_moment_arm (line ~1355)
                 parfor i=1:3
                     moment_output(:,:,i) = compute_joint_moment_arms(obj,i,1);
                 end
@@ -4000,6 +4073,29 @@ classdef FullLeg < matlab.mixin.SetGet
                     clear numforces ylimit shadeheight shadelength firstsubposition currentsubposition
             end
         end    
+        %% Function: Optimize Forward Dynamics
+        function optimize_forward_dynamics(obj)
+            startInd = 115;
+            time = obj.theta_motion_time(startInd:end-10,1);
+            q0_exp = obj.theta_motion(startInd:end-10,:);
+
+            [~,q1_exp] = gradient(q0_exp,obj.dt_motion);
+            samplingFreq = 1/obj.dt_motion;
+            [b,a] = butter(4,6/(samplingFreq/2),'low');
+            q1_exp = filtfilt(b,a,q1_exp);
+
+            [~,q2_exp] = gradient(q1_exp,obj.dt_motion);
+            samplingFreq = 1/obj.dt_motion;
+            [b,a] = butter(4,6/(samplingFreq/2),'low');
+            q2_exp = filtfilt(b,a,q2_exp);
+            
+            theta = obj.theta_motion(5000,:);
+            w0 = obj.joint_axes_from_angles(theta);
+            q = obj.joint_pos_on_demand(theta);
+            for jj = 1:3
+                Jac(:,jj) = [-cross(w0(:,jj),q(:,jj));w0(:,jj)];
+            end
+        end
         %% Function: Pedotti Optimization
         function results_cell = pedotti_optimization(obj)
             p = gcp('nocreate');

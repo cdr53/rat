@@ -32,13 +32,13 @@ fricInd = find(contains(simContents,jointFricID))+4;
 %For modifying the static friction ratio
 %fricInd = find(contains(simContents,'<ID>028bd626-f964-4165-8e5b-e5f69937ba5e</ID>'))+7;
 
-numStims = 21;
+numStims = 5;
 numStiffs = 5;
 
 m1StimVals = linspace(0,20,numStims);
 m2StimVals = linspace(0,20,numStims);
 stiffCoeffs = linspace(0,1,numStiffs);
-stiffCoeffs = 0;
+stiffCoeffs = .25;
 
 for kk = 1:length(stiffCoeffs)
     fric = stiffCoeffs(kk);
