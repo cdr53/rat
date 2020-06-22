@@ -746,7 +746,7 @@ classdef FullLeg < matlab.mixin.SetGet
                 obj.joint_obj{3}.uuw_joint2 = ankleworld*ankle_uu2;
                 obj.joint_obj{3}.uuw_joint3 = ankleworld*ankle_uu3;
         end
-        %% Function: Joint World Axes on Demand
+        %% Function: On Demand: Joint World Axes on Demand
         function axesMat = joint_axes_from_angles(obj,theta)
             warnFlag = 0;
             for ii = 1:3
@@ -836,7 +836,7 @@ classdef FullLeg < matlab.mixin.SetGet
             %obj.joint_obj{2}.sim_position_profile = kneepos+.001*ones(length(kneepos),1);
             obj.joint_obj{3}.sim_position_profile = anklepos;
         end
-        %% Function: Joint Position on Demand
+        %% Function: On Demand: Joint Position on Demand
         function jointMat = joint_pos_on_demand(obj,theta)
             % For an input theta vector, output world positions of the three joints
             warnFlag = 0;
@@ -886,6 +886,138 @@ classdef FullLeg < matlab.mixin.SetGet
             jointMat(:,1) = obj.joint_obj{1}.init_pos_w;
             jointMat(:,2) = kneepos;
             jointMat(:,3) = anklepos;
+        end
+        %% Function: On Demand: Muscle Attachment Position on Demand
+        function outPos = att_pos_on_demand(obj,theta,muscAtt)
+            %Input: muscAtt: 1x4 cell array with information about muscle attachment point
+                % [attachment intial position, attachment name, body number of attachment, attachment profile for input waveform]
+                warnFlag = 0;
+            for ii = 1:3
+                limBool = [theta(ii) > max(obj.joint_obj{ii}.limits) theta(ii) < min(obj.joint_obj{ii}.limits)];
+                if any(limBool)
+                    warnFlag = 1;
+                    theta(ii) = obj.joint_obj{ii}.limits(limBool);
+                end
+            end
+            
+            if warnFlag
+                warning('Function: FullLeg.att_pos_on_demand: desired theta is outside joint limits.')
+            end
+            
+            [r,c] = size(theta);
+            if ~(r==3 && c==1) && ~(r==1 && c==3)
+                if any([r,c]==3)
+                    if r == 3
+                        theta = theta(:,1);
+                    elseif c == 3
+                        theta = theta(1,:);
+                    else
+                        error('weird error')
+                    end
+                else
+                    error('Function: FullLeg.att_pos_on_demand: input theta vector is not 1x3')
+                end
+            end
+            
+            outPos = zeros(3,1);
+            axesMat = zeros(3,3); 
+            bodyNum = muscAtt{1,3};
+
+            for i = 1:3
+                axesMat(:,i) = obj.CR_bodies(:,:,i+1)*obj.three_axis_rotation(obj.joint_obj{i}.euler_angs)*[-1;0;0];
+            end
+                
+            a = axis_angle_rotation(obj,theta(1),axesMat(:,1));
+            b = axis_angle_rotation(obj,theta(2),axesMat(:,2));
+            c = axis_angle_rotation(obj,theta(3),axesMat(:,3));
+            
+            femurpos = obj.CR_bodies(:,:,1)*obj.pos_bodies(:,2);
+            hiprel = obj.CR_bodies(:,:,1)*a*obj.CR_bodies(:,:,2);
+            
+            tibiapos = femurpos+hiprel*obj.pos_bodies(:,3);
+            kneerel = obj.CR_bodies(:,:,1)*a*obj.CR_bodies(:,:,2)*b*obj.CR_bodies(:,:,3);
+            %kneepos = tibiapos+(kneerel*obj.joint_obj{2}.init_pos);
+            
+            footpos = tibiapos+(kneerel*obj.pos_bodies(:,4));
+            anklerel = kneerel*c*obj.CR_bodies(:,:,4);
+            %anklepos = footpos+(anklerel*obj.joint_obj{3}.init_pos);
+            
+            switch bodyNum
+                case 1
+                    outPos = obj.CR_bodies(:,:,1)*muscAtt{1};
+                case 2
+                    outPos = (femurpos+hiprel*muscAtt{1});
+                case 3
+                    outPos = (tibiapos+kneerel*muscAtt{1});
+                case 4
+                    outPos = footpos+(anklerel*muscAtt{1});
+            end
+            
+        end
+        %% Function: On Demand: Body COM Position on Demand
+        function outPos = com_pos_on_demand(obj,theta,bodyNum)
+            %Input: muscAtt: 1x4 cell array with information about muscle attachment point
+                % [attachment intial position, attachment name, body number of attachment, attachment profile for input waveform]
+                warnFlag = 0;
+            for ii = 1:3
+                limBool = [theta(ii) > max(obj.joint_obj{ii}.limits) theta(ii) < min(obj.joint_obj{ii}.limits)];
+                if any(limBool)
+                    warnFlag = 1;
+                    theta(ii) = obj.joint_obj{ii}.limits(limBool);
+                end
+            end
+            
+            if warnFlag
+                warning('Function: FullLeg.att_pos_on_demand: desired theta is outside joint limits.')
+            end
+            
+            [r,c] = size(theta);
+            if ~(r==3 && c==1) && ~(r==1 && c==3)
+                if any([r,c]==3)
+                    if r == 3
+                        theta = theta(:,1);
+                    elseif c == 3
+                        theta = theta(1,:);
+                    else
+                        error('weird error')
+                    end
+                else
+                    error('Function: FullLeg.att_pos_on_demand: input theta vector is not 1x3')
+                end
+            end
+            
+            outPos = zeros(3,1);
+            axesMat = zeros(3,3); 
+            %bodyNum = muscAtt{1,3};
+
+            for i = 1:3
+                axesMat(:,i) = obj.CR_bodies(:,:,i+1)*obj.three_axis_rotation(obj.joint_obj{i}.euler_angs)*[-1;0;0];
+            end
+                
+            a = axis_angle_rotation(obj,theta(1),axesMat(:,1));
+            b = axis_angle_rotation(obj,theta(2),axesMat(:,2));
+            c = axis_angle_rotation(obj,theta(3),axesMat(:,3));
+            
+            femurpos = obj.CR_bodies(:,:,1)*obj.pos_bodies(:,2);
+            hiprel = obj.CR_bodies(:,:,1)*a*obj.CR_bodies(:,:,2);
+            
+            tibiapos = femurpos+hiprel*obj.pos_bodies(:,3);
+            kneerel = obj.CR_bodies(:,:,1)*a*obj.CR_bodies(:,:,2)*b*obj.CR_bodies(:,:,3);
+            %kneepos = tibiapos+(kneerel*obj.joint_obj{2}.init_pos);
+            
+            footpos = tibiapos+(kneerel*obj.pos_bodies(:,4));
+            anklerel = kneerel*c*obj.CR_bodies(:,:,4);
+            %anklepos = footpos+(anklerel*obj.joint_obj{3}.init_pos);
+            
+            switch bodyNum
+                case 2
+                    outPos = (femurpos+hiprel*obj.body_obj{2}.com');
+                case 3
+                    outPos = (tibiapos+kneerel*obj.body_obj{3}.com');
+                case 4
+                    outPos = footpos+(anklerel*obj.body_obj{4}.com');
+            end
+            
         end
         %% Function: Store Animatlab Parameters Simulation File in the Muscle Objects
         function store_animatlab_params( obj )
@@ -1518,7 +1650,7 @@ classdef FullLeg < matlab.mixin.SetGet
                     end
                     if plotval == 1 && plotter
                         if i==floor(length(xx)/24)
-                            figure('name','legplot','Position',[-955   130   960   985]);
+                            figure('name','legplot','Position',[100   130   960   985]);
                         end
                         %The muscle vector
                         for k = 1:size(muscle.pos_attachments,1)
@@ -1722,7 +1854,7 @@ classdef FullLeg < matlab.mixin.SetGet
                     end
                     if plotval == 1 && plotter
                         if i==xx(20)
-                            figure('name','legplot','Position',[-955   130   960   985]);
+                            figure('name','legplot','Position',[100  130   960   985]);
                             pause
                         end
                         %The muscle vector
@@ -1857,6 +1989,64 @@ classdef FullLeg < matlab.mixin.SetGet
                     legend(legendcell,'Interpreter','none','Location','eastoutside')
                     set(gcf,'Position',[500 500 900 500])
                     saveas(gcf,['G:\My Drive\Rat\Optimizer\OutputFigures\moment_arms','\muscle_moment_arms','_',obj.joint_obj{joint}.name(4:end),'_',datestr(datetime('now'),'yyyymmdd'),'.png'])
+            end
+        end
+        %% Function: On Demand: Calculate Leg Moment Arms for Given Joint Angle Vector
+        function momentMat = leg_moment_arms(obj,theta)
+
+            scale = 1000;
+
+            numMuscles = length(obj.musc_obj);
+            relevantMuscles = zeros(numMuscles,3);
+            momentMat = relevantMuscles;
+            
+            % Create a boolean array that determines whether a muscle spans a specific joint
+            % Row is muscle number, column is joint (HKA)
+            for i = 1:numMuscles
+                attachmentBodies = cell2mat(obj.musc_obj{i}.pos_attachments(:,3));
+                relevantMuscles(i,:) = [attachmentBodies(1) == 1,attachmentBodies(end) == 3 || (attachmentBodies(end)==4 && attachmentBodies(1)==2),attachmentBodies(end) == 4];
+            end
+
+            jointv = joint_axes_from_angles(obj,theta)*10;
+            jointMat = joint_pos_on_demand(obj,theta);
+            
+            for k = 1:numMuscles
+                muscle = obj.musc_obj{k};
+                for jointNum = 1:3
+                    if relevantMuscles(k,jointNum) == 1
+                        whichsegmentisfree = diff(cell2mat(muscle.pos_attachments(:,3)));
+                        if size(find(whichsegmentisfree>0),1) > 1
+                            atts = cell2mat(muscle.pos_attachments(:,3));
+                            holder  = atts-jointNum;
+                            seg2use = find(holder==1,1,'first')-1;
+                            if whichsegmentisfree(seg2use,1) == 0
+                                keyboard
+                            end
+                        else
+                            [~,seg2use] = max(whichsegmentisfree);
+                        end
+                        pointRel = zeros(2,3);
+                        pointProjection = pointRel;
+                        pointRel = [att_pos_on_demand(obj,theta,muscle.pos_attachments(seg2use,:)) att_pos_on_demand(obj,theta,muscle.pos_attachments(seg2use+1,:))]'-jointMat(:,jointNum)';
+                        pointProjection(1,:) = (pointRel(1,:) - (dot(pointRel(1,:),jointv(:,jointNum)')/norm(jointv(:,jointNum)')^2)*jointv(:,jointNum)')'+jointMat(:,jointNum);
+                        pointProjection(2,:) = (pointRel(2,:) - (dot(pointRel(2,:),jointv(:,jointNum)')/norm(jointv(:,jointNum)')^2)*jointv(:,jointNum)')'+jointMat(:,jointNum);
+                        pointProjection = scale*pointProjection;
+                        %Matrix of muscle projections perpendicular to the joint axis
+                            fflatmat = pointProjection(2,:)-pointProjection(1,:);
+                        %Storing the moment arms in a matrix
+                            momentArmLong = cross(fflatmat,jointv(:,jointNum));
+                            scaledjoint = scale*jointMat(:,jointNum)';
+                            PA2 = [pointProjection(1,:);scaledjoint];
+                            PB2 = [pointProjection(2,:);scaledjoint+momentArmLong];
+                        %lineINtersect3D gives the scaled vector of the moment arms for each segment
+                            momentArm = lineIntersect3D(obj,PA2,PB2);
+                        %A modifier to determine whether the moment arm is positive or negative
+                            sig_momentarm = momentArm-scaledjoint;
+                            sig_muscleprojection = (pointProjection(1,:)-pointProjection(2,:));
+                            signal2 = sign(dot(cross(sig_momentarm,sig_muscleprojection),jointv(:,jointNum)'));
+                            momentMat(k,jointNum) = signal2*norm(sig_momentarm);
+                    end
+                end
             end
         end
         %% Function: MUSCLE PASSIVE TENSION Compute a single muscle's passive tension over a joint's motion
@@ -3895,7 +4085,7 @@ classdef FullLeg < matlab.mixin.SetGet
 %                 tau2 = -passive_joint_torque';
                 tau2 = passive_torque-body_torque;
                 tau2 = [.045127 .054354 .001];
-                tau2 = repmat(tau2,500,1);
+                tau2 = repmat(tau2,length(obj.sampling_vector),1);
             
             mintypes = {'minfatigue','minsqforces','minforce','minwork','minforcePCSA','minforcetemporal'};
             nummuscles = size(obj.musc_obj,1);
@@ -3919,7 +4109,7 @@ classdef FullLeg < matlab.mixin.SetGet
                 
                 sagvec = -obj.joint_obj{1}.uuw_joint(:,1)';
                 
-                %% Assemble an array Q, to act as a lower bound that ensures that Am values are possible
+                % Assemble an array Q, to act as a lower bound that ensures that Am values are possible
                 parfor i=1:nummuscles
                     muscle = obj.musc_obj{i};
                     Lm = muscle.muscle_length_profile(xx);
@@ -4089,11 +4279,188 @@ classdef FullLeg < matlab.mixin.SetGet
             [b,a] = butter(4,6/(samplingFreq/2),'low');
             q2_exp = filtfilt(b,a,q2_exp);
             
-            theta = obj.theta_motion(5000,:);
-            w0 = obj.joint_axes_from_angles(theta);
-            q = obj.joint_pos_on_demand(theta);
-            for jj = 1:3
-                Jac(:,jj) = [-cross(w0(:,jj),q(:,jj));w0(:,jj)];
+            testInd = 5000;
+            [M,Mprime] = compute_mass_matrix(obj,q0_exp(testInd,:));
+            G = compute_gravity_vector(obj,q0_exp(testInd,:));
+            C = compute_coriolis_matrix(obj,q0_exp(testInd,:),q1_exp(testInd,:));
+            keyboard
+        end
+        %% Function: Forward Dynamics: Compute mass matrix for given limb configuration
+        function [outM,Mprime] = compute_mass_matrix(obj,theta)
+                Adj_func = @(eX) [[eX(1:3,1:3) wedge(eX(1:3,4))*eX(1:3,1:3)];[zeros(3,3) eX(1:3,1:3)]];
+                exp_func = @(R,w,v,th) [[R (eye(3)-R)*(cross(w,v))+w*w'*v*th];[zeros(1,3) 1]];
+                
+                gWH = [[obj.CR_bodies(:,:,1) [0;0;0]];[zeros(1,3) 1]];
+                gHF = [[obj.CR_bodies(:,:,2) obj.body_obj{2}.position'];[zeros(1,3) 1]];
+                gFT = [[obj.CR_bodies(:,:,3) obj.body_obj{3}.position'];[zeros(1,3) 1]];
+                gTX = [[obj.CR_bodies(:,:,4) obj.body_obj{4}.position'];[zeros(1,3) 1]];
+
+                femCOMw = gWH*gHF*[obj.body_obj{2}.com';1];
+                tibCOMw = gWH*gHF*gFT*[obj.body_obj{3}.com';1];
+                fotCOMw = gWH*gHF*gFT*gTX*[obj.body_obj{4}.com';1];
+
+                gslfem = [[obj.Cabs_bodies(:,:,2) femCOMw(1:3)];[zeros(1,3) 1]];
+                gsltib = [[obj.Cabs_bodies(:,:,3) tibCOMw(1:3)];[zeros(1,3) 1]];
+                gslfot = [[obj.Cabs_bodies(:,:,4) fotCOMw(1:3)];[zeros(1,3) 1]];
+                
+                m1 = obj.body_obj{2}.mass/1000;
+                m2 = obj.body_obj{3}.mass/1000;
+                m3 = obj.body_obj{4}.mass/1000;
+
+                % Computing the moments of inertia
+                % These are just approximations, assuming femur and tibia are solid rods and the foot is a box
+                % Measurements for dimensions approximated by inspection using Animatlab
+                MOI = zeros(3,3,3);
+                % Femur 
+                r1 = 1.7751e-3; L1 = 38.6521e-3; MOI(1,1,1) = (1/12)*m1*L1^2; MOI(2,2,1) = (1/12)*m1*L1^2; MOI(3,3,1) = (1/2)*m1*r1^2;
+                % Tibia
+                r2 = 1.3745e-3; L2 = 41.46e-3; MOI(1,1,2) = sqrt(((1/12)*m2*L2^2)^2+((1/2)*m2*r2^2)^2); MOI(2,2,2) = sqrt(((1/12)*m2*L2^2)^2+((1/2)*m2*r2^2)^2); MOI(3,3,2) = (1/12)*m2*L2^2;
+                % Tibia
+                h = 2.846e-3; w = 9.486e-3; d = 20.19e-3; MOI(1,1,3) = (1/12)*m3*(d^2+h^2); MOI(2,2,3) = (1/12)*m3*(d^2+w^2); MOI(3,3,3) = (1/12)*m3*(h^2+w^2);
+
+                gifem = [[eye(3).*[m1;m1;m1] zeros(3,3)];[zeros(3,3) eye(3).*[MOI(1,1,1);MOI(2,2,1);MOI(3,3,1)]]];
+                gitib = [[eye(3).*[m2;m2;m2] zeros(3,3)];[zeros(3,3) eye(3).*[MOI(1,1,2);MOI(2,2,2);MOI(3,3,2)]]];
+                gifot = [[eye(3).*[m3;m3;m3] zeros(3,3)];[zeros(3,3) eye(3).*[MOI(1,1,3);MOI(2,2,3);MOI(3,3,3)]]];
+                
+                Mprime(:,:,1) = inv(Adj_func(gslfem))'*gifem*inv(Adj_func(gslfem));
+                Mprime(:,:,2) = inv(Adj_func(gsltib))'*gitib*inv(Adj_func(gsltib));
+                Mprime(:,:,3) = inv(Adj_func(gslfot))'*gifot*inv(Adj_func(gslfot));
+                
+                axesMat = joint_axes_from_angles(obj,theta);
+                jointMat = joint_pos_on_demand(obj,theta);
+                
+                Jac = [-cross(axesMat,jointMat);axesMat];
+
+                e1 = exp_func(obj.axis_angle_rotation(theta(1),Jac(4:6,1)),Jac(4:6,1),Jac(1:3,1),theta(1));
+                e2 = exp_func(obj.axis_angle_rotation(theta(2),Jac(4:6,2)),Jac(4:6,2),Jac(1:3,2),theta(2));
+                e3 = exp_func(obj.axis_angle_rotation(theta(3),Jac(4:6,3)),Jac(4:6,3),Jac(1:3,3),theta(3));
+                
+                J1 = [inv(Adj_func(e1*gslfem))*Jac(:,1) zeros(6,1) zeros(6,1)];
+                J2 = [inv(Adj_func(e1*e2*gsltib))*Jac(:,1) inv(Adj_func(e2*gsltib))*Jac(:,2) zeros(6,1)];
+                J3 = [inv(Adj_func(e1*e2*e3*gslfot))*Jac(:,1) inv(Adj_func(e2*e3*gslfot))*Jac(:,2) inv(Adj_func(e3*gslfot))*Jac(:,3)];
+
+                outM = J1'*gifem*J1+J2'*gitib*J2+J3'*gifot*J3;
+        end
+        %% Function: Forward Dynamics: Compute gravitational force vector for a given limb configuration
+        function outG = compute_gravity_vector(obj,theta)
+            
+            scale = 1000;
+
+            jointv = joint_axes_from_angles(obj,theta)*10;
+            jointMat = joint_pos_on_demand(obj,theta);
+            COMmat = [com_pos_on_demand(obj,theta,2) com_pos_on_demand(obj,theta,3) com_pos_on_demand(obj,theta,4)];
+            
+            % This is an array of points defining which bodies to take the moment arm for
+            % For example, the first page is the femur COM about the hip and then the knee about the hip
+            armPoints(:,:,1) = [COMmat(:,1) jointMat(:,1) jointMat(:,2) jointMat(:,1)];
+            armPoints(:,:,2) = [COMmat(:,2) jointMat(:,2) jointMat(:,3) jointMat(:,2)];
+            armPoints(:,:,3) = [COMmat(:,3) jointMat(:,3) zeros(3,1) zeros(3,1)];
+            
+            for jointNum = 1:3
+                count = 1;
+                for armNum = 1:2:3
+                    % For each pair of points in the armPoints array, find the moment arm
+                    pointRel = zeros(2,3);
+                    pointProjection = pointRel;
+                    pointRel = [armPoints(:,armNum,jointNum) armPoints(:,armNum,jointNum)-[0 ;-.05; 0]]'-armPoints(:,armNum+1,jointNum)';
+                    pointProjection(1,:) = (pointRel(1,:) - (dot(pointRel(1,:),jointv(:,jointNum)')/norm(jointv(:,jointNum)')^2)*jointv(:,jointNum)')'+jointMat(:,jointNum);
+                    pointProjection(2,:) = (pointRel(2,:) - (dot(pointRel(2,:),jointv(:,jointNum)')/norm(jointv(:,jointNum)')^2)*jointv(:,jointNum)')'+jointMat(:,jointNum);
+                    pointProjection = scale*pointProjection;
+                    %Matrix of muscle projections perpendicular to the joint axis
+                        fflatmat = pointProjection(2,:)-pointProjection(1,:);
+                    %Storing the moment arms in a matrix
+                        momentArmLong = cross(fflatmat,jointv(:,jointNum));
+                        scaledjoint = scale*jointMat(:,jointNum)';
+                        PA2 = [pointProjection(1,:);scaledjoint];
+                        PB2 = [pointProjection(2,:);scaledjoint+momentArmLong];
+                    %lineINtersect3D gives the scaled vector of the moment arms for each segment
+                        momentArm = lineIntersect3D(obj,PA2,PB2);
+                    %A modifier to determine whether the moment arm is positive or negative
+                        sig_momentarm = momentArm-scaledjoint;
+                        sig_muscleprojection = (pointProjection(1,:)-pointProjection(2,:));
+                        signal2 = sign(dot(cross(sig_momentarm,sig_muscleprojection),jointv(:,jointNum)'));
+                        momentMat(jointNum,count) = signal2*norm(sig_momentarm)/1000;
+                        count = count +1;
+                end
+            end
+
+            m = zeros(1,4);
+            for ii = 1:length(obj.bodies)
+                % Body mass in kg
+                m(ii) = obj.body_obj{ii}.mass./1000;
+            end
+                
+            outG(1) = m(2)*momentMat(1,1)+(m(3)+m(4))*momentMat(1,2);
+            outG(2) = m(3)*momentMat(2,1)+m(4)*momentMat(2,2);
+            outG(3) = m(4)*momentMat(3,1);
+            
+            outG = outG*9.8;
+        end
+        %% Function: Forward Dynamics: Compute coriolis matrix
+        function outC = compute_coriolis_matrix(obj,theta,thetaDot)
+            % Make the Coriolis term according to MLS 1994 p. 176 (4.30)
+            % Input: A cell(3,3): The adjoint Transformation according to MLS 1994 p. 176 (4.27)
+            % Input: Jac double(6,3): spatial manipulator Jacobian. Each column is the joint twist
+            % Input: M double(6,6): generalized inertia matrix following form MLS 1994 p.176 (4.28)
+            % Input: theta_dot double(3,1): velocity of joint angle input
+        
+            A = compute_adjoint_transformation_matrix(obj,theta);
+            axesMat = joint_axes_from_angles(obj,theta);
+            jointMat = joint_pos_on_demand(obj,theta);
+
+            Jac = [-cross(axesMat,jointMat);axesMat];
+            
+            [~,M] = compute_mass_matrix(obj,theta);
+            
+            outC = zeros(3,3);
+            for i = 1:3
+                for j = 1:3
+                    temp = 0;
+                    for k = 1:3
+                        dMdT_1 = 0;
+                        for l = max(i,j):3
+                            dMdT_1 = dMdT_1+bracket(A{k,i}*Jac(:,i),Jac(:,k))'*A{l,k}'*M(:,:,l)*A{l,j}*Jac(:,j)+Jac(:,i)'*A{l,i}'*M(:,:,l)*A{l,k}*bracket(A{k,j}*Jac(:,j),Jac(:,k));
+                        end
+                        dMdT_2 = 0;
+                        for l = max(i,k):3
+                            dMdT_2 = dMdT_2+bracket(A{j,i}*Jac(:,i),Jac(:,j))'*A{l,j}'*M(:,:,l)*A{l,k}*Jac(:,k)+Jac(:,i)'*A{l,i}'*M(:,:,l)*A{l,j}*bracket(A{j,k}*Jac(:,k),Jac(:,j));
+                        end
+                        dMdT_3 = 0;
+                        for l = max(k,j):3
+                            dMdT_3 = dMdT_3+bracket(A{i,k}*Jac(:,k),Jac(:,i))'*A{l,i}'*M(:,:,l)*A{l,j}*Jac(:,j)+Jac(:,k)'*A{l,k}'*M(:,:,l)*A{l,i}*bracket(A{i,j}*Jac(:,j),Jac(:,i));
+                        end
+                        temp = temp+(1/2)*(dMdT_1+dMdT_2-dMdT_3)*thetaDot(k);
+                    end
+                    outC(i,j) = temp;
+                end
+            end
+        end
+        %% Function: Forward Dynamics: Compute Adjoint Transformation Matrix
+        function outA = compute_adjoint_transformation_matrix(obj,theta)
+            % Create the adjoint transformation matrix according to MLS 1994 p. 176 (4.27)
+            Adj_func = @(eX) [[eX(1:3,1:3) wedge(eX(1:3,4))*eX(1:3,1:3)];[zeros(3,3) eX(1:3,1:3)]];
+            exp_func = @(R,w,v,th) [[R (eye(3)-R)*(cross(w,v))+w*w'*v*th];[zeros(1,3) 1]];
+            
+            axesMat = joint_axes_from_angles(obj,theta);
+            jointMat = joint_pos_on_demand(obj,theta);
+
+            Jac = [-cross(axesMat,jointMat);axesMat];
+            
+            for hh = 1:3
+                for kk = 1:3
+                    if hh>kk
+                        expMat = eye(4);
+                        for tt = kk+1:hh
+                            temp1  = exp_func(obj.axis_angle_rotation(theta(tt),Jac(4:6,tt)),Jac(4:6,tt),Jac(1:3,tt),theta(tt));
+                            expMat = expMat*temp1; 
+                        end
+                        outA{hh,kk} = inv(Adj_func(expMat));
+                    elseif hh==kk
+                        outA{hh,kk} = eye(6);
+                    elseif hh<kk
+                        outA{hh,kk} = zeros(6,6);
+                    end
+                end
             end
         end
         %% Function: Pedotti Optimization

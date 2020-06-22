@@ -139,7 +139,13 @@ classdef CanvasModel < handle
             obj.notify('modelChanged');
         end
         %% addStimulus
-        function addStimulus(obj,target)
+        function addStimulus(obj,target,type)
+            if isempty(type) || ~any(contains({'tc','dc'},strtrim(lower(type))))
+                disp('Stimulus type must be either ''tc'' or ''dc''. No stimulus added.')
+                return
+            else
+                type = strtrim(lower(type));
+            end
             try obj.stimulus_objects(1).name;            
                 numStims = size(obj.stimulus_objects,1);
             catch
@@ -148,9 +154,9 @@ classdef CanvasModel < handle
             
             obj.num_stims = numStims;
             if numStims == 0
-                obj.stimulus_objects = obj.create_stimulus(target);
+                obj.stimulus_objects = obj.create_stimulus(target,type);
             else
-                obj.stimulus_objects(numStims+1,1) = obj.create_stimulus(target);
+                obj.stimulus_objects(numStims+1,1) = obj.create_stimulus(target,type);
             end
             index = numStims;
             
@@ -734,21 +740,20 @@ classdef CanvasModel < handle
             %obj.addLink(neurInd,muscInd,neuron.location,muscle.location,linktype)
         end
         %% create_stimulus
-        function stimulus = create_stimulus(obj,target)
+        function stimulus = create_stimulus(obj,target,type)
             if strcmp(target.type,'n')
-                stimulus = struct;
-                
+                stimulus = struct; 
                 % To allow multiple stimuli to be added to a neuron, we need to 1) check that the proposed stim is a duplicate,
                 % 2) if so, increment a counter until the new stimulus is unique
                 stimDup = 1;
                 try obj.stimulus_objects(1).name;            
-                    temp_name = ['stTC',num2str(stimDup),'-',target.name];
+                    temp_name = ['st',upper(type),num2str(stimDup),'-',target.name];
                     while any(contains({obj.stimulus_objects.name},temp_name))
                         stimDup = stimDup + 1;
-                        temp_name = ['stTC',num2str(stimDup),'-',target.name];
+                        temp_name = ['st',upper(type),num2str(stimDup),'-',target.name];
                     end
                 catch
-                    temp_name = ['stTC',num2str(stimDup),'-',target.name];
+                    temp_name = ['st',upper(type),num2str(stimDup),'-',target.name];
                 end 
 
                 stimulus.name = temp_name;
@@ -760,6 +765,27 @@ classdef CanvasModel < handle
                 stimulus.magnitude = 10;
                 stimulus.simeq = [];
                 stimulus.projeq = [];
+                stimulus.rest_potential = -60;
+                stimulus.conductance = 100;
+                stimulus.current_wave = [];
+                stimulus.current_data_file = [];
+                stimulus.muscle_ID = [];
+                stimulus.type = strtrim(lower(type));
+                
+                if strcmp(type,'dc')
+                    % In order for a direct current stimulus to work, it needs a muscle ID
+                    % Bcause we have bypassed other internal processes, this can be *any* muscle ID
+                    % For simplicity, we just add the first muscle ID in the system.
+                    try 
+                        obj.muscle_objects(1).name;
+                        stimulus.muscle_ID = obj.muscle_objects(1).linkedID;
+                    catch ME
+                        error(['Trying to add a direct current stimulus without any muscles in the object. You must have at least one muscle in the object'...
+                            ' in order for the direct current stimulus to work properly.'])
+                    end
+                else
+                    stimulus.muscle_ID = [];
+                end
             else
                 disp('Stims only for neurons. Please select a neuron.')
             end

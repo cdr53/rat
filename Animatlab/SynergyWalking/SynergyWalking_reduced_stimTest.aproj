@@ -1,6 +1,6 @@
 <Project>
-<ProjectName>SynergyWalking_reduced</ProjectName>
-<SimulationFile>SynergyWalking_reduced.asim</SimulationFile>
+<ProjectName>SynergyWalking_reduced_stimTest</ProjectName>
+<SimulationFile>SynergyWalking_reduced_stimTest.asim</SimulationFile>
 <LogLevel>ErrorType</LogLevel>
 <Version>3</Version>
 <Physics>Vortex</Physics>
@@ -13,9 +13,9 @@
 <EnableSimRecording>True</EnableSimRecording>
 <SetSimEnd>True</SetSimEnd>
 <APIFile/>
-<SimEndTime Value="10.0248" Scale="None" Actual="10.0248"/>
+<SimEndTime Value="10.01" Scale="None" Actual="10.01"/>
 <PlaybackControlMode>FastestPossible</PlaybackControlMode>
-<PresetPlaybackTimeStep Value="10" Scale="milli" Actual="0.01"/>
+<PresetPlaybackTimeStep Value="1" Scale="milli" Actual="0.001"/>
 <Environment>
 <PhysicsTimeStep Value="1.62" Scale="milli" Actual="0.00162"/>
 <PhysicsSubsteps>1</PhysicsSubsteps>
@@ -237,6 +237,75 @@
 <Y Value="1" Scale="None" Actual="1"/>
 <Z Value="1" Scale="None" Actual="1"/>
 </Scale>
+</RigidBody>
+<RigidBody>
+<Name>Body_6</Name>
+<ID>1b1965e4-68f1-4546-b54d-a00c32c8f7b9</ID>
+<Description/>
+<Transparencies>
+<Graphics>0</Graphics>
+<Collisions>50</Collisions>
+<Joints>50</Joints>
+<RecFields>50</RecFields>
+<Simulation>0</Simulation>
+</Transparencies>
+<IsVisible>True</IsVisible>
+<Ambient Red="0.0980392" Green="0.0980392" Blue="0.0980392" Alpha="1"/>
+<Diffuse Red="1" Green="0.647059" Blue="0" Alpha="1"/>
+<Specular Red="0.25098" Green="0.25098" Blue="0.25098" Alpha="1"/>
+<Shininess>64</Shininess>
+<Texture/>
+<LocalPosition>
+<X Value="6.131" Scale="milli" Actual="0.006131"/>
+<Y Value="80.819" Scale="micro" Actual="8.0819e-005"/>
+<Z Value="10.616" Scale="milli" Actual="0.010616"/>
+</LocalPosition>
+<Rotation>
+<X Value="0" Scale="None" Actual="0"/>
+<Y Value="0" Scale="None" Actual="0"/>
+<Z Value="0" Scale="None" Actual="0"/>
+</Rotation>
+<LocalMatrix>1,0,0,0,-0,1,0,0,0,-0,1,0,0.06131,0.00080819,0.10616,1</LocalMatrix>
+<DraggerSize Value="-1" Scale="None" Actual="-1"/>
+<Type>Attachment</Type>
+<PartType>AnimatGUI.DataObjects.Physical.Bodies.Attachment</PartType>
+<SynchWithRobot>False</SynchWithRobot>
+<SynchUpdateInterval Value="0" Scale="milli" Actual="0"/>
+<IsContactSensor>False</IsContactSensor>
+<IsCollisionObject>False</IsCollisionObject>
+<BuoyancyCenter>
+<X Value="0" Scale="None" Actual="0"/>
+<Y Value="0" Scale="None" Actual="0"/>
+<Z Value="0" Scale="None" Actual="0"/>
+</BuoyancyCenter>
+<BuoyancyScale>1</BuoyancyScale>
+<LinearDrag>
+<X Value="1" Scale="None" Actual="1"/>
+<Y Value="1" Scale="None" Actual="1"/>
+<Z Value="1" Scale="None" Actual="1"/>
+</LinearDrag>
+<AngularDrag>
+<X Value="50" Scale="milli" Actual="0.05"/>
+<Y Value="50" Scale="milli" Actual="0.05"/>
+<Z Value="50" Scale="milli" Actual="0.05"/>
+</AngularDrag>
+<MaxHydroForce Value="50" Scale="None" Actual="50"/>
+<MaxHydroTorque Value="20" Scale="None" Actual="20"/>
+<Magnus>0</Magnus>
+<EnableFluids>False</EnableFluids>
+<Density Value="1" Scale="None" Actual="1"/>
+<Mass Value="0" Scale="None" Actual="0"/>
+<COM>
+<X Value="0" Scale="None" Actual="0"/>
+<Y Value="0" Scale="None" Actual="0"/>
+<Z Value="0" Scale="None" Actual="0"/>
+</COM>
+<MaterialTypeID>DEFAULTMATERIAL</MaterialTypeID>
+<Freeze>False</Freeze>
+<FoodSource>False</FoodSource>
+<Radius Value="1" Scale="milli" Actual="0.001"/>
+<LatitudeSegments>20</LatitudeSegments>
+<LongtitudeSegments>20</LongtitudeSegments>
 </RigidBody>
 <RigidBody>
 <Name>AdductorBrevisOrigin Pelvis LH_HipZ Ext</Name>
@@ -741,7 +810,7 @@
 <Z Value="180" Scale="None" Actual="180"/>
 </Rotation>
 <LocalMatrix>-0.866025,-0.500001,-0.000509133,0,0.000352737,0.000407307,-1,0,0.500001,-0.866025,-0.000176369,0,0,0,0,1</LocalMatrix>
-<DraggerSize Value="0.001" Scale="None" Actual="0.001"/>
+<DraggerSize Value="30" Scale="milli" Actual="0.03"/>
 <Type>Hinge</Type>
 <PartType>AnimatGUI.DataObjects.Physical.Joints.Hinge</PartType>
 <SynchWithRobot>False</SynchWithRobot>
@@ -798,12 +867,12 @@
 <ClassName>AnimatGUI.DataObjects.Physical.ConstraintFriction</ClassName>
 <ID>028bd626-f964-4165-8e5b-e5f69937ba5e</ID>
 <Name/>
-<Enabled>False</Enabled>
+<Enabled>True</Enabled>
 <Proportional>False</Proportional>
-<Coefficient Value="0" Scale="None" Actual="0"/>
+<Coefficient Value="0.25" Scale="None" Actual="0.25"/>
 <MaxForce Value="10000" Scale="None" Actual="10000"/>
 <Loss Value="0" Scale="None" Actual="0"/>
-<StaticFrictionScale Value="1" Scale="None" Actual="1"/>
+<StaticFrictionScale Value="0.1" Scale="None" Actual="0.1"/>
 </Friction>
 <LowerLimit>
 <Name>82082205-6db6-4c04-af54-a42cced50e61</Name>
@@ -1074,7 +1143,7 @@
 <Z Value="180" Scale="None" Actual="180"/>
 </Rotation>
 <LocalMatrix>-1,0.000407306,-1.65898e-007,0,0.000407306,1,-0.000407306,0,0,-0.000407306,-1,0,-2.4949e-007,-9.33e-006,7.97e-006,1</LocalMatrix>
-<DraggerSize Value="0.01" Scale="None" Actual="0.01"/>
+<DraggerSize Value="30" Scale="milli" Actual="0.03"/>
 <Type>Hinge</Type>
 <PartType>AnimatGUI.DataObjects.Physical.Joints.Hinge</PartType>
 <SynchWithRobot>False</SynchWithRobot>
@@ -1131,12 +1200,12 @@
 <ClassName>AnimatGUI.DataObjects.Physical.ConstraintFriction</ClassName>
 <ID>00b42b7b-a001-4626-a69c-87c0beca56b3</ID>
 <Name/>
-<Enabled>False</Enabled>
+<Enabled>True</Enabled>
 <Proportional>False</Proportional>
-<Coefficient Value="0" Scale="None" Actual="0"/>
+<Coefficient Value="0.25" Scale="None" Actual="0.25"/>
 <MaxForce Value="10000" Scale="None" Actual="10000"/>
 <Loss Value="0" Scale="None" Actual="0"/>
-<StaticFrictionScale Value="1" Scale="None" Actual="1"/>
+<StaticFrictionScale Value="0.1" Scale="None" Actual="0.1"/>
 </Friction>
 <LowerLimit>
 <Name>abcb0a99-8144-49f1-b4a6-46e488badf9d</Name>
@@ -1606,12 +1675,12 @@
 <ClassName>AnimatGUI.DataObjects.Physical.ConstraintFriction</ClassName>
 <ID>064c80b2-4f34-4dac-9298-096da5037c32</ID>
 <Name/>
-<Enabled>False</Enabled>
+<Enabled>True</Enabled>
 <Proportional>False</Proportional>
-<Coefficient Value="0" Scale="None" Actual="0"/>
+<Coefficient Value="0.25" Scale="None" Actual="0.25"/>
 <MaxForce Value="10000" Scale="None" Actual="10000"/>
-<Loss Value="0" Scale="None" Actual="0"/>
-<StaticFrictionScale Value="1" Scale="None" Actual="1"/>
+<Loss Value="0" Scale="Kilo" Actual="0"/>
+<StaticFrictionScale Value="0.1" Scale="None" Actual="0.1"/>
 </Friction>
 <LowerLimit>
 <Name>fbfd6b5c-77a2-4f7f-96e2-08c4d4994b65</Name>
@@ -1818,6 +1887,144 @@
 <Z Value="0" Scale="None" Actual="0"/>
 </Rotation>
 <LocalMatrix>1,0,0,0,-0,1,0,0,0,-0,1,0,0.0298,-0.04406,-0.00154,1</LocalMatrix>
+<DraggerSize Value="-1" Scale="None" Actual="-1"/>
+<Type>Attachment</Type>
+<PartType>AnimatGUI.DataObjects.Physical.Bodies.Attachment</PartType>
+<SynchWithRobot>False</SynchWithRobot>
+<SynchUpdateInterval Value="0" Scale="milli" Actual="0"/>
+<IsContactSensor>False</IsContactSensor>
+<IsCollisionObject>False</IsCollisionObject>
+<BuoyancyCenter>
+<X Value="0" Scale="None" Actual="0"/>
+<Y Value="0" Scale="None" Actual="0"/>
+<Z Value="0" Scale="None" Actual="0"/>
+</BuoyancyCenter>
+<BuoyancyScale>1</BuoyancyScale>
+<LinearDrag>
+<X Value="1" Scale="None" Actual="1"/>
+<Y Value="1" Scale="None" Actual="1"/>
+<Z Value="1" Scale="None" Actual="1"/>
+</LinearDrag>
+<AngularDrag>
+<X Value="50" Scale="milli" Actual="0.05"/>
+<Y Value="50" Scale="milli" Actual="0.05"/>
+<Z Value="50" Scale="milli" Actual="0.05"/>
+</AngularDrag>
+<MaxHydroForce Value="50" Scale="None" Actual="50"/>
+<MaxHydroTorque Value="20" Scale="None" Actual="20"/>
+<Magnus>0</Magnus>
+<EnableFluids>False</EnableFluids>
+<Density Value="1" Scale="None" Actual="1"/>
+<Mass Value="0" Scale="None" Actual="0"/>
+<COM>
+<X Value="0" Scale="None" Actual="0"/>
+<Y Value="0" Scale="None" Actual="0"/>
+<Z Value="0" Scale="None" Actual="0"/>
+</COM>
+<MaterialTypeID>DEFAULTMATERIAL</MaterialTypeID>
+<Freeze>False</Freeze>
+<FoodSource>False</FoodSource>
+<Radius Value="0.5" Scale="milli" Actual="0.0005"/>
+<LatitudeSegments>20</LatitudeSegments>
+<LongtitudeSegments>20</LongtitudeSegments>
+</RigidBody>
+<RigidBody>
+<Name>COM</Name>
+<ID>446ad93e-447c-4dd5-bcdb-6fbefc1b92b8</ID>
+<Description/>
+<Transparencies>
+<Graphics>0</Graphics>
+<Collisions>50</Collisions>
+<Joints>50</Joints>
+<RecFields>50</RecFields>
+<Simulation>0</Simulation>
+</Transparencies>
+<IsVisible>True</IsVisible>
+<Ambient Red="0.0980392" Green="0.0980392" Blue="0.0980392" Alpha="1"/>
+<Diffuse Red="1" Green="0.647059" Blue="0" Alpha="1"/>
+<Specular Red="0.25098" Green="0.25098" Blue="0.25098" Alpha="1"/>
+<Shininess>64</Shininess>
+<Texture/>
+<LocalPosition>
+<X Value="5.833" Scale="milli" Actual="0.005833"/>
+<Y Value="-3" Scale="milli" Actual="-0.003"/>
+<Z Value="0.2981" Scale="milli" Actual="0.0002981"/>
+</LocalPosition>
+<Rotation>
+<X Value="0" Scale="None" Actual="0"/>
+<Y Value="0" Scale="None" Actual="0"/>
+<Z Value="0" Scale="None" Actual="0"/>
+</Rotation>
+<LocalMatrix>1,0,0,0,-0,1,0,0,0,-0,1,0,0.05833,-0.03,0.002981,1</LocalMatrix>
+<DraggerSize Value="-1" Scale="None" Actual="-1"/>
+<Type>Attachment</Type>
+<PartType>AnimatGUI.DataObjects.Physical.Bodies.Attachment</PartType>
+<SynchWithRobot>False</SynchWithRobot>
+<SynchUpdateInterval Value="0" Scale="milli" Actual="0"/>
+<IsContactSensor>False</IsContactSensor>
+<IsCollisionObject>False</IsCollisionObject>
+<BuoyancyCenter>
+<X Value="0" Scale="None" Actual="0"/>
+<Y Value="0" Scale="None" Actual="0"/>
+<Z Value="0" Scale="None" Actual="0"/>
+</BuoyancyCenter>
+<BuoyancyScale>1</BuoyancyScale>
+<LinearDrag>
+<X Value="1" Scale="None" Actual="1"/>
+<Y Value="1" Scale="None" Actual="1"/>
+<Z Value="1" Scale="None" Actual="1"/>
+</LinearDrag>
+<AngularDrag>
+<X Value="50" Scale="milli" Actual="0.05"/>
+<Y Value="50" Scale="milli" Actual="0.05"/>
+<Z Value="50" Scale="milli" Actual="0.05"/>
+</AngularDrag>
+<MaxHydroForce Value="50" Scale="None" Actual="50"/>
+<MaxHydroTorque Value="20" Scale="None" Actual="20"/>
+<Magnus>0</Magnus>
+<EnableFluids>False</EnableFluids>
+<Density Value="1" Scale="None" Actual="1"/>
+<Mass Value="0" Scale="None" Actual="0"/>
+<COM>
+<X Value="0" Scale="None" Actual="0"/>
+<Y Value="0" Scale="None" Actual="0"/>
+<Z Value="0" Scale="None" Actual="0"/>
+</COM>
+<MaterialTypeID>DEFAULTMATERIAL</MaterialTypeID>
+<Freeze>False</Freeze>
+<FoodSource>False</FoodSource>
+<Radius Value="1" Scale="milli" Actual="0.001"/>
+<LatitudeSegments>20</LatitudeSegments>
+<LongtitudeSegments>20</LongtitudeSegments>
+</RigidBody>
+<RigidBody>
+<Name>Body_4</Name>
+<ID>58d24fd7-ca06-4953-81c9-91d2b6b9bdd5</ID>
+<Description/>
+<Transparencies>
+<Graphics>0</Graphics>
+<Collisions>50</Collisions>
+<Joints>50</Joints>
+<RecFields>50</RecFields>
+<Simulation>0</Simulation>
+</Transparencies>
+<IsVisible>True</IsVisible>
+<Ambient Red="0.0980392" Green="0.0980392" Blue="0.0980392" Alpha="1"/>
+<Diffuse Red="1" Green="0.647059" Blue="0" Alpha="1"/>
+<Specular Red="0.25098" Green="0.25098" Blue="0.25098" Alpha="1"/>
+<Shininess>64</Shininess>
+<Texture/>
+<LocalPosition>
+<X Value="1.123" Scale="milli" Actual="0.001123"/>
+<Y Value="-1.616" Scale="milli" Actual="-0.001616"/>
+<Z Value="-5.458" Scale="milli" Actual="-0.005458"/>
+</LocalPosition>
+<Rotation>
+<X Value="0" Scale="None" Actual="0"/>
+<Y Value="0" Scale="None" Actual="0"/>
+<Z Value="0" Scale="None" Actual="0"/>
+</Rotation>
+<LocalMatrix>1,0,0,0,-0,1,0,0,0,-0,1,0,0.01123,-0.01616,-0.05458,1</LocalMatrix>
 <DraggerSize Value="-1" Scale="None" Actual="-1"/>
 <Type>Attachment</Type>
 <PartType>AnimatGUI.DataObjects.Physical.Bodies.Attachment</PartType>
@@ -2566,6 +2773,75 @@
 <LongtitudeSegments>20</LongtitudeSegments>
 </RigidBody>
 <RigidBody>
+<Name>COM</Name>
+<ID>da4a07c9-84a1-4846-ad01-34fc74bb4ef4</ID>
+<Description/>
+<Transparencies>
+<Graphics>0</Graphics>
+<Collisions>50</Collisions>
+<Joints>50</Joints>
+<RecFields>50</RecFields>
+<Simulation>0</Simulation>
+</Transparencies>
+<IsVisible>True</IsVisible>
+<Ambient Red="0.0980392" Green="0.0980392" Blue="0.0980392" Alpha="1"/>
+<Diffuse Red="1" Green="0.647059" Blue="0" Alpha="1"/>
+<Specular Red="0.25098" Green="0.25098" Blue="0.25098" Alpha="1"/>
+<Shininess>64</Shininess>
+<Texture/>
+<LocalPosition>
+<X Value="-1.833" Scale="milli" Actual="-0.001833"/>
+<Y Value="-17.219" Scale="milli" Actual="-0.017219"/>
+<Z Value="-5.01" Scale="milli" Actual="-0.00501"/>
+</LocalPosition>
+<Rotation>
+<X Value="0" Scale="None" Actual="0"/>
+<Y Value="0" Scale="None" Actual="0"/>
+<Z Value="0" Scale="None" Actual="0"/>
+</Rotation>
+<LocalMatrix>1,0,0,0,-0,1,0,0,0,-0,1,0,-0.01833,-0.17219,-0.0501,1</LocalMatrix>
+<DraggerSize Value="-1" Scale="None" Actual="-1"/>
+<Type>Attachment</Type>
+<PartType>AnimatGUI.DataObjects.Physical.Bodies.Attachment</PartType>
+<SynchWithRobot>False</SynchWithRobot>
+<SynchUpdateInterval Value="0" Scale="milli" Actual="0"/>
+<IsContactSensor>False</IsContactSensor>
+<IsCollisionObject>False</IsCollisionObject>
+<BuoyancyCenter>
+<X Value="0" Scale="None" Actual="0"/>
+<Y Value="0" Scale="None" Actual="0"/>
+<Z Value="0" Scale="None" Actual="0"/>
+</BuoyancyCenter>
+<BuoyancyScale>1</BuoyancyScale>
+<LinearDrag>
+<X Value="1" Scale="None" Actual="1"/>
+<Y Value="1" Scale="None" Actual="1"/>
+<Z Value="1" Scale="None" Actual="1"/>
+</LinearDrag>
+<AngularDrag>
+<X Value="50" Scale="milli" Actual="0.05"/>
+<Y Value="50" Scale="milli" Actual="0.05"/>
+<Z Value="50" Scale="milli" Actual="0.05"/>
+</AngularDrag>
+<MaxHydroForce Value="50" Scale="None" Actual="50"/>
+<MaxHydroTorque Value="20" Scale="None" Actual="20"/>
+<Magnus>0</Magnus>
+<EnableFluids>False</EnableFluids>
+<Density Value="1" Scale="None" Actual="1"/>
+<Mass Value="0" Scale="None" Actual="0"/>
+<COM>
+<X Value="0" Scale="None" Actual="0"/>
+<Y Value="0" Scale="None" Actual="0"/>
+<Z Value="0" Scale="None" Actual="0"/>
+</COM>
+<MaterialTypeID>DEFAULTMATERIAL</MaterialTypeID>
+<Freeze>False</Freeze>
+<FoodSource>False</FoodSource>
+<Radius Value="1" Scale="milli" Actual="0.001"/>
+<LatitudeSegments>20</LatitudeSegments>
+<LongtitudeSegments>20</LongtitudeSegments>
+</RigidBody>
+<RigidBody>
 <Name>MedialGastrocnemiusVia Tibia LH_AnkleZ Ext</Name>
 <ID>da98174c-94e9-4353-a4bf-a1550d37db65</ID>
 <Description/>
@@ -2926,6 +3202,75 @@
 <LongtitudeSegments>20</LongtitudeSegments>
 </RigidBody>
 <RigidBody>
+<Name>COM</Name>
+<ID>cf94b2a3-5595-43ff-aec8-3d88a34089db</ID>
+<Description/>
+<Transparencies>
+<Graphics>0</Graphics>
+<Collisions>50</Collisions>
+<Joints>50</Joints>
+<RecFields>50</RecFields>
+<Simulation>0</Simulation>
+</Transparencies>
+<IsVisible>True</IsVisible>
+<Ambient Red="0.0980392" Green="0.0980392" Blue="0.0980392" Alpha="1"/>
+<Diffuse Red="1" Green="0.647059" Blue="0" Alpha="1"/>
+<Specular Red="0.25098" Green="0.25098" Blue="0.25098" Alpha="1"/>
+<Shininess>64</Shininess>
+<Texture/>
+<LocalPosition>
+<X Value="-8.315" Scale="milli" Actual="-0.008315"/>
+<Y Value="-1.975" Scale="milli" Actual="-0.001975"/>
+<Z Value="15.642" Scale="milli" Actual="0.015642"/>
+</LocalPosition>
+<Rotation>
+<X Value="0" Scale="None" Actual="0"/>
+<Y Value="0" Scale="None" Actual="0"/>
+<Z Value="0" Scale="None" Actual="0"/>
+</Rotation>
+<LocalMatrix>1,0,0,0,-0,1,0,0,0,-0,1,0,-0.08315,-0.01975,0.15642,1</LocalMatrix>
+<DraggerSize Value="0.5" Scale="milli" Actual="0.0005"/>
+<Type>Attachment</Type>
+<PartType>AnimatGUI.DataObjects.Physical.Bodies.Attachment</PartType>
+<SynchWithRobot>False</SynchWithRobot>
+<SynchUpdateInterval Value="0" Scale="milli" Actual="0"/>
+<IsContactSensor>False</IsContactSensor>
+<IsCollisionObject>False</IsCollisionObject>
+<BuoyancyCenter>
+<X Value="0" Scale="None" Actual="0"/>
+<Y Value="0" Scale="None" Actual="0"/>
+<Z Value="0" Scale="None" Actual="0"/>
+</BuoyancyCenter>
+<BuoyancyScale>1</BuoyancyScale>
+<LinearDrag>
+<X Value="1" Scale="None" Actual="1"/>
+<Y Value="1" Scale="None" Actual="1"/>
+<Z Value="1" Scale="None" Actual="1"/>
+</LinearDrag>
+<AngularDrag>
+<X Value="50" Scale="milli" Actual="0.05"/>
+<Y Value="50" Scale="milli" Actual="0.05"/>
+<Z Value="50" Scale="milli" Actual="0.05"/>
+</AngularDrag>
+<MaxHydroForce Value="50" Scale="None" Actual="50"/>
+<MaxHydroTorque Value="20" Scale="None" Actual="20"/>
+<Magnus>0</Magnus>
+<EnableFluids>False</EnableFluids>
+<Density Value="1" Scale="None" Actual="1"/>
+<Mass Value="0" Scale="None" Actual="0"/>
+<COM>
+<X Value="0" Scale="None" Actual="0"/>
+<Y Value="0" Scale="None" Actual="0"/>
+<Z Value="0" Scale="None" Actual="0"/>
+</COM>
+<MaterialTypeID>DEFAULTMATERIAL</MaterialTypeID>
+<Freeze>False</Freeze>
+<FoodSource>False</FoodSource>
+<Radius Value="1" Scale="milli" Actual="0.001"/>
+<LatitudeSegments>20</LatitudeSegments>
+<LongtitudeSegments>20</LongtitudeSegments>
+</RigidBody>
+<RigidBody>
 <Name>TensorFasciaLataeIns Femur LH_HipZ Flx</Name>
 <ID>d1f28e8b-e68b-460d-8ac0-c543498caa83</ID>
 <Description/>
@@ -3225,11 +3570,11 @@
 <NervousSystem>
 <NeuralModules>
 <Node>
-<ID>U2C30BW-module</ID>
+<ID>CZO1YI9-module</ID>
 <AssemblyFile>IntegrateFireGUI.dll</AssemblyFile>
 <ClassName>IntegrateFireGUI.DataObjects.Behavior.NeuralModule</ClassName>
-<TimeStep Value="1.62" Scale="milli" Actual="0.00162"/>
-<ID>U2C30BW-module</ID>
+<TimeStep Value="0.54" Scale="milli" Actual="0.00054"/>
+<ID>CZO1YI9-module</ID>
 <AHPEquilibriumPotential Value="-70" Scale="milli" Actual="-0.07"/>
 <SpikePeak Value="0" Scale="milli" Actual="0"/>
 <SpikeStrength>1</SpikeStrength>
@@ -3244,54 +3589,6 @@
 <FreezeHebb>False</FreezeHebb>
 <RetainHebbMemory>False</RetainHebbMemory>
 <SynapseTypes>
-<Link>
-<AssemblyFile>IntegrateFireGUI.dll</AssemblyFile>
-<ClassName>IntegrateFireGUI.DataObjects.Behavior.SynapseTypes.NonSpikingChemical</ClassName>
-<ID>signaltransmission1-ID</ID>
-<AdjustDst>False</AdjustDst>
-<AdjustOrg>False</AdjustOrg>
-<ArrowDestination>
-<Style>Fork</Style>
-<Size>Small</Size>
-<Angle>deg30</Angle>
-<Filled>False</Filled>
-</ArrowDestination>
-<ArrowMiddle>
-<Style>None</Style>
-<Size>Small</Size>
-<Angle>deg30</Angle>
-<Filled>False</Filled>
-</ArrowMiddle>
-<ArrowOrigin>
-<Style>None</Style>
-<Size>Small</Size>
-<Angle>deg30</Angle>
-<Filled>False</Filled>
-</ArrowOrigin>
-<BackMode>Transparent</BackMode>
-<DashStyle>Solid</DashStyle>
-<DrawColor>-16777216</DrawColor>
-<DrawWidth>1</DrawWidth>
-<DestinationID/>
-<Font Family="Arial" Size="12" Bold="False" Underline="False" Strikeout="False" Italic="False"/>
-<Hidden>False</Hidden>
-<Jump>Arc</Jump>
-<LineStyle>Polyline</LineStyle>
-<OrthogonalDynamic>True</OrthogonalDynamic>
-<OriginID/>
-<OrientedText>True</OrientedText>
-<Selectable>True</Selectable>
-<Stretchable>True</Stretchable>
-<Text/>
-<ToolTip/>
-<Url/>
-<ZOrder>0</ZOrder>
-<Name>SignalTransmission1</Name>
-<EquilibriumPotential Value="134" Scale="milli" Actual="0.134"/>
-<MaxSynapticConductance Value="0.115" Scale="micro" Actual="1.15e-07"/>
-<PreSynapticThreshold Value="-60" Scale="milli" Actual="-0.06"/>
-<PreSynapticSaturationLevel Value="-40" Scale="milli" Actual="-0.04"/>
-</Link>
 <Link>
 <AssemblyFile>IntegrateFireGUI.dll</AssemblyFile>
 <ClassName>IntegrateFireGUI.DataObjects.Behavior.SynapseTypes.NonSpikingChemical</ClassName>
@@ -3336,7 +3633,7 @@
 <ZOrder>0</ZOrder>
 <Name>SignalModulation1</Name>
 <EquilibriumPotential Value="-100" Scale="milli" Actual="-0.1"/>
-<MaxSynapticConductance Value="0.558" Scale="micro" Actual="5.58e-07"/>
+<MaxSynapticConductance Value="0.558" Scale="micro" Actual="5.58e-007"/>
 <PreSynapticThreshold Value="-60" Scale="milli" Actual="-0.06"/>
 <PreSynapticSaturationLevel Value="-40" Scale="milli" Actual="-0.04"/>
 </Link>
@@ -3384,7 +3681,7 @@
 <ZOrder>0</ZOrder>
 <Name>SignalModulation2</Name>
 <EquilibriumPotential Value="-60" Scale="milli" Actual="-0.06"/>
-<MaxSynapticConductance Value="19" Scale="micro" Actual="1.9e-05"/>
+<MaxSynapticConductance Value="19" Scale="micro" Actual="1.9e-005"/>
 <PreSynapticThreshold Value="-60" Scale="milli" Actual="-0.06"/>
 <PreSynapticSaturationLevel Value="-40" Scale="milli" Actual="-0.04"/>
 </Link>
@@ -3432,7 +3729,55 @@
 <ZOrder>0</ZOrder>
 <Name>SignalModulation3</Name>
 <EquilibriumPotential Value="-61" Scale="milli" Actual="-0.061"/>
-<MaxSynapticConductance Value="20" Scale="micro" Actual="2e-05"/>
+<MaxSynapticConductance Value="20" Scale="micro" Actual="2e-005"/>
+<PreSynapticThreshold Value="-60" Scale="milli" Actual="-0.06"/>
+<PreSynapticSaturationLevel Value="-40" Scale="milli" Actual="-0.04"/>
+</Link>
+<Link>
+<AssemblyFile>IntegrateFireGUI.dll</AssemblyFile>
+<ClassName>IntegrateFireGUI.DataObjects.Behavior.SynapseTypes.NonSpikingChemical</ClassName>
+<ID>signaltransmission1-ID</ID>
+<AdjustDst>False</AdjustDst>
+<AdjustOrg>False</AdjustOrg>
+<ArrowDestination>
+<Style>Fork</Style>
+<Size>Small</Size>
+<Angle>deg30</Angle>
+<Filled>False</Filled>
+</ArrowDestination>
+<ArrowMiddle>
+<Style>None</Style>
+<Size>Small</Size>
+<Angle>deg30</Angle>
+<Filled>False</Filled>
+</ArrowMiddle>
+<ArrowOrigin>
+<Style>None</Style>
+<Size>Small</Size>
+<Angle>deg30</Angle>
+<Filled>False</Filled>
+</ArrowOrigin>
+<BackMode>Transparent</BackMode>
+<DashStyle>Solid</DashStyle>
+<DrawColor>-16777216</DrawColor>
+<DrawWidth>1</DrawWidth>
+<DestinationID/>
+<Font Family="Arial" Size="12" Bold="False" Underline="False" Strikeout="False" Italic="False"/>
+<Hidden>False</Hidden>
+<Jump>Arc</Jump>
+<LineStyle>Polyline</LineStyle>
+<OrthogonalDynamic>True</OrthogonalDynamic>
+<OriginID/>
+<OrientedText>True</OrientedText>
+<Selectable>True</Selectable>
+<Stretchable>True</Stretchable>
+<Text/>
+<ToolTip/>
+<Url/>
+<ZOrder>0</ZOrder>
+<Name>SignalTransmission1</Name>
+<EquilibriumPotential Value="134" Scale="milli" Actual="0.134"/>
+<MaxSynapticConductance Value="0.115" Scale="micro" Actual="1.15e-007"/>
 <PreSynapticThreshold Value="-60" Scale="milli" Actual="-0.06"/>
 <PreSynapticSaturationLevel Value="-40" Scale="milli" Actual="-0.04"/>
 </Link>
@@ -3442,13 +3787,13 @@
 <ID>1496cbb3-2e9f-4bbd-9ec0-503de005e1e8</ID>
 <AssemblyFile>AnimatGUI.dll</AssemblyFile>
 <ClassName>AnimatGUI.DataObjects.Behavior.PhysicsModule</ClassName>
-<TimeStep Value="2.5" Scale="milli" Actual="0.0025"/>
+<TimeStep Value="1.62" Scale="milli" Actual="0.00162"/>
 </Node>
 </NeuralModules>
 <Node>
 <AssemblyFile>AnimatGUI.dll</AssemblyFile>
 <ClassName>AnimatGUI.DataObjects.Behavior.Nodes.Subsystem</ClassName>
-<ID>U2C30BW-ID</ID>
+<ID>CZO1YI9-ID</ID>
 <Alignment>CenterMiddle</Alignment>
 <AutoSize>None</AutoSize>
 <BackMode>Transparent</BackMode>
@@ -3474,7 +3819,7 @@
 <Shape>Rectangle</Shape>
 <ShapeOrientation>Angle0</ShapeOrientation>
 <Size Width="40" Height="40"/>
-<Text>U2C30BW</Text>
+<Text>CZO1YI9</Text>
 <TextColor>-16777216</TextColor>
 <TextMargin Width="0" Height="0"/>
 <ToolTip/>
@@ -3493,891 +3838,9 @@
 <OutLinks/>
 <Nodes>
 <Node>
-<AssemblyFile>IntegrateFireGUI.dll</AssemblyFile>
-<ClassName>IntegrateFireGUI.DataObjects.Behavior.Neurons.NonSpiking</ClassName>
-<ID>neur1-ID</ID>
-<Alignment>CenterMiddle</Alignment>
-<AutoSize>None</AutoSize>
-<BackMode>Transparent</BackMode>
-<DashStyle>Solid</DashStyle>
-<DrawColor>-16777216</DrawColor>
-<DrawWidth>1</DrawWidth>
-<FillColor>-7876870</FillColor>
-<Font Family="Arial" Size="8" Bold="True" Underline="False" Strikeout="False" Italic="False"/>
-<Gradient>False</Gradient>
-<GradientColor>0</GradientColor>
-<GradientMode>BackwardDiagonal</GradientMode>
-<DiagramImageName/>
-<ImageName/>
-<ImageLocation x="0" y="0"/>
-<ImagePosition>RelativeToText</ImagePosition>
-<InLinkable>True</InLinkable>
-<LabelEdit>True</LabelEdit>
-<Location x="26" y="250"/>
-<OutLinkable>True</OutLinkable>
-<ShadowStyle>None</ShadowStyle>
-<ShadowColor>-16777216</ShadowColor>
-<ShadowSize Width="0" Height="0"/>
-<Shape>Termination</Shape>
-<ShapeOrientation>Angle0</ShapeOrientation>
-<Size Width="50" Height="50"/>
-<Text>neur1</Text>
-<TextColor>-16777216</TextColor>
-<TextMargin Width="0" Height="0"/>
-<ToolTip/>
-<Transparent>False</Transparent>
-<Url/>
-<XMoveable>True</XMoveable>
-<XSizeable>True</XSizeable>
-<YMoveable>True</YMoveable>
-<YSizeable>True</YSizeable>
-<ZOrder>0</ZOrder>
-<ZOrder>0</ZOrder>
-<TemplateNode>False</TemplateNode>
-<TemplateNodeCount>1</TemplateNodeCount>
-<TemplateChangeScript/>
-<InLinks/>
-<OutLinks>
-<ID>link1-ID</ID>
-</OutLinks>
-<Enabled>True</Enabled>
-<RestingPotential Value="-60" Scale="milli" Actual="-0.06"/>
-<RelativeSize Value="1" Scale="None" Actual="1"/>
-<TimeConstant Value="5" Scale="milli" Actual="0.005"/>
-<InitialThreshold Value="50" Scale="milli" Actual="0.05"/>
-<RelativeAccomodation Value="0.3" Scale="None" Actual="0.3"/>
-<AccomodationTimeConstant Value="10" Scale="milli" Actual="0.01"/>
-<AHP_Conductance Value="0" Scale="micro" Actual="0"/>
-<AHP_TimeConstant Value="3" Scale="milli" Actual="0.003"/>
-<MaxCaConductance Value="0" Scale="micro" Actual="0"/>
-<CaActivation>
-<ID>neur1-ID-act</ID>
-<MidPoint Value="-30" Scale="milli" Actual="-0.03"/>
-<Slope Value="0.1" Scale="None" Actual="0.1"/>
-<TimeConstant Value="20" Scale="milli" Actual="0.02"/>
-<ActivationType>True</ActivationType>
-</CaActivation>
-<CaDeactivation>
-<ID>neur1-ID-deact</ID>
-<MidPoint Value="-90" Scale="milli" Actual="-0.09"/>
-<Slope Value="-0.1" Scale="None" Actual="-0.1"/>
-<TimeConstant Value="7500" Scale="milli" Actual="7.5"/>
-<ActivationType>False</ActivationType>
-</CaDeactivation>
-<InitAtBottom>True</InitAtBottom>
-<TonicStimulus Value="0" Scale="nano" Actual="0"/>
-<TonicNoise Value="0" Scale="milli" Actual="0"/>
-</Node>
-<Node>
-<AssemblyFile>IntegrateFireGUI.dll</AssemblyFile>
-<ClassName>IntegrateFireGUI.DataObjects.Behavior.Neurons.NonSpiking</ClassName>
-<ID>neur2-ID</ID>
-<Alignment>CenterMiddle</Alignment>
-<AutoSize>None</AutoSize>
-<BackMode>Transparent</BackMode>
-<DashStyle>Solid</DashStyle>
-<DrawColor>-16777216</DrawColor>
-<DrawWidth>1</DrawWidth>
-<FillColor>-7876870</FillColor>
-<Font Family="Arial" Size="8" Bold="True" Underline="False" Strikeout="False" Italic="False"/>
-<Gradient>False</Gradient>
-<GradientColor>0</GradientColor>
-<GradientMode>BackwardDiagonal</GradientMode>
-<DiagramImageName/>
-<ImageName/>
-<ImageLocation x="0" y="0"/>
-<ImagePosition>RelativeToText</ImagePosition>
-<InLinkable>True</InLinkable>
-<LabelEdit>True</LabelEdit>
-<Location x="51" y="250"/>
-<OutLinkable>True</OutLinkable>
-<ShadowStyle>None</ShadowStyle>
-<ShadowColor>-16777216</ShadowColor>
-<ShadowSize Width="0" Height="0"/>
-<Shape>Termination</Shape>
-<ShapeOrientation>Angle0</ShapeOrientation>
-<Size Width="50" Height="50"/>
-<Text>neur2</Text>
-<TextColor>-16777216</TextColor>
-<TextMargin Width="0" Height="0"/>
-<ToolTip/>
-<Transparent>False</Transparent>
-<Url/>
-<XMoveable>True</XMoveable>
-<XSizeable>True</XSizeable>
-<YMoveable>True</YMoveable>
-<YSizeable>True</YSizeable>
-<ZOrder>0</ZOrder>
-<ZOrder>0</ZOrder>
-<TemplateNode>False</TemplateNode>
-<TemplateNodeCount>1</TemplateNodeCount>
-<TemplateChangeScript/>
-<InLinks/>
-<OutLinks>
-<ID>link3-ID</ID>
-</OutLinks>
-<Enabled>True</Enabled>
-<RestingPotential Value="-60" Scale="milli" Actual="-0.06"/>
-<RelativeSize Value="1" Scale="None" Actual="1"/>
-<TimeConstant Value="5" Scale="milli" Actual="0.005"/>
-<InitialThreshold Value="50" Scale="milli" Actual="0.05"/>
-<RelativeAccomodation Value="0.3" Scale="None" Actual="0.3"/>
-<AccomodationTimeConstant Value="10" Scale="milli" Actual="0.01"/>
-<AHP_Conductance Value="0" Scale="micro" Actual="0"/>
-<AHP_TimeConstant Value="3" Scale="milli" Actual="0.003"/>
-<MaxCaConductance Value="0" Scale="micro" Actual="0"/>
-<CaActivation>
-<ID>neur2-ID-act</ID>
-<MidPoint Value="-30" Scale="milli" Actual="-0.03"/>
-<Slope Value="0.1" Scale="None" Actual="0.1"/>
-<TimeConstant Value="20" Scale="milli" Actual="0.02"/>
-<ActivationType>True</ActivationType>
-</CaActivation>
-<CaDeactivation>
-<ID>neur2-ID-deact</ID>
-<MidPoint Value="-90" Scale="milli" Actual="-0.09"/>
-<Slope Value="-0.1" Scale="None" Actual="-0.1"/>
-<TimeConstant Value="7500" Scale="milli" Actual="7.5"/>
-<ActivationType>False</ActivationType>
-</CaDeactivation>
-<InitAtBottom>True</InitAtBottom>
-<TonicStimulus Value="0" Scale="nano" Actual="0"/>
-<TonicNoise Value="0" Scale="milli" Actual="0"/>
-</Node>
-<Node>
-<AssemblyFile>IntegrateFireGUI.dll</AssemblyFile>
-<ClassName>IntegrateFireGUI.DataObjects.Behavior.Neurons.NonSpiking</ClassName>
-<ID>neur3-ID</ID>
-<Alignment>CenterMiddle</Alignment>
-<AutoSize>None</AutoSize>
-<BackMode>Transparent</BackMode>
-<DashStyle>Solid</DashStyle>
-<DrawColor>-16777216</DrawColor>
-<DrawWidth>1</DrawWidth>
-<FillColor>-7876870</FillColor>
-<Font Family="Arial" Size="8" Bold="True" Underline="False" Strikeout="False" Italic="False"/>
-<Gradient>False</Gradient>
-<GradientColor>0</GradientColor>
-<GradientMode>BackwardDiagonal</GradientMode>
-<DiagramImageName/>
-<ImageName/>
-<ImageLocation x="0" y="0"/>
-<ImagePosition>RelativeToText</ImagePosition>
-<InLinkable>True</InLinkable>
-<LabelEdit>True</LabelEdit>
-<Location x="77" y="250"/>
-<OutLinkable>True</OutLinkable>
-<ShadowStyle>None</ShadowStyle>
-<ShadowColor>-16777216</ShadowColor>
-<ShadowSize Width="0" Height="0"/>
-<Shape>Termination</Shape>
-<ShapeOrientation>Angle0</ShapeOrientation>
-<Size Width="50" Height="50"/>
-<Text>neur3</Text>
-<TextColor>-16777216</TextColor>
-<TextMargin Width="0" Height="0"/>
-<ToolTip/>
-<Transparent>False</Transparent>
-<Url/>
-<XMoveable>True</XMoveable>
-<XSizeable>True</XSizeable>
-<YMoveable>True</YMoveable>
-<YSizeable>True</YSizeable>
-<ZOrder>0</ZOrder>
-<ZOrder>0</ZOrder>
-<TemplateNode>False</TemplateNode>
-<TemplateNodeCount>1</TemplateNodeCount>
-<TemplateChangeScript/>
-<InLinks/>
-<OutLinks>
-<ID>link5-ID</ID>
-</OutLinks>
-<Enabled>True</Enabled>
-<RestingPotential Value="-60" Scale="milli" Actual="-0.06"/>
-<RelativeSize Value="1" Scale="None" Actual="1"/>
-<TimeConstant Value="5" Scale="milli" Actual="0.005"/>
-<InitialThreshold Value="50" Scale="milli" Actual="0.05"/>
-<RelativeAccomodation Value="0.3" Scale="None" Actual="0.3"/>
-<AccomodationTimeConstant Value="10" Scale="milli" Actual="0.01"/>
-<AHP_Conductance Value="0" Scale="micro" Actual="0"/>
-<AHP_TimeConstant Value="3" Scale="milli" Actual="0.003"/>
-<MaxCaConductance Value="0" Scale="micro" Actual="0"/>
-<CaActivation>
-<ID>neur3-ID-act</ID>
-<MidPoint Value="-30" Scale="milli" Actual="-0.03"/>
-<Slope Value="0.1" Scale="None" Actual="0.1"/>
-<TimeConstant Value="20" Scale="milli" Actual="0.02"/>
-<ActivationType>True</ActivationType>
-</CaActivation>
-<CaDeactivation>
-<ID>neur3-ID-deact</ID>
-<MidPoint Value="-90" Scale="milli" Actual="-0.09"/>
-<Slope Value="-0.1" Scale="None" Actual="-0.1"/>
-<TimeConstant Value="7500" Scale="milli" Actual="7.5"/>
-<ActivationType>False</ActivationType>
-</CaDeactivation>
-<InitAtBottom>True</InitAtBottom>
-<TonicStimulus Value="0" Scale="nano" Actual="0"/>
-<TonicNoise Value="0" Scale="milli" Actual="0"/>
-</Node>
-<Node>
-<AssemblyFile>IntegrateFireGUI.dll</AssemblyFile>
-<ClassName>IntegrateFireGUI.DataObjects.Behavior.Neurons.NonSpiking</ClassName>
-<ID>neur4-ID</ID>
-<Alignment>CenterMiddle</Alignment>
-<AutoSize>None</AutoSize>
-<BackMode>Transparent</BackMode>
-<DashStyle>Solid</DashStyle>
-<DrawColor>-16777216</DrawColor>
-<DrawWidth>1</DrawWidth>
-<FillColor>-7876870</FillColor>
-<Font Family="Arial" Size="8" Bold="True" Underline="False" Strikeout="False" Italic="False"/>
-<Gradient>False</Gradient>
-<GradientColor>0</GradientColor>
-<GradientMode>BackwardDiagonal</GradientMode>
-<DiagramImageName/>
-<ImageName/>
-<ImageLocation x="0" y="0"/>
-<ImagePosition>RelativeToText</ImagePosition>
-<InLinkable>True</InLinkable>
-<LabelEdit>True</LabelEdit>
-<Location x="103" y="250"/>
-<OutLinkable>True</OutLinkable>
-<ShadowStyle>None</ShadowStyle>
-<ShadowColor>-16777216</ShadowColor>
-<ShadowSize Width="0" Height="0"/>
-<Shape>Termination</Shape>
-<ShapeOrientation>Angle0</ShapeOrientation>
-<Size Width="50" Height="50"/>
-<Text>neur4</Text>
-<TextColor>-16777216</TextColor>
-<TextMargin Width="0" Height="0"/>
-<ToolTip/>
-<Transparent>False</Transparent>
-<Url/>
-<XMoveable>True</XMoveable>
-<XSizeable>True</XSizeable>
-<YMoveable>True</YMoveable>
-<YSizeable>True</YSizeable>
-<ZOrder>0</ZOrder>
-<ZOrder>0</ZOrder>
-<TemplateNode>False</TemplateNode>
-<TemplateNodeCount>1</TemplateNodeCount>
-<TemplateChangeScript/>
-<InLinks/>
-<OutLinks>
-<ID>link7-ID</ID>
-</OutLinks>
-<Enabled>True</Enabled>
-<RestingPotential Value="-60" Scale="milli" Actual="-0.06"/>
-<RelativeSize Value="1" Scale="None" Actual="1"/>
-<TimeConstant Value="5" Scale="milli" Actual="0.005"/>
-<InitialThreshold Value="50" Scale="milli" Actual="0.05"/>
-<RelativeAccomodation Value="0.3" Scale="None" Actual="0.3"/>
-<AccomodationTimeConstant Value="10" Scale="milli" Actual="0.01"/>
-<AHP_Conductance Value="0" Scale="micro" Actual="0"/>
-<AHP_TimeConstant Value="3" Scale="milli" Actual="0.003"/>
-<MaxCaConductance Value="0" Scale="micro" Actual="0"/>
-<CaActivation>
-<ID>neur4-ID-act</ID>
-<MidPoint Value="-30" Scale="milli" Actual="-0.03"/>
-<Slope Value="0.1" Scale="None" Actual="0.1"/>
-<TimeConstant Value="20" Scale="milli" Actual="0.02"/>
-<ActivationType>True</ActivationType>
-</CaActivation>
-<CaDeactivation>
-<ID>neur4-ID-deact</ID>
-<MidPoint Value="-90" Scale="milli" Actual="-0.09"/>
-<Slope Value="-0.1" Scale="None" Actual="-0.1"/>
-<TimeConstant Value="7500" Scale="milli" Actual="7.5"/>
-<ActivationType>False</ActivationType>
-</CaDeactivation>
-<InitAtBottom>True</InitAtBottom>
-<TonicStimulus Value="0" Scale="nano" Actual="0"/>
-<TonicNoise Value="0" Scale="milli" Actual="0"/>
-</Node>
-<Node>
-<AssemblyFile>IntegrateFireGUI.dll</AssemblyFile>
-<ClassName>IntegrateFireGUI.DataObjects.Behavior.Neurons.NonSpiking</ClassName>
-<ID>neur5-ID</ID>
-<Alignment>CenterMiddle</Alignment>
-<AutoSize>None</AutoSize>
-<BackMode>Transparent</BackMode>
-<DashStyle>Solid</DashStyle>
-<DrawColor>-16777216</DrawColor>
-<DrawWidth>1</DrawWidth>
-<FillColor>-7876870</FillColor>
-<Font Family="Arial" Size="8" Bold="True" Underline="False" Strikeout="False" Italic="False"/>
-<Gradient>False</Gradient>
-<GradientColor>0</GradientColor>
-<GradientMode>BackwardDiagonal</GradientMode>
-<DiagramImageName/>
-<ImageName/>
-<ImageLocation x="0" y="0"/>
-<ImagePosition>RelativeToText</ImagePosition>
-<InLinkable>True</InLinkable>
-<LabelEdit>True</LabelEdit>
-<Location x="129" y="250"/>
-<OutLinkable>True</OutLinkable>
-<ShadowStyle>None</ShadowStyle>
-<ShadowColor>-16777216</ShadowColor>
-<ShadowSize Width="0" Height="0"/>
-<Shape>Termination</Shape>
-<ShapeOrientation>Angle0</ShapeOrientation>
-<Size Width="50" Height="50"/>
-<Text>neur5</Text>
-<TextColor>-16777216</TextColor>
-<TextMargin Width="0" Height="0"/>
-<ToolTip/>
-<Transparent>False</Transparent>
-<Url/>
-<XMoveable>True</XMoveable>
-<XSizeable>True</XSizeable>
-<YMoveable>True</YMoveable>
-<YSizeable>True</YSizeable>
-<ZOrder>0</ZOrder>
-<ZOrder>0</ZOrder>
-<TemplateNode>False</TemplateNode>
-<TemplateNodeCount>1</TemplateNodeCount>
-<TemplateChangeScript/>
-<InLinks/>
-<OutLinks>
-<ID>link9-ID</ID>
-</OutLinks>
-<Enabled>True</Enabled>
-<RestingPotential Value="-60" Scale="milli" Actual="-0.06"/>
-<RelativeSize Value="1" Scale="None" Actual="1"/>
-<TimeConstant Value="5" Scale="milli" Actual="0.005"/>
-<InitialThreshold Value="50" Scale="milli" Actual="0.05"/>
-<RelativeAccomodation Value="0.3" Scale="None" Actual="0.3"/>
-<AccomodationTimeConstant Value="10" Scale="milli" Actual="0.01"/>
-<AHP_Conductance Value="0" Scale="micro" Actual="0"/>
-<AHP_TimeConstant Value="3" Scale="milli" Actual="0.003"/>
-<MaxCaConductance Value="0" Scale="micro" Actual="0"/>
-<CaActivation>
-<ID>neur5-ID-act</ID>
-<MidPoint Value="-30" Scale="milli" Actual="-0.03"/>
-<Slope Value="0.1" Scale="None" Actual="0.1"/>
-<TimeConstant Value="20" Scale="milli" Actual="0.02"/>
-<ActivationType>True</ActivationType>
-</CaActivation>
-<CaDeactivation>
-<ID>neur5-ID-deact</ID>
-<MidPoint Value="-90" Scale="milli" Actual="-0.09"/>
-<Slope Value="-0.1" Scale="None" Actual="-0.1"/>
-<TimeConstant Value="7500" Scale="milli" Actual="7.5"/>
-<ActivationType>False</ActivationType>
-</CaDeactivation>
-<InitAtBottom>True</InitAtBottom>
-<TonicStimulus Value="0" Scale="nano" Actual="0"/>
-<TonicNoise Value="0" Scale="milli" Actual="0"/>
-</Node>
-<Node>
-<AssemblyFile>IntegrateFireGUI.dll</AssemblyFile>
-<ClassName>IntegrateFireGUI.DataObjects.Behavior.Neurons.NonSpiking</ClassName>
-<ID>neur6-ID</ID>
-<Alignment>CenterMiddle</Alignment>
-<AutoSize>None</AutoSize>
-<BackMode>Transparent</BackMode>
-<DashStyle>Solid</DashStyle>
-<DrawColor>-16777216</DrawColor>
-<DrawWidth>1</DrawWidth>
-<FillColor>-7876870</FillColor>
-<Font Family="Arial" Size="8" Bold="True" Underline="False" Strikeout="False" Italic="False"/>
-<Gradient>False</Gradient>
-<GradientColor>0</GradientColor>
-<GradientMode>BackwardDiagonal</GradientMode>
-<DiagramImageName/>
-<ImageName/>
-<ImageLocation x="0" y="0"/>
-<ImagePosition>RelativeToText</ImagePosition>
-<InLinkable>True</InLinkable>
-<LabelEdit>True</LabelEdit>
-<Location x="155" y="250"/>
-<OutLinkable>True</OutLinkable>
-<ShadowStyle>None</ShadowStyle>
-<ShadowColor>-16777216</ShadowColor>
-<ShadowSize Width="0" Height="0"/>
-<Shape>Termination</Shape>
-<ShapeOrientation>Angle0</ShapeOrientation>
-<Size Width="50" Height="50"/>
-<Text>neur6</Text>
-<TextColor>-16777216</TextColor>
-<TextMargin Width="0" Height="0"/>
-<ToolTip/>
-<Transparent>False</Transparent>
-<Url/>
-<XMoveable>True</XMoveable>
-<XSizeable>True</XSizeable>
-<YMoveable>True</YMoveable>
-<YSizeable>True</YSizeable>
-<ZOrder>0</ZOrder>
-<ZOrder>0</ZOrder>
-<TemplateNode>False</TemplateNode>
-<TemplateNodeCount>1</TemplateNodeCount>
-<TemplateChangeScript/>
-<InLinks/>
-<OutLinks>
-<ID>link11-ID</ID>
-</OutLinks>
-<Enabled>True</Enabled>
-<RestingPotential Value="-60" Scale="milli" Actual="-0.06"/>
-<RelativeSize Value="1" Scale="None" Actual="1"/>
-<TimeConstant Value="5" Scale="milli" Actual="0.005"/>
-<InitialThreshold Value="50" Scale="milli" Actual="0.05"/>
-<RelativeAccomodation Value="0.3" Scale="None" Actual="0.3"/>
-<AccomodationTimeConstant Value="10" Scale="milli" Actual="0.01"/>
-<AHP_Conductance Value="0" Scale="micro" Actual="0"/>
-<AHP_TimeConstant Value="3" Scale="milli" Actual="0.003"/>
-<MaxCaConductance Value="0" Scale="micro" Actual="0"/>
-<CaActivation>
-<ID>neur6-ID-act</ID>
-<MidPoint Value="-30" Scale="milli" Actual="-0.03"/>
-<Slope Value="0.1" Scale="None" Actual="0.1"/>
-<TimeConstant Value="20" Scale="milli" Actual="0.02"/>
-<ActivationType>True</ActivationType>
-</CaActivation>
-<CaDeactivation>
-<ID>neur6-ID-deact</ID>
-<MidPoint Value="-90" Scale="milli" Actual="-0.09"/>
-<Slope Value="-0.1" Scale="None" Actual="-0.1"/>
-<TimeConstant Value="7500" Scale="milli" Actual="7.5"/>
-<ActivationType>False</ActivationType>
-</CaDeactivation>
-<InitAtBottom>True</InitAtBottom>
-<TonicStimulus Value="0" Scale="nano" Actual="0"/>
-<TonicNoise Value="0" Scale="milli" Actual="0"/>
-</Node>
-<Node>
-<AssemblyFile>IntegrateFireGUI.dll</AssemblyFile>
-<ClassName>IntegrateFireGUI.DataObjects.Behavior.Neurons.NonSpiking</ClassName>
-<ID>neur7-ID</ID>
-<Alignment>CenterMiddle</Alignment>
-<AutoSize>None</AutoSize>
-<BackMode>Transparent</BackMode>
-<DashStyle>Solid</DashStyle>
-<DrawColor>-16777216</DrawColor>
-<DrawWidth>1</DrawWidth>
-<FillColor>-7876870</FillColor>
-<Font Family="Arial" Size="8" Bold="True" Underline="False" Strikeout="False" Italic="False"/>
-<Gradient>False</Gradient>
-<GradientColor>0</GradientColor>
-<GradientMode>BackwardDiagonal</GradientMode>
-<DiagramImageName/>
-<ImageName/>
-<ImageLocation x="0" y="0"/>
-<ImagePosition>RelativeToText</ImagePosition>
-<InLinkable>True</InLinkable>
-<LabelEdit>True</LabelEdit>
-<Location x="181" y="250"/>
-<OutLinkable>True</OutLinkable>
-<ShadowStyle>None</ShadowStyle>
-<ShadowColor>-16777216</ShadowColor>
-<ShadowSize Width="0" Height="0"/>
-<Shape>Termination</Shape>
-<ShapeOrientation>Angle0</ShapeOrientation>
-<Size Width="50" Height="50"/>
-<Text>neur7</Text>
-<TextColor>-16777216</TextColor>
-<TextMargin Width="0" Height="0"/>
-<ToolTip/>
-<Transparent>False</Transparent>
-<Url/>
-<XMoveable>True</XMoveable>
-<XSizeable>True</XSizeable>
-<YMoveable>True</YMoveable>
-<YSizeable>True</YSizeable>
-<ZOrder>0</ZOrder>
-<ZOrder>0</ZOrder>
-<TemplateNode>False</TemplateNode>
-<TemplateNodeCount>1</TemplateNodeCount>
-<TemplateChangeScript/>
-<InLinks/>
-<OutLinks>
-<ID>link13-ID</ID>
-</OutLinks>
-<Enabled>True</Enabled>
-<RestingPotential Value="-60" Scale="milli" Actual="-0.06"/>
-<RelativeSize Value="1" Scale="None" Actual="1"/>
-<TimeConstant Value="5" Scale="milli" Actual="0.005"/>
-<InitialThreshold Value="50" Scale="milli" Actual="0.05"/>
-<RelativeAccomodation Value="0.3" Scale="None" Actual="0.3"/>
-<AccomodationTimeConstant Value="10" Scale="milli" Actual="0.01"/>
-<AHP_Conductance Value="0" Scale="micro" Actual="0"/>
-<AHP_TimeConstant Value="3" Scale="milli" Actual="0.003"/>
-<MaxCaConductance Value="0" Scale="micro" Actual="0"/>
-<CaActivation>
-<ID>neur7-ID-act</ID>
-<MidPoint Value="-30" Scale="milli" Actual="-0.03"/>
-<Slope Value="0.1" Scale="None" Actual="0.1"/>
-<TimeConstant Value="20" Scale="milli" Actual="0.02"/>
-<ActivationType>True</ActivationType>
-</CaActivation>
-<CaDeactivation>
-<ID>neur7-ID-deact</ID>
-<MidPoint Value="-90" Scale="milli" Actual="-0.09"/>
-<Slope Value="-0.1" Scale="None" Actual="-0.1"/>
-<TimeConstant Value="7500" Scale="milli" Actual="7.5"/>
-<ActivationType>False</ActivationType>
-</CaDeactivation>
-<InitAtBottom>True</InitAtBottom>
-<TonicStimulus Value="0" Scale="nano" Actual="0"/>
-<TonicNoise Value="0" Scale="milli" Actual="0"/>
-</Node>
-<Node>
-<AssemblyFile>AnimatGUI.dll</AssemblyFile>
-<ClassName>AnimatGUI.DataObjects.Behavior.Nodes.Muscle</ClassName>
-<ID>lh_tensorfascialatae-neural-ID</ID>
-<Alignment>CenterBottom</Alignment>
-<AutoSize>ImageToNode</AutoSize>
-<BackMode>Transparent</BackMode>
-<DashStyle>Solid</DashStyle>
-<DrawColor>16777215</DrawColor>
-<DrawWidth>1</DrawWidth>
-<FillColor>-1</FillColor>
-<Font Family="Arial" Size="8" Bold="True" Underline="False" Strikeout="False" Italic="False"/>
-<Gradient>False</Gradient>
-<GradientColor>0</GradientColor>
-<GradientMode>BackwardDiagonal</GradientMode>
-<DiagramImageName>AnimatGUI.Muscle.gif</DiagramImageName>
-<ImageName/>
-<ImageLocation x="0" y="0"/>
-<ImagePosition>RelativeToText</ImagePosition>
-<InLinkable>True</InLinkable>
-<LabelEdit>True</LabelEdit>
-<Location x="0" y="400"/>
-<OutLinkable>True</OutLinkable>
-<ShadowStyle>None</ShadowStyle>
-<ShadowColor>-16777216</ShadowColor>
-<ShadowSize Width="0" Height="0"/>
-<Shape>Rectangle</Shape>
-<ShapeOrientation>Angle0</ShapeOrientation>
-<Size Width="25" Height="25"/>
-<Text>lh_tensorfascialatae-neural</Text>
-<TextColor>-16777216</TextColor>
-<TextMargin Width="0" Height="0"/>
-<ToolTip/>
-<Transparent>False</Transparent>
-<Url/>
-<XMoveable>True</XMoveable>
-<XSizeable>True</XSizeable>
-<YMoveable>True</YMoveable>
-<YSizeable>True</YSizeable>
-<ZOrder>0</ZOrder>
-<ZOrder>0</ZOrder>
-<TemplateNode>False</TemplateNode>
-<TemplateNodeCount>1</TemplateNodeCount>
-<TemplateChangeScript/>
-<InLinks>
-<ID>link2-ID</ID>
-</InLinks>
-<OutLinks/>
-<LinkedBodyPartID>61daa261-279a-4540-bb7e-026174d96daa</LinkedBodyPartID>
-</Node>
-<Node>
-<AssemblyFile>AnimatGUI.dll</AssemblyFile>
-<ClassName>AnimatGUI.DataObjects.Behavior.Nodes.Muscle</ClassName>
-<ID>lh_bicepsfemorisposterior-neural-ID</ID>
-<Alignment>CenterBottom</Alignment>
-<AutoSize>ImageToNode</AutoSize>
-<BackMode>Transparent</BackMode>
-<DashStyle>Solid</DashStyle>
-<DrawColor>16777215</DrawColor>
-<DrawWidth>1</DrawWidth>
-<FillColor>-1</FillColor>
-<Font Family="Arial" Size="8" Bold="True" Underline="False" Strikeout="False" Italic="False"/>
-<Gradient>False</Gradient>
-<GradientColor>0</GradientColor>
-<GradientMode>BackwardDiagonal</GradientMode>
-<DiagramImageName>AnimatGUI.Muscle.gif</DiagramImageName>
-<ImageName/>
-<ImageLocation x="0" y="0"/>
-<ImagePosition>RelativeToText</ImagePosition>
-<InLinkable>True</InLinkable>
-<LabelEdit>True</LabelEdit>
-<Location x="25.9" y="400"/>
-<OutLinkable>True</OutLinkable>
-<ShadowStyle>None</ShadowStyle>
-<ShadowColor>-16777216</ShadowColor>
-<ShadowSize Width="0" Height="0"/>
-<Shape>Rectangle</Shape>
-<ShapeOrientation>Angle0</ShapeOrientation>
-<Size Width="25" Height="25"/>
-<Text>lh_bicepsfemorisposterior-neural</Text>
-<TextColor>-16777216</TextColor>
-<TextMargin Width="0" Height="0"/>
-<ToolTip/>
-<Transparent>False</Transparent>
-<Url/>
-<XMoveable>True</XMoveable>
-<XSizeable>True</XSizeable>
-<YMoveable>True</YMoveable>
-<YSizeable>True</YSizeable>
-<ZOrder>0</ZOrder>
-<ZOrder>0</ZOrder>
-<TemplateNode>False</TemplateNode>
-<TemplateNodeCount>1</TemplateNodeCount>
-<TemplateChangeScript/>
-<InLinks>
-<ID>link4-ID</ID>
-</InLinks>
-<OutLinks/>
-<LinkedBodyPartID>7df2c5f8-7338-4902-a14f-c4e8a0b8f8b5</LinkedBodyPartID>
-</Node>
-<Node>
-<AssemblyFile>AnimatGUI.dll</AssemblyFile>
-<ClassName>AnimatGUI.DataObjects.Behavior.Nodes.Muscle</ClassName>
-<ID>lh_rectusfemoris-neural-ID</ID>
-<Alignment>CenterBottom</Alignment>
-<AutoSize>ImageToNode</AutoSize>
-<BackMode>Transparent</BackMode>
-<DashStyle>Solid</DashStyle>
-<DrawColor>16777215</DrawColor>
-<DrawWidth>1</DrawWidth>
-<FillColor>-1</FillColor>
-<Font Family="Arial" Size="8" Bold="True" Underline="False" Strikeout="False" Italic="False"/>
-<Gradient>False</Gradient>
-<GradientColor>0</GradientColor>
-<GradientMode>BackwardDiagonal</GradientMode>
-<DiagramImageName>AnimatGUI.Muscle.gif</DiagramImageName>
-<ImageName/>
-<ImageLocation x="0" y="0"/>
-<ImagePosition>RelativeToText</ImagePosition>
-<InLinkable>True</InLinkable>
-<LabelEdit>True</LabelEdit>
-<Location x="51.8" y="400"/>
-<OutLinkable>True</OutLinkable>
-<ShadowStyle>None</ShadowStyle>
-<ShadowColor>-16777216</ShadowColor>
-<ShadowSize Width="0" Height="0"/>
-<Shape>Rectangle</Shape>
-<ShapeOrientation>Angle0</ShapeOrientation>
-<Size Width="25" Height="25"/>
-<Text>lh_rectusfemoris-neural</Text>
-<TextColor>-16777216</TextColor>
-<TextMargin Width="0" Height="0"/>
-<ToolTip/>
-<Transparent>False</Transparent>
-<Url/>
-<XMoveable>True</XMoveable>
-<XSizeable>True</XSizeable>
-<YMoveable>True</YMoveable>
-<YSizeable>True</YSizeable>
-<ZOrder>0</ZOrder>
-<ZOrder>0</ZOrder>
-<TemplateNode>False</TemplateNode>
-<TemplateNodeCount>1</TemplateNodeCount>
-<TemplateChangeScript/>
-<InLinks>
-<ID>link6-ID</ID>
-</InLinks>
-<OutLinks/>
-<LinkedBodyPartID>8354630e-94d4-40ad-a53a-744655afaa0a</LinkedBodyPartID>
-</Node>
-<Node>
-<AssemblyFile>AnimatGUI.dll</AssemblyFile>
-<ClassName>AnimatGUI.DataObjects.Behavior.Nodes.Muscle</ClassName>
-<ID>lh_medialgastrocnemius-neural-ID</ID>
-<Alignment>CenterBottom</Alignment>
-<AutoSize>ImageToNode</AutoSize>
-<BackMode>Transparent</BackMode>
-<DashStyle>Solid</DashStyle>
-<DrawColor>16777215</DrawColor>
-<DrawWidth>1</DrawWidth>
-<FillColor>-1</FillColor>
-<Font Family="Arial" Size="8" Bold="True" Underline="False" Strikeout="False" Italic="False"/>
-<Gradient>False</Gradient>
-<GradientColor>0</GradientColor>
-<GradientMode>BackwardDiagonal</GradientMode>
-<DiagramImageName>AnimatGUI.Muscle.gif</DiagramImageName>
-<ImageName/>
-<ImageLocation x="0" y="0"/>
-<ImagePosition>RelativeToText</ImagePosition>
-<InLinkable>True</InLinkable>
-<LabelEdit>True</LabelEdit>
-<Location x="77.7" y="400"/>
-<OutLinkable>True</OutLinkable>
-<ShadowStyle>None</ShadowStyle>
-<ShadowColor>-16777216</ShadowColor>
-<ShadowSize Width="0" Height="0"/>
-<Shape>Rectangle</Shape>
-<ShapeOrientation>Angle0</ShapeOrientation>
-<Size Width="25" Height="25"/>
-<Text>lh_medialgastrocnemius-neural</Text>
-<TextColor>-16777216</TextColor>
-<TextMargin Width="0" Height="0"/>
-<ToolTip/>
-<Transparent>False</Transparent>
-<Url/>
-<XMoveable>True</XMoveable>
-<XSizeable>True</XSizeable>
-<YMoveable>True</YMoveable>
-<YSizeable>True</YSizeable>
-<ZOrder>0</ZOrder>
-<ZOrder>0</ZOrder>
-<TemplateNode>False</TemplateNode>
-<TemplateNodeCount>1</TemplateNodeCount>
-<TemplateChangeScript/>
-<InLinks>
-<ID>link8-ID</ID>
-</InLinks>
-<OutLinks/>
-<LinkedBodyPartID>29f7f654-0872-4525-a5b4-8312eeaa9920</LinkedBodyPartID>
-</Node>
-<Node>
-<AssemblyFile>AnimatGUI.dll</AssemblyFile>
-<ClassName>AnimatGUI.DataObjects.Behavior.Nodes.Muscle</ClassName>
-<ID>lh_tibialisanterior-neural-ID</ID>
-<Alignment>CenterBottom</Alignment>
-<AutoSize>ImageToNode</AutoSize>
-<BackMode>Transparent</BackMode>
-<DashStyle>Solid</DashStyle>
-<DrawColor>16777215</DrawColor>
-<DrawWidth>1</DrawWidth>
-<FillColor>-1</FillColor>
-<Font Family="Arial" Size="8" Bold="True" Underline="False" Strikeout="False" Italic="False"/>
-<Gradient>False</Gradient>
-<GradientColor>0</GradientColor>
-<GradientMode>BackwardDiagonal</GradientMode>
-<DiagramImageName>AnimatGUI.Muscle.gif</DiagramImageName>
-<ImageName/>
-<ImageLocation x="0" y="0"/>
-<ImagePosition>RelativeToText</ImagePosition>
-<InLinkable>True</InLinkable>
-<LabelEdit>True</LabelEdit>
-<Location x="103.6" y="400"/>
-<OutLinkable>True</OutLinkable>
-<ShadowStyle>None</ShadowStyle>
-<ShadowColor>-16777216</ShadowColor>
-<ShadowSize Width="0" Height="0"/>
-<Shape>Rectangle</Shape>
-<ShapeOrientation>Angle0</ShapeOrientation>
-<Size Width="25" Height="25"/>
-<Text>lh_tibialisanterior-neural</Text>
-<TextColor>-16777216</TextColor>
-<TextMargin Width="0" Height="0"/>
-<ToolTip/>
-<Transparent>False</Transparent>
-<Url/>
-<XMoveable>True</XMoveable>
-<XSizeable>True</XSizeable>
-<YMoveable>True</YMoveable>
-<YSizeable>True</YSizeable>
-<ZOrder>0</ZOrder>
-<ZOrder>0</ZOrder>
-<TemplateNode>False</TemplateNode>
-<TemplateNodeCount>1</TemplateNodeCount>
-<TemplateChangeScript/>
-<InLinks>
-<ID>link10-ID</ID>
-</InLinks>
-<OutLinks/>
-<LinkedBodyPartID>686afd7d-b4d9-4a8d-a0a8-cf47558f17a7</LinkedBodyPartID>
-</Node>
-<Node>
-<AssemblyFile>AnimatGUI.dll</AssemblyFile>
-<ClassName>AnimatGUI.DataObjects.Behavior.Nodes.Muscle</ClassName>
-<ID>lh_flexordigitorumlongus-neural-ID</ID>
-<Alignment>CenterBottom</Alignment>
-<AutoSize>ImageToNode</AutoSize>
-<BackMode>Transparent</BackMode>
-<DashStyle>Solid</DashStyle>
-<DrawColor>16777215</DrawColor>
-<DrawWidth>1</DrawWidth>
-<FillColor>-1</FillColor>
-<Font Family="Arial" Size="8" Bold="True" Underline="False" Strikeout="False" Italic="False"/>
-<Gradient>False</Gradient>
-<GradientColor>0</GradientColor>
-<GradientMode>BackwardDiagonal</GradientMode>
-<DiagramImageName>AnimatGUI.Muscle.gif</DiagramImageName>
-<ImageName/>
-<ImageLocation x="0" y="0"/>
-<ImagePosition>RelativeToText</ImagePosition>
-<InLinkable>True</InLinkable>
-<LabelEdit>True</LabelEdit>
-<Location x="129.5" y="400"/>
-<OutLinkable>True</OutLinkable>
-<ShadowStyle>None</ShadowStyle>
-<ShadowColor>-16777216</ShadowColor>
-<ShadowSize Width="0" Height="0"/>
-<Shape>Rectangle</Shape>
-<ShapeOrientation>Angle0</ShapeOrientation>
-<Size Width="25" Height="25"/>
-<Text>lh_flexordigitorumlongus-neural</Text>
-<TextColor>-16777216</TextColor>
-<TextMargin Width="0" Height="0"/>
-<ToolTip/>
-<Transparent>False</Transparent>
-<Url/>
-<XMoveable>True</XMoveable>
-<XSizeable>True</XSizeable>
-<YMoveable>True</YMoveable>
-<YSizeable>True</YSizeable>
-<ZOrder>0</ZOrder>
-<ZOrder>0</ZOrder>
-<TemplateNode>False</TemplateNode>
-<TemplateNodeCount>1</TemplateNodeCount>
-<TemplateChangeScript/>
-<InLinks>
-<ID>link12-ID</ID>
-</InLinks>
-<OutLinks/>
-<LinkedBodyPartID>bc13d65c-82a8-4844-9bb7-aed20d83ed3e</LinkedBodyPartID>
-</Node>
-<Node>
-<AssemblyFile>AnimatGUI.dll</AssemblyFile>
-<ClassName>AnimatGUI.DataObjects.Behavior.Nodes.Muscle</ClassName>
-<ID>lh_adductorbrevis-neural-ID</ID>
-<Alignment>CenterBottom</Alignment>
-<AutoSize>ImageToNode</AutoSize>
-<BackMode>Transparent</BackMode>
-<DashStyle>Solid</DashStyle>
-<DrawColor>16777215</DrawColor>
-<DrawWidth>1</DrawWidth>
-<FillColor>-1</FillColor>
-<Font Family="Arial" Size="8" Bold="True" Underline="False" Strikeout="False" Italic="False"/>
-<Gradient>False</Gradient>
-<GradientColor>0</GradientColor>
-<GradientMode>BackwardDiagonal</GradientMode>
-<DiagramImageName>AnimatGUI.Muscle.gif</DiagramImageName>
-<ImageName/>
-<ImageLocation x="0" y="0"/>
-<ImagePosition>RelativeToText</ImagePosition>
-<InLinkable>True</InLinkable>
-<LabelEdit>True</LabelEdit>
-<Location x="155.4" y="400"/>
-<OutLinkable>True</OutLinkable>
-<ShadowStyle>None</ShadowStyle>
-<ShadowColor>-16777216</ShadowColor>
-<ShadowSize Width="0" Height="0"/>
-<Shape>Rectangle</Shape>
-<ShapeOrientation>Angle0</ShapeOrientation>
-<Size Width="25" Height="25"/>
-<Text>lh_adductorbrevis-neural</Text>
-<TextColor>-16777216</TextColor>
-<TextMargin Width="0" Height="0"/>
-<ToolTip/>
-<Transparent>False</Transparent>
-<Url/>
-<XMoveable>True</XMoveable>
-<XSizeable>True</XSizeable>
-<YMoveable>True</YMoveable>
-<YSizeable>True</YSizeable>
-<ZOrder>0</ZOrder>
-<ZOrder>0</ZOrder>
-<TemplateNode>False</TemplateNode>
-<TemplateNodeCount>1</TemplateNodeCount>
-<TemplateChangeScript/>
-<InLinks>
-<ID>link14-ID</ID>
-</InLinks>
-<OutLinks/>
-<LinkedBodyPartID>ac460912-0099-46ce-b9e2-23d3d511b3c7</LinkedBodyPartID>
-</Node>
-<Node>
 <AssemblyFile>AnimatGUI.dll</AssemblyFile>
 <ClassName>AnimatGUI.DataObjects.Behavior.Nodes.NodeToPhysicalAdapter</ClassName>
-<ID>ad-lh_tensorfascialatae-ID</ID>
+<ID>ad-lh_adductorbrevis-ID</ID>
 <Alignment>CenterMiddle</Alignment>
 <AutoSize>None</AutoSize>
 <BackMode>Transparent</BackMode>
@@ -4395,7 +3858,7 @@
 <ImagePosition>RelativeToText</ImagePosition>
 <InLinkable>True</InLinkable>
 <LabelEdit>True</LabelEdit>
-<Location x="13" y="325"/>
+<Location x="168" y="325"/>
 <OutLinkable>True</OutLinkable>
 <ShadowStyle>None</ShadowStyle>
 <ShadowColor>-16777216</ShadowColor>
@@ -4403,7 +3866,7 @@
 <Shape>Display</Shape>
 <ShapeOrientation>Angle0</ShapeOrientation>
 <Size Width="26" Height="26"/>
-<Text>ad-lh_tensorfascialatae</Text>
+<Text>ad-lh_adductorbrevis</Text>
 <TextColor>-16777216</TextColor>
 <TextMargin Width="0" Height="0"/>
 <ToolTip/>
@@ -4419,17 +3882,17 @@
 <TemplateNodeCount>1</TemplateNodeCount>
 <TemplateChangeScript/>
 <InLinks>
-<ID>link1-ID</ID>
+<ID>link13-ID</ID>
 </InLinks>
 <OutLinks>
-<ID>link2-ID</ID>
+<ID>link14-ID</ID>
 </OutLinks>
-<OriginID>neur1-ID</OriginID>
-<DestinationID>lh_tensorfascialatae-neural-ID</DestinationID>
+<OriginID>neur7-ID</OriginID>
+<DestinationID>lh_adductorbrevis-neural-ID</DestinationID>
 <DataTypeID>MembraneVoltage</DataTypeID>
 <TargetDataTypeID>MembraneVoltage</TargetDataTypeID>
 <Gain>
-<ID>ad-lh_tensorfascialatae-ID-gainID</ID>
+<ID>ad-lh_adductorbrevis-ID-gainID</ID>
 <Type>Polynomial</Type>
 <AssemblyFile>AnimatGUI.dll</AssemblyFile>
 <ClassName>AnimatGUI.DataObjects.Gains.Polynomial</ClassName>
@@ -4543,7 +4006,7 @@
 <Node>
 <AssemblyFile>AnimatGUI.dll</AssemblyFile>
 <ClassName>AnimatGUI.DataObjects.Behavior.Nodes.NodeToPhysicalAdapter</ClassName>
-<ID>ad-lh_rectusfemoris-ID</ID>
+<ID>ad-lh_flexordigitorumlongus-ID</ID>
 <Alignment>CenterMiddle</Alignment>
 <AutoSize>None</AutoSize>
 <BackMode>Transparent</BackMode>
@@ -4561,7 +4024,7 @@
 <ImagePosition>RelativeToText</ImagePosition>
 <InLinkable>True</InLinkable>
 <LabelEdit>True</LabelEdit>
-<Location x="64" y="325"/>
+<Location x="142" y="325"/>
 <OutLinkable>True</OutLinkable>
 <ShadowStyle>None</ShadowStyle>
 <ShadowColor>-16777216</ShadowColor>
@@ -4569,7 +4032,7 @@
 <Shape>Display</Shape>
 <ShapeOrientation>Angle0</ShapeOrientation>
 <Size Width="26" Height="26"/>
-<Text>ad-lh_rectusfemoris</Text>
+<Text>ad-lh_flexordigitorumlongus</Text>
 <TextColor>-16777216</TextColor>
 <TextMargin Width="0" Height="0"/>
 <ToolTip/>
@@ -4585,17 +4048,17 @@
 <TemplateNodeCount>1</TemplateNodeCount>
 <TemplateChangeScript/>
 <InLinks>
-<ID>link5-ID</ID>
+<ID>link11-ID</ID>
 </InLinks>
 <OutLinks>
-<ID>link6-ID</ID>
+<ID>link12-ID</ID>
 </OutLinks>
-<OriginID>neur3-ID</OriginID>
-<DestinationID>lh_rectusfemoris-neural-ID</DestinationID>
+<OriginID>neur6-ID</OriginID>
+<DestinationID>lh_flexordigitorumlongus-neural-ID</DestinationID>
 <DataTypeID>MembraneVoltage</DataTypeID>
 <TargetDataTypeID>MembraneVoltage</TargetDataTypeID>
 <Gain>
-<ID>ad-lh_rectusfemoris-ID-gainID</ID>
+<ID>ad-lh_flexordigitorumlongus-ID-gainID</ID>
 <Type>Polynomial</Type>
 <AssemblyFile>AnimatGUI.dll</AssemblyFile>
 <ClassName>AnimatGUI.DataObjects.Gains.Polynomial</ClassName>
@@ -4709,6 +4172,172 @@
 <Node>
 <AssemblyFile>AnimatGUI.dll</AssemblyFile>
 <ClassName>AnimatGUI.DataObjects.Behavior.Nodes.NodeToPhysicalAdapter</ClassName>
+<ID>ad-lh_rectusfemoris-ID</ID>
+<Alignment>CenterMiddle</Alignment>
+<AutoSize>None</AutoSize>
+<BackMode>Transparent</BackMode>
+<DashStyle>Solid</DashStyle>
+<DrawColor>-16777216</DrawColor>
+<DrawWidth>1</DrawWidth>
+<FillColor>-360334</FillColor>
+<Font Family="Arial" Size="8" Bold="True" Underline="False" Strikeout="False" Italic="False"/>
+<Gradient>False</Gradient>
+<GradientColor>0</GradientColor>
+<GradientMode>BackwardDiagonal</GradientMode>
+<DiagramImageName/>
+<ImageName/>
+<ImageLocation x="0" y="0"/>
+<ImagePosition>RelativeToText</ImagePosition>
+<InLinkable>True</InLinkable>
+<LabelEdit>True</LabelEdit>
+<Location x="64" y="325"/>
+<OutLinkable>True</OutLinkable>
+<ShadowStyle>None</ShadowStyle>
+<ShadowColor>-16777216</ShadowColor>
+<ShadowSize Width="0" Height="0"/>
+<Shape>Display</Shape>
+<ShapeOrientation>Angle0</ShapeOrientation>
+<Size Width="26" Height="26"/>
+<Text>ad-lh_rectusfemoris</Text>
+<TextColor>-16777216</TextColor>
+<TextMargin Width="0" Height="0"/>
+<ToolTip/>
+<Transparent>False</Transparent>
+<Url/>
+<XMoveable>True</XMoveable>
+<XSizeable>True</XSizeable>
+<YMoveable>True</YMoveable>
+<YSizeable>True</YSizeable>
+<ZOrder>0</ZOrder>
+<ZOrder>0</ZOrder>
+<TemplateNode>False</TemplateNode>
+<TemplateNodeCount>1</TemplateNodeCount>
+<TemplateChangeScript/>
+<InLinks>
+<ID>link5-ID</ID>
+</InLinks>
+<OutLinks>
+<ID>link6-ID</ID>
+</OutLinks>
+<OriginID>neur3-ID</OriginID>
+<DestinationID>lh_rectusfemoris-neural-ID</DestinationID>
+<DataTypeID>MembraneVoltage</DataTypeID>
+<TargetDataTypeID>MembraneVoltage</TargetDataTypeID>
+<Gain>
+<ID>ad-lh_rectusfemoris-ID-gainID</ID>
+<Type>Polynomial</Type>
+<AssemblyFile>AnimatGUI.dll</AssemblyFile>
+<ClassName>AnimatGUI.DataObjects.Gains.Polynomial</ClassName>
+<UseLimits>False</UseLimits>
+<LimitsReadOnly>False</LimitsReadOnly>
+<LimitOutputsReadOnly>False</LimitOutputsReadOnly>
+<UseParentIncomingDataType>True</UseParentIncomingDataType>
+<LowerLimitScale Value="-100" Scale="milli" Actual="-0.1"/>
+<UpperLimitScale Value="100" Scale="milli" Actual="0.1"/>
+<LowerOutputScale Value="0" Scale="None" Actual="0"/>
+<UpperOutputScale Value="1" Scale="None" Actual="1"/>
+<IndependentUnits/>
+<DependentUnits>Output Variable</DependentUnits>
+<A Value="0" Scale="None" Actual="0"/>
+<B Value="0" Scale="None" Actual="0"/>
+<C Value="1" Scale="None" Actual="1"/>
+<D Value="0" Scale="None" Actual="0"/>
+</Gain>
+<DelayBufferMode>NoDelayBuffer</DelayBufferMode>
+<DelayBufferInterval Value="100" Scale="milli" Actual="0.1"/>
+<InitIODisableDuration Value="0" Scale="milli" Actual="0"/>
+<Enabled>True</Enabled>
+<RobotIOScale>1</RobotIOScale>
+<SynchWithRobot>True</SynchWithRobot>
+<SynchUpdateInterval Value="0" Scale="milli" Actual="0"/>
+<SynchUpdateStartInterval Value="0" Scale="milli" Actual="0"/>
+</Node>
+<Node>
+<AssemblyFile>AnimatGUI.dll</AssemblyFile>
+<ClassName>AnimatGUI.DataObjects.Behavior.Nodes.NodeToPhysicalAdapter</ClassName>
+<ID>ad-lh_tensorfascialatae-ID</ID>
+<Alignment>CenterMiddle</Alignment>
+<AutoSize>None</AutoSize>
+<BackMode>Transparent</BackMode>
+<DashStyle>Solid</DashStyle>
+<DrawColor>-16777216</DrawColor>
+<DrawWidth>1</DrawWidth>
+<FillColor>-360334</FillColor>
+<Font Family="Arial" Size="8" Bold="True" Underline="False" Strikeout="False" Italic="False"/>
+<Gradient>False</Gradient>
+<GradientColor>0</GradientColor>
+<GradientMode>BackwardDiagonal</GradientMode>
+<DiagramImageName/>
+<ImageName/>
+<ImageLocation x="0" y="0"/>
+<ImagePosition>RelativeToText</ImagePosition>
+<InLinkable>True</InLinkable>
+<LabelEdit>True</LabelEdit>
+<Location x="13" y="325"/>
+<OutLinkable>True</OutLinkable>
+<ShadowStyle>None</ShadowStyle>
+<ShadowColor>-16777216</ShadowColor>
+<ShadowSize Width="0" Height="0"/>
+<Shape>Display</Shape>
+<ShapeOrientation>Angle0</ShapeOrientation>
+<Size Width="26" Height="26"/>
+<Text>ad-lh_tensorfascialatae</Text>
+<TextColor>-16777216</TextColor>
+<TextMargin Width="0" Height="0"/>
+<ToolTip/>
+<Transparent>False</Transparent>
+<Url/>
+<XMoveable>True</XMoveable>
+<XSizeable>True</XSizeable>
+<YMoveable>True</YMoveable>
+<YSizeable>True</YSizeable>
+<ZOrder>0</ZOrder>
+<ZOrder>0</ZOrder>
+<TemplateNode>False</TemplateNode>
+<TemplateNodeCount>1</TemplateNodeCount>
+<TemplateChangeScript/>
+<InLinks>
+<ID>link1-ID</ID>
+</InLinks>
+<OutLinks>
+<ID>link2-ID</ID>
+</OutLinks>
+<OriginID>neur1-ID</OriginID>
+<DestinationID>lh_tensorfascialatae-neural-ID</DestinationID>
+<DataTypeID>MembraneVoltage</DataTypeID>
+<TargetDataTypeID>MembraneVoltage</TargetDataTypeID>
+<Gain>
+<ID>ad-lh_tensorfascialatae-ID-gainID</ID>
+<Type>Polynomial</Type>
+<AssemblyFile>AnimatGUI.dll</AssemblyFile>
+<ClassName>AnimatGUI.DataObjects.Gains.Polynomial</ClassName>
+<UseLimits>False</UseLimits>
+<LimitsReadOnly>False</LimitsReadOnly>
+<LimitOutputsReadOnly>False</LimitOutputsReadOnly>
+<UseParentIncomingDataType>True</UseParentIncomingDataType>
+<LowerLimitScale Value="-100" Scale="milli" Actual="-0.1"/>
+<UpperLimitScale Value="100" Scale="milli" Actual="0.1"/>
+<LowerOutputScale Value="0" Scale="None" Actual="0"/>
+<UpperOutputScale Value="1" Scale="None" Actual="1"/>
+<IndependentUnits/>
+<DependentUnits>Output Variable</DependentUnits>
+<A Value="0" Scale="None" Actual="0"/>
+<B Value="0" Scale="None" Actual="0"/>
+<C Value="1" Scale="None" Actual="1"/>
+<D Value="0" Scale="None" Actual="0"/>
+</Gain>
+<DelayBufferMode>NoDelayBuffer</DelayBufferMode>
+<DelayBufferInterval Value="100" Scale="milli" Actual="0.1"/>
+<InitIODisableDuration Value="0" Scale="milli" Actual="0"/>
+<Enabled>True</Enabled>
+<RobotIOScale>1</RobotIOScale>
+<SynchWithRobot>True</SynchWithRobot>
+<SynchUpdateInterval Value="0" Scale="milli" Actual="0"/>
+<SynchUpdateStartInterval Value="0" Scale="milli" Actual="0"/>
+</Node>
+<Node>
+<AssemblyFile>AnimatGUI.dll</AssemblyFile>
+<ClassName>AnimatGUI.DataObjects.Behavior.Nodes.NodeToPhysicalAdapter</ClassName>
 <ID>ad-lh_tibialisanterior-ID</ID>
 <Alignment>CenterMiddle</Alignment>
 <AutoSize>None</AutoSize>
@@ -4791,34 +4420,34 @@
 </Node>
 <Node>
 <AssemblyFile>AnimatGUI.dll</AssemblyFile>
-<ClassName>AnimatGUI.DataObjects.Behavior.Nodes.NodeToPhysicalAdapter</ClassName>
-<ID>ad-lh_flexordigitorumlongus-ID</ID>
-<Alignment>CenterMiddle</Alignment>
-<AutoSize>None</AutoSize>
+<ClassName>AnimatGUI.DataObjects.Behavior.Nodes.Muscle</ClassName>
+<ID>lh_adductorbrevis-neural-ID</ID>
+<Alignment>CenterBottom</Alignment>
+<AutoSize>ImageToNode</AutoSize>
 <BackMode>Transparent</BackMode>
 <DashStyle>Solid</DashStyle>
-<DrawColor>-16777216</DrawColor>
+<DrawColor>16777215</DrawColor>
 <DrawWidth>1</DrawWidth>
-<FillColor>-360334</FillColor>
+<FillColor>-1</FillColor>
 <Font Family="Arial" Size="8" Bold="True" Underline="False" Strikeout="False" Italic="False"/>
 <Gradient>False</Gradient>
 <GradientColor>0</GradientColor>
 <GradientMode>BackwardDiagonal</GradientMode>
-<DiagramImageName/>
+<DiagramImageName>AnimatGUI.Muscle.gif</DiagramImageName>
 <ImageName/>
 <ImageLocation x="0" y="0"/>
 <ImagePosition>RelativeToText</ImagePosition>
 <InLinkable>True</InLinkable>
 <LabelEdit>True</LabelEdit>
-<Location x="142" y="325"/>
+<Location x="155.4" y="400"/>
 <OutLinkable>True</OutLinkable>
 <ShadowStyle>None</ShadowStyle>
 <ShadowColor>-16777216</ShadowColor>
 <ShadowSize Width="0" Height="0"/>
-<Shape>Display</Shape>
+<Shape>Rectangle</Shape>
 <ShapeOrientation>Angle0</ShapeOrientation>
-<Size Width="26" Height="26"/>
-<Text>ad-lh_flexordigitorumlongus</Text>
+<Size Width="25" Height="116.25"/>
+<Text>lh_adductorbrevis-neural</Text>
 <TextColor>-16777216</TextColor>
 <TextMargin Width="0" Height="0"/>
 <ToolTip/>
@@ -4834,74 +4463,41 @@
 <TemplateNodeCount>1</TemplateNodeCount>
 <TemplateChangeScript/>
 <InLinks>
-<ID>link11-ID</ID>
+<ID>link14-ID</ID>
 </InLinks>
-<OutLinks>
-<ID>link12-ID</ID>
-</OutLinks>
-<OriginID>neur6-ID</OriginID>
-<DestinationID>lh_flexordigitorumlongus-neural-ID</DestinationID>
-<DataTypeID>MembraneVoltage</DataTypeID>
-<TargetDataTypeID>MembraneVoltage</TargetDataTypeID>
-<Gain>
-<ID>ad-lh_flexordigitorumlongus-ID-gainID</ID>
-<Type>Polynomial</Type>
-<AssemblyFile>AnimatGUI.dll</AssemblyFile>
-<ClassName>AnimatGUI.DataObjects.Gains.Polynomial</ClassName>
-<UseLimits>False</UseLimits>
-<LimitsReadOnly>False</LimitsReadOnly>
-<LimitOutputsReadOnly>False</LimitOutputsReadOnly>
-<UseParentIncomingDataType>True</UseParentIncomingDataType>
-<LowerLimitScale Value="-100" Scale="milli" Actual="-0.1"/>
-<UpperLimitScale Value="100" Scale="milli" Actual="0.1"/>
-<LowerOutputScale Value="0" Scale="None" Actual="0"/>
-<UpperOutputScale Value="1" Scale="None" Actual="1"/>
-<IndependentUnits/>
-<DependentUnits>Output Variable</DependentUnits>
-<A Value="0" Scale="None" Actual="0"/>
-<B Value="0" Scale="None" Actual="0"/>
-<C Value="1" Scale="None" Actual="1"/>
-<D Value="0" Scale="None" Actual="0"/>
-</Gain>
-<DelayBufferMode>NoDelayBuffer</DelayBufferMode>
-<DelayBufferInterval Value="100" Scale="milli" Actual="0.1"/>
-<InitIODisableDuration Value="0" Scale="milli" Actual="0"/>
-<Enabled>True</Enabled>
-<RobotIOScale>1</RobotIOScale>
-<SynchWithRobot>True</SynchWithRobot>
-<SynchUpdateInterval Value="0" Scale="milli" Actual="0"/>
-<SynchUpdateStartInterval Value="0" Scale="milli" Actual="0"/>
+<OutLinks/>
+<LinkedBodyPartID>ac460912-0099-46ce-b9e2-23d3d511b3c7</LinkedBodyPartID>
 </Node>
 <Node>
 <AssemblyFile>AnimatGUI.dll</AssemblyFile>
-<ClassName>AnimatGUI.DataObjects.Behavior.Nodes.NodeToPhysicalAdapter</ClassName>
-<ID>ad-lh_adductorbrevis-ID</ID>
-<Alignment>CenterMiddle</Alignment>
-<AutoSize>None</AutoSize>
+<ClassName>AnimatGUI.DataObjects.Behavior.Nodes.Muscle</ClassName>
+<ID>lh_bicepsfemorisposterior-neural-ID</ID>
+<Alignment>CenterBottom</Alignment>
+<AutoSize>ImageToNode</AutoSize>
 <BackMode>Transparent</BackMode>
 <DashStyle>Solid</DashStyle>
-<DrawColor>-16777216</DrawColor>
+<DrawColor>16777215</DrawColor>
 <DrawWidth>1</DrawWidth>
-<FillColor>-360334</FillColor>
+<FillColor>-1</FillColor>
 <Font Family="Arial" Size="8" Bold="True" Underline="False" Strikeout="False" Italic="False"/>
 <Gradient>False</Gradient>
 <GradientColor>0</GradientColor>
 <GradientMode>BackwardDiagonal</GradientMode>
-<DiagramImageName/>
+<DiagramImageName>AnimatGUI.Muscle.gif</DiagramImageName>
 <ImageName/>
 <ImageLocation x="0" y="0"/>
 <ImagePosition>RelativeToText</ImagePosition>
 <InLinkable>True</InLinkable>
 <LabelEdit>True</LabelEdit>
-<Location x="168" y="325"/>
+<Location x="25.9" y="400"/>
 <OutLinkable>True</OutLinkable>
 <ShadowStyle>None</ShadowStyle>
 <ShadowColor>-16777216</ShadowColor>
 <ShadowSize Width="0" Height="0"/>
-<Shape>Display</Shape>
+<Shape>Rectangle</Shape>
 <ShapeOrientation>Angle0</ShapeOrientation>
-<Size Width="26" Height="26"/>
-<Text>ad-lh_adductorbrevis</Text>
+<Size Width="25" Height="116.25"/>
+<Text>lh_bicepsfemorisposterior-neural</Text>
 <TextColor>-16777216</TextColor>
 <TextMargin Width="0" Height="0"/>
 <ToolTip/>
@@ -4917,46 +4513,1010 @@
 <TemplateNodeCount>1</TemplateNodeCount>
 <TemplateChangeScript/>
 <InLinks>
-<ID>link13-ID</ID>
+<ID>link4-ID</ID>
 </InLinks>
-<OutLinks>
-<ID>link14-ID</ID>
-</OutLinks>
-<OriginID>neur7-ID</OriginID>
-<DestinationID>lh_adductorbrevis-neural-ID</DestinationID>
-<DataTypeID>MembraneVoltage</DataTypeID>
-<TargetDataTypeID>MembraneVoltage</TargetDataTypeID>
-<Gain>
-<ID>ad-lh_adductorbrevis-ID-gainID</ID>
-<Type>Polynomial</Type>
+<OutLinks/>
+<LinkedBodyPartID>7df2c5f8-7338-4902-a14f-c4e8a0b8f8b5</LinkedBodyPartID>
+</Node>
+<Node>
 <AssemblyFile>AnimatGUI.dll</AssemblyFile>
-<ClassName>AnimatGUI.DataObjects.Gains.Polynomial</ClassName>
-<UseLimits>False</UseLimits>
-<LimitsReadOnly>False</LimitsReadOnly>
-<LimitOutputsReadOnly>False</LimitOutputsReadOnly>
-<UseParentIncomingDataType>True</UseParentIncomingDataType>
-<LowerLimitScale Value="-100" Scale="milli" Actual="-0.1"/>
-<UpperLimitScale Value="100" Scale="milli" Actual="0.1"/>
-<LowerOutputScale Value="0" Scale="None" Actual="0"/>
-<UpperOutputScale Value="1" Scale="None" Actual="1"/>
-<IndependentUnits/>
-<DependentUnits>Output Variable</DependentUnits>
-<A Value="0" Scale="None" Actual="0"/>
-<B Value="0" Scale="None" Actual="0"/>
-<C Value="1" Scale="None" Actual="1"/>
-<D Value="0" Scale="None" Actual="0"/>
-</Gain>
-<DelayBufferMode>NoDelayBuffer</DelayBufferMode>
-<DelayBufferInterval Value="100" Scale="milli" Actual="0.1"/>
-<InitIODisableDuration Value="0" Scale="milli" Actual="0"/>
+<ClassName>AnimatGUI.DataObjects.Behavior.Nodes.Muscle</ClassName>
+<ID>lh_flexordigitorumlongus-neural-ID</ID>
+<Alignment>CenterBottom</Alignment>
+<AutoSize>ImageToNode</AutoSize>
+<BackMode>Transparent</BackMode>
+<DashStyle>Solid</DashStyle>
+<DrawColor>16777215</DrawColor>
+<DrawWidth>1</DrawWidth>
+<FillColor>-1</FillColor>
+<Font Family="Arial" Size="8" Bold="True" Underline="False" Strikeout="False" Italic="False"/>
+<Gradient>False</Gradient>
+<GradientColor>0</GradientColor>
+<GradientMode>BackwardDiagonal</GradientMode>
+<DiagramImageName>AnimatGUI.Muscle.gif</DiagramImageName>
+<ImageName/>
+<ImageLocation x="0" y="0"/>
+<ImagePosition>RelativeToText</ImagePosition>
+<InLinkable>True</InLinkable>
+<LabelEdit>True</LabelEdit>
+<Location x="129.5" y="400"/>
+<OutLinkable>True</OutLinkable>
+<ShadowStyle>None</ShadowStyle>
+<ShadowColor>-16777216</ShadowColor>
+<ShadowSize Width="0" Height="0"/>
+<Shape>Rectangle</Shape>
+<ShapeOrientation>Angle0</ShapeOrientation>
+<Size Width="25" Height="116.25"/>
+<Text>lh_flexordigitorumlongus-neural</Text>
+<TextColor>-16777216</TextColor>
+<TextMargin Width="0" Height="0"/>
+<ToolTip/>
+<Transparent>False</Transparent>
+<Url/>
+<XMoveable>True</XMoveable>
+<XSizeable>True</XSizeable>
+<YMoveable>True</YMoveable>
+<YSizeable>True</YSizeable>
+<ZOrder>0</ZOrder>
+<ZOrder>0</ZOrder>
+<TemplateNode>False</TemplateNode>
+<TemplateNodeCount>1</TemplateNodeCount>
+<TemplateChangeScript/>
+<InLinks>
+<ID>link12-ID</ID>
+</InLinks>
+<OutLinks/>
+<LinkedBodyPartID>bc13d65c-82a8-4844-9bb7-aed20d83ed3e</LinkedBodyPartID>
+</Node>
+<Node>
+<AssemblyFile>AnimatGUI.dll</AssemblyFile>
+<ClassName>AnimatGUI.DataObjects.Behavior.Nodes.Muscle</ClassName>
+<ID>lh_medialgastrocnemius-neural-ID</ID>
+<Alignment>CenterBottom</Alignment>
+<AutoSize>ImageToNode</AutoSize>
+<BackMode>Transparent</BackMode>
+<DashStyle>Solid</DashStyle>
+<DrawColor>16777215</DrawColor>
+<DrawWidth>1</DrawWidth>
+<FillColor>-1</FillColor>
+<Font Family="Arial" Size="8" Bold="True" Underline="False" Strikeout="False" Italic="False"/>
+<Gradient>False</Gradient>
+<GradientColor>0</GradientColor>
+<GradientMode>BackwardDiagonal</GradientMode>
+<DiagramImageName>AnimatGUI.Muscle.gif</DiagramImageName>
+<ImageName/>
+<ImageLocation x="0" y="0"/>
+<ImagePosition>RelativeToText</ImagePosition>
+<InLinkable>True</InLinkable>
+<LabelEdit>True</LabelEdit>
+<Location x="77.7" y="400"/>
+<OutLinkable>True</OutLinkable>
+<ShadowStyle>None</ShadowStyle>
+<ShadowColor>-16777216</ShadowColor>
+<ShadowSize Width="0" Height="0"/>
+<Shape>Rectangle</Shape>
+<ShapeOrientation>Angle0</ShapeOrientation>
+<Size Width="25" Height="116.25"/>
+<Text>lh_medialgastrocnemius-neural</Text>
+<TextColor>-16777216</TextColor>
+<TextMargin Width="0" Height="0"/>
+<ToolTip/>
+<Transparent>False</Transparent>
+<Url/>
+<XMoveable>True</XMoveable>
+<XSizeable>True</XSizeable>
+<YMoveable>True</YMoveable>
+<YSizeable>True</YSizeable>
+<ZOrder>0</ZOrder>
+<ZOrder>0</ZOrder>
+<TemplateNode>False</TemplateNode>
+<TemplateNodeCount>1</TemplateNodeCount>
+<TemplateChangeScript/>
+<InLinks>
+<ID>link8-ID</ID>
+</InLinks>
+<OutLinks/>
+<LinkedBodyPartID>29f7f654-0872-4525-a5b4-8312eeaa9920</LinkedBodyPartID>
+</Node>
+<Node>
+<AssemblyFile>AnimatGUI.dll</AssemblyFile>
+<ClassName>AnimatGUI.DataObjects.Behavior.Nodes.Muscle</ClassName>
+<ID>lh_rectusfemoris-neural-ID</ID>
+<Alignment>CenterBottom</Alignment>
+<AutoSize>ImageToNode</AutoSize>
+<BackMode>Transparent</BackMode>
+<DashStyle>Solid</DashStyle>
+<DrawColor>16777215</DrawColor>
+<DrawWidth>1</DrawWidth>
+<FillColor>-1</FillColor>
+<Font Family="Arial" Size="8" Bold="True" Underline="False" Strikeout="False" Italic="False"/>
+<Gradient>False</Gradient>
+<GradientColor>0</GradientColor>
+<GradientMode>BackwardDiagonal</GradientMode>
+<DiagramImageName>AnimatGUI.Muscle.gif</DiagramImageName>
+<ImageName/>
+<ImageLocation x="0" y="0"/>
+<ImagePosition>RelativeToText</ImagePosition>
+<InLinkable>True</InLinkable>
+<LabelEdit>True</LabelEdit>
+<Location x="51.8" y="400"/>
+<OutLinkable>True</OutLinkable>
+<ShadowStyle>None</ShadowStyle>
+<ShadowColor>-16777216</ShadowColor>
+<ShadowSize Width="0" Height="0"/>
+<Shape>Rectangle</Shape>
+<ShapeOrientation>Angle0</ShapeOrientation>
+<Size Width="25" Height="116.25"/>
+<Text>lh_rectusfemoris-neural</Text>
+<TextColor>-16777216</TextColor>
+<TextMargin Width="0" Height="0"/>
+<ToolTip/>
+<Transparent>False</Transparent>
+<Url/>
+<XMoveable>True</XMoveable>
+<XSizeable>True</XSizeable>
+<YMoveable>True</YMoveable>
+<YSizeable>True</YSizeable>
+<ZOrder>0</ZOrder>
+<ZOrder>0</ZOrder>
+<TemplateNode>False</TemplateNode>
+<TemplateNodeCount>1</TemplateNodeCount>
+<TemplateChangeScript/>
+<InLinks>
+<ID>link6-ID</ID>
+</InLinks>
+<OutLinks/>
+<LinkedBodyPartID>8354630e-94d4-40ad-a53a-744655afaa0a</LinkedBodyPartID>
+</Node>
+<Node>
+<AssemblyFile>AnimatGUI.dll</AssemblyFile>
+<ClassName>AnimatGUI.DataObjects.Behavior.Nodes.Muscle</ClassName>
+<ID>lh_tensorfascialatae-neural-ID</ID>
+<Alignment>CenterBottom</Alignment>
+<AutoSize>ImageToNode</AutoSize>
+<BackMode>Transparent</BackMode>
+<DashStyle>Solid</DashStyle>
+<DrawColor>16777215</DrawColor>
+<DrawWidth>1</DrawWidth>
+<FillColor>-1</FillColor>
+<Font Family="Arial" Size="8" Bold="True" Underline="False" Strikeout="False" Italic="False"/>
+<Gradient>False</Gradient>
+<GradientColor>0</GradientColor>
+<GradientMode>BackwardDiagonal</GradientMode>
+<DiagramImageName>AnimatGUI.Muscle.gif</DiagramImageName>
+<ImageName/>
+<ImageLocation x="0" y="0"/>
+<ImagePosition>RelativeToText</ImagePosition>
+<InLinkable>True</InLinkable>
+<LabelEdit>True</LabelEdit>
+<Location x="0" y="400"/>
+<OutLinkable>True</OutLinkable>
+<ShadowStyle>None</ShadowStyle>
+<ShadowColor>-16777216</ShadowColor>
+<ShadowSize Width="0" Height="0"/>
+<Shape>Rectangle</Shape>
+<ShapeOrientation>Angle0</ShapeOrientation>
+<Size Width="25" Height="116.25"/>
+<Text>lh_tensorfascialatae-neural</Text>
+<TextColor>-16777216</TextColor>
+<TextMargin Width="0" Height="0"/>
+<ToolTip/>
+<Transparent>False</Transparent>
+<Url/>
+<XMoveable>True</XMoveable>
+<XSizeable>True</XSizeable>
+<YMoveable>True</YMoveable>
+<YSizeable>True</YSizeable>
+<ZOrder>0</ZOrder>
+<ZOrder>0</ZOrder>
+<TemplateNode>False</TemplateNode>
+<TemplateNodeCount>1</TemplateNodeCount>
+<TemplateChangeScript/>
+<InLinks>
+<ID>link2-ID</ID>
+</InLinks>
+<OutLinks/>
+<LinkedBodyPartID>61daa261-279a-4540-bb7e-026174d96daa</LinkedBodyPartID>
+</Node>
+<Node>
+<AssemblyFile>AnimatGUI.dll</AssemblyFile>
+<ClassName>AnimatGUI.DataObjects.Behavior.Nodes.Muscle</ClassName>
+<ID>lh_tibialisanterior-neural-ID</ID>
+<Alignment>CenterBottom</Alignment>
+<AutoSize>ImageToNode</AutoSize>
+<BackMode>Transparent</BackMode>
+<DashStyle>Solid</DashStyle>
+<DrawColor>16777215</DrawColor>
+<DrawWidth>1</DrawWidth>
+<FillColor>-1</FillColor>
+<Font Family="Arial" Size="8" Bold="True" Underline="False" Strikeout="False" Italic="False"/>
+<Gradient>False</Gradient>
+<GradientColor>0</GradientColor>
+<GradientMode>BackwardDiagonal</GradientMode>
+<DiagramImageName>AnimatGUI.Muscle.gif</DiagramImageName>
+<ImageName/>
+<ImageLocation x="0" y="0"/>
+<ImagePosition>RelativeToText</ImagePosition>
+<InLinkable>True</InLinkable>
+<LabelEdit>True</LabelEdit>
+<Location x="103.6" y="400"/>
+<OutLinkable>True</OutLinkable>
+<ShadowStyle>None</ShadowStyle>
+<ShadowColor>-16777216</ShadowColor>
+<ShadowSize Width="0" Height="0"/>
+<Shape>Rectangle</Shape>
+<ShapeOrientation>Angle0</ShapeOrientation>
+<Size Width="25" Height="116.25"/>
+<Text>lh_tibialisanterior-neural</Text>
+<TextColor>-16777216</TextColor>
+<TextMargin Width="0" Height="0"/>
+<ToolTip/>
+<Transparent>False</Transparent>
+<Url/>
+<XMoveable>True</XMoveable>
+<XSizeable>True</XSizeable>
+<YMoveable>True</YMoveable>
+<YSizeable>True</YSizeable>
+<ZOrder>0</ZOrder>
+<ZOrder>0</ZOrder>
+<TemplateNode>False</TemplateNode>
+<TemplateNodeCount>1</TemplateNodeCount>
+<TemplateChangeScript/>
+<InLinks>
+<ID>link10-ID</ID>
+</InLinks>
+<OutLinks/>
+<LinkedBodyPartID>686afd7d-b4d9-4a8d-a0a8-cf47558f17a7</LinkedBodyPartID>
+</Node>
+<Node>
+<AssemblyFile>IntegrateFireGUI.dll</AssemblyFile>
+<ClassName>IntegrateFireGUI.DataObjects.Behavior.Neurons.NonSpiking</ClassName>
+<ID>neur1-ID</ID>
+<Alignment>CenterMiddle</Alignment>
+<AutoSize>None</AutoSize>
+<BackMode>Transparent</BackMode>
+<DashStyle>Solid</DashStyle>
+<DrawColor>-16777216</DrawColor>
+<DrawWidth>1</DrawWidth>
+<FillColor>-7876870</FillColor>
+<Font Family="Arial" Size="8" Bold="True" Underline="False" Strikeout="False" Italic="False"/>
+<Gradient>False</Gradient>
+<GradientColor>0</GradientColor>
+<GradientMode>BackwardDiagonal</GradientMode>
+<DiagramImageName/>
+<ImageName/>
+<ImageLocation x="0" y="0"/>
+<ImagePosition>RelativeToText</ImagePosition>
+<InLinkable>True</InLinkable>
+<LabelEdit>True</LabelEdit>
+<Location x="0" y="224"/>
+<OutLinkable>True</OutLinkable>
+<ShadowStyle>None</ShadowStyle>
+<ShadowColor>-16777216</ShadowColor>
+<ShadowSize Width="0" Height="0"/>
+<Shape>Termination</Shape>
+<ShapeOrientation>Angle0</ShapeOrientation>
+<Size Width="25" Height="25"/>
+<Text>neur1</Text>
+<TextColor>-16777216</TextColor>
+<TextMargin Width="0" Height="0"/>
+<ToolTip/>
+<Transparent>False</Transparent>
+<Url/>
+<XMoveable>True</XMoveable>
+<XSizeable>True</XSizeable>
+<YMoveable>True</YMoveable>
+<YSizeable>True</YSizeable>
+<ZOrder>0</ZOrder>
+<ZOrder>0</ZOrder>
+<TemplateNode>False</TemplateNode>
+<TemplateNodeCount>1</TemplateNodeCount>
+<TemplateChangeScript/>
+<InLinks/>
+<OutLinks>
+<ID>link1-ID</ID>
+</OutLinks>
 <Enabled>True</Enabled>
-<RobotIOScale>1</RobotIOScale>
-<SynchWithRobot>True</SynchWithRobot>
-<SynchUpdateInterval Value="0" Scale="milli" Actual="0"/>
-<SynchUpdateStartInterval Value="0" Scale="milli" Actual="0"/>
+<RestingPotential Value="-60" Scale="milli" Actual="-0.06"/>
+<RelativeSize Value="1" Scale="None" Actual="1"/>
+<TimeConstant Value="5" Scale="milli" Actual="0.005"/>
+<InitialThreshold Value="50" Scale="milli" Actual="0.05"/>
+<RelativeAccomodation Value="0.3" Scale="None" Actual="0.3"/>
+<AccomodationTimeConstant Value="10" Scale="milli" Actual="0.01"/>
+<AHP_Conductance Value="0" Scale="micro" Actual="0"/>
+<AHP_TimeConstant Value="3" Scale="milli" Actual="0.003"/>
+<MaxCaConductance Value="0" Scale="micro" Actual="0"/>
+<CaActivation>
+<ID>neur1-ID-act</ID>
+<MidPoint Value="-30" Scale="milli" Actual="-0.03"/>
+<Slope Value="0.1" Scale="None" Actual="0.1"/>
+<TimeConstant Value="20" Scale="milli" Actual="0.02"/>
+<ActivationType>True</ActivationType>
+</CaActivation>
+<CaDeactivation>
+<ID>neur1-ID-deact</ID>
+<MidPoint Value="-90" Scale="milli" Actual="-0.09"/>
+<Slope Value="-0.1" Scale="None" Actual="-0.1"/>
+<TimeConstant Value="7500" Scale="milli" Actual="7.5"/>
+<ActivationType>False</ActivationType>
+</CaDeactivation>
+<InitAtBottom>True</InitAtBottom>
+<TonicStimulus Value="0" Scale="nano" Actual="0"/>
+<TonicNoise Value="0" Scale="milli" Actual="0"/>
+</Node>
+<Node>
+<AssemblyFile>IntegrateFireGUI.dll</AssemblyFile>
+<ClassName>IntegrateFireGUI.DataObjects.Behavior.Neurons.NonSpiking</ClassName>
+<ID>neur2-ID</ID>
+<Alignment>CenterMiddle</Alignment>
+<AutoSize>None</AutoSize>
+<BackMode>Transparent</BackMode>
+<DashStyle>Solid</DashStyle>
+<DrawColor>-16777216</DrawColor>
+<DrawWidth>1</DrawWidth>
+<FillColor>-7876870</FillColor>
+<Font Family="Arial" Size="8" Bold="True" Underline="False" Strikeout="False" Italic="False"/>
+<Gradient>False</Gradient>
+<GradientColor>0</GradientColor>
+<GradientMode>BackwardDiagonal</GradientMode>
+<DiagramImageName/>
+<ImageName/>
+<ImageLocation x="0" y="0"/>
+<ImagePosition>RelativeToText</ImagePosition>
+<InLinkable>True</InLinkable>
+<LabelEdit>True</LabelEdit>
+<Location x="25" y="224"/>
+<OutLinkable>True</OutLinkable>
+<ShadowStyle>None</ShadowStyle>
+<ShadowColor>-16777216</ShadowColor>
+<ShadowSize Width="0" Height="0"/>
+<Shape>Termination</Shape>
+<ShapeOrientation>Angle0</ShapeOrientation>
+<Size Width="25" Height="25"/>
+<Text>neur2</Text>
+<TextColor>-16777216</TextColor>
+<TextMargin Width="0" Height="0"/>
+<ToolTip/>
+<Transparent>False</Transparent>
+<Url/>
+<XMoveable>True</XMoveable>
+<XSizeable>True</XSizeable>
+<YMoveable>True</YMoveable>
+<YSizeable>True</YSizeable>
+<ZOrder>0</ZOrder>
+<ZOrder>0</ZOrder>
+<TemplateNode>False</TemplateNode>
+<TemplateNodeCount>1</TemplateNodeCount>
+<TemplateChangeScript/>
+<InLinks/>
+<OutLinks>
+<ID>link3-ID</ID>
+</OutLinks>
+<Enabled>True</Enabled>
+<RestingPotential Value="-60" Scale="milli" Actual="-0.06"/>
+<RelativeSize Value="1" Scale="None" Actual="1"/>
+<TimeConstant Value="5" Scale="milli" Actual="0.005"/>
+<InitialThreshold Value="50" Scale="milli" Actual="0.05"/>
+<RelativeAccomodation Value="0.3" Scale="None" Actual="0.3"/>
+<AccomodationTimeConstant Value="10" Scale="milli" Actual="0.01"/>
+<AHP_Conductance Value="0" Scale="micro" Actual="0"/>
+<AHP_TimeConstant Value="3" Scale="milli" Actual="0.003"/>
+<MaxCaConductance Value="0" Scale="micro" Actual="0"/>
+<CaActivation>
+<ID>neur2-ID-act</ID>
+<MidPoint Value="-30" Scale="milli" Actual="-0.03"/>
+<Slope Value="0.1" Scale="None" Actual="0.1"/>
+<TimeConstant Value="20" Scale="milli" Actual="0.02"/>
+<ActivationType>True</ActivationType>
+</CaActivation>
+<CaDeactivation>
+<ID>neur2-ID-deact</ID>
+<MidPoint Value="-90" Scale="milli" Actual="-0.09"/>
+<Slope Value="-0.1" Scale="None" Actual="-0.1"/>
+<TimeConstant Value="7500" Scale="milli" Actual="7.5"/>
+<ActivationType>False</ActivationType>
+</CaDeactivation>
+<InitAtBottom>True</InitAtBottom>
+<TonicStimulus Value="0" Scale="nano" Actual="0"/>
+<TonicNoise Value="0" Scale="milli" Actual="0"/>
+</Node>
+<Node>
+<AssemblyFile>IntegrateFireGUI.dll</AssemblyFile>
+<ClassName>IntegrateFireGUI.DataObjects.Behavior.Neurons.NonSpiking</ClassName>
+<ID>neur3-ID</ID>
+<Alignment>CenterMiddle</Alignment>
+<AutoSize>None</AutoSize>
+<BackMode>Transparent</BackMode>
+<DashStyle>Solid</DashStyle>
+<DrawColor>-16777216</DrawColor>
+<DrawWidth>1</DrawWidth>
+<FillColor>-7876870</FillColor>
+<Font Family="Arial" Size="8" Bold="True" Underline="False" Strikeout="False" Italic="False"/>
+<Gradient>False</Gradient>
+<GradientColor>0</GradientColor>
+<GradientMode>BackwardDiagonal</GradientMode>
+<DiagramImageName/>
+<ImageName/>
+<ImageLocation x="0" y="0"/>
+<ImagePosition>RelativeToText</ImagePosition>
+<InLinkable>True</InLinkable>
+<LabelEdit>True</LabelEdit>
+<Location x="51" y="224"/>
+<OutLinkable>True</OutLinkable>
+<ShadowStyle>None</ShadowStyle>
+<ShadowColor>-16777216</ShadowColor>
+<ShadowSize Width="0" Height="0"/>
+<Shape>Termination</Shape>
+<ShapeOrientation>Angle0</ShapeOrientation>
+<Size Width="25" Height="25"/>
+<Text>neur3</Text>
+<TextColor>-16777216</TextColor>
+<TextMargin Width="0" Height="0"/>
+<ToolTip/>
+<Transparent>False</Transparent>
+<Url/>
+<XMoveable>True</XMoveable>
+<XSizeable>True</XSizeable>
+<YMoveable>True</YMoveable>
+<YSizeable>True</YSizeable>
+<ZOrder>0</ZOrder>
+<ZOrder>0</ZOrder>
+<TemplateNode>False</TemplateNode>
+<TemplateNodeCount>1</TemplateNodeCount>
+<TemplateChangeScript/>
+<InLinks/>
+<OutLinks>
+<ID>link5-ID</ID>
+</OutLinks>
+<Enabled>True</Enabled>
+<RestingPotential Value="-60" Scale="milli" Actual="-0.06"/>
+<RelativeSize Value="1" Scale="None" Actual="1"/>
+<TimeConstant Value="5" Scale="milli" Actual="0.005"/>
+<InitialThreshold Value="50" Scale="milli" Actual="0.05"/>
+<RelativeAccomodation Value="0.3" Scale="None" Actual="0.3"/>
+<AccomodationTimeConstant Value="10" Scale="milli" Actual="0.01"/>
+<AHP_Conductance Value="0" Scale="micro" Actual="0"/>
+<AHP_TimeConstant Value="3" Scale="milli" Actual="0.003"/>
+<MaxCaConductance Value="0" Scale="micro" Actual="0"/>
+<CaActivation>
+<ID>neur3-ID-act</ID>
+<MidPoint Value="-30" Scale="milli" Actual="-0.03"/>
+<Slope Value="0.1" Scale="None" Actual="0.1"/>
+<TimeConstant Value="20" Scale="milli" Actual="0.02"/>
+<ActivationType>True</ActivationType>
+</CaActivation>
+<CaDeactivation>
+<ID>neur3-ID-deact</ID>
+<MidPoint Value="-90" Scale="milli" Actual="-0.09"/>
+<Slope Value="-0.1" Scale="None" Actual="-0.1"/>
+<TimeConstant Value="7500" Scale="milli" Actual="7.5"/>
+<ActivationType>False</ActivationType>
+</CaDeactivation>
+<InitAtBottom>True</InitAtBottom>
+<TonicStimulus Value="0" Scale="nano" Actual="0"/>
+<TonicNoise Value="0" Scale="milli" Actual="0"/>
+</Node>
+<Node>
+<AssemblyFile>IntegrateFireGUI.dll</AssemblyFile>
+<ClassName>IntegrateFireGUI.DataObjects.Behavior.Neurons.NonSpiking</ClassName>
+<ID>neur4-ID</ID>
+<Alignment>CenterMiddle</Alignment>
+<AutoSize>None</AutoSize>
+<BackMode>Transparent</BackMode>
+<DashStyle>Solid</DashStyle>
+<DrawColor>-16777216</DrawColor>
+<DrawWidth>1</DrawWidth>
+<FillColor>-7876870</FillColor>
+<Font Family="Arial" Size="8" Bold="True" Underline="False" Strikeout="False" Italic="False"/>
+<Gradient>False</Gradient>
+<GradientColor>0</GradientColor>
+<GradientMode>BackwardDiagonal</GradientMode>
+<DiagramImageName/>
+<ImageName/>
+<ImageLocation x="0" y="0"/>
+<ImagePosition>RelativeToText</ImagePosition>
+<InLinkable>True</InLinkable>
+<LabelEdit>True</LabelEdit>
+<Location x="77" y="224"/>
+<OutLinkable>True</OutLinkable>
+<ShadowStyle>None</ShadowStyle>
+<ShadowColor>-16777216</ShadowColor>
+<ShadowSize Width="0" Height="0"/>
+<Shape>Termination</Shape>
+<ShapeOrientation>Angle0</ShapeOrientation>
+<Size Width="25" Height="25"/>
+<Text>neur4</Text>
+<TextColor>-16777216</TextColor>
+<TextMargin Width="0" Height="0"/>
+<ToolTip/>
+<Transparent>False</Transparent>
+<Url/>
+<XMoveable>True</XMoveable>
+<XSizeable>True</XSizeable>
+<YMoveable>True</YMoveable>
+<YSizeable>True</YSizeable>
+<ZOrder>0</ZOrder>
+<ZOrder>0</ZOrder>
+<TemplateNode>False</TemplateNode>
+<TemplateNodeCount>1</TemplateNodeCount>
+<TemplateChangeScript/>
+<InLinks/>
+<OutLinks>
+<ID>link7-ID</ID>
+</OutLinks>
+<Enabled>True</Enabled>
+<RestingPotential Value="-60" Scale="milli" Actual="-0.06"/>
+<RelativeSize Value="1" Scale="None" Actual="1"/>
+<TimeConstant Value="5" Scale="milli" Actual="0.005"/>
+<InitialThreshold Value="50" Scale="milli" Actual="0.05"/>
+<RelativeAccomodation Value="0.3" Scale="None" Actual="0.3"/>
+<AccomodationTimeConstant Value="10" Scale="milli" Actual="0.01"/>
+<AHP_Conductance Value="0" Scale="micro" Actual="0"/>
+<AHP_TimeConstant Value="3" Scale="milli" Actual="0.003"/>
+<MaxCaConductance Value="0" Scale="micro" Actual="0"/>
+<CaActivation>
+<ID>neur4-ID-act</ID>
+<MidPoint Value="-30" Scale="milli" Actual="-0.03"/>
+<Slope Value="0.1" Scale="None" Actual="0.1"/>
+<TimeConstant Value="20" Scale="milli" Actual="0.02"/>
+<ActivationType>True</ActivationType>
+</CaActivation>
+<CaDeactivation>
+<ID>neur4-ID-deact</ID>
+<MidPoint Value="-90" Scale="milli" Actual="-0.09"/>
+<Slope Value="-0.1" Scale="None" Actual="-0.1"/>
+<TimeConstant Value="7500" Scale="milli" Actual="7.5"/>
+<ActivationType>False</ActivationType>
+</CaDeactivation>
+<InitAtBottom>True</InitAtBottom>
+<TonicStimulus Value="0" Scale="nano" Actual="0"/>
+<TonicNoise Value="0" Scale="milli" Actual="0"/>
+</Node>
+<Node>
+<AssemblyFile>IntegrateFireGUI.dll</AssemblyFile>
+<ClassName>IntegrateFireGUI.DataObjects.Behavior.Neurons.NonSpiking</ClassName>
+<ID>neur5-ID</ID>
+<Alignment>CenterMiddle</Alignment>
+<AutoSize>None</AutoSize>
+<BackMode>Transparent</BackMode>
+<DashStyle>Solid</DashStyle>
+<DrawColor>-16777216</DrawColor>
+<DrawWidth>1</DrawWidth>
+<FillColor>-7876870</FillColor>
+<Font Family="Arial" Size="8" Bold="True" Underline="False" Strikeout="False" Italic="False"/>
+<Gradient>False</Gradient>
+<GradientColor>0</GradientColor>
+<GradientMode>BackwardDiagonal</GradientMode>
+<DiagramImageName/>
+<ImageName/>
+<ImageLocation x="0" y="0"/>
+<ImagePosition>RelativeToText</ImagePosition>
+<InLinkable>True</InLinkable>
+<LabelEdit>True</LabelEdit>
+<Location x="103" y="224"/>
+<OutLinkable>True</OutLinkable>
+<ShadowStyle>None</ShadowStyle>
+<ShadowColor>-16777216</ShadowColor>
+<ShadowSize Width="0" Height="0"/>
+<Shape>Termination</Shape>
+<ShapeOrientation>Angle0</ShapeOrientation>
+<Size Width="25" Height="25"/>
+<Text>neur5</Text>
+<TextColor>-16777216</TextColor>
+<TextMargin Width="0" Height="0"/>
+<ToolTip/>
+<Transparent>False</Transparent>
+<Url/>
+<XMoveable>True</XMoveable>
+<XSizeable>True</XSizeable>
+<YMoveable>True</YMoveable>
+<YSizeable>True</YSizeable>
+<ZOrder>0</ZOrder>
+<ZOrder>0</ZOrder>
+<TemplateNode>False</TemplateNode>
+<TemplateNodeCount>1</TemplateNodeCount>
+<TemplateChangeScript/>
+<InLinks/>
+<OutLinks>
+<ID>link9-ID</ID>
+</OutLinks>
+<Enabled>True</Enabled>
+<RestingPotential Value="-60" Scale="milli" Actual="-0.06"/>
+<RelativeSize Value="1" Scale="None" Actual="1"/>
+<TimeConstant Value="5" Scale="milli" Actual="0.005"/>
+<InitialThreshold Value="50" Scale="milli" Actual="0.05"/>
+<RelativeAccomodation Value="0.3" Scale="None" Actual="0.3"/>
+<AccomodationTimeConstant Value="10" Scale="milli" Actual="0.01"/>
+<AHP_Conductance Value="0" Scale="micro" Actual="0"/>
+<AHP_TimeConstant Value="3" Scale="milli" Actual="0.003"/>
+<MaxCaConductance Value="0" Scale="micro" Actual="0"/>
+<CaActivation>
+<ID>neur5-ID-act</ID>
+<MidPoint Value="-30" Scale="milli" Actual="-0.03"/>
+<Slope Value="0.1" Scale="None" Actual="0.1"/>
+<TimeConstant Value="20" Scale="milli" Actual="0.02"/>
+<ActivationType>True</ActivationType>
+</CaActivation>
+<CaDeactivation>
+<ID>neur5-ID-deact</ID>
+<MidPoint Value="-90" Scale="milli" Actual="-0.09"/>
+<Slope Value="-0.1" Scale="None" Actual="-0.1"/>
+<TimeConstant Value="7500" Scale="milli" Actual="7.5"/>
+<ActivationType>False</ActivationType>
+</CaDeactivation>
+<InitAtBottom>True</InitAtBottom>
+<TonicStimulus Value="0" Scale="nano" Actual="0"/>
+<TonicNoise Value="0" Scale="milli" Actual="0"/>
+</Node>
+<Node>
+<AssemblyFile>IntegrateFireGUI.dll</AssemblyFile>
+<ClassName>IntegrateFireGUI.DataObjects.Behavior.Neurons.NonSpiking</ClassName>
+<ID>neur6-ID</ID>
+<Alignment>CenterMiddle</Alignment>
+<AutoSize>None</AutoSize>
+<BackMode>Transparent</BackMode>
+<DashStyle>Solid</DashStyle>
+<DrawColor>-16777216</DrawColor>
+<DrawWidth>1</DrawWidth>
+<FillColor>-7876870</FillColor>
+<Font Family="Arial" Size="8" Bold="True" Underline="False" Strikeout="False" Italic="False"/>
+<Gradient>False</Gradient>
+<GradientColor>0</GradientColor>
+<GradientMode>BackwardDiagonal</GradientMode>
+<DiagramImageName/>
+<ImageName/>
+<ImageLocation x="0" y="0"/>
+<ImagePosition>RelativeToText</ImagePosition>
+<InLinkable>True</InLinkable>
+<LabelEdit>True</LabelEdit>
+<Location x="129" y="224"/>
+<OutLinkable>True</OutLinkable>
+<ShadowStyle>None</ShadowStyle>
+<ShadowColor>-16777216</ShadowColor>
+<ShadowSize Width="0" Height="0"/>
+<Shape>Termination</Shape>
+<ShapeOrientation>Angle0</ShapeOrientation>
+<Size Width="25" Height="25"/>
+<Text>neur6</Text>
+<TextColor>-16777216</TextColor>
+<TextMargin Width="0" Height="0"/>
+<ToolTip/>
+<Transparent>False</Transparent>
+<Url/>
+<XMoveable>True</XMoveable>
+<XSizeable>True</XSizeable>
+<YMoveable>True</YMoveable>
+<YSizeable>True</YSizeable>
+<ZOrder>0</ZOrder>
+<ZOrder>0</ZOrder>
+<TemplateNode>False</TemplateNode>
+<TemplateNodeCount>1</TemplateNodeCount>
+<TemplateChangeScript/>
+<InLinks/>
+<OutLinks>
+<ID>link11-ID</ID>
+</OutLinks>
+<Enabled>True</Enabled>
+<RestingPotential Value="-60" Scale="milli" Actual="-0.06"/>
+<RelativeSize Value="1" Scale="None" Actual="1"/>
+<TimeConstant Value="5" Scale="milli" Actual="0.005"/>
+<InitialThreshold Value="50" Scale="milli" Actual="0.05"/>
+<RelativeAccomodation Value="0.3" Scale="None" Actual="0.3"/>
+<AccomodationTimeConstant Value="10" Scale="milli" Actual="0.01"/>
+<AHP_Conductance Value="0" Scale="micro" Actual="0"/>
+<AHP_TimeConstant Value="3" Scale="milli" Actual="0.003"/>
+<MaxCaConductance Value="0" Scale="micro" Actual="0"/>
+<CaActivation>
+<ID>neur6-ID-act</ID>
+<MidPoint Value="-30" Scale="milli" Actual="-0.03"/>
+<Slope Value="0.1" Scale="None" Actual="0.1"/>
+<TimeConstant Value="20" Scale="milli" Actual="0.02"/>
+<ActivationType>True</ActivationType>
+</CaActivation>
+<CaDeactivation>
+<ID>neur6-ID-deact</ID>
+<MidPoint Value="-90" Scale="milli" Actual="-0.09"/>
+<Slope Value="-0.1" Scale="None" Actual="-0.1"/>
+<TimeConstant Value="7500" Scale="milli" Actual="7.5"/>
+<ActivationType>False</ActivationType>
+</CaDeactivation>
+<InitAtBottom>True</InitAtBottom>
+<TonicStimulus Value="0" Scale="nano" Actual="0"/>
+<TonicNoise Value="0" Scale="milli" Actual="0"/>
+</Node>
+<Node>
+<AssemblyFile>IntegrateFireGUI.dll</AssemblyFile>
+<ClassName>IntegrateFireGUI.DataObjects.Behavior.Neurons.NonSpiking</ClassName>
+<ID>neur7-ID</ID>
+<Alignment>CenterMiddle</Alignment>
+<AutoSize>None</AutoSize>
+<BackMode>Transparent</BackMode>
+<DashStyle>Solid</DashStyle>
+<DrawColor>-16777216</DrawColor>
+<DrawWidth>1</DrawWidth>
+<FillColor>-7876870</FillColor>
+<Font Family="Arial" Size="8" Bold="True" Underline="False" Strikeout="False" Italic="False"/>
+<Gradient>False</Gradient>
+<GradientColor>0</GradientColor>
+<GradientMode>BackwardDiagonal</GradientMode>
+<DiagramImageName/>
+<ImageName/>
+<ImageLocation x="0" y="0"/>
+<ImagePosition>RelativeToText</ImagePosition>
+<InLinkable>True</InLinkable>
+<LabelEdit>True</LabelEdit>
+<Location x="155" y="224"/>
+<OutLinkable>True</OutLinkable>
+<ShadowStyle>None</ShadowStyle>
+<ShadowColor>-16777216</ShadowColor>
+<ShadowSize Width="0" Height="0"/>
+<Shape>Termination</Shape>
+<ShapeOrientation>Angle0</ShapeOrientation>
+<Size Width="25" Height="25"/>
+<Text>neur7</Text>
+<TextColor>-16777216</TextColor>
+<TextMargin Width="0" Height="0"/>
+<ToolTip/>
+<Transparent>False</Transparent>
+<Url/>
+<XMoveable>True</XMoveable>
+<XSizeable>True</XSizeable>
+<YMoveable>True</YMoveable>
+<YSizeable>True</YSizeable>
+<ZOrder>0</ZOrder>
+<ZOrder>0</ZOrder>
+<TemplateNode>False</TemplateNode>
+<TemplateNodeCount>1</TemplateNodeCount>
+<TemplateChangeScript/>
+<InLinks/>
+<OutLinks>
+<ID>link13-ID</ID>
+</OutLinks>
+<Enabled>True</Enabled>
+<RestingPotential Value="-60" Scale="milli" Actual="-0.06"/>
+<RelativeSize Value="1" Scale="None" Actual="1"/>
+<TimeConstant Value="5" Scale="milli" Actual="0.005"/>
+<InitialThreshold Value="50" Scale="milli" Actual="0.05"/>
+<RelativeAccomodation Value="0.3" Scale="None" Actual="0.3"/>
+<AccomodationTimeConstant Value="10" Scale="milli" Actual="0.01"/>
+<AHP_Conductance Value="0" Scale="micro" Actual="0"/>
+<AHP_TimeConstant Value="3" Scale="milli" Actual="0.003"/>
+<MaxCaConductance Value="0" Scale="micro" Actual="0"/>
+<CaActivation>
+<ID>neur7-ID-act</ID>
+<MidPoint Value="-30" Scale="milli" Actual="-0.03"/>
+<Slope Value="0.1" Scale="None" Actual="0.1"/>
+<TimeConstant Value="20" Scale="milli" Actual="0.02"/>
+<ActivationType>True</ActivationType>
+</CaActivation>
+<CaDeactivation>
+<ID>neur7-ID-deact</ID>
+<MidPoint Value="-90" Scale="milli" Actual="-0.09"/>
+<Slope Value="-0.1" Scale="None" Actual="-0.1"/>
+<TimeConstant Value="7500" Scale="milli" Actual="7.5"/>
+<ActivationType>False</ActivationType>
+</CaDeactivation>
+<InitAtBottom>True</InitAtBottom>
+<TonicStimulus Value="0" Scale="nano" Actual="0"/>
+<TonicNoise Value="0" Scale="milli" Actual="0"/>
 </Node>
 </Nodes>
 <Links>
+<Link>
+<AssemblyFile>AnimatGUI.dll</AssemblyFile>
+<ClassName>AnimatGUI.DataObjects.Behavior.Links.Adapter</ClassName>
+<ID>link10-ID</ID>
+<AdjustDst>False</AdjustDst>
+<AdjustOrg>False</AdjustOrg>
+<ArrowDestination>
+<Style>Arrow</Style>
+<Size>Small</Size>
+<Angle>deg15</Angle>
+<Filled>False</Filled>
+</ArrowDestination>
+<ArrowMiddle>
+<Style>None</Style>
+<Size>Small</Size>
+<Angle>deg30</Angle>
+<Filled>False</Filled>
+</ArrowMiddle>
+<ArrowOrigin>
+<Style>None</Style>
+<Size>Small</Size>
+<Angle>deg30</Angle>
+<Filled>False</Filled>
+</ArrowOrigin>
+<BackMode>Transparent</BackMode>
+<DashStyle>Solid</DashStyle>
+<DrawColor>-16777216</DrawColor>
+<DrawWidth>1</DrawWidth>
+<DestinationID>lh_tibialisanterior-neural-ID</DestinationID>
+<Font Family="Arial" Size="12" Bold="False" Underline="False" Strikeout="False" Italic="False"/>
+<Hidden>False</Hidden>
+<Jump>Arc</Jump>
+<LineStyle>Polyline</LineStyle>
+<OrthogonalDynamic>True</OrthogonalDynamic>
+<OriginID>ad-lh_tibialisanterior-ID</OriginID>
+<OrientedText>True</OrientedText>
+<Selectable>True</Selectable>
+<Stretchable>True</Stretchable>
+<Text/>
+<ToolTip/>
+<Url/>
+<ZOrder>0</ZOrder>
+</Link>
+<Link>
+<AssemblyFile>AnimatGUI.dll</AssemblyFile>
+<ClassName>AnimatGUI.DataObjects.Behavior.Links.Adapter</ClassName>
+<ID>link11-ID</ID>
+<AdjustDst>False</AdjustDst>
+<AdjustOrg>False</AdjustOrg>
+<ArrowDestination>
+<Style>Arrow</Style>
+<Size>Small</Size>
+<Angle>deg15</Angle>
+<Filled>False</Filled>
+</ArrowDestination>
+<ArrowMiddle>
+<Style>None</Style>
+<Size>Small</Size>
+<Angle>deg30</Angle>
+<Filled>False</Filled>
+</ArrowMiddle>
+<ArrowOrigin>
+<Style>None</Style>
+<Size>Small</Size>
+<Angle>deg30</Angle>
+<Filled>False</Filled>
+</ArrowOrigin>
+<BackMode>Transparent</BackMode>
+<DashStyle>Solid</DashStyle>
+<DrawColor>-16777216</DrawColor>
+<DrawWidth>1</DrawWidth>
+<DestinationID>ad-lh_flexordigitorumlongus-ID</DestinationID>
+<Font Family="Arial" Size="12" Bold="False" Underline="False" Strikeout="False" Italic="False"/>
+<Hidden>False</Hidden>
+<Jump>Arc</Jump>
+<LineStyle>Polyline</LineStyle>
+<OrthogonalDynamic>True</OrthogonalDynamic>
+<OriginID>neur6-ID</OriginID>
+<OrientedText>True</OrientedText>
+<Selectable>True</Selectable>
+<Stretchable>True</Stretchable>
+<Text/>
+<ToolTip/>
+<Url/>
+<ZOrder>0</ZOrder>
+</Link>
+<Link>
+<AssemblyFile>AnimatGUI.dll</AssemblyFile>
+<ClassName>AnimatGUI.DataObjects.Behavior.Links.Adapter</ClassName>
+<ID>link12-ID</ID>
+<AdjustDst>False</AdjustDst>
+<AdjustOrg>False</AdjustOrg>
+<ArrowDestination>
+<Style>Arrow</Style>
+<Size>Small</Size>
+<Angle>deg15</Angle>
+<Filled>False</Filled>
+</ArrowDestination>
+<ArrowMiddle>
+<Style>None</Style>
+<Size>Small</Size>
+<Angle>deg30</Angle>
+<Filled>False</Filled>
+</ArrowMiddle>
+<ArrowOrigin>
+<Style>None</Style>
+<Size>Small</Size>
+<Angle>deg30</Angle>
+<Filled>False</Filled>
+</ArrowOrigin>
+<BackMode>Transparent</BackMode>
+<DashStyle>Solid</DashStyle>
+<DrawColor>-16777216</DrawColor>
+<DrawWidth>1</DrawWidth>
+<DestinationID>lh_flexordigitorumlongus-neural-ID</DestinationID>
+<Font Family="Arial" Size="12" Bold="False" Underline="False" Strikeout="False" Italic="False"/>
+<Hidden>False</Hidden>
+<Jump>Arc</Jump>
+<LineStyle>Polyline</LineStyle>
+<OrthogonalDynamic>True</OrthogonalDynamic>
+<OriginID>ad-lh_flexordigitorumlongus-ID</OriginID>
+<OrientedText>True</OrientedText>
+<Selectable>True</Selectable>
+<Stretchable>True</Stretchable>
+<Text/>
+<ToolTip/>
+<Url/>
+<ZOrder>0</ZOrder>
+</Link>
+<Link>
+<AssemblyFile>AnimatGUI.dll</AssemblyFile>
+<ClassName>AnimatGUI.DataObjects.Behavior.Links.Adapter</ClassName>
+<ID>link13-ID</ID>
+<AdjustDst>False</AdjustDst>
+<AdjustOrg>False</AdjustOrg>
+<ArrowDestination>
+<Style>Arrow</Style>
+<Size>Small</Size>
+<Angle>deg15</Angle>
+<Filled>False</Filled>
+</ArrowDestination>
+<ArrowMiddle>
+<Style>None</Style>
+<Size>Small</Size>
+<Angle>deg30</Angle>
+<Filled>False</Filled>
+</ArrowMiddle>
+<ArrowOrigin>
+<Style>None</Style>
+<Size>Small</Size>
+<Angle>deg30</Angle>
+<Filled>False</Filled>
+</ArrowOrigin>
+<BackMode>Transparent</BackMode>
+<DashStyle>Solid</DashStyle>
+<DrawColor>-16777216</DrawColor>
+<DrawWidth>1</DrawWidth>
+<DestinationID>ad-lh_adductorbrevis-ID</DestinationID>
+<Font Family="Arial" Size="12" Bold="False" Underline="False" Strikeout="False" Italic="False"/>
+<Hidden>False</Hidden>
+<Jump>Arc</Jump>
+<LineStyle>Polyline</LineStyle>
+<OrthogonalDynamic>True</OrthogonalDynamic>
+<OriginID>neur7-ID</OriginID>
+<OrientedText>True</OrientedText>
+<Selectable>True</Selectable>
+<Stretchable>True</Stretchable>
+<Text/>
+<ToolTip/>
+<Url/>
+<ZOrder>0</ZOrder>
+</Link>
+<Link>
+<AssemblyFile>AnimatGUI.dll</AssemblyFile>
+<ClassName>AnimatGUI.DataObjects.Behavior.Links.Adapter</ClassName>
+<ID>link14-ID</ID>
+<AdjustDst>False</AdjustDst>
+<AdjustOrg>False</AdjustOrg>
+<ArrowDestination>
+<Style>Arrow</Style>
+<Size>Small</Size>
+<Angle>deg15</Angle>
+<Filled>False</Filled>
+</ArrowDestination>
+<ArrowMiddle>
+<Style>None</Style>
+<Size>Small</Size>
+<Angle>deg30</Angle>
+<Filled>False</Filled>
+</ArrowMiddle>
+<ArrowOrigin>
+<Style>None</Style>
+<Size>Small</Size>
+<Angle>deg30</Angle>
+<Filled>False</Filled>
+</ArrowOrigin>
+<BackMode>Transparent</BackMode>
+<DashStyle>Solid</DashStyle>
+<DrawColor>-16777216</DrawColor>
+<DrawWidth>1</DrawWidth>
+<DestinationID>lh_adductorbrevis-neural-ID</DestinationID>
+<Font Family="Arial" Size="12" Bold="False" Underline="False" Strikeout="False" Italic="False"/>
+<Hidden>False</Hidden>
+<Jump>Arc</Jump>
+<LineStyle>Polyline</LineStyle>
+<OrthogonalDynamic>True</OrthogonalDynamic>
+<OriginID>ad-lh_adductorbrevis-ID</OriginID>
+<OrientedText>True</OrientedText>
+<Selectable>True</Selectable>
+<Stretchable>True</Stretchable>
+<Text/>
+<ToolTip/>
+<Url/>
+<ZOrder>0</ZOrder>
+</Link>
 <Link>
 <AssemblyFile>AnimatGUI.dll</AssemblyFile>
 <ClassName>AnimatGUI.DataObjects.Behavior.Links.Adapter</ClassName>
@@ -5344,228 +5904,13 @@
 <Url/>
 <ZOrder>0</ZOrder>
 </Link>
-<Link>
-<AssemblyFile>AnimatGUI.dll</AssemblyFile>
-<ClassName>AnimatGUI.DataObjects.Behavior.Links.Adapter</ClassName>
-<ID>link10-ID</ID>
-<AdjustDst>False</AdjustDst>
-<AdjustOrg>False</AdjustOrg>
-<ArrowDestination>
-<Style>Arrow</Style>
-<Size>Small</Size>
-<Angle>deg15</Angle>
-<Filled>False</Filled>
-</ArrowDestination>
-<ArrowMiddle>
-<Style>None</Style>
-<Size>Small</Size>
-<Angle>deg30</Angle>
-<Filled>False</Filled>
-</ArrowMiddle>
-<ArrowOrigin>
-<Style>None</Style>
-<Size>Small</Size>
-<Angle>deg30</Angle>
-<Filled>False</Filled>
-</ArrowOrigin>
-<BackMode>Transparent</BackMode>
-<DashStyle>Solid</DashStyle>
-<DrawColor>-16777216</DrawColor>
-<DrawWidth>1</DrawWidth>
-<DestinationID>lh_tibialisanterior-neural-ID</DestinationID>
-<Font Family="Arial" Size="12" Bold="False" Underline="False" Strikeout="False" Italic="False"/>
-<Hidden>False</Hidden>
-<Jump>Arc</Jump>
-<LineStyle>Polyline</LineStyle>
-<OrthogonalDynamic>True</OrthogonalDynamic>
-<OriginID>ad-lh_tibialisanterior-ID</OriginID>
-<OrientedText>True</OrientedText>
-<Selectable>True</Selectable>
-<Stretchable>True</Stretchable>
-<Text/>
-<ToolTip/>
-<Url/>
-<ZOrder>0</ZOrder>
-</Link>
-<Link>
-<AssemblyFile>AnimatGUI.dll</AssemblyFile>
-<ClassName>AnimatGUI.DataObjects.Behavior.Links.Adapter</ClassName>
-<ID>link11-ID</ID>
-<AdjustDst>False</AdjustDst>
-<AdjustOrg>False</AdjustOrg>
-<ArrowDestination>
-<Style>Arrow</Style>
-<Size>Small</Size>
-<Angle>deg15</Angle>
-<Filled>False</Filled>
-</ArrowDestination>
-<ArrowMiddle>
-<Style>None</Style>
-<Size>Small</Size>
-<Angle>deg30</Angle>
-<Filled>False</Filled>
-</ArrowMiddle>
-<ArrowOrigin>
-<Style>None</Style>
-<Size>Small</Size>
-<Angle>deg30</Angle>
-<Filled>False</Filled>
-</ArrowOrigin>
-<BackMode>Transparent</BackMode>
-<DashStyle>Solid</DashStyle>
-<DrawColor>-16777216</DrawColor>
-<DrawWidth>1</DrawWidth>
-<DestinationID>ad-lh_flexordigitorumlongus-ID</DestinationID>
-<Font Family="Arial" Size="12" Bold="False" Underline="False" Strikeout="False" Italic="False"/>
-<Hidden>False</Hidden>
-<Jump>Arc</Jump>
-<LineStyle>Polyline</LineStyle>
-<OrthogonalDynamic>True</OrthogonalDynamic>
-<OriginID>neur6-ID</OriginID>
-<OrientedText>True</OrientedText>
-<Selectable>True</Selectable>
-<Stretchable>True</Stretchable>
-<Text/>
-<ToolTip/>
-<Url/>
-<ZOrder>0</ZOrder>
-</Link>
-<Link>
-<AssemblyFile>AnimatGUI.dll</AssemblyFile>
-<ClassName>AnimatGUI.DataObjects.Behavior.Links.Adapter</ClassName>
-<ID>link12-ID</ID>
-<AdjustDst>False</AdjustDst>
-<AdjustOrg>False</AdjustOrg>
-<ArrowDestination>
-<Style>Arrow</Style>
-<Size>Small</Size>
-<Angle>deg15</Angle>
-<Filled>False</Filled>
-</ArrowDestination>
-<ArrowMiddle>
-<Style>None</Style>
-<Size>Small</Size>
-<Angle>deg30</Angle>
-<Filled>False</Filled>
-</ArrowMiddle>
-<ArrowOrigin>
-<Style>None</Style>
-<Size>Small</Size>
-<Angle>deg30</Angle>
-<Filled>False</Filled>
-</ArrowOrigin>
-<BackMode>Transparent</BackMode>
-<DashStyle>Solid</DashStyle>
-<DrawColor>-16777216</DrawColor>
-<DrawWidth>1</DrawWidth>
-<DestinationID>lh_flexordigitorumlongus-neural-ID</DestinationID>
-<Font Family="Arial" Size="12" Bold="False" Underline="False" Strikeout="False" Italic="False"/>
-<Hidden>False</Hidden>
-<Jump>Arc</Jump>
-<LineStyle>Polyline</LineStyle>
-<OrthogonalDynamic>True</OrthogonalDynamic>
-<OriginID>ad-lh_flexordigitorumlongus-ID</OriginID>
-<OrientedText>True</OrientedText>
-<Selectable>True</Selectable>
-<Stretchable>True</Stretchable>
-<Text/>
-<ToolTip/>
-<Url/>
-<ZOrder>0</ZOrder>
-</Link>
-<Link>
-<AssemblyFile>AnimatGUI.dll</AssemblyFile>
-<ClassName>AnimatGUI.DataObjects.Behavior.Links.Adapter</ClassName>
-<ID>link13-ID</ID>
-<AdjustDst>False</AdjustDst>
-<AdjustOrg>False</AdjustOrg>
-<ArrowDestination>
-<Style>Arrow</Style>
-<Size>Small</Size>
-<Angle>deg15</Angle>
-<Filled>False</Filled>
-</ArrowDestination>
-<ArrowMiddle>
-<Style>None</Style>
-<Size>Small</Size>
-<Angle>deg30</Angle>
-<Filled>False</Filled>
-</ArrowMiddle>
-<ArrowOrigin>
-<Style>None</Style>
-<Size>Small</Size>
-<Angle>deg30</Angle>
-<Filled>False</Filled>
-</ArrowOrigin>
-<BackMode>Transparent</BackMode>
-<DashStyle>Solid</DashStyle>
-<DrawColor>-16777216</DrawColor>
-<DrawWidth>1</DrawWidth>
-<DestinationID>ad-lh_adductorbrevis-ID</DestinationID>
-<Font Family="Arial" Size="12" Bold="False" Underline="False" Strikeout="False" Italic="False"/>
-<Hidden>False</Hidden>
-<Jump>Arc</Jump>
-<LineStyle>Polyline</LineStyle>
-<OrthogonalDynamic>True</OrthogonalDynamic>
-<OriginID>neur7-ID</OriginID>
-<OrientedText>True</OrientedText>
-<Selectable>True</Selectable>
-<Stretchable>True</Stretchable>
-<Text/>
-<ToolTip/>
-<Url/>
-<ZOrder>0</ZOrder>
-</Link>
-<Link>
-<AssemblyFile>AnimatGUI.dll</AssemblyFile>
-<ClassName>AnimatGUI.DataObjects.Behavior.Links.Adapter</ClassName>
-<ID>link14-ID</ID>
-<AdjustDst>False</AdjustDst>
-<AdjustOrg>False</AdjustOrg>
-<ArrowDestination>
-<Style>Arrow</Style>
-<Size>Small</Size>
-<Angle>deg15</Angle>
-<Filled>False</Filled>
-</ArrowDestination>
-<ArrowMiddle>
-<Style>None</Style>
-<Size>Small</Size>
-<Angle>deg30</Angle>
-<Filled>False</Filled>
-</ArrowMiddle>
-<ArrowOrigin>
-<Style>None</Style>
-<Size>Small</Size>
-<Angle>deg30</Angle>
-<Filled>False</Filled>
-</ArrowOrigin>
-<BackMode>Transparent</BackMode>
-<DashStyle>Solid</DashStyle>
-<DrawColor>-16777216</DrawColor>
-<DrawWidth>1</DrawWidth>
-<DestinationID>lh_adductorbrevis-neural-ID</DestinationID>
-<Font Family="Arial" Size="12" Bold="False" Underline="False" Strikeout="False" Italic="False"/>
-<Hidden>False</Hidden>
-<Jump>Arc</Jump>
-<LineStyle>Polyline</LineStyle>
-<OrthogonalDynamic>True</OrthogonalDynamic>
-<OriginID>ad-lh_adductorbrevis-ID</OriginID>
-<OrientedText>True</OrientedText>
-<Selectable>True</Selectable>
-<Stretchable>True</Stretchable>
-<Text/>
-<ToolTip/>
-<Url/>
-<ZOrder>0</ZOrder>
-</Link>
 </Links>
 <DiagramXml><![CDATA[<Root>
 <Diagram>
-<ID>U2C30BW-cdata</ID>
+<ID>CZO1YI9-cdata</ID>
 <AssemblyFile>LicensedAnimatGUI.dll</AssemblyFile>
 <ClassName>LicensedAnimatGUI.Forms.Behavior.AddFlowDiagram</ClassName>
-<PageName>U2C30BW</PageName>
+<PageName>CZO1YI9</PageName>
 <ZoomX>1</ZoomX>
 <ZoomY>1</ZoomY>
 <BackColor Red="1" Green="1" Blue="1" Alpha="1"/>
@@ -5664,7 +6009,7 @@
     <TextColor>-16777216</TextColor>
     <GradientColor>0</GradientColor>
     <Text>lh_tensorfascialatae-neural</Text>
-    <Font Name="Arial" Size="14" Bold="True" Italic="False" Strikeout="False" Underline="False" />
+    <Font Name="Arial" Size="8" Bold="True" Italic="False" Strikeout="False" Underline="False" />
     <ImageIndex>0</ImageIndex>
     <Tag>lh_tensorfascialatae-neural-ID</Tag>
   </Node>
@@ -5678,7 +6023,7 @@
     <TextColor>-16777216</TextColor>
     <GradientColor>0</GradientColor>
     <Text>lh_bicepsfemorisposterior-neural</Text>
-    <Font Name="Arial" Size="14" Bold="True" Italic="False" Strikeout="False" Underline="False" />
+    <Font Name="Arial" Size="8" Bold="True" Italic="False" Strikeout="False" Underline="False" />
     <ImageIndex>0</ImageIndex>
     <Tag>lh_bicepsfemorisposterior-neural-ID</Tag>
   </Node>
@@ -5692,7 +6037,7 @@
     <TextColor>-16777216</TextColor>
     <GradientColor>0</GradientColor>
     <Text>lh_rectusfemoris-neural</Text>
-    <Font Name="Arial" Size="14" Bold="True" Italic="False" Strikeout="False" Underline="False" />
+    <Font Name="Arial" Size="8" Bold="True" Italic="False" Strikeout="False" Underline="False" />
     <ImageIndex>0</ImageIndex>
     <Tag>lh_rectusfemoris-neural-ID</Tag>
   </Node>
@@ -5706,7 +6051,7 @@
     <TextColor>-16777216</TextColor>
     <GradientColor>0</GradientColor>
     <Text>lh_medialgastrocnemius-neural</Text>
-    <Font Name="Arial" Size="14" Bold="True" Italic="False" Strikeout="False" Underline="False" />
+    <Font Name="Arial" Size="8" Bold="True" Italic="False" Strikeout="False" Underline="False" />
     <ImageIndex>0</ImageIndex>
     <Tag>lh_medialgastrocnemius-neural-ID</Tag>
   </Node>
@@ -5720,7 +6065,7 @@
     <TextColor>-16777216</TextColor>
     <GradientColor>0</GradientColor>
     <Text>lh_tibialisanterior-neural</Text>
-    <Font Name="Arial" Size="14" Bold="True" Italic="False" Strikeout="False" Underline="False" />
+    <Font Name="Arial" Size="8" Bold="True" Italic="False" Strikeout="False" Underline="False" />
     <ImageIndex>0</ImageIndex>
     <Tag>lh_tibialisanterior-neural-ID</Tag>
   </Node>
@@ -5734,7 +6079,7 @@
     <TextColor>-16777216</TextColor>
     <GradientColor>0</GradientColor>
     <Text>lh_flexordigitorumlongus-neural</Text>
-    <Font Name="Arial" Size="14" Bold="True" Italic="False" Strikeout="False" Underline="False" />
+    <Font Name="Arial" Size="8" Bold="True" Italic="False" Strikeout="False" Underline="False" />
     <ImageIndex>0</ImageIndex>
     <Tag>lh_flexordigitorumlongus-neural-ID</Tag>
   </Node>
@@ -5748,7 +6093,7 @@
     <TextColor>-16777216</TextColor>
     <GradientColor>0</GradientColor>
     <Text>lh_adductorbrevis-neural</Text>
-    <Font Name="Arial" Size="14" Bold="True" Italic="False" Strikeout="False" Underline="False" />
+    <Font Name="Arial" Size="8" Bold="True" Italic="False" Strikeout="False" Underline="False" />
     <ImageIndex>0</ImageIndex>
     <Tag>lh_adductorbrevis-neural-ID</Tag>
   </Node>
@@ -5766,25 +6111,23 @@
   <Link Org="0" Dst="14">
     <OrientedText>True</OrientedText>
     <Line Style="Polyline" OrthogonalDynamic="True" RoundedCorner="True" />
-    <ArrowDst Head="Fork" Size="Small" Angle="deg30" Filled="False" />
     <ArrowOrg Head="None" Size="Small" Angle="deg30" Filled="False" />
     <ArrowMid Head="None" Size="Small" Angle="deg30" Filled="False" />
     <Jump>Arc</Jump>
     <DrawColor>-16777216</DrawColor>
     <TextColor>-16777216</TextColor>
-    <Font Name="Arial" Size="8" Bold="False" Italic="False" Strikeout="False" Underline="False" />
+    <Font Name="Arial" Size="12" Bold="False" Italic="False" Strikeout="False" Underline="False" />
     <Tag>link1-ID</Tag>
   </Link>
   <Link Org="14" Dst="7">
     <OrientedText>True</OrientedText>
     <Line Style="Polyline" OrthogonalDynamic="True" RoundedCorner="True" />
-    <ArrowDst Head="Fork" Size="Small" Angle="deg30" Filled="False" />
     <ArrowOrg Head="None" Size="Small" Angle="deg30" Filled="False" />
     <ArrowMid Head="None" Size="Small" Angle="deg30" Filled="False" />
     <Jump>Arc</Jump>
     <DrawColor>-16777216</DrawColor>
     <TextColor>-16777216</TextColor>
-    <Font Name="Arial" Size="8" Bold="False" Italic="False" Strikeout="False" Underline="False" />
+    <Font Name="Arial" Size="12" Bold="False" Italic="False" Strikeout="False" Underline="False" />
     <Tag>link2-ID</Tag>
   </Link>
   <Node Left="38" Top="325" Width="26" Height="26">
@@ -5801,25 +6144,23 @@
   <Link Org="1" Dst="17">
     <OrientedText>True</OrientedText>
     <Line Style="Polyline" OrthogonalDynamic="True" RoundedCorner="True" />
-    <ArrowDst Head="Fork" Size="Small" Angle="deg30" Filled="False" />
     <ArrowOrg Head="None" Size="Small" Angle="deg30" Filled="False" />
     <ArrowMid Head="None" Size="Small" Angle="deg30" Filled="False" />
     <Jump>Arc</Jump>
     <DrawColor>-16777216</DrawColor>
     <TextColor>-16777216</TextColor>
-    <Font Name="Arial" Size="8" Bold="False" Italic="False" Strikeout="False" Underline="False" />
+    <Font Name="Arial" Size="12" Bold="False" Italic="False" Strikeout="False" Underline="False" />
     <Tag>link3-ID</Tag>
   </Link>
   <Link Org="17" Dst="8">
     <OrientedText>True</OrientedText>
     <Line Style="Polyline" OrthogonalDynamic="True" RoundedCorner="True" />
-    <ArrowDst Head="Fork" Size="Small" Angle="deg30" Filled="False" />
     <ArrowOrg Head="None" Size="Small" Angle="deg30" Filled="False" />
     <ArrowMid Head="None" Size="Small" Angle="deg30" Filled="False" />
     <Jump>Arc</Jump>
     <DrawColor>-16777216</DrawColor>
     <TextColor>-16777216</TextColor>
-    <Font Name="Arial" Size="8" Bold="False" Italic="False" Strikeout="False" Underline="False" />
+    <Font Name="Arial" Size="12" Bold="False" Italic="False" Strikeout="False" Underline="False" />
     <Tag>link4-ID</Tag>
   </Link>
   <Node Left="64" Top="325" Width="26" Height="26">
@@ -5836,25 +6177,23 @@
   <Link Org="2" Dst="20">
     <OrientedText>True</OrientedText>
     <Line Style="Polyline" OrthogonalDynamic="True" RoundedCorner="True" />
-    <ArrowDst Head="Fork" Size="Small" Angle="deg30" Filled="False" />
     <ArrowOrg Head="None" Size="Small" Angle="deg30" Filled="False" />
     <ArrowMid Head="None" Size="Small" Angle="deg30" Filled="False" />
     <Jump>Arc</Jump>
     <DrawColor>-16777216</DrawColor>
     <TextColor>-16777216</TextColor>
-    <Font Name="Arial" Size="8" Bold="False" Italic="False" Strikeout="False" Underline="False" />
+    <Font Name="Arial" Size="12" Bold="False" Italic="False" Strikeout="False" Underline="False" />
     <Tag>link5-ID</Tag>
   </Link>
   <Link Org="20" Dst="9">
     <OrientedText>True</OrientedText>
     <Line Style="Polyline" OrthogonalDynamic="True" RoundedCorner="True" />
-    <ArrowDst Head="Fork" Size="Small" Angle="deg30" Filled="False" />
     <ArrowOrg Head="None" Size="Small" Angle="deg30" Filled="False" />
     <ArrowMid Head="None" Size="Small" Angle="deg30" Filled="False" />
     <Jump>Arc</Jump>
     <DrawColor>-16777216</DrawColor>
     <TextColor>-16777216</TextColor>
-    <Font Name="Arial" Size="8" Bold="False" Italic="False" Strikeout="False" Underline="False" />
+    <Font Name="Arial" Size="12" Bold="False" Italic="False" Strikeout="False" Underline="False" />
     <Tag>link6-ID</Tag>
   </Link>
   <Node Left="90" Top="325" Width="26" Height="26">
@@ -5871,25 +6210,23 @@
   <Link Org="3" Dst="23">
     <OrientedText>True</OrientedText>
     <Line Style="Polyline" OrthogonalDynamic="True" RoundedCorner="True" />
-    <ArrowDst Head="Fork" Size="Small" Angle="deg30" Filled="False" />
     <ArrowOrg Head="None" Size="Small" Angle="deg30" Filled="False" />
     <ArrowMid Head="None" Size="Small" Angle="deg30" Filled="False" />
     <Jump>Arc</Jump>
     <DrawColor>-16777216</DrawColor>
     <TextColor>-16777216</TextColor>
-    <Font Name="Arial" Size="8" Bold="False" Italic="False" Strikeout="False" Underline="False" />
+    <Font Name="Arial" Size="12" Bold="False" Italic="False" Strikeout="False" Underline="False" />
     <Tag>link7-ID</Tag>
   </Link>
   <Link Org="23" Dst="10">
     <OrientedText>True</OrientedText>
     <Line Style="Polyline" OrthogonalDynamic="True" RoundedCorner="True" />
-    <ArrowDst Head="Fork" Size="Small" Angle="deg30" Filled="False" />
     <ArrowOrg Head="None" Size="Small" Angle="deg30" Filled="False" />
     <ArrowMid Head="None" Size="Small" Angle="deg30" Filled="False" />
     <Jump>Arc</Jump>
     <DrawColor>-16777216</DrawColor>
     <TextColor>-16777216</TextColor>
-    <Font Name="Arial" Size="8" Bold="False" Italic="False" Strikeout="False" Underline="False" />
+    <Font Name="Arial" Size="12" Bold="False" Italic="False" Strikeout="False" Underline="False" />
     <Tag>link8-ID</Tag>
   </Link>
   <Node Left="116" Top="325" Width="26" Height="26">
@@ -5906,25 +6243,23 @@
   <Link Org="4" Dst="26">
     <OrientedText>True</OrientedText>
     <Line Style="Polyline" OrthogonalDynamic="True" RoundedCorner="True" />
-    <ArrowDst Head="Fork" Size="Small" Angle="deg30" Filled="False" />
     <ArrowOrg Head="None" Size="Small" Angle="deg30" Filled="False" />
     <ArrowMid Head="None" Size="Small" Angle="deg30" Filled="False" />
     <Jump>Arc</Jump>
     <DrawColor>-16777216</DrawColor>
     <TextColor>-16777216</TextColor>
-    <Font Name="Arial" Size="8" Bold="False" Italic="False" Strikeout="False" Underline="False" />
+    <Font Name="Arial" Size="12" Bold="False" Italic="False" Strikeout="False" Underline="False" />
     <Tag>link9-ID</Tag>
   </Link>
   <Link Org="26" Dst="11">
     <OrientedText>True</OrientedText>
     <Line Style="Polyline" OrthogonalDynamic="True" RoundedCorner="True" />
-    <ArrowDst Head="Fork" Size="Small" Angle="deg30" Filled="False" />
     <ArrowOrg Head="None" Size="Small" Angle="deg30" Filled="False" />
     <ArrowMid Head="None" Size="Small" Angle="deg30" Filled="False" />
     <Jump>Arc</Jump>
     <DrawColor>-16777216</DrawColor>
     <TextColor>-16777216</TextColor>
-    <Font Name="Arial" Size="8" Bold="False" Italic="False" Strikeout="False" Underline="False" />
+    <Font Name="Arial" Size="12" Bold="False" Italic="False" Strikeout="False" Underline="False" />
     <Tag>link10-ID</Tag>
   </Link>
   <Node Left="142" Top="325" Width="26" Height="26">
@@ -5941,25 +6276,23 @@
   <Link Org="5" Dst="29">
     <OrientedText>True</OrientedText>
     <Line Style="Polyline" OrthogonalDynamic="True" RoundedCorner="True" />
-    <ArrowDst Head="Fork" Size="Small" Angle="deg30" Filled="False" />
     <ArrowOrg Head="None" Size="Small" Angle="deg30" Filled="False" />
     <ArrowMid Head="None" Size="Small" Angle="deg30" Filled="False" />
     <Jump>Arc</Jump>
     <DrawColor>-16777216</DrawColor>
     <TextColor>-16777216</TextColor>
-    <Font Name="Arial" Size="8" Bold="False" Italic="False" Strikeout="False" Underline="False" />
+    <Font Name="Arial" Size="12" Bold="False" Italic="False" Strikeout="False" Underline="False" />
     <Tag>link11-ID</Tag>
   </Link>
   <Link Org="29" Dst="12">
     <OrientedText>True</OrientedText>
     <Line Style="Polyline" OrthogonalDynamic="True" RoundedCorner="True" />
-    <ArrowDst Head="Fork" Size="Small" Angle="deg30" Filled="False" />
     <ArrowOrg Head="None" Size="Small" Angle="deg30" Filled="False" />
     <ArrowMid Head="None" Size="Small" Angle="deg30" Filled="False" />
     <Jump>Arc</Jump>
     <DrawColor>-16777216</DrawColor>
     <TextColor>-16777216</TextColor>
-    <Font Name="Arial" Size="8" Bold="False" Italic="False" Strikeout="False" Underline="False" />
+    <Font Name="Arial" Size="12" Bold="False" Italic="False" Strikeout="False" Underline="False" />
     <Tag>link12-ID</Tag>
   </Link>
   <Node Left="168" Top="325" Width="26" Height="26">
@@ -5976,25 +6309,23 @@
   <Link Org="6" Dst="32">
     <OrientedText>True</OrientedText>
     <Line Style="Polyline" OrthogonalDynamic="True" RoundedCorner="True" />
-    <ArrowDst Head="Fork" Size="Small" Angle="deg30" Filled="False" />
     <ArrowOrg Head="None" Size="Small" Angle="deg30" Filled="False" />
     <ArrowMid Head="None" Size="Small" Angle="deg30" Filled="False" />
     <Jump>Arc</Jump>
     <DrawColor>-16777216</DrawColor>
     <TextColor>-16777216</TextColor>
-    <Font Name="Arial" Size="8" Bold="False" Italic="False" Strikeout="False" Underline="False" />
+    <Font Name="Arial" Size="12" Bold="False" Italic="False" Strikeout="False" Underline="False" />
     <Tag>link13-ID</Tag>
   </Link>
   <Link Org="32" Dst="13">
     <OrientedText>True</OrientedText>
     <Line Style="Polyline" OrthogonalDynamic="True" RoundedCorner="True" />
-    <ArrowDst Head="Fork" Size="Small" Angle="deg30" Filled="False" />
     <ArrowOrg Head="None" Size="Small" Angle="deg30" Filled="False" />
     <ArrowMid Head="None" Size="Small" Angle="deg30" Filled="False" />
     <Jump>Arc</Jump>
     <DrawColor>-16777216</DrawColor>
     <TextColor>-16777216</TextColor>
-    <Font Name="Arial" Size="8" Bold="False" Italic="False" Strikeout="False" Underline="False" />
+    <Font Name="Arial" Size="12" Bold="False" Italic="False" Strikeout="False" Underline="False" />
     <Tag>link14-ID</Tag>
   </Link>
 </AddFlow>
@@ -6048,7 +6379,7 @@
 <Simulation>0</Simulation>
 </Transparencies>
 <IsVisible>True</IsVisible>
-<Ambient Red="0" Green="0" Blue="0" Alpha="1"/>
+<Ambient Red="0.25098" Green="0.25098" Blue="0.25098" Alpha="1"/>
 <Diffuse Red="1" Green="1" Blue="1" Alpha="1"/>
 <Specular Red="0.25098" Green="0.25098" Blue="0.25098" Alpha="1"/>
 <Shininess>64</Shininess>
@@ -6190,39 +6521,11 @@
 </Environment>
 <ToolViewers>
 <ToolHolder>
-<ID>dt-PassiveTension-ID</ID>
-<Name>PassiveTension-reduced</Name>
-<BaseAssemblyFile>LicensedAnimatGUI.dll</BaseAssemblyFile>
-<BaseClassName>LicensedAnimatGUI.Forms.Charts.LineChart</BaseClassName>
-<ToolFormID>dt-PassiveTension-reduced-tfID</ToolFormID>
-</ToolHolder>
-<ToolHolder>
-<ID>05cf2c0d-3c28-44b1-ae86-c58f4e717d5c</ID>
-<Name>JointMotion</Name>
-<BaseAssemblyFile>LicensedAnimatGUI.dll</BaseAssemblyFile>
-<BaseClassName>LicensedAnimatGUI.Forms.Charts.LineChart</BaseClassName>
-<ToolFormID>1b1bb75a-f9ae-4839-8124-5172f1dbddcf</ToolFormID>
-</ToolHolder>
-<ToolHolder>
-<ID>dt-KeyMNs-ID</ID>
-<Name>KeyMNs</Name>
-<BaseAssemblyFile>LicensedAnimatGUI.dll</BaseAssemblyFile>
-<BaseClassName>LicensedAnimatGUI.Forms.Charts.LineChart</BaseClassName>
-<ToolFormID>dt-KeyMNs-tfID</ToolFormID>
-</ToolHolder>
-<ToolHolder>
 <ID>dt-KeyMuscleLen-ID</ID>
 <Name>KeyMuscleLen</Name>
 <BaseAssemblyFile>LicensedAnimatGUI.dll</BaseAssemblyFile>
 <BaseClassName>LicensedAnimatGUI.Forms.Charts.LineChart</BaseClassName>
 <ToolFormID>dt-KeyMuscleLen-tfID</ToolFormID>
-</ToolHolder>
-<ToolHolder>
-<ID>dt-KeyMuscTen-ID</ID>
-<Name>KeyMuscTen</Name>
-<BaseAssemblyFile>LicensedAnimatGUI.dll</BaseAssemblyFile>
-<BaseClassName>LicensedAnimatGUI.Forms.Charts.LineChart</BaseClassName>
-<ToolFormID>dt-KeyMuscTen-tfID</ToolFormID>
 </ToolHolder>
 <ToolHolder>
 <ID>dt-KeyMuscAct-ID</ID>
@@ -6232,132 +6535,153 @@
 <ToolFormID>dt-KeyMuscAct-tfID</ToolFormID>
 </ToolHolder>
 <ToolHolder>
+<ID>dt-PassiveTension-ID</ID>
+<Name>PassiveTension-reduced</Name>
+<BaseAssemblyFile>LicensedAnimatGUI.dll</BaseAssemblyFile>
+<BaseClassName>LicensedAnimatGUI.Forms.Charts.LineChart</BaseClassName>
+<ToolFormID>dt-PassiveTension-reduced-tfID</ToolFormID>
+</ToolHolder>
+<ToolHolder>
 <ID>dt-KeyMuscAl-ID</ID>
 <Name>KeyMuscAl</Name>
 <BaseAssemblyFile>LicensedAnimatGUI.dll</BaseAssemblyFile>
 <BaseClassName>LicensedAnimatGUI.Forms.Charts.LineChart</BaseClassName>
 <ToolFormID>dt-KeyMuscAl-tfID</ToolFormID>
 </ToolHolder>
+<ToolHolder>
+<ID>b011d76a-5aa2-46a0-9fa2-37209ce0d7e3</ID>
+<Name>DataTool_2</Name>
+<BaseAssemblyFile>LicensedAnimatGUI.dll</BaseAssemblyFile>
+<BaseClassName>LicensedAnimatGUI.Forms.Charts.LineChart</BaseClassName>
+<ToolFormID>b3f281fb-d7dd-4ad3-9ff2-87c3bff47da5</ToolFormID>
+</ToolHolder>
+<ToolHolder>
+<ID>dt-KeyMuscTen-ID</ID>
+<Name>KeyMuscTen</Name>
+<BaseAssemblyFile>LicensedAnimatGUI.dll</BaseAssemblyFile>
+<BaseClassName>LicensedAnimatGUI.Forms.Charts.LineChart</BaseClassName>
+<ToolFormID>dt-KeyMuscTen-tfID</ToolFormID>
+</ToolHolder>
+<ToolHolder>
+<ID>dt-KeyMNs-ID</ID>
+<Name>KeyMNs</Name>
+<BaseAssemblyFile>LicensedAnimatGUI.dll</BaseAssemblyFile>
+<BaseClassName>LicensedAnimatGUI.Forms.Charts.LineChart</BaseClassName>
+<ToolFormID>dt-KeyMNs-tfID</ToolFormID>
+</ToolHolder>
+<ToolHolder>
+<ID>05cf2c0d-3c28-44b1-ae86-c58f4e717d5c</ID>
+<Name>JointMotion</Name>
+<BaseAssemblyFile>LicensedAnimatGUI.dll</BaseAssemblyFile>
+<BaseClassName>LicensedAnimatGUI.Forms.Charts.LineChart</BaseClassName>
+<ToolFormID>1b1bb75a-f9ae-4839-8124-5172f1dbddcf</ToolFormID>
+</ToolHolder>
 </ToolViewers>
 <Stimuli>
 <Stimulus>
 <AssemblyFile>AnimatGUI.dll</AssemblyFile>
-<ClassName>AnimatGUI.DataObjects.ExternalStimuli.MotorPosition</ClassName>
-<Name>xAnklewalking</Name>
-<ID>5f826170-822d-4722-9df4-ea27e8d88476</ID>
+<ClassName>AnimatGUI.DataObjects.ExternalStimuli.TonicCurrent</ClassName>
+<Name>stTC1-6FDL</Name>
+<ID>stTC1-neur6-ID</ID>
 <StartTime Value="0" Scale="None" Actual="0"/>
-<EndTime Value="10" Scale="None" Actual="10"/>
+<EndTime Value="5" Scale="None" Actual="5"/>
 <StepInterval Value="0" Scale="milli" Actual="0"/>
-<AlwaysActive>False</AlwaysActive>
+<AlwaysActive>True</AlwaysActive>
 <Enabled>False</Enabled>
-<ValueType>Equation</ValueType>
-<Equation>0.0587*sin(0.7246*t + 2.326) + 0.06009*sin(5.647*t - 2.748) + 0.004938*sin(2.263*t - 1.667) + 0.4367*sin(0.3509*t + 0.7173) + 1.141*sin(0.1553*t - 1.845) + 0.2713*sin(3.768*t + 1.288) + 0.08073*sin(1.84*t + 0.2031) + 0.02449*sin(7.555*t + 0.923)</Equation>
-<StructureID>e40d2c4f-9c31-49f8-8a5c-5688fb768225</StructureID>
-<PartID>c7df3511-7e4c-411e-be1f-1b71ff30c530</PartID>
-<Velocity Value="0" Scale="None" Actual="0"/>
-<DisableMotorWhenDone>False</DisableMotorWhenDone>
+<ValueType>Constant</ValueType>
+<Equation>1.2278*sin(43.0614*t+26.9952)+25.6165*sin(20.2856*t+15.7431)</Equation>
+<OrganismID>e40d2c4f-9c31-49f8-8a5c-5688fb768225</OrganismID>
+<NodeID>neur6-ID</NodeID>
+<CurrentOn Value="0" Scale="nano" Actual="0"/>
+<CurrentOff Value="0" Scale="nano" Actual="0"/>
+<CurrentBurstOff Value="0" Scale="nano" Actual="0"/>
+<CycleOnDuration Value="5" Scale="None" Actual="5"/>
+<CycleOffDuration Value="0" Scale="None" Actual="0"/>
+<BurstOnDuration Value="5" Scale="None" Actual="5"/>
+<BurstOffDuration Value="0" Scale="None" Actual="0"/>
 </Stimulus>
 <Stimulus>
 <AssemblyFile>AnimatGUI.dll</AssemblyFile>
-<ClassName>AnimatGUI.DataObjects.ExternalStimuli.MotorPosition</ClassName>
-<Name>zMaxMinKnee</Name>
-<ID>e95e4df8-babd-472e-b713-5cd0265dbfb1</ID>
-<StartTime Value="0" Scale="None" Actual="0"/>
-<EndTime Value="10" Scale="None" Actual="10"/>
+<ClassName>AnimatGUI.DataObjects.ExternalStimuli.TonicCurrent</ClassName>
+<Name>stTC1-1TFL</Name>
+<ID>stTC1-neur1-ID</ID>
+<StartTime Value="2" Scale="None" Actual="2"/>
+<EndTime Value="2.3" Scale="None" Actual="2.3"/>
 <StepInterval Value="0" Scale="milli" Actual="0"/>
 <AlwaysActive>False</AlwaysActive>
 <Enabled>False</Enabled>
-<ValueType>Equation</ValueType>
-<Equation>-.646+.6981*sin(t)</Equation>
-<StructureID>e40d2c4f-9c31-49f8-8a5c-5688fb768225</StructureID>
-<PartID>55af1c5f-e200-4870-b3fa-0501ab0b22dd</PartID>
-<Velocity Value="0" Scale="None" Actual="0"/>
-<DisableMotorWhenDone>False</DisableMotorWhenDone>
+<ValueType>Constant</ValueType>
+<Equation>6.508-0.093182*cos(1*t*0.25476)+4.6347*sin(0.25476*t)</Equation>
+<OrganismID>e40d2c4f-9c31-49f8-8a5c-5688fb768225</OrganismID>
+<NodeID>neur1-ID</NodeID>
+<CurrentOn Value="20" Scale="nano" Actual="2e-008"/>
+<CurrentOff Value="0" Scale="nano" Actual="0"/>
+<CurrentBurstOff Value="0" Scale="nano" Actual="0"/>
+<CycleOnDuration Value="30" Scale="centi" Actual="0.3"/>
+<CycleOffDuration Value="0" Scale="None" Actual="0"/>
+<BurstOnDuration Value="30" Scale="centi" Actual="0.3"/>
+<BurstOffDuration Value="0" Scale="None" Actual="0"/>
 </Stimulus>
 <Stimulus>
 <AssemblyFile>AnimatGUI.dll</AssemblyFile>
 <ClassName>AnimatGUI.DataObjects.ExternalStimuli.MotorPosition</ClassName>
 <Name>ConstantKnee</Name>
 <ID>1400e503-ed4c-426a-915b-496accf246b2</ID>
-<StartTime Value="0" Scale="None" Actual="0"/>
+<StartTime Value="1" Scale="None" Actual="1"/>
 <EndTime Value="10" Scale="None" Actual="10"/>
 <StepInterval Value="0" Scale="milli" Actual="0"/>
-<AlwaysActive>True</AlwaysActive>
+<AlwaysActive>False</AlwaysActive>
 <Enabled>False</Enabled>
 <ValueType>Constant</ValueType>
 <Equation>0</Equation>
 <StructureID>e40d2c4f-9c31-49f8-8a5c-5688fb768225</StructureID>
 <PartID>55af1c5f-e200-4870-b3fa-0501ab0b22dd</PartID>
-<Velocity Value="-0.2007" Scale="None" Actual="-0.2007"/>
+<Velocity Value="-0.5727" Scale="None" Actual="-0.5727"/>
 <DisableMotorWhenDone>True</DisableMotorWhenDone>
 </Stimulus>
 <Stimulus>
 <AssemblyFile>AnimatGUI.dll</AssemblyFile>
-<ClassName>AnimatGUI.DataObjects.ExternalStimuli.MotorPosition</ClassName>
-<Name>zMaxMinHip</Name>
-<ID>b32719c5-cf4f-4f5e-b968-469a601fddd0</ID>
+<ClassName>AnimatGUI.DataObjects.ExternalStimuli.TonicCurrent</ClassName>
+<Name>stTC1-3RF</Name>
+<ID>stTC1-neur3-ID</ID>
 <StartTime Value="0" Scale="None" Actual="0"/>
-<EndTime Value="10" Scale="None" Actual="10"/>
-<StepInterval Value="0" Scale="milli" Actual="0"/>
-<AlwaysActive>False</AlwaysActive>
-<Enabled>False</Enabled>
-<ValueType>Equation</ValueType>
-<Equation>-.515+.7069*sin(t)</Equation>
-<StructureID>e40d2c4f-9c31-49f8-8a5c-5688fb768225</StructureID>
-<PartID>b2919ff8-3efa-4549-97b4-a4bc77ad6e0a</PartID>
-<Velocity Value="0" Scale="None" Actual="0"/>
-<DisableMotorWhenDone>False</DisableMotorWhenDone>
-</Stimulus>
-<Stimulus>
-<AssemblyFile>AnimatGUI.dll</AssemblyFile>
-<ClassName>AnimatGUI.DataObjects.ExternalStimuli.MotorPosition</ClassName>
-<Name>ConstantxAnkle</Name>
-<ID>4f309ad9-7dea-4ec2-bde8-6077cc6b1d05</ID>
-<StartTime Value="0" Scale="None" Actual="0"/>
-<EndTime Value="10" Scale="None" Actual="10"/>
+<EndTime Value="5" Scale="None" Actual="5"/>
 <StepInterval Value="0" Scale="milli" Actual="0"/>
 <AlwaysActive>True</AlwaysActive>
 <Enabled>False</Enabled>
 <ValueType>Constant</ValueType>
-<Equation>0</Equation>
-<StructureID>e40d2c4f-9c31-49f8-8a5c-5688fb768225</StructureID>
-<PartID>c7df3511-7e4c-411e-be1f-1b71ff30c530</PartID>
-<Velocity Value="-0.0678" Scale="None" Actual="-0.0678"/>
-<DisableMotorWhenDone>True</DisableMotorWhenDone>
+<Equation>10.2578*sin(0*t+1.5708)</Equation>
+<OrganismID>e40d2c4f-9c31-49f8-8a5c-5688fb768225</OrganismID>
+<NodeID>neur3-ID</NodeID>
+<CurrentOn Value="0" Scale="nano" Actual="0"/>
+<CurrentOff Value="0" Scale="nano" Actual="0"/>
+<CurrentBurstOff Value="0" Scale="nano" Actual="0"/>
+<CycleOnDuration Value="5" Scale="None" Actual="5"/>
+<CycleOffDuration Value="0" Scale="None" Actual="0"/>
+<BurstOnDuration Value="5" Scale="None" Actual="5"/>
+<BurstOffDuration Value="0" Scale="None" Actual="0"/>
 </Stimulus>
 <Stimulus>
 <AssemblyFile>AnimatGUI.dll</AssemblyFile>
-<ClassName>AnimatGUI.DataObjects.ExternalStimuli.MotorPosition</ClassName>
-<Name>Kneewalking</Name>
-<ID>824fa45f-843e-4710-bfd0-a8758c014904</ID>
+<ClassName>AnimatGUI.DataObjects.ExternalStimuli.TonicCurrent</ClassName>
+<Name>stTC1-5TA</Name>
+<ID>stTC1-neur5-ID</ID>
 <StartTime Value="0" Scale="None" Actual="0"/>
-<EndTime Value="10" Scale="None" Actual="10"/>
+<EndTime Value="5" Scale="None" Actual="5"/>
 <StepInterval Value="0" Scale="milli" Actual="0"/>
-<AlwaysActive>False</AlwaysActive>
+<AlwaysActive>True</AlwaysActive>
 <Enabled>False</Enabled>
-<ValueType>Equation</ValueType>
-<Equation>0.1995*sin(0.5822*t - 1.07) + 0.08642*sin(0.7588*t + 1.287) + 0.4931*sin(0.209*t - 2.524) + 0.1947*sin(3.768*t + 2.116) + 0.01519*sin(5.651*t - 0.3852) + 0.1605*sin(1.875*t + 0.2783) + 0.0206*sin(7.535*t + 2.37) + 0.003347*sin(2.283*t - 0.9653)</Equation>
-<StructureID>e40d2c4f-9c31-49f8-8a5c-5688fb768225</StructureID>
-<PartID>55af1c5f-e200-4870-b3fa-0501ab0b22dd</PartID>
-<Velocity Value="0" Scale="None" Actual="0"/>
-<DisableMotorWhenDone>False</DisableMotorWhenDone>
-</Stimulus>
-<Stimulus>
-<AssemblyFile>AnimatGUI.dll</AssemblyFile>
-<ClassName>AnimatGUI.DataObjects.ExternalStimuli.MotorPosition</ClassName>
-<Name>Hipwalking</Name>
-<ID>de48c25f-7620-4ba2-bf8a-21b02bb6203e</ID>
-<StartTime Value="0" Scale="None" Actual="0"/>
-<EndTime Value="10" Scale="None" Actual="10"/>
-<StepInterval Value="0" Scale="milli" Actual="0"/>
-<AlwaysActive>False</AlwaysActive>
-<Enabled>False</Enabled>
-<ValueType>Equation</ValueType>
-<Equation>0.2466*sin(0.5468*t - 1.124) + 0.046*sin(1.003*t - 0.2206) + 0.07998*sin(3.77*t + 2.07) + 0.5721*sin(1.879*t - 1.298) + 0.6951*sin(0.2447*t + 3.506)</Equation>
-<StructureID>e40d2c4f-9c31-49f8-8a5c-5688fb768225</StructureID>
-<PartID>b2919ff8-3efa-4549-97b4-a4bc77ad6e0a</PartID>
-<Velocity Value="0" Scale="None" Actual="0"/>
-<DisableMotorWhenDone>False</DisableMotorWhenDone>
+<ValueType>Constant</ValueType>
+<Equation>10+10*sin(3*t+1.57)</Equation>
+<OrganismID>e40d2c4f-9c31-49f8-8a5c-5688fb768225</OrganismID>
+<NodeID>neur5-ID</NodeID>
+<CurrentOn Value="0" Scale="nano" Actual="0"/>
+<CurrentOff Value="0" Scale="nano" Actual="0"/>
+<CurrentBurstOff Value="0" Scale="nano" Actual="0"/>
+<CycleOnDuration Value="5" Scale="None" Actual="5"/>
+<CycleOffDuration Value="0" Scale="None" Actual="0"/>
+<BurstOnDuration Value="5" Scale="None" Actual="5"/>
+<BurstOffDuration Value="0" Scale="None" Actual="0"/>
 </Stimulus>
 <Stimulus>
 <AssemblyFile>AnimatGUI.dll</AssemblyFile>
@@ -6379,27 +6703,117 @@
 <Stimulus>
 <AssemblyFile>AnimatGUI.dll</AssemblyFile>
 <ClassName>AnimatGUI.DataObjects.ExternalStimuli.MotorPosition</ClassName>
-<Name>ConstantHip</Name>
-<ID>e5ed3fa1-29be-4581-ba2a-2bef6d533aba</ID>
+<Name>Kneewalking</Name>
+<ID>824fa45f-843e-4710-bfd0-a8758c014904</ID>
 <StartTime Value="0" Scale="None" Actual="0"/>
 <EndTime Value="10" Scale="None" Actual="10"/>
 <StepInterval Value="0" Scale="milli" Actual="0"/>
+<AlwaysActive>False</AlwaysActive>
+<Enabled>False</Enabled>
+<ValueType>Equation</ValueType>
+<Equation>0.1995*sin(0.5822*t - 1.07) + 0.08642*sin(0.7588*t + 1.287) + 0.4931*sin(0.209*t - 2.524) + 0.1947*sin(3.768*t + 2.116) + 0.01519*sin(5.651*t - 0.3852) + 0.1605*sin(1.875*t + 0.2783) + 0.0206*sin(7.535*t + 2.37) + 0.003347*sin(2.283*t - 0.9653)</Equation>
+<StructureID>e40d2c4f-9c31-49f8-8a5c-5688fb768225</StructureID>
+<PartID>55af1c5f-e200-4870-b3fa-0501ab0b22dd</PartID>
+<Velocity Value="0" Scale="None" Actual="0"/>
+<DisableMotorWhenDone>False</DisableMotorWhenDone>
+</Stimulus>
+<Stimulus>
+<AssemblyFile>AnimatGUI.dll</AssemblyFile>
+<ClassName>AnimatGUI.DataObjects.ExternalStimuli.MotorPosition</ClassName>
+<Name>xAnklewalking</Name>
+<ID>5f826170-822d-4722-9df4-ea27e8d88476</ID>
+<StartTime Value="0" Scale="None" Actual="0"/>
+<EndTime Value="10" Scale="None" Actual="10"/>
+<StepInterval Value="0" Scale="milli" Actual="0"/>
+<AlwaysActive>False</AlwaysActive>
+<Enabled>False</Enabled>
+<ValueType>Equation</ValueType>
+<Equation>0.0587*sin(0.7246*t + 2.326) + 0.06009*sin(5.647*t - 2.748) + 0.004938*sin(2.263*t - 1.667) + 0.4367*sin(0.3509*t + 0.7173) + 1.141*sin(0.1553*t - 1.845) + 0.2713*sin(3.768*t + 1.288) + 0.08073*sin(1.84*t + 0.2031) + 0.02449*sin(7.555*t + 0.923)</Equation>
+<StructureID>e40d2c4f-9c31-49f8-8a5c-5688fb768225</StructureID>
+<PartID>c7df3511-7e4c-411e-be1f-1b71ff30c530</PartID>
+<Velocity Value="0" Scale="None" Actual="0"/>
+<DisableMotorWhenDone>False</DisableMotorWhenDone>
+</Stimulus>
+<Stimulus>
+<AssemblyFile>AnimatGUI.dll</AssemblyFile>
+<ClassName>AnimatGUI.DataObjects.ExternalStimuli.TonicCurrent</ClassName>
+<Name>stTC1-7AB</Name>
+<ID>stTC1-neur7-ID</ID>
+<StartTime Value="0" Scale="None" Actual="0"/>
+<EndTime Value="5" Scale="None" Actual="5"/>
+<StepInterval Value="0" Scale="milli" Actual="0"/>
 <AlwaysActive>True</AlwaysActive>
+<Enabled>False</Enabled>
+<ValueType>Constant</ValueType>
+<Equation>10.1667*sin(0*t+1.5708)</Equation>
+<OrganismID>e40d2c4f-9c31-49f8-8a5c-5688fb768225</OrganismID>
+<NodeID>neur7-ID</NodeID>
+<CurrentOn Value="0" Scale="nano" Actual="0"/>
+<CurrentOff Value="0" Scale="nano" Actual="0"/>
+<CurrentBurstOff Value="0" Scale="nano" Actual="0"/>
+<CycleOnDuration Value="5" Scale="None" Actual="5"/>
+<CycleOffDuration Value="0" Scale="None" Actual="0"/>
+<BurstOnDuration Value="5" Scale="None" Actual="5"/>
+<BurstOffDuration Value="0" Scale="None" Actual="0"/>
+</Stimulus>
+<Stimulus>
+<AssemblyFile>AnimatGUI.dll</AssemblyFile>
+<ClassName>AnimatGUI.DataObjects.ExternalStimuli.MotorPosition</ClassName>
+<Name>Hipwalking</Name>
+<ID>de48c25f-7620-4ba2-bf8a-21b02bb6203e</ID>
+<StartTime Value="0" Scale="None" Actual="0"/>
+<EndTime Value="10" Scale="None" Actual="10"/>
+<StepInterval Value="0" Scale="milli" Actual="0"/>
+<AlwaysActive>False</AlwaysActive>
+<Enabled>False</Enabled>
+<ValueType>Equation</ValueType>
+<Equation>0.2466*sin(0.5468*t - 1.124) + 0.046*sin(1.003*t - 0.2206) + 0.07998*sin(3.77*t + 2.07) + 0.5721*sin(1.879*t - 1.298) + 0.6951*sin(0.2447*t + 3.506)</Equation>
+<StructureID>e40d2c4f-9c31-49f8-8a5c-5688fb768225</StructureID>
+<PartID>b2919ff8-3efa-4549-97b4-a4bc77ad6e0a</PartID>
+<Velocity Value="0" Scale="None" Actual="0"/>
+<DisableMotorWhenDone>False</DisableMotorWhenDone>
+</Stimulus>
+<Stimulus>
+<AssemblyFile>AnimatGUI.dll</AssemblyFile>
+<ClassName>AnimatGUI.DataObjects.ExternalStimuli.MotorPosition</ClassName>
+<Name>ConstantHip</Name>
+<ID>e5ed3fa1-29be-4581-ba2a-2bef6d533aba</ID>
+<StartTime Value="1" Scale="None" Actual="1"/>
+<EndTime Value="10" Scale="None" Actual="10"/>
+<StepInterval Value="0" Scale="milli" Actual="0"/>
+<AlwaysActive>False</AlwaysActive>
 <Enabled>False</Enabled>
 <ValueType>Constant</ValueType>
 <Equation>0</Equation>
 <StructureID>e40d2c4f-9c31-49f8-8a5c-5688fb768225</StructureID>
 <PartID>b2919ff8-3efa-4549-97b4-a4bc77ad6e0a</PartID>
-<Velocity Value="0.4315" Scale="None" Actual="0.4315"/>
+<Velocity Value="-0.8385" Scale="None" Actual="-0.8385"/>
 <DisableMotorWhenDone>True</DisableMotorWhenDone>
 </Stimulus>
 <Stimulus>
 <AssemblyFile>AnimatGUI.dll</AssemblyFile>
-<ClassName>AnimatGUI.DataObjects.ExternalStimuli.InverseMuscleCurrent</ClassName>
-<Name>stDC1-neur1</Name>
-<ID>stDC1-neur1-ID</ID>
+<ClassName>AnimatGUI.DataObjects.ExternalStimuli.MotorPosition</ClassName>
+<Name>zMaxMinKnee</Name>
+<ID>e95e4df8-babd-472e-b713-5cd0265dbfb1</ID>
 <StartTime Value="0" Scale="None" Actual="0"/>
-<EndTime Value="10.0148" Scale="None" Actual="10.0148"/>
+<EndTime Value="10" Scale="None" Actual="10"/>
+<StepInterval Value="0" Scale="milli" Actual="0"/>
+<AlwaysActive>False</AlwaysActive>
+<Enabled>False</Enabled>
+<ValueType>Equation</ValueType>
+<Equation>-.646+.6981*sin(t)</Equation>
+<StructureID>e40d2c4f-9c31-49f8-8a5c-5688fb768225</StructureID>
+<PartID>55af1c5f-e200-4870-b3fa-0501ab0b22dd</PartID>
+<Velocity Value="0" Scale="None" Actual="0"/>
+<DisableMotorWhenDone>False</DisableMotorWhenDone>
+</Stimulus>
+<Stimulus>
+<AssemblyFile>AnimatGUI.dll</AssemblyFile>
+<ClassName>AnimatGUI.DataObjects.ExternalStimuli.InverseMuscleCurrent</ClassName>
+<Name>Stimulus_2</Name>
+<ID>2896563f-8124-4861-a566-8815d8cdd640</ID>
+<StartTime Value="0" Scale="None" Actual="0"/>
+<EndTime Value="5" Scale="None" Actual="5"/>
 <StepInterval Value="0" Scale="milli" Actual="0"/>
 <AlwaysActive>False</AlwaysActive>
 <Enabled>True</Enabled>
@@ -6408,129 +6822,93 @@
 <OrganismID>e40d2c4f-9c31-49f8-8a5c-5688fb768225</OrganismID>
 <NodeID>neur1-ID</NodeID>
 <RestPotential Value="-60" Scale="milli" Actual="-0.06"/>
-<Conductance Value="100" Scale="nano" Actual="1e-07"/>
+<Conductance Value="100" Scale="nano" Actual="1e-007"/>
 <LengthData>G:\My Drive\Rat\SynergyControl\Data\InjectedCurrent\stDC1-neur1.txt</LengthData>
 <MuscleID>61daa261-279a-4540-bb7e-026174d96daa</MuscleID>
 </Stimulus>
 <Stimulus>
 <AssemblyFile>AnimatGUI.dll</AssemblyFile>
-<ClassName>AnimatGUI.DataObjects.ExternalStimuli.InverseMuscleCurrent</ClassName>
-<Name>stDC1-neur2</Name>
-<ID>stDC1-neur2-ID</ID>
-<StartTime Value="0" Scale="None" Actual="0"/>
-<EndTime Value="10.0148" Scale="None" Actual="10.0148"/>
+<ClassName>AnimatGUI.DataObjects.ExternalStimuli.MotorPosition</ClassName>
+<Name>ConstantxAnkle</Name>
+<ID>4f309ad9-7dea-4ec2-bde8-6077cc6b1d05</ID>
+<StartTime Value="1" Scale="None" Actual="1"/>
+<EndTime Value="10" Scale="None" Actual="10"/>
 <StepInterval Value="0" Scale="milli" Actual="0"/>
 <AlwaysActive>False</AlwaysActive>
-<Enabled>True</Enabled>
+<Enabled>False</Enabled>
 <ValueType>Constant</ValueType>
 <Equation>0</Equation>
-<OrganismID>e40d2c4f-9c31-49f8-8a5c-5688fb768225</OrganismID>
-<NodeID>neur2-ID</NodeID>
-<RestPotential Value="-60" Scale="milli" Actual="-0.06"/>
-<Conductance Value="100" Scale="nano" Actual="1e-07"/>
-<LengthData>G:\My Drive\Rat\SynergyControl\Data\InjectedCurrent\stDC1-neur2.txt</LengthData>
-<MuscleID>61daa261-279a-4540-bb7e-026174d96daa</MuscleID>
+<StructureID>e40d2c4f-9c31-49f8-8a5c-5688fb768225</StructureID>
+<PartID>c7df3511-7e4c-411e-be1f-1b71ff30c530</PartID>
+<Velocity Value="-1.0631" Scale="None" Actual="-1.0631"/>
+<DisableMotorWhenDone>True</DisableMotorWhenDone>
 </Stimulus>
 <Stimulus>
 <AssemblyFile>AnimatGUI.dll</AssemblyFile>
-<ClassName>AnimatGUI.DataObjects.ExternalStimuli.InverseMuscleCurrent</ClassName>
-<Name>stDC1-neur3</Name>
-<ID>stDC1-neur3-ID</ID>
+<ClassName>AnimatGUI.DataObjects.ExternalStimuli.TonicCurrent</ClassName>
+<Name>stTC1-4MG</Name>
+<ID>stTC1-neur4-ID</ID>
 <StartTime Value="0" Scale="None" Actual="0"/>
-<EndTime Value="10.0148" Scale="None" Actual="10.0148"/>
+<EndTime Value="5" Scale="None" Actual="5"/>
 <StepInterval Value="0" Scale="milli" Actual="0"/>
-<AlwaysActive>False</AlwaysActive>
-<Enabled>True</Enabled>
+<AlwaysActive>True</AlwaysActive>
+<Enabled>False</Enabled>
 <ValueType>Constant</ValueType>
-<Equation>0</Equation>
-<OrganismID>e40d2c4f-9c31-49f8-8a5c-5688fb768225</OrganismID>
-<NodeID>neur3-ID</NodeID>
-<RestPotential Value="-60" Scale="milli" Actual="-0.06"/>
-<Conductance Value="100" Scale="nano" Actual="1e-07"/>
-<LengthData>G:\My Drive\Rat\SynergyControl\Data\InjectedCurrent\stDC1-neur3.txt</LengthData>
-<MuscleID>61daa261-279a-4540-bb7e-026174d96daa</MuscleID>
-</Stimulus>
-<Stimulus>
-<AssemblyFile>AnimatGUI.dll</AssemblyFile>
-<ClassName>AnimatGUI.DataObjects.ExternalStimuli.InverseMuscleCurrent</ClassName>
-<Name>stDC1-neur4</Name>
-<ID>stDC1-neur4-ID</ID>
-<StartTime Value="0" Scale="None" Actual="0"/>
-<EndTime Value="10.0148" Scale="None" Actual="10.0148"/>
-<StepInterval Value="0" Scale="milli" Actual="0"/>
-<AlwaysActive>False</AlwaysActive>
-<Enabled>True</Enabled>
-<ValueType>Constant</ValueType>
-<Equation>0</Equation>
+<Equation>5-5*sin(3*t+1.57)</Equation>
 <OrganismID>e40d2c4f-9c31-49f8-8a5c-5688fb768225</OrganismID>
 <NodeID>neur4-ID</NodeID>
-<RestPotential Value="-60" Scale="milli" Actual="-0.06"/>
-<Conductance Value="100" Scale="nano" Actual="1e-07"/>
-<LengthData>G:\My Drive\Rat\SynergyControl\Data\InjectedCurrent\stDC1-neur4.txt</LengthData>
-<MuscleID>61daa261-279a-4540-bb7e-026174d96daa</MuscleID>
+<CurrentOn Value="0" Scale="nano" Actual="0"/>
+<CurrentOff Value="0" Scale="nano" Actual="0"/>
+<CurrentBurstOff Value="0" Scale="nano" Actual="0"/>
+<CycleOnDuration Value="5" Scale="None" Actual="5"/>
+<CycleOffDuration Value="0" Scale="None" Actual="0"/>
+<BurstOnDuration Value="5" Scale="None" Actual="5"/>
+<BurstOffDuration Value="0" Scale="None" Actual="0"/>
 </Stimulus>
 <Stimulus>
 <AssemblyFile>AnimatGUI.dll</AssemblyFile>
-<ClassName>AnimatGUI.DataObjects.ExternalStimuli.InverseMuscleCurrent</ClassName>
-<Name>stDC1-neur5</Name>
-<ID>stDC1-neur5-ID</ID>
+<ClassName>AnimatGUI.DataObjects.ExternalStimuli.MotorPosition</ClassName>
+<Name>zMaxMinHip</Name>
+<ID>b32719c5-cf4f-4f5e-b968-469a601fddd0</ID>
 <StartTime Value="0" Scale="None" Actual="0"/>
-<EndTime Value="10.0148" Scale="None" Actual="10.0148"/>
+<EndTime Value="10" Scale="None" Actual="10"/>
 <StepInterval Value="0" Scale="milli" Actual="0"/>
 <AlwaysActive>False</AlwaysActive>
-<Enabled>True</Enabled>
-<ValueType>Constant</ValueType>
-<Equation>0</Equation>
-<OrganismID>e40d2c4f-9c31-49f8-8a5c-5688fb768225</OrganismID>
-<NodeID>neur5-ID</NodeID>
-<RestPotential Value="-60" Scale="milli" Actual="-0.06"/>
-<Conductance Value="100" Scale="nano" Actual="1e-07"/>
-<LengthData>G:\My Drive\Rat\SynergyControl\Data\InjectedCurrent\stDC1-neur5.txt</LengthData>
-<MuscleID>61daa261-279a-4540-bb7e-026174d96daa</MuscleID>
+<Enabled>False</Enabled>
+<ValueType>Equation</ValueType>
+<Equation>-.515+.7069*sin(t)</Equation>
+<StructureID>e40d2c4f-9c31-49f8-8a5c-5688fb768225</StructureID>
+<PartID>b2919ff8-3efa-4549-97b4-a4bc77ad6e0a</PartID>
+<Velocity Value="0" Scale="None" Actual="0"/>
+<DisableMotorWhenDone>False</DisableMotorWhenDone>
 </Stimulus>
 <Stimulus>
 <AssemblyFile>AnimatGUI.dll</AssemblyFile>
-<ClassName>AnimatGUI.DataObjects.ExternalStimuli.InverseMuscleCurrent</ClassName>
-<Name>stDC1-neur6</Name>
-<ID>stDC1-neur6-ID</ID>
+<ClassName>AnimatGUI.DataObjects.ExternalStimuli.TonicCurrent</ClassName>
+<Name>stTC1-2BFP</Name>
+<ID>stTC1-neur2-ID</ID>
 <StartTime Value="0" Scale="None" Actual="0"/>
-<EndTime Value="10.0148" Scale="None" Actual="10.0148"/>
+<EndTime Value="5" Scale="None" Actual="5"/>
 <StepInterval Value="0" Scale="milli" Actual="0"/>
-<AlwaysActive>False</AlwaysActive>
-<Enabled>True</Enabled>
+<AlwaysActive>True</AlwaysActive>
+<Enabled>False</Enabled>
 <ValueType>Constant</ValueType>
-<Equation>0</Equation>
+<Equation>10-5*sin(2*t+1.5708)</Equation>
 <OrganismID>e40d2c4f-9c31-49f8-8a5c-5688fb768225</OrganismID>
-<NodeID>neur6-ID</NodeID>
-<RestPotential Value="-60" Scale="milli" Actual="-0.06"/>
-<Conductance Value="100" Scale="nano" Actual="1e-07"/>
-<LengthData>G:\My Drive\Rat\SynergyControl\Data\InjectedCurrent\stDC1-neur6.txt</LengthData>
-<MuscleID>61daa261-279a-4540-bb7e-026174d96daa</MuscleID>
-</Stimulus>
-<Stimulus>
-<AssemblyFile>AnimatGUI.dll</AssemblyFile>
-<ClassName>AnimatGUI.DataObjects.ExternalStimuli.InverseMuscleCurrent</ClassName>
-<Name>stDC1-neur7</Name>
-<ID>stDC1-neur7-ID</ID>
-<StartTime Value="0" Scale="None" Actual="0"/>
-<EndTime Value="10.0148" Scale="None" Actual="10.0148"/>
-<StepInterval Value="0" Scale="milli" Actual="0"/>
-<AlwaysActive>False</AlwaysActive>
-<Enabled>True</Enabled>
-<ValueType>Constant</ValueType>
-<Equation>0</Equation>
-<OrganismID>e40d2c4f-9c31-49f8-8a5c-5688fb768225</OrganismID>
-<NodeID>neur7-ID</NodeID>
-<RestPotential Value="-60" Scale="milli" Actual="-0.06"/>
-<Conductance Value="100" Scale="nano" Actual="1e-07"/>
-<LengthData>G:\My Drive\Rat\SynergyControl\Data\InjectedCurrent\stDC1-neur7.txt</LengthData>
-<MuscleID>61daa261-279a-4540-bb7e-026174d96daa</MuscleID>
+<NodeID>neur2-ID</NodeID>
+<CurrentOn Value="0" Scale="nano" Actual="0"/>
+<CurrentOff Value="0" Scale="nano" Actual="0"/>
+<CurrentBurstOff Value="0" Scale="nano" Actual="0"/>
+<CycleOnDuration Value="5" Scale="None" Actual="5"/>
+<CycleOffDuration Value="0" Scale="None" Actual="0"/>
+<BurstOnDuration Value="5" Scale="None" Actual="5"/>
+<BurstOffDuration Value="0" Scale="None" Actual="0"/>
 </Stimulus>
 </Stimuli>
 <HudItems>
 <HudItem>
-<Name>8a3eb8de-eef1-4fe9-879e-ddd48daf6cb6</Name>
-<ID>8a3eb8de-eef1-4fe9-879e-ddd48daf6cb6</ID>
+<Name>8ba656b4-38f8-4fa6-aeb3-6fdf6c4f72f0</Name>
+<ID>8ba656b4-38f8-4fa6-aeb3-6fdf6c4f72f0</ID>
 <Type>HudText</Type>
 <CharSize>30</CharSize>
 <Text>Time: %3.3f</Text>
@@ -6643,7 +7021,7 @@
 <DockingConfig>&lt;?xml version="1.0" encoding="us-ascii"?&gt;
 &lt;!-- DotNetMagic, The User Interface library for .NET (www.crownwood.net) --&gt;
 &lt;!-- Modifying this generated file will probably render it invalid --&gt;
-&lt;DockingConfig FormatVersion="10" InsideFill="False" InnerMinimum="20, 20" SavedAt="05/04/2020 17:11:00"&gt;
+&lt;DockingConfig FormatVersion="10" InsideFill="False" InnerMinimum="20, 20" SavedAt="06/22/2020 16:35:51"&gt;
   &lt;Content Name="Playback Control" Visible="False" Docked="True" AutoHidden="False" CaptionBar="True" CloseButton="False" DisplaySize="150, 150" DisplayLocation="150, 150" AutoHideSize="150, 150" FloatingSize="150, 150" FullTitle="Playback Control" Office2003BackColor="Base" UniqueName="" Office2007BackColor="Base" MediaPlayerBackColor="Base"&gt;
     &lt;DefaultRestore Type="Crownwood.DotNetMagic.Docking.RestoreContentState"&gt;
       &lt;Content Name="Playback Control" UniqueName="" /&gt;
@@ -6703,7 +7081,7 @@
       &lt;Child Type="null" /&gt;
     &lt;/FloatingRestore&gt;
   &lt;/Content&gt;
-  &lt;Content Name="Simulation Controller" Visible="True" Docked="True" AutoHidden="False" CaptionBar="True" CloseButton="False" DisplaySize="150, 104" DisplayLocation="150, 150" AutoHideSize="150, 125" FloatingSize="150, 150" FullTitle="Simulation Controller" Office2003BackColor="Base" UniqueName="" Office2007BackColor="Base" MediaPlayerBackColor="Base"&gt;
+  &lt;Content Name="Simulation Controller" Visible="True" Docked="True" AutoHidden="False" CaptionBar="True" CloseButton="False" DisplaySize="150, 90" DisplayLocation="150, 150" AutoHideSize="150, 125" FloatingSize="150, 150" FullTitle="Simulation Controller" Office2003BackColor="Base" UniqueName="" Office2007BackColor="Base" MediaPlayerBackColor="Base"&gt;
     &lt;DefaultRestore Type="Crownwood.DotNetMagic.Docking.RestoreContentState"&gt;
       &lt;Content Name="Simulation Controller" UniqueName="" /&gt;
       &lt;State Value="DockLeft" /&gt;
@@ -6717,7 +7095,7 @@
     &lt;DockingRestore Type="Crownwood.DotNetMagic.Docking.RestoreContentDockingAffinity"&gt;
       &lt;Content Name="Simulation Controller" UniqueName="" /&gt;
       &lt;State Value="DockBottom" /&gt;
-      &lt;Position Size="150, 104" Location="150, 150" /&gt;
+      &lt;Position Size="150, 90" Location="150, 150" /&gt;
       &lt;Best Count="1"&gt;
         &lt;Item Name="Simulation Controller" /&gt;
       &lt;/Best&gt;
@@ -6751,7 +7129,7 @@
       &lt;Child Type="null" /&gt;
     &lt;/FloatingRestore&gt;
   &lt;/Content&gt;
-  &lt;Content Name="Workspace" Visible="True" Docked="True" AutoHidden="False" CaptionBar="True" CloseButton="False" DisplaySize="361, 150" DisplayLocation="150, 150" AutoHideSize="200, 150" FloatingSize="150, 150" FullTitle="Workspace" Office2003BackColor="Base" UniqueName="" Office2007BackColor="Base" MediaPlayerBackColor="Base"&gt;
+  &lt;Content Name="Workspace" Visible="True" Docked="True" AutoHidden="False" CaptionBar="True" CloseButton="False" DisplaySize="353, 150" DisplayLocation="150, 150" AutoHideSize="200, 150" FloatingSize="150, 150" FullTitle="Workspace" Office2003BackColor="Base" UniqueName="" Office2007BackColor="Base" MediaPlayerBackColor="Base"&gt;
     &lt;DefaultRestore Type="Crownwood.DotNetMagic.Docking.RestoreContentState"&gt;
       &lt;Content Name="Workspace" UniqueName="" /&gt;
       &lt;State Value="DockLeft" /&gt;
@@ -6765,7 +7143,7 @@
     &lt;DockingRestore Type="Crownwood.DotNetMagic.Docking.RestoreContentDockingAffinity"&gt;
       &lt;Content Name="Workspace" UniqueName="" /&gt;
       &lt;State Value="DockLeft" /&gt;
-      &lt;Position Size="361, 150" Location="150, 150" /&gt;
+      &lt;Position Size="353, 150" Location="150, 150" /&gt;
       &lt;Best Count="1"&gt;
         &lt;Item Name="Workspace" /&gt;
       &lt;/Best&gt;
@@ -6798,7 +7176,7 @@
       &lt;Child Type="null" /&gt;
     &lt;/FloatingRestore&gt;
   &lt;/Content&gt;
-  &lt;Content Name="Properties" Visible="True" Docked="True" AutoHidden="False" CaptionBar="True" CloseButton="False" DisplaySize="274, 150" DisplayLocation="150, 150" AutoHideSize="200, 150" FloatingSize="150, 150" FullTitle="Properties" Office2003BackColor="Base" UniqueName="" Office2007BackColor="Base" MediaPlayerBackColor="Base"&gt;
+  &lt;Content Name="Properties" Visible="True" Docked="True" AutoHidden="False" CaptionBar="True" CloseButton="False" DisplaySize="239, 150" DisplayLocation="150, 150" AutoHideSize="200, 150" FloatingSize="150, 150" FullTitle="Properties" Office2003BackColor="Base" UniqueName="" Office2007BackColor="Base" MediaPlayerBackColor="Base"&gt;
     &lt;DefaultRestore Type="Crownwood.DotNetMagic.Docking.RestoreContentState"&gt;
       &lt;Content Name="Properties" UniqueName="" /&gt;
       &lt;State Value="DockLeft" /&gt;
@@ -6812,7 +7190,7 @@
     &lt;DockingRestore Type="Crownwood.DotNetMagic.Docking.RestoreContentDockingAffinity"&gt;
       &lt;Content Name="Properties" UniqueName="" /&gt;
       &lt;State Value="DockRight" /&gt;
-      &lt;Position Size="274, 150" Location="150, 150" /&gt;
+      &lt;Position Size="239, 150" Location="150, 150" /&gt;
       &lt;Best Count="1"&gt;
         &lt;Item Name="Properties" /&gt;
       &lt;/Best&gt;
@@ -6973,7 +7351,7 @@
       &lt;Previous Count="0" /&gt;
       &lt;NextAll Count="0" /&gt;
       &lt;PreviousAll Count="0" /&gt;
-      &lt;CurrentContent Value="True" /&gt;
+      &lt;CurrentContent Value="False" /&gt;
       &lt;Child Type="null" /&gt;
     &lt;/AutoHideRestore&gt;
     &lt;DockingRestore Type="Crownwood.DotNetMagic.Docking.RestoreContentDockingAffinity"&gt;
@@ -7138,7 +7516,7 @@
 &lt;TabbedGroups FormatVersion="1" ActiveLeaf="7"&gt;
   &lt;CustomGlobalData /&gt;
   &lt;Sequence Count="1" Unique="0" Space="100" Direction="Horizontal"&gt;
-&lt;Leaf Count="9" Unique="7" Space="100"&gt;
+    &lt;Leaf Count="10" Unique="7" Space="100"&gt;
       &lt;Page Title="Sim Window" ImageList="True" ImageIndex="0" Selected="True" Control="null" UniqueName=""&gt;
         &lt;CustomPageData&gt;&lt;![CDATA[&lt;TabPage&gt;
 &lt;Form&gt;
@@ -7152,22 +7530,22 @@
 &lt;/TabPage&gt;
 ]]&gt;&lt;/CustomPageData&gt;
       &lt;/Page&gt;
-      &lt;Page Title="U2C30BW" ImageList="True" ImageIndex="1" Selected="True" Control="null" UniqueName=""&gt;
+      &lt;Page Title="CZO1YI9" ImageList="True" ImageIndex="1" Selected="False" Control="null" UniqueName=""&gt;
         &lt;CustomPageData&gt;&lt;![CDATA[&lt;TabPage&gt;
 &lt;Form&gt;
-&lt;ID&gt;U2C30BW-cdata&lt;/ID&gt;
-&lt;Title&gt;U2C30BW&lt;/Title&gt;
-&lt;TabPageName&gt;U2C30BW&lt;/TabPageName&gt;
+&lt;ID&gt;CZO1YI9-cdata&lt;/ID&gt;
+&lt;Title&gt;CZO1YI9&lt;/Title&gt;
+&lt;TabPageName&gt;CZO1YI9&lt;/TabPageName&gt;
 &lt;AssemblyFile&gt;LicensedAnimatGUI.dll&lt;/AssemblyFile&gt;
 &lt;ClassName&gt;LicensedAnimatGUI.Forms.Behavior.AddFlowDiagram&lt;/ClassName&gt;
 &lt;OrganismID&gt;e40d2c4f-9c31-49f8-8a5c-5688fb768225&lt;/OrganismID&gt;
-&lt;SubSystemID&gt;U2C30BW-ID&lt;/SubSystemID&gt;
+&lt;SubSystemID&gt;CZO1YI9-ID&lt;/SubSystemID&gt;
 &lt;/Form&gt;
 &lt;/TabPage&gt;
 ]]&gt;&lt;/CustomPageData&gt;
       &lt;/Page&gt;
-&lt;Page Title="KeyMNs" ImageList="True" ImageIndex="2" Selected="False" Control="null" UniqueName=""&gt;
-&lt;CustomPageData&gt;&lt;![CDATA[&lt;TabPage&gt;
+      &lt;Page Title="KeyMNs" ImageList="True" ImageIndex="2" Selected="False" Control="null" UniqueName=""&gt;
+        &lt;CustomPageData&gt;&lt;![CDATA[&lt;TabPage&gt;
 &lt;Form&gt;
 &lt;ID&gt;dt-KeyMNs-tfID&lt;/ID&gt;
 &lt;Title&gt;KeyMNs&lt;/Title&gt;
@@ -7178,9 +7556,9 @@
 &lt;/Form&gt;
 &lt;/TabPage&gt;
 ]]&gt;&lt;/CustomPageData&gt;
-&lt;/Page&gt;
-&lt;Page Title="KeyMuscleLen" ImageList="True" ImageIndex="3" Selected="False" Control="null" UniqueName=""&gt;
-&lt;CustomPageData&gt;&lt;![CDATA[&lt;TabPage&gt;
+      &lt;/Page&gt;
+      &lt;Page Title="KeyMuscleLen" ImageList="True" ImageIndex="2" Selected="False" Control="null" UniqueName=""&gt;
+        &lt;CustomPageData&gt;&lt;![CDATA[&lt;TabPage&gt;
 &lt;Form&gt;
 &lt;ID&gt;dt-KeyMuscleLen-tfID&lt;/ID&gt;
 &lt;Title&gt;KeyMuscleLen&lt;/Title&gt;
@@ -7191,9 +7569,9 @@
 &lt;/Form&gt;
 &lt;/TabPage&gt;
 ]]&gt;&lt;/CustomPageData&gt;
-&lt;/Page&gt;
-&lt;Page Title="KeyMuscTen" ImageList="True" ImageIndex="4" Selected="False" Control="null" UniqueName=""&gt;
-&lt;CustomPageData&gt;&lt;![CDATA[&lt;TabPage&gt;
+      &lt;/Page&gt;
+      &lt;Page Title="KeyMuscTen" ImageList="True" ImageIndex="2" Selected="False" Control="null" UniqueName=""&gt;
+        &lt;CustomPageData&gt;&lt;![CDATA[&lt;TabPage&gt;
 &lt;Form&gt;
 &lt;ID&gt;dt-KeyMuscTen-tfID&lt;/ID&gt;
 &lt;Title&gt;KeyMuscTen&lt;/Title&gt;
@@ -7204,9 +7582,9 @@
 &lt;/Form&gt;
 &lt;/TabPage&gt;
 ]]&gt;&lt;/CustomPageData&gt;
-&lt;/Page&gt;
-&lt;Page Title="KeyMuscAct" ImageList="True" ImageIndex="5" Selected="False" Control="null" UniqueName=""&gt;
-&lt;CustomPageData&gt;&lt;![CDATA[&lt;TabPage&gt;
+      &lt;/Page&gt;
+      &lt;Page Title="KeyMuscAct" ImageList="True" ImageIndex="2" Selected="False" Control="null" UniqueName=""&gt;
+        &lt;CustomPageData&gt;&lt;![CDATA[&lt;TabPage&gt;
 &lt;Form&gt;
 &lt;ID&gt;dt-KeyMuscAct-tfID&lt;/ID&gt;
 &lt;Title&gt;KeyMuscAct&lt;/Title&gt;
@@ -7217,9 +7595,9 @@
 &lt;/Form&gt;
 &lt;/TabPage&gt;
 ]]&gt;&lt;/CustomPageData&gt;
-&lt;/Page&gt;
-&lt;Page Title="KeyMuscAl" ImageList="True" ImageIndex="6" Selected="False" Control="null" UniqueName=""&gt;
-&lt;CustomPageData&gt;&lt;![CDATA[&lt;TabPage&gt;
+      &lt;/Page&gt;
+      &lt;Page Title="KeyMuscAl" ImageList="True" ImageIndex="2" Selected="False" Control="null" UniqueName=""&gt;
+        &lt;CustomPageData&gt;&lt;![CDATA[&lt;TabPage&gt;
 &lt;Form&gt;
 &lt;ID&gt;dt-KeyMuscAl-tfID&lt;/ID&gt;
 &lt;Title&gt;KeyMuscAl&lt;/Title&gt;
@@ -7230,7 +7608,7 @@
 &lt;/Form&gt;
 &lt;/TabPage&gt;
 ]]&gt;&lt;/CustomPageData&gt;
-&lt;/Page&gt;
+      &lt;/Page&gt;
       &lt;Page Title="PassiveTension-reduced" ImageList="True" ImageIndex="2" Selected="False" Control="null" UniqueName=""&gt;
         &lt;CustomPageData&gt;&lt;![CDATA[&lt;TabPage&gt;
 &lt;Form&gt;
@@ -7253,6 +7631,19 @@
 &lt;AssemblyFile&gt;LicensedAnimatGUI.dll&lt;/AssemblyFile&gt;
 &lt;ClassName&gt;LicensedAnimatGUI.Forms.Charts.LineChart&lt;/ClassName&gt;
 &lt;ExternalFile&gt;JointMotion.aform&lt;/ExternalFile&gt;
+&lt;/Form&gt;
+&lt;/TabPage&gt;
+]]&gt;&lt;/CustomPageData&gt;
+      &lt;/Page&gt;
+      &lt;Page Title="DataTool_2" ImageList="True" ImageIndex="2" Selected="False" Control="null" UniqueName=""&gt;
+        &lt;CustomPageData&gt;&lt;![CDATA[&lt;TabPage&gt;
+&lt;Form&gt;
+&lt;ID&gt;b3f281fb-d7dd-4ad3-9ff2-87c3bff47da5&lt;/ID&gt;
+&lt;Title&gt;DataTool_2&lt;/Title&gt;
+&lt;TabPageName&gt;DataTool_2&lt;/TabPageName&gt;
+&lt;AssemblyFile&gt;LicensedAnimatGUI.dll&lt;/AssemblyFile&gt;
+&lt;ClassName&gt;LicensedAnimatGUI.Forms.Charts.LineChart&lt;/ClassName&gt;
+&lt;ExternalFile&gt;DataTool_2.aform&lt;/ExternalFile&gt;
 &lt;/Form&gt;
 &lt;/TabPage&gt;
 ]]&gt;&lt;/CustomPageData&gt;

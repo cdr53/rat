@@ -77,10 +77,10 @@ process = pb.start();
 
 %% Read output from the process
 
-%out = read_inputstream(process.getInputStream());
-%err = read_inputstream(process.getErrorStream());
-out = 42;
-err = 42;
+out = read_inputstream(process.getInputStream());
+err = read_inputstream(process.getErrorStream());
+%out = 42;
+%err = 42;
 
 % Get the result code from the process
 res = process.waitFor();

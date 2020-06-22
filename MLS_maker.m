@@ -144,25 +144,4 @@ function [Mout,G,C] = MLS_maker(obj)
                 w(2)*w(1)*(1-cos(ang))+w(3)*sin(ang) cos(ang)+w(2)^2*(1-cos(ang)) w(2)*w(3)*(1-cos(ang))-w(1)*sin(ang);...
                 w(3)*w(1)*(1-cos(ang))-w(2)*sin(ang) w(3)*w(2)*(1-cos(ang))+w(1)*sin(ang) cos(ang)+w(3)^2*(1-cos(ang))]; 
     end
-
-    function outB = vee(B)
-        % vee operator as defined by MLS 1994 p. 41 (2.30)
-        [r,c] = size(B);
-        if ~all([r,c]==4)
-            error('Error vee: input Matrix not 4x4')
-        end
-        w1 = B(1:3,1:3);
-        v = B(1:3,4);
-        outB = [v;w1(3,2);w1(1,3);w1(2,1)];
-    end
-
-    function outB = bracket(e1,e2)
-        % Bracket operator as defined by MLS 1994 p. 175 (4.26)
-        [r1x,c1] = size(e1);
-        [r2x,c2] = size(e2);
-        if ~all([r1x,r2x]==6) || ~all([c1,c2]==1)
-            error('Error bracket: one of the inputs is not 6x1')
-        end
-        outB = vee(wedge(e1)*wedge(e2)-wedge(e2)*wedge(e1));
-    end
 end
