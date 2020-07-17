@@ -53,7 +53,7 @@ function [nsys] = indivProjectBuilder(projPath,simPath,current2inject,forces,obj
             %nsys.stimulus_objects(ii).simeq = generate_synergy_eq(constvals(ii),simTime,obj.dt_motion,0);
             %nsys.stimulus_objects(ii).projeq = generate_synergy_eq(constvals(ii),simTime,obj.dt_motion,1);
             %nsys.stimulus_objects(ii).eq = generate_synergy_eq(inputWave,simTime,obj.dt_motion,0);
-            [outData,stimPath] = generate_direct_current(nsys,inputWave,nsys.stimulus_objects(ii).name);
+            [outData,stimPath] = generate_direct_current_file(nsys,inputWave,nsys.stimulus_objects(ii).name);
             nsys.stimulus_objects(ii).current_wave = outData;
             nsys.stimulus_objects(ii).current_data_file = stimPath;
             %equations{ii,1} = nsys.stimulus_objects(ii).simeq;
@@ -128,39 +128,5 @@ function [nsys] = indivProjectBuilder(projPath,simPath,current2inject,forces,obj
             waveformsBig = filtfilt(coeffblocks,1,waveformsBig);
         end
         waveformsBig = waveformsBig';
-    end
-
-    function [outData,stimPath] = generate_direct_current(inObj,inWave,stimName)
-        inWave(isnan(inWave)) = 0;
-        [r,c] = size(inWave);
-        if c>r
-            inWave = inWave';
-        end
-        
-        % The input current waveform must be in units of A. Typically we deal in units of [0,20] nA, so it is important to make this change.
-        if max(inWave)>20e-9
-            inWave = inWave*1e-9;
-        end
-        
-        dt = inObj.proj_params.physicstimestep*1e-3;
-        tEnd = inObj.proj_params.simendtime;
-        tEnd = (length(inWave)-1)*dt;
-        timeVec = 0:dt:tEnd;
-        outData = [timeVec',inWave];
-        
-        outText = cell(length(inWave)+1,1);
-        outText{1} = ['Time',sprintf('\t'),'Current'];
-        strTime = cellfun(@strtrim,cellstr(string(num2str(timeVec'))),'UniformOutput',false);
-        strCurrent = cellfun(@strtrim,cellstr(string(num2str(inWave))),'UniformOutput',false);
-        %outText(2:length(strTime)+1,:) = [strTime,strCurrent];
-        
-        for ii1 = 2:length(strTime)+1
-            outText{ii1,1} = [strTime{ii1-1},sprintf('\t'),strCurrent{ii1-1}];
-        end
-        
-        stimPath = [pwd,'\Data\InjectedCurrent\',stimName,'.txt'];
-        fileID = fopen(stimPath,'w');
-        fprintf(fileID,'%s\n',outText{:});
-        fclose(fileID);
     end
 end

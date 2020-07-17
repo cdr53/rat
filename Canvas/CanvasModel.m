@@ -760,8 +760,8 @@ classdef CanvasModel < handle
                 stimulus.ID = [stimulus.name,'-ID'];
                 stimulus.target_ID = target.ID;
                 stimulus.enabled ='True';
-                stimulus.starttime = 2;
-                stimulus.endtime = 5;
+                stimulus.starttime = 0;
+                stimulus.endtime = obj.proj_params.simendtime;
                 stimulus.magnitude = 10;
                 stimulus.simeq = [];
                 stimulus.projeq = [];
@@ -774,7 +774,7 @@ classdef CanvasModel < handle
                 
                 if strcmp(type,'dc')
                     % In order for a direct current stimulus to work, it needs a muscle ID
-                    % Bcause we have bypassed other internal processes, this can be *any* muscle ID
+                    % Because we have bypassed other internal processes, this can be *any* muscle ID
                     % For simplicity, we just add the first muscle ID in the system.
                     try 
                         obj.muscle_objects(1).name;
@@ -1164,8 +1164,8 @@ classdef CanvasModel < handle
                                 modified_text(stimuli_inject_1:end)];
             end
             
-            %sim_file_revised = strcat(sim_file(1:end-5),'_fake.asim');
-            sim_file_revised = [pwd,'\Animatlab\SynergyWalking\muscleStim.asim'];
+            sim_file_revised = strcat(sim_file(1:end-5),'_fake.asim');
+            %sim_file_revised = [pwd,'\Animatlab\SynergyWalking\muscleStim.asim'];
             [~,simName,simExt] = fileparts(sim_file_revised);
             disp(['Simulation file ',simName,simExt,' has been updated.'])
             fileID = fopen(sim_file_revised,'w');

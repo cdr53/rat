@@ -4,7 +4,7 @@
     load([file_dir,'\Data\processedHindlimbAngles.mat'],'BackMean','BackRaw','completeWaves')
     addpath(genpath(pwd))
 
-    trial = 4;
+    trial = 2;
 %     waveform = [BackRaw(:,trial,1)-98,BackRaw(:,trial,2)-90,BackRaw(:,trial,3)-116];
     waveform = [completeWaves(:,trial,1)-98,completeWaves(:,trial,2)-90,completeWaves(:,trial,3)-116];
         initAngs = [-0.9656   -0.1941   -0.6678];

@@ -3,6 +3,7 @@ classdef FullLeg < matlab.mixin.SetGet
         proj_file
         original_text
         organism_name = 'Organism_1';
+        organism_position;
         joint_types; %type of joints in the leg, as read from the .asim file
         num_bodies; %number of bodies in the leg, as given by the user's list
         bodies; %names of the segments in the leg
@@ -117,10 +118,22 @@ classdef FullLeg < matlab.mixin.SetGet
 %                 obj.joint_obj{ii,1} = JointSyn();
 %             end
             
+            organismID = 'e40d2c4f-9c31-49f8-8a5c-5688fb768225';
+            orgIDInd = find(contains(ot,organismID),1,'first');
+            orgPosInd = find(contains(ot(orgIDInd:end),'<Position'),1,'first')+orgIDInd-1;
+            quoteLocs = strfind(ot{orgPosInd},'"');
+            sTemp = ot{orgPosInd};
+            qTemp = reshape(quoteLocs,[2 3])';
+            parDbl = zeros(1,length(quoteLocs)/2);
+            for jj = 1:size(qTemp,1)
+                parDbl(jj) = str2double(sTemp(qTemp(jj,1)+1:qTemp(jj,2)-1));
+            end
+            obj.organism_position = parDbl;
+
             while i <= obj.num_bodies
                 %Find the body of interest
                 if ~isempty(obj.bodies{i})
-                    next_body_ind = find(contains(obj.original_text,['<Name>',obj.bodies{i},'</Name>']),1,'first');
+                    next_body_ind = find(contains(ot,['<Name>',obj.bodies{i},'</Name>']),1,'first');
                     chain_lower_limit = next_body_ind;
 
                     if isempty(chain_lower_limit)
@@ -182,7 +195,11 @@ classdef FullLeg < matlab.mixin.SetGet
 %                     for j=1:length(quote_locs)/2
 %                         obj.pos_bodies(j,i) = str2double(body_pos_str{1}(quote_locs(2*j-1)+1:quote_locs(2*j)-1));
 %                     end
-
+                    %% Incorporate the organism position in the pelvis position
+%                     if i==1
+%                         obj.body_obj{i}.position = obj.body_obj{i}.position'+obj.organism_position'; 
+%                     end
+                    
                     obj.pos_bodies(:,i) = obj.body_obj{i}.position';
                            
                     % Now for the joint
@@ -265,6 +282,7 @@ classdef FullLeg < matlab.mixin.SetGet
             %%Store the world position for each body and joint
             obj.pos_bodies_w = zeros(3,obj.num_bodies);
             obj.pos_joints_w = zeros(3,obj.num_bodies-1);
+            obj.pos_bodies_w(:,1) = obj.organism_position';
 
             for i=2:obj.num_bodies
                 %pos_bodies should be counted from 2 to end. Each column is that body's
@@ -901,7 +919,7 @@ classdef FullLeg < matlab.mixin.SetGet
             end
             
             if warnFlag
-                warning('Function: FullLeg.att_pos_on_demand: desired theta is outside joint limits.')
+                %warning('Function: FullLeg.att_pos_on_demand: desired theta is outside joint limits.')
             end
             
             [r,c] = size(theta);
@@ -931,7 +949,9 @@ classdef FullLeg < matlab.mixin.SetGet
             b = axis_angle_rotation(obj,theta(2),axesMat(:,2));
             c = axis_angle_rotation(obj,theta(3),axesMat(:,3));
             
-            femurpos = obj.CR_bodies(:,:,1)*obj.pos_bodies(:,2);
+            pelPos = obj.organism_position';
+            
+            femurpos = pelPos+(obj.CR_bodies(:,:,1)*obj.pos_bodies(:,2));
             hiprel = obj.CR_bodies(:,:,1)*a*obj.CR_bodies(:,:,2);
             
             tibiapos = femurpos+hiprel*obj.pos_bodies(:,3);
@@ -1204,23 +1224,24 @@ classdef FullLeg < matlab.mixin.SetGet
             kneeJointRotMat = obj.joint_obj{2}.joint_rotmat_profile;
             ankleJointRotMat = obj.joint_obj{3}.joint_rotmat_profile;
             
+            orgPos = obj.organism_position';
+            
             pelvisCR = obj.CR_bodies(:,:,1);
             femurCR = obj.CR_bodies(:,:,2);
             tibiaCR = obj.CR_bodies(:,:,3);
             footCR = obj.CR_bodies(:,:,4);
             
-            %pelvisPos = obj.pos_bodies(:,1);
             femurPos = obj.pos_bodies(:,2);
             tibiaPos = obj.pos_bodies(:,3);
             footPos = obj.pos_bodies(:,4);
             
             %Now to actually move the attachments through the motion. This loop builds a post-motion cell array for each body
            parfor i = 1:num_steps
-                a = pelvisCR*attachments_body{1};
-                b = pelvisCR*(femurPos+hipJointRotMat(:,:,i)*femurCR*attachments_body{2});
-                c = pelvisCR*(femurPos+hipJointRotMat(:,:,i)*femurCR*...
+                a = orgPos+pelvisCR*attachments_body{1};
+                b = orgPos+pelvisCR*(femurPos+hipJointRotMat(:,:,i)*femurCR*attachments_body{2});
+                c = orgPos+pelvisCR*(femurPos+hipJointRotMat(:,:,i)*femurCR*...
                     (tibiaPos+kneeJointRotMat(:,:,i)*tibiaCR*attachments_body{3}));
-                d = pelvisCR*(femurPos+hipJointRotMat(:,:,i)*femurCR*...
+                d = orgPos+pelvisCR*(femurPos+hipJointRotMat(:,:,i)*femurCR*...
                     (tibiaPos+kneeJointRotMat(:,:,i)*tibiaCR*...
                     (footPos+ankleJointRotMat(:,:,i)*footCR*attachments_body{4})));
                 attachments_post(:,:,i) = [{a};{b};{c};{d}];
@@ -1258,6 +1279,113 @@ classdef FullLeg < matlab.mixin.SetGet
                 obj.musc_obj{i}.l_min = min(muscle_length);
                 obj.musc_obj{i}.l_max = max(muscle_length);
                 obj.musc_obj{i}.muscle_velocity_profile = diff(muscle_length)/obj.dt_motion;
+            end   
+        end
+        %% Function: Store Muscle Profiles, Attachment Points, and Muscle Length Profiles in Muscle Objects
+        function outLens = muscle_lengths_on_demand(obj,theta)
+            %Uses the joint rotation matrices at each timestep to calculate the muscle length and velocity. Stores this as a profile in the muscle object.
+            num_steps = size(obj.joint_obj{1}.joint_rotmat_profile,3);
+           
+            attachments_body = cell(4,1);
+            attdirect = attachments_body;
+            attachments_post = cell(4,1,num_steps);
+            
+            %Increments the pointer for each body so that new attachment entries don't overwrite previous ones
+            %Also used to count how many attachments each body has
+            pcount = 1;
+            fcount = 1;
+            tcount = 1;
+            ftcount = 1;
+            
+            %This loop builds two cell arrays: one that holds the attachment positions for each body and one that functions as a directory for storing the
+            %attachment positions in the correct muscles. The directoy holds (for each body) the muscle number in the top row and the attachment number in the
+            %bottom row.
+            for i = 1:size(obj.musc_obj,1)
+                for j = 1:size(obj.musc_obj{i}.pos_attachments,1)
+                    switch obj.musc_obj{i}.pos_attachments{j,3}
+                        case 1
+                            attachments_body{1}(:,pcount) = obj.musc_obj{i}.pos_attachments{j,1};
+                            attdirect{1}(1,pcount) = i;
+                            attdirect{1}(2,pcount) = j;
+                            pcount = pcount + 1;
+                        case 2
+                            attachments_body{2}(:,fcount) = obj.musc_obj{i}.pos_attachments{j,1};
+                            attdirect{2}(1,fcount) = i;
+                            attdirect{2}(2,fcount) = j;
+                            fcount = fcount + 1;
+                        case 3
+                            attachments_body{3}(:,tcount) = obj.musc_obj{i}.pos_attachments{j,1};
+                            attdirect{3}(1,tcount) = i;
+                            attdirect{3}(2,tcount) = j;
+                            tcount = tcount + 1;
+                        case 4
+                            attachments_body{4}(:,ftcount) = obj.musc_obj{i}.pos_attachments{j,1};
+                            attdirect{4}(1,ftcount) = i;
+                            attdirect{4}(2,ftcount) = j;
+                            ftcount = ftcount + 1;
+                    end
+                end
+            end
+            
+            axesMat = joint_axes_from_angles(obj,theta);
+            hipJointRotMat   = axis_angle_rotation(obj,theta(1),axesMat(:,1));
+            kneeJointRotMat  = axis_angle_rotation(obj,theta(2),axesMat(:,2));
+            ankleJointRotMat = axis_angle_rotation(obj,theta(3),axesMat(:,3));
+%             hipJointRotMat = obj.joint_obj{1}.joint_rotmat_profile;
+%             kneeJointRotMat = obj.joint_obj{2}.joint_rotmat_profile;
+%             ankleJointRotMat = obj.joint_obj{3}.joint_rotmat_profile;
+            
+            pelvisCR = obj.CR_bodies(:,:,1);
+            femurCR = obj.CR_bodies(:,:,2);
+            tibiaCR = obj.CR_bodies(:,:,3);
+            footCR = obj.CR_bodies(:,:,4);
+            
+            %pelvisPos = obj.pos_bodies(:,1);
+            femurPos = obj.pos_bodies(:,2);
+            tibiaPos = obj.pos_bodies(:,3);
+            footPos = obj.pos_bodies(:,4);
+            
+            %Now to actually move the attachments through the motion. This loop builds a post-motion cell array for each body
+                a = pelvisCR*attachments_body{1};
+                b = pelvisCR*(femurPos+hipJointRotMat*femurCR*attachments_body{2});
+                c = pelvisCR*(femurPos+hipJointRotMat*femurCR*...
+                    (tibiaPos+kneeJointRotMat*tibiaCR*attachments_body{3}));
+                d = pelvisCR*(femurPos+hipJointRotMat*femurCR*...
+                    (tibiaPos+kneeJointRotMat*tibiaCR*...
+                    (footPos+ankleJointRotMat*footCR*attachments_body{4})));
+                attachments_post = [{a};{b};{c};{d}];
+            
+                muscCell = cell(7,1);
+            %This loop creates an array of the attachment's motion and then stores it in the correct muscle object from the directory
+            for j = 1:size(attachments_post,1)
+                num_muscles = size(attachments_post{j},2);
+                bb = [attachments_post{j,1,:}]';
+                r = size(bb);
+                for k = 1:size(attachments_post{j},2)
+                    xx = k:num_muscles:r;
+                    temp = bb(xx,:)';
+                    musclenumber = attdirect{j}(1,k);
+                    attnumber = attdirect{j}(2,k);
+                    muscCell{musclenumber,attnumber} = temp';
+                end
+            end
+            outLens = zeros(size(muscCell,1),1);
+            %This loop calculates the muscle length from the attachment points and stores the length profile (and velocity) in the muscle object
+            for i = 1:size(muscCell,1)
+%                 %Put this muscle's attachments into a single matrix
+%                 attachmentmatrix = cell2mat(obj.musc_obj{i}.pos_attachments(:,4));
+%                 attatts = zeros(num_steps,size(obj.musc_obj{i}.pos_attachments,1)-1);
+%                 for k = 1:size(obj.musc_obj{i}.pos_attachments,1)-1
+%                     %This just iterates through each attachment pair, subtracting the distal position from the proximal position.
+%                     %Since attachment positions are in one long matrix, we have to set moving pointers for the beginning and end of each attachment profile
+%                     temp = attachmentmatrix((k*num_steps+1):((k+1)*num_steps),:)-attachmentmatrix(((k-1)*num_steps+1):k*num_steps,:);
+%                     %Once we have the difference between the two attachments, take the vector norm along the second dimension (each row)
+%                     attatts(:,k) = vecnorm(temp,2,2);
+%                 end
+                %Each column of attatts corresponds to the length of a different segment. Summing each segment gives us the full muscle length.
+               temp1 = muscCell(i,:);
+               temp2 = reshape(cell2mat(temp1),3,[]);
+               outLens(i) = sum(vecnorm(diff(temp2,1,2),2,1));
             end   
         end
         %% Function: Store Input Muscle Passive Tension
