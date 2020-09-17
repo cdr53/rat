@@ -12,7 +12,7 @@ lamWvals = lamHvals;
 meanMat = zeros(length(lamHvals),length(lamHvals));
 
 tstart = tic;
-parfor i = 1:length(lamHvals)
+for i = 1:length(lamHvals)
     lamH = lamHvals(i);
     rowHold = zeros(1,length(20));
     for j = 1:length(lamWvals)

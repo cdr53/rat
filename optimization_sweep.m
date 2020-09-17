@@ -6,7 +6,7 @@ close all
 vars = struct2cell(whos);
 
 if ~any(contains(vars(1,:),'obj'))
-    design_synergy
+    [obj,sim_file,joints,bodies,joint_limits,joint_profile,sdata,passive_tension] = design_synergy;
 end
 
 p = gcp('nocreate');
@@ -55,16 +55,13 @@ for cost_function_to_use = 1:5
             fun = 'minwork';
     end
 
-    [forces_wpass,forces_nopass,tau2_wpass,tau2_nopass,moment_output,fval_wpass,fval_nopass,Fmt,telapsed] = obj.optimize_forces(fun,toplot);
-    results_cell{2,cost_function_to_use+1} = forces_wpass;
-    results_cell{3,cost_function_to_use+1} = forces_nopass;
-    results_cell{4,cost_function_to_use+1} = tau2_wpass;
-    results_cell{5,cost_function_to_use+1} = tau2_nopass;
-    results_cell{6,cost_function_to_use+1} = moment_output;
-    results_cell{7,cost_function_to_use+1} = fval_wpass;
-    results_cell{8,cost_function_to_use+1} = fval_nopass;
-    results_cell{9,cost_function_to_use+1} = Fmt;
-    results_cell{10,cost_function_to_use+1} = telapsed;
+    %%
+    [forces,tau2,moment_output,fval,telapsed,indiv_torques] = obj.optimize_forces(fun,toplot);
+    results_cell{2,cost_function_to_use+1} = forces;
+    results_cell{3,cost_function_to_use+1} = tau2;
+    results_cell{4,cost_function_to_use+1} = moment_output;
+    results_cell{5,cost_function_to_use+1} = fval;
+    results_cell{6,cost_function_to_use+1} = telapsed;
    
     
 %     for i = 1:5

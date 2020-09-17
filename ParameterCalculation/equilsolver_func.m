@@ -2,7 +2,7 @@ function [params,soln] = equilsolver_func(Lr,Fo)
 % For a given resting length and optimal muscle force, calculate Kse, Kpe, and Am based on a pre-defined LT relationship (stored in equilsolver_eqn)  
 % Input: Lr: optimal resting length in meters
 % Input: Fo: optimal force in Newtons
-% Output: params: an 1x4 array containing [muscle names, Kse, Kpe, Am]
+% Output: params: an 1x3 array containing [Kse, Kpe, Am]
 % Output: soln: (~)x3 solution array containing other possible solutions to the optimization equation
 
     % Test data:
@@ -15,16 +15,16 @@ function [params,soln] = equilsolver_func(Lr,Fo)
     
     rng default % for reproducibility
     N = 100; % try 100 random start points
-    pts = 1000*rand(N,3);
-    soln = zeros(N,3); % allocate solution
-    fval = zeros(N,3); % allocate solution
+    pts = 1000*rand(N,2);
+    soln = zeros(N,2); % allocate solution
+    fval = zeros(N,2); % allocate solution
     opts = optimoptions('fsolve','Algorithm','levenberg-marquardt','Display','off','MaxFunctionEvaluations',1000);
     for k = 1:N
         [soln(k,:),fval(k,:)] = fsolve(equilsolver,pts(k,:),opts); % find solutions
     end
     
-    soln = soln(soln(:,3)>0,:);
-    bb = sortrows(soln(sum(soln>0,2)==3,:),1,'descend');
+    soln = soln(soln(:,2)>0,:);
+    bb = sortrows(soln(sum(soln>0,2)==2,:),1,'descend');
 %     kpemax = sortrows(soln,2,'descend');
 %     params = kpemax(1,:);
     

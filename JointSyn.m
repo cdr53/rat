@@ -21,6 +21,7 @@ classdef JointSyn < matlab.mixin.SetGet
         limits
         fricCoeff
         init_rot
+        enable_limit = 0;
     end
     methods
         function obj = JointSyn(Jname)

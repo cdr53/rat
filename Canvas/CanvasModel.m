@@ -1006,7 +1006,7 @@ classdef CanvasModel < handle
             fclose(fileID);
         end
         %% create_animatlab simulation
-        function create_animatlab_simulation(obj,sim_file)
+        function create_animatlab_simulation(obj,sim_file,sim_file_revised)
 
             original_text = importdata(sim_file);
             modified_text = original_text;
@@ -1164,10 +1164,10 @@ classdef CanvasModel < handle
                                 modified_text(stimuli_inject_1:end)];
             end
             
-            sim_file_revised = strcat(sim_file(1:end-5),'_fake.asim');
+            %sim_file_revised = strcat(sim_file(1:end-5),'_fake.asim');
             %sim_file_revised = [pwd,'\Animatlab\SynergyWalking\muscleStim.asim'];
             [~,simName,simExt] = fileparts(sim_file_revised);
-            disp(['Simulation file ',simName,simExt,' has been updated.'])
+            %disp(['Simulation file ',simName,simExt,' has been updated.'])
             fileID = fopen(sim_file_revised,'w');
             fprintf(fileID,'%s\n',modified_text{:});
             fclose(fileID);

@@ -6,7 +6,7 @@
 <AssemblyFile>LicensedAnimatGUI.dll</AssemblyFile>
 <ClassName>LicensedAnimatGUI.Forms.Charts.LineChart</ClassName>
 <AutoCollectInterval>True</AutoCollectInterval>
-<CollectDataInterval Value="0.54" Scale="milli" Actual="0.00054"/>
+<CollectDataInterval Value="0.00054" Scale="None" Actual="0.00054"/>
 <CollectTimeWindow Value="11" Scale="None" Actual="11"/>
 <UpdateDataInterval Value="200" Scale="milli" Actual="0.2"/>
 <SetStartEndTime>True</SetStartEndTime>

@@ -1,8 +1,8 @@
-% Script for running waveFormCompleter onall three joints. Used for completing incomplete joint motion data
+% Script for running waveFormCompleter on all three joints. Used for completing incomplete joint motion data
 
 varNames = whos;
 if ~any(contains({varNames.name},{'BackMean','BackRaw'}))
-    load([fileparts(mfilename('fullpath')),'\Data\processedHindlimbAngles.mat'],'BackMean','BackRaw')
+    load([pwd,'\Data\processedHindlimbAngles.mat'],'BackMean','BackRaw')
 end
 
 completeWaves = zeros(size(BackRaw));

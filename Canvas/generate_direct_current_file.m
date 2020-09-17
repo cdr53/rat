@@ -1,4 +1,4 @@
-function [outData,stimPath] = generate_direct_current_file(inObj,inWave,stimName)
+function outData = generate_direct_current_file(inObj,inWave,stimPath)
     % For an input data vector, generate a .txt file that Animatlab can read from using a
     % inverse muscle dynamics current stimulus
 
@@ -15,7 +15,7 @@ function [outData,stimPath] = generate_direct_current_file(inObj,inWave,stimName
     end
 
     % The input current waveform must be in units of A. Typically we deal in units of [0,20] nA, so it is important to make this change.
-    if max(inWave)>20e-9
+    if max(inWave)>20e-9    
         inWave = inWave*1e-9;
     end
 
@@ -27,18 +27,26 @@ function [outData,stimPath] = generate_direct_current_file(inObj,inWave,stimName
     inWave = interp1(1:length(inWave),inWave,linspace(1,length(inWave),length(timeVec)));
     
     outData = [timeVec',inWave'];
-
+    
     outText = cell(length(inWave)+1,1);
     outText{1} = ['Time',sprintf('\t'),'Current'];
-    strTime = cellfun(@strtrim,cellstr(string(num2str(timeVec'))),'UniformOutput',false);
-    strCurrent = cellfun(@strtrim,cellstr(string(num2str(inWave'))),'UniformOutput',false);
-    %outText(2:length(strTime)+1,:) = [strTime,strCurrent];
+    
+    strTime = cellstr(num2str(timeVec','%.5f\t\n'));
+    strCurrent = cellstr(num2str(inWave','%.4e\t\n'));
 
-    for ii1 = 2:length(strTime)+1
-        outText{ii1,1} = [strTime{ii1-1},sprintf('\t'),strCurrent{ii1-1}];
-    end
+    tCell = cell(length(timeVec),1);
+    [tCell{:}] = deal(sprintf('\t'));
+    outText(2:length(timeVec)+1,1) = strcat(strcat(strTime,tCell),strCurrent);
+    
+%     strTime = cellfun(@strtrim,cellstr(string(num2str(timeVec'))),'UniformOutput',false);
+%     strCurrent = cellfun(@strtrim,cellstr(string(num2str(inWave'))),'UniformOutput',false);
+%     outText(2:length(strTime)+1,:) = [strTime,strCurrent];
+%     
+%     for ii1 = 2:length(strTime)+1
+%         outText{ii1,1} = [strTime{ii1-1},sprintf('\t'),strCurrent{ii1-1}];
+%     end
 
-    stimPath = [pwd,'\Data\InjectedCurrent\',stimName,'.txt'];
+    %stimPath = [pwd,'\Data\InjectedCurrent\',stimName,'.txt'];
     fileID = fopen(stimPath,'w');
     fprintf(fileID,'%s\n',outText{:});
     fclose(fileID);

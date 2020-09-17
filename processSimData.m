@@ -1,8 +1,7 @@
 function simStruct = processSimData(sim_path)
 % Convert a simulation file into a struct containing all data
 % Input: sim_path: absolute path for a simulation (.asim) file
-% Input: to_run: boolean to determine whether or not to execute the simulation file, regenerating output files
-% Output: sim_datatools: struct containing all output data references in simulation file
+% Output: simStruct: struct containing all output data references in simulation file
     if nargin ~= 1
         error('run_simfile: Enter the path to an .asim file.')
     end

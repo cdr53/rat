@@ -1197,12 +1197,21 @@
 <Relaxation5>
 <AssemblyFile>AnimatGUI.dll</AssemblyFile>
 <ClassName>AnimatGUI.DataObjects.Physical.ConstraintRelaxationVortex</ClassName>
-<ID>adc83899-a8db-47af-92b1-863d3fd1cf9b</ID>
+<ID>3b4dc58b-16b5-4876-aa5d-5c1d2a85b5bc</ID>
 <Enabled>False</Enabled>
 <CoordinateID>4</CoordinateID>
 <Stiffness Value="100" Scale="Kilo" Actual="100000"/>
 <Damping Value="5" Scale="Kilo" Actual="5000"/>
 </Relaxation5>
+<Relaxation6>
+<AssemblyFile>AnimatGUI.dll</AssemblyFile>
+<ClassName>AnimatGUI.DataObjects.Physical.ConstraintRelaxationVortex</ClassName>
+<ID>d6669e76-47dd-4188-b9d5-d17f77ea4a1f</ID>
+<Enabled>False</Enabled>
+<CoordinateID>5</CoordinateID>
+<Stiffness Value="100" Scale="Kilo" Actual="100000"/>
+<Damping Value="5" Scale="Kilo" Actual="5000"/>
+</Relaxation6>
 <Friction>
 <AssemblyFile>AnimatGUI.dll</AssemblyFile>
 <ClassName>AnimatGUI.DataObjects.Physical.ConstraintFriction</ClassName>
@@ -1875,12 +1884,21 @@
 <Relaxation5>
 <AssemblyFile>AnimatGUI.dll</AssemblyFile>
 <ClassName>AnimatGUI.DataObjects.Physical.ConstraintRelaxationVortex</ClassName>
-<ID>90ef5e1a-b37c-4d99-8195-37875dfba97a</ID>
+<ID>c9a45abf-ff78-4f84-b873-8eefc0553a2b</ID>
 <Enabled>False</Enabled>
 <CoordinateID>4</CoordinateID>
 <Stiffness Value="100" Scale="Kilo" Actual="100000"/>
 <Damping Value="5" Scale="Kilo" Actual="5000"/>
 </Relaxation5>
+<Relaxation6>
+<AssemblyFile>AnimatGUI.dll</AssemblyFile>
+<ClassName>AnimatGUI.DataObjects.Physical.ConstraintRelaxationVortex</ClassName>
+<ID>a801d07a-daad-4a53-a606-0a16d4ff4e86</ID>
+<Enabled>False</Enabled>
+<CoordinateID>5</CoordinateID>
+<Stiffness Value="100" Scale="Kilo" Actual="100000"/>
+<Damping Value="5" Scale="Kilo" Actual="5000"/>
+</Relaxation6>
 <Friction>
 <AssemblyFile>AnimatGUI.dll</AssemblyFile>
 <ClassName>AnimatGUI.DataObjects.Physical.ConstraintFriction</ClassName>
@@ -2517,7 +2535,7 @@
 <SynchWithRobot>False</SynchWithRobot>
 <SynchUpdateInterval Value="0" Scale="milli" Actual="0"/>
 <Size Value="0.001" Scale="None" Actual="0.001"/>
-<EnableLimits>False</EnableLimits>
+<EnableLimits>True</EnableLimits>
 <Relaxation1>
 <AssemblyFile>AnimatGUI.dll</AssemblyFile>
 <ClassName>AnimatGUI.DataObjects.Physical.ConstraintRelaxationVortex</ClassName>
@@ -2557,12 +2575,21 @@
 <Relaxation5>
 <AssemblyFile>AnimatGUI.dll</AssemblyFile>
 <ClassName>AnimatGUI.DataObjects.Physical.ConstraintRelaxationVortex</ClassName>
-<ID>85b2e0b2-1056-466c-9ef5-5d56fc93fcba</ID>
+<ID>6cda5a1e-fab0-43a5-aa86-9b1a311a5568</ID>
 <Enabled>False</Enabled>
 <CoordinateID>4</CoordinateID>
 <Stiffness Value="100" Scale="Kilo" Actual="100000"/>
 <Damping Value="5" Scale="Kilo" Actual="5000"/>
 </Relaxation5>
+<Relaxation6>
+<AssemblyFile>AnimatGUI.dll</AssemblyFile>
+<ClassName>AnimatGUI.DataObjects.Physical.ConstraintRelaxationVortex</ClassName>
+<ID>1b497af9-d584-4297-9641-46e2a43cc0c7</ID>
+<Enabled>False</Enabled>
+<CoordinateID>5</CoordinateID>
+<Stiffness Value="100" Scale="Kilo" Actual="100000"/>
+<Damping Value="5" Scale="Kilo" Actual="5000"/>
+</Relaxation6>
 <Friction>
 <AssemblyFile>AnimatGUI.dll</AssemblyFile>
 <ClassName>AnimatGUI.DataObjects.Physical.ConstraintFriction</ClassName>
@@ -4642,7 +4669,7 @@
 <Equation>0</Equation>
 <StructureID>e40d2c4f-9c31-49f8-8a5c-5688fb768225</StructureID>
 <PartID>55af1c5f-e200-4870-b3fa-0501ab0b22dd</PartID>
-<Velocity Value="-0.2007" Scale="None" Actual="-0.2007"/>
+<Velocity Value="-0.4114" Scale="None" Actual="-0.4114"/>
 <DisableMotorWhenDone>True</DisableMotorWhenDone>
 </Stimulus>
 <Stimulus>
@@ -4676,7 +4703,7 @@
 <Equation>0</Equation>
 <StructureID>e40d2c4f-9c31-49f8-8a5c-5688fb768225</StructureID>
 <PartID>c7df3511-7e4c-411e-be1f-1b71ff30c530</PartID>
-<Velocity Value="-0.0678" Scale="None" Actual="-0.0678"/>
+<Velocity Value="-1.207" Scale="None" Actual="-1.207"/>
 <DisableMotorWhenDone>True</DisableMotorWhenDone>
 </Stimulus>
 <Stimulus>
@@ -4744,14 +4771,14 @@
 <Equation>0</Equation>
 <StructureID>e40d2c4f-9c31-49f8-8a5c-5688fb768225</StructureID>
 <PartID>b2919ff8-3efa-4549-97b4-a4bc77ad6e0a</PartID>
-<Velocity Value="0.4315" Scale="None" Actual="0.4315"/>
+<Velocity Value="-0.7734" Scale="None" Actual="-0.7734"/>
 <DisableMotorWhenDone>True</DisableMotorWhenDone>
 </Stimulus>
 </Stimuli>
 <HudItems>
 <HudItem>
-<Name>874a0d9a-9968-44cd-b62e-1deed9c5790f</Name>
-<ID>874a0d9a-9968-44cd-b62e-1deed9c5790f</ID>
+<Name>ce76b00b-dc32-42db-98d6-e482d89a5246</Name>
+<ID>ce76b00b-dc32-42db-98d6-e482d89a5246</ID>
 <Type>HudText</Type>
 <CharSize>30</CharSize>
 <Text>Time: %3.3f</Text>
@@ -4864,7 +4891,7 @@
 <DockingConfig>&lt;?xml version="1.0" encoding="us-ascii"?&gt;
 &lt;!-- DotNetMagic, The User Interface library for .NET (www.crownwood.net) --&gt;
 &lt;!-- Modifying this generated file will probably render it invalid --&gt;
-&lt;DockingConfig FormatVersion="10" InsideFill="False" InnerMinimum="20, 20" SavedAt="07/08/2020 13:57:19"&gt;
+&lt;DockingConfig FormatVersion="10" InsideFill="False" InnerMinimum="20, 20" SavedAt="08/04/2020 18:50:47"&gt;
   &lt;Content Name="Playback Control" Visible="False" Docked="True" AutoHidden="False" CaptionBar="True" CloseButton="False" DisplaySize="150, 150" DisplayLocation="150, 150" AutoHideSize="150, 150" FloatingSize="150, 150" FullTitle="Playback Control" Office2003BackColor="Base" UniqueName="" Office2007BackColor="Base" MediaPlayerBackColor="Base"&gt;
     &lt;DefaultRestore Type="Crownwood.DotNetMagic.Docking.RestoreContentState"&gt;
       &lt;Content Name="Playback Control" UniqueName="" /&gt;

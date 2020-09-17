@@ -10,7 +10,7 @@
 <PlaybackControlMode>0</PlaybackControlMode>
 <PresetPlaybackTimeStep>0.01</PresetPlaybackTimeStep>
 <Environment>
-<PhysicsTimeStep>0.01924</PhysicsTimeStep>
+<PhysicsTimeStep>0.02</PhysicsTimeStep>
 <PhysicsSubsteps>1</PhysicsSubsteps>
 <Gravity>-9.81</Gravity>
 <MouseSpringStiffness>0.5</MouseSpringStiffness>
@@ -515,7 +515,7 @@
 <SynchWithRobot>False</SynchWithRobot>
 <SynchUpdateInterval>0</SynchUpdateInterval>
 <Size>0.001</Size>
-<EnableLimits>True</EnableLimits>
+<EnableLimits>False</EnableLimits>
 <Relaxation1>
 <ID>63ac8fec-bc87-4e4a-b0a6-d520498eeb63</ID>
 <Name>X Axis Displacement</Name>
@@ -566,6 +566,16 @@
 <Damping>5000</Damping>
 <Loss>0</Loss>
 </Relaxation5>
+<Relaxation6>
+<ID>29223481-8ca7-4510-a0a4-83cfe2e2bafb</ID>
+<Name>Z Axis Rotation</Name>
+<Type>Default</Type>
+<Enabled>False</Enabled>
+<CoordinateID>5</CoordinateID>
+<Stiffness>100000</Stiffness>
+<Damping>5000</Damping>
+<Loss>0</Loss>
+</Relaxation6>
 <Friction>
 <ID>028bd626-f964-4165-8e5b-e5f69937ba5e</ID>
 <Name/>
@@ -758,7 +768,7 @@
 <SynchWithRobot>False</SynchWithRobot>
 <SynchUpdateInterval>0</SynchUpdateInterval>
 <Size>0.001</Size>
-<EnableLimits>True</EnableLimits>
+<EnableLimits>False</EnableLimits>
 <Relaxation1>
 <ID>872a82a9-9c7b-4a8e-8ac5-cbc888584a6a</ID>
 <Name>X Axis Displacement</Name>
@@ -809,6 +819,16 @@
 <Damping>5000</Damping>
 <Loss>0</Loss>
 </Relaxation5>
+<Relaxation6>
+<ID>08b94d8a-3bab-4737-b9fe-843a28181661</ID>
+<Name>Z Axis Rotation</Name>
+<Type>Default</Type>
+<Enabled>False</Enabled>
+<CoordinateID>5</CoordinateID>
+<Stiffness>100000</Stiffness>
+<Damping>5000</Damping>
+<Loss>0</Loss>
+</Relaxation6>
 <Friction>
 <ID>00b42b7b-a001-4626-a69c-87c0beca56b3</ID>
 <Name/>
@@ -1093,7 +1113,7 @@
 <SynchWithRobot>False</SynchWithRobot>
 <SynchUpdateInterval>0</SynchUpdateInterval>
 <Size>0.001</Size>
-<EnableLimits>True</EnableLimits>
+<EnableLimits>False</EnableLimits>
 <Relaxation1>
 <ID>a1e13d3d-18af-4fe3-8a0b-0a9a58a2326d</ID>
 <Name>X Axis Displacement</Name>
@@ -1144,6 +1164,16 @@
 <Damping>5000</Damping>
 <Loss>0</Loss>
 </Relaxation5>
+<Relaxation6>
+<ID>2b2c78bf-90ea-4f4d-840e-eb14f3002784</ID>
+<Name>Z Axis Rotation</Name>
+<Type>Default</Type>
+<Enabled>False</Enabled>
+<CoordinateID>5</CoordinateID>
+<Stiffness>100000</Stiffness>
+<Damping>5000</Damping>
+<Loss>0</Loss>
+</Relaxation6>
 <Friction>
 <ID>064c80b2-4f34-4dac-9298-096da5037c32</ID>
 <Name/>
@@ -2383,7 +2413,7 @@
 <ID>5f826170-822d-4722-9df4-ea27e8d88476</ID>
 <Name>xAnklewalking</Name>
 <AlwaysActive>False</AlwaysActive>
-<Enabled>False</Enabled>
+<Enabled>True</Enabled>
 <ModuleName/>
 <Type>MotorPosition</Type>
 <StructureID>e40d2c4f-9c31-49f8-8a5c-5688fb768225</StructureID>
@@ -2391,7 +2421,7 @@
 <StartTime>0</StartTime>
 <EndTime>10</EndTime>
 <TargetID>Position</TargetID>
-<Equation>0.0587,0.7246,t,*,2.326,+,sin,*,0.06009,5.647,t,*,2.748,-,sin,*,0.004938,2.263,t,*,1.667,-,sin,*,0.4367,0.3509,t,*,0.7173,+,sin,*,1.141,0.1553,t,*,1.845,-,sin,*,0.2713,3.768,t,*,1.288,+,sin,*,0.08073,1.84,t,*,0.2031,+,sin,*,0.02449,7.555,t,*,0.923,+,sin,*,+,+,+,+,+,+,+</Equation>
+<Equation>.95875,0.18655,t,*,2.1583,-,sin,*,.29685,0.42001,t,*,0.1721,+,sin,*,.36937,3.7777,t,*,1.9198,+,sin,*,.31484,1.8582,t,*,0.08671,-,sin,*,.040896,1.1675,t,*,0.048703,+,sin,*,.087022,7.4979,t,*,1.7821,+,sin,*,+,+,+,+,+</Equation>
 <DisableMotorWhenDone>False</DisableMotorWhenDone>
 </Stimulus>
 <Stimulus>
@@ -2458,7 +2488,7 @@
 <ID>824fa45f-843e-4710-bfd0-a8758c014904</ID>
 <Name>Kneewalking</Name>
 <AlwaysActive>False</AlwaysActive>
-<Enabled>False</Enabled>
+<Enabled>True</Enabled>
 <ModuleName/>
 <Type>MotorPosition</Type>
 <StructureID>e40d2c4f-9c31-49f8-8a5c-5688fb768225</StructureID>
@@ -2466,14 +2496,14 @@
 <StartTime>0</StartTime>
 <EndTime>10</EndTime>
 <TargetID>Position</TargetID>
-<Equation>0.1995,0.5822,t,*,1.07,-,sin,*,0.08642,0.7588,t,*,1.287,+,sin,*,0.4931,0.209,t,*,2.524,-,sin,*,0.1947,3.768,t,*,2.116,+,sin,*,0.01519,5.651,t,*,0.3852,-,sin,*,0.1605,1.875,t,*,0.2783,+,sin,*,0.0206,7.535,t,*,2.37,+,sin,*,0.003347,2.283,t,*,0.9653,-,sin,*,+,+,+,+,+,+,+</Equation>
+<Equation>.66088,0.20532,t,*,3.6449,+,sin,*,.2509,1.8801,t,*,0.621,+,sin,*,.23232,3.7744,t,*,2.1818,+,sin,*,.26689,0.34035,t,*,0.19255,-,sin,*,.067303,7.4822,t,*,2.5588,+,sin,*,+,+,+,+</Equation>
 <DisableMotorWhenDone>False</DisableMotorWhenDone>
 </Stimulus>
 <Stimulus>
 <ID>de48c25f-7620-4ba2-bf8a-21b02bb6203e</ID>
 <Name>Hipwalking</Name>
 <AlwaysActive>False</AlwaysActive>
-<Enabled>False</Enabled>
+<Enabled>True</Enabled>
 <ModuleName/>
 <Type>MotorPosition</Type>
 <StructureID>e40d2c4f-9c31-49f8-8a5c-5688fb768225</StructureID>
@@ -2481,7 +2511,7 @@
 <StartTime>0</StartTime>
 <EndTime>10</EndTime>
 <TargetID>Position</TargetID>
-<Equation>0.2466,0.5468,t,*,1.124,-,sin,*,0.046,1.003,t,*,0.2206,-,sin,*,0.07998,3.77,t,*,2.07,+,sin,*,0.5721,1.879,t,*,1.298,-,sin,*,0.6951,0.2447,t,*,3.506,+,sin,*,+,+,+,+</Equation>
+<Equation>.81736,0.17202,t,*,3.8462,+,sin,*,.53613,1.8857,t,*,1.1089,-,sin,*,.27606,0.30692,t,*,0.034687,+,sin,*,.11618,3.7693,t,*,2.0259,+,sin,*,+,+,+</Equation>
 <DisableMotorWhenDone>False</DisableMotorWhenDone>
 </Stimulus>
 <Stimulus>
@@ -2526,7 +2556,7 @@
 <AlwaysActive>False</AlwaysActive>
 <StartTime>0</StartTime>
 <EndTime>10</EndTime>
-<CollectInterval>0.02</CollectInterval>
+<CollectInterval>0.02000</CollectInterval>
 <DataColumns>
 <DataColumn>
 <ModuleName/>
@@ -2595,8 +2625,8 @@
 <CollectTimeWindow>-1</CollectTimeWindow>
 <AlwaysActive>False</AlwaysActive>
 <StartTime>0</StartTime>
-<EndTime>10.0148</EndTime>
-<CollectInterval>0.02</CollectInterval>
+<EndTime>10</EndTime>
+<CollectInterval>0.02000</CollectInterval>
 <DataColumns>
 <DataColumn>
 <ModuleName/>
@@ -2633,26 +2663,9 @@
 <CollectTimeWindow>-1</CollectTimeWindow>
 <AlwaysActive>False</AlwaysActive>
 <StartTime>0</StartTime>
-<EndTime>9.5</EndTime>
-<CollectInterval>0.02</CollectInterval>
-<DataColumns>
-<DataColumn>
-<ModuleName/>
-<Type>DataColumn</Type>
-<ID>1633eb0a-4a5a-4e3e-bb8d-50db39915ff8</ID>
-<ColumnName>LH_BicepsFemorisPosterior</ColumnName>
-<DataType>Tdot</DataType>
-<TargetID>7df2c5f8-7338-4902-a14f-c4e8a0b8f8b5</TargetID>
-</DataColumn>
-<DataColumn>
-<ModuleName/>
-<Type>DataColumn</Type>
-<ID>c454b523-72d2-44b3-bf2d-50e9820e55c5</ID>
-<ColumnName>LH_BicepsFemorisPosterior</ColumnName>
-<DataType>Tension</DataType>
-<TargetID>7df2c5f8-7338-4902-a14f-c4e8a0b8f8b5</TargetID>
-</DataColumn>
-</DataColumns>
+<EndTime>10</EndTime>
+<CollectInterval>0.005</CollectInterval>
+<DataColumns/>
 </DataChart>
 </DataCharts>
 <WindowMgr>
@@ -2662,8 +2675,8 @@
 <HudItem>
 <ModuleName/>
 <Type>HudText</Type>
-<Name>07e57581-0084-48af-8f48-a055fea5c153</Name>
-<ID>07e57581-0084-48af-8f48-a055fea5c153</ID>
+<Name>41e3761b-3ca5-49b6-b417-1cbdc42c6829</Name>
+<ID>41e3761b-3ca5-49b6-b417-1cbdc42c6829</ID>
 <Type>HudText</Type>
 <CharSize>30</CharSize>
 <Text>Time: %3.3f</Text>

@@ -11,7 +11,7 @@ opts = spreadsheetImportOptions("NumVariables", 35);
 
 % Specify sheet and range
 opts.Sheet = "3D";
-opts.DataRange = "A1:AI680";
+ opts.DataRange = "A1:AI680";
 
 % Specify column names and types
 opts.VariableNames = ["Time", "TDLO", "MPelantemed1X", "MPelantemed1Y", "MPelantemed1Z", "MPelantelat1X", "MPelantelat1Y", "MPelantelat1Z", "MPelpostmed1X", "MPelpostmed1Y", "MPelpostmed1Z", "MPelpostlat1X", "MPelpostlat1Y", "MPelpostlat1Z", "HipX", "HipY", "HipZ", "MFempost1X", "MFempost1Y", "MFempost1Z", "MFemante1X", "MFemante1Y", "MFemante1Z", "KneeX", "KneeY", "KneeZ", "MTibpost1X", "MTibpost1Y", "MTibpost1Z", "MTibante1X", "MTibante1Y", "MTibante1Z", "AnkleX", "AnkleY", "AnkleZ"];

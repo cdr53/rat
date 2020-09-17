@@ -22,7 +22,7 @@
 <DataColumn>
 <AssemblyFile>LicensedAnimatGUI.dll</AssemblyFile>
 <ClassName>LicensedAnimatGUI.DataObjects.Charting.Pro2DColumn</ClassName>
-<Name>Ib</Name>
+<Name>Ib Sensor (Tension)</Name>
 <ID>29bbeed6-6639-4342-a695-133ba9de77d4</ID>
 <DataItemAssemblyFile>AnimatGUI.dll</DataItemAssemblyFile>
 <DataItemClassName>AnimatGUI.DataObjects.Physical.Bodies.LinearHillStretchReceptor</DataItemClassName>
@@ -48,7 +48,7 @@
 <DataColumn>
 <AssemblyFile>LicensedAnimatGUI.dll</AssemblyFile>
 <ClassName>LicensedAnimatGUI.DataObjects.Charting.Pro2DColumn</ClassName>
-<Name>ml</Name>
+<Name>ml Sensor Length</Name>
 <ID>c370a4e5-af05-4e8f-8a54-88440cd9c2b5</ID>
 <DataItemAssemblyFile>AnimatGUI.dll</DataItemAssemblyFile>
 <DataItemClassName>AnimatGUI.DataObjects.Physical.Bodies.LinearHillStretchReceptor</DataItemClassName>
@@ -70,6 +70,6 @@
 <UpdateChartAtEnd>True</UpdateChartAtEnd>
 <PointsToKeep>20371</PointsToKeep>
 <YAxisOffset>0</YAxisOffset>
-<GraphConfig ByteCount="8939"/>
+<GraphConfig ByteCount="8970"/>
 </Form>
 </Form>

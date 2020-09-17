@@ -232,6 +232,12 @@ classdef FullLeg < matlab.mixin.SetGet
                         obj.joint_obj{i-1}.limits(1,1) = str2double(joint_lims_str2(11:length(joint_lims_str2)-11));
                         obj.joint_obj{i-1}.limits(2,1) = str2double(joint_lims_str1(11:length(joint_lims_str1)-11));
                         
+                        % Determine if joint limits are enabled
+                        joint_lim_enable = find(contains(ot(chain_lower_limit:end),'<EnableLimits'),1,'first')+chain_lower_limit-1;
+                        if contains(ot{joint_lim_enable},'True')
+                            obj.joint_obj{i-1}.enable_limit = 1;
+                        end
+                        
                         %Compute the rotation of the joint's axis within the local frame.
                         rotx_j = [1,0,0;0,cos(obj.euler_angs_joints(1,i)),-sin(obj.euler_angs_joints(1,i));0,sin(obj.euler_angs_joints(1,i)),cos(obj.euler_angs_joints(1,i))];
                         roty_j = [cos(obj.euler_angs_joints(2,i)),0,sin(obj.euler_angs_joints(2,i));0,1,0;-sin(obj.euler_angs_joints(2,i)),0,cos(obj.euler_angs_joints(2,i))];
@@ -368,8 +374,7 @@ classdef FullLeg < matlab.mixin.SetGet
             for i=1:length(musc_inds)
                 for j=1:length(attach_to_find{i})
                     %save the names
-                    id_loc = contains(obj.original_text,attach_to_find{i}{j});
-                    id_ind = find(id_loc,1,'first');
+                    id_ind = find(contains(obj.original_text,strtrim(attach_to_find{i}{j})),1,'first');
                     attach_names{i}{j} = id_ind - 1;
                     attach_names_str{i}{j} = obj.original_text{attach_names{i}{j}};
                      
@@ -909,17 +914,13 @@ classdef FullLeg < matlab.mixin.SetGet
         function outPos = att_pos_on_demand(obj,theta,muscAtt)
             %Input: muscAtt: 1x4 cell array with information about muscle attachment point
                 % [attachment intial position, attachment name, body number of attachment, attachment profile for input waveform]
-                warnFlag = 0;
             for ii = 1:3
                 limBool = [theta(ii) > max(obj.joint_obj{ii}.limits) theta(ii) < min(obj.joint_obj{ii}.limits)];
-                if any(limBool)
-                    warnFlag = 1;
+                if any(limBool) && obj.joint_obj{ii}.enable_limit
+                    warning(['Desired theta ',num2str(theta(ii)),' for ',obj.joint_obj{ii}.name,' is outside joint limits, '...
+                        '[',num2str(obj.joint_obj{ii}.limits(1)),', ',num2str(obj.joint_obj{ii}.limits(2)),']'])
                     theta(ii) = obj.joint_obj{ii}.limits(limBool);
                 end
-            end
-            
-            if warnFlag
-                %warning('Function: FullLeg.att_pos_on_demand: desired theta is outside joint limits.')
             end
             
             [r,c] = size(theta);
@@ -964,7 +965,7 @@ classdef FullLeg < matlab.mixin.SetGet
             
             switch bodyNum
                 case 1
-                    outPos = obj.CR_bodies(:,:,1)*muscAtt{1};
+                    outPos = pelPos+obj.CR_bodies(:,:,1)*muscAtt{1};
                 case 2
                     outPos = (femurpos+hiprel*muscAtt{1});
                 case 3
@@ -1397,7 +1398,7 @@ classdef FullLeg < matlab.mixin.SetGet
             end
             for ii = 1:size(passive_tension,1)
                 ptName = pt{ii,1};
-                obj.musc_obj{contains(musc_names,ptName)}.passive_tension = pt{ii,2};
+                obj.musc_obj{find(contains(musc_names,ptName),1,'first')}.passive_tension = pt{ii,2};
             end
         end
         %% Function: Store the sampling vector
