@@ -1,0 +1,11 @@
+<?xml version="1.0"?> 
+<robot name="myurdftest">
+    <!-- Base Frame of Car --> 
+    <link name="base_link">
+        <visual> 
+            <geometry> 
+                <mesh filename = "ribcage_graph"/>
+            </geometry>
+        </visual> 
+    </link>
+</robot>
