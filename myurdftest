@@ -4,7 +4,7 @@
     <link name="base_link">
         <visual> 
             <geometry> 
-                <box size="0.5 0.3 0.1"/>
+                <mesh filename = "ribcage_graph"/>
             </geometry>
         </visual> 
     </link>
