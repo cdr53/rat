@@ -4,8 +4,9 @@
     <link name="base_link">
         <visual> 
             <geometry> 
-                <mesh filename="ribcage"/>
+                <box size="0.5 0.3 0.1"/>
             </geometry>
         </visual> 
     </link>
+</robot>>
 </robot>
