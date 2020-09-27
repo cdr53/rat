@@ -1,0 +1,11 @@
+<?xml version="1.0"?> 
+<robot name="simplecar">
+    <!-- Base Frame of Car --> 
+    <link name="base_link">
+        <visual> 
+            <geometry> 
+                <mesh filename="ribcage"/>
+            </geometry>
+        </visual> 
+    </link>
+</robot>
